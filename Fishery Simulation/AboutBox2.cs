@@ -8,9 +8,9 @@ using System.Windows.Forms;
 
 namespace Fishery_Simulation
 {
-    partial class AboutBox1 : Form
+    partial class AboutBox2 : Form
     {
-        public AboutBox1()
+        public AboutBox2()
         {
             InitializeComponent();
             this.Text = String.Format("About {0}", AssemblyTitle);
@@ -100,5 +100,10 @@ namespace Fishery_Simulation
             }
         }
         #endregion
+
+        private void textBoxDescription_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
