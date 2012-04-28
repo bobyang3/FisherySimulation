@@ -64,7 +64,7 @@ namespace Fishery_Simulation
                     currentLine = currentLine+1;
                 }
             }
-            return sb.ToString();
+            return sb.ToString().Trim();
         }
 
         public static void WriteBlockText(string filePath, string blocktext)

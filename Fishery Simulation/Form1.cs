@@ -9,6 +9,7 @@ using System.Windows.Forms;
 using System.IO;
 using System.Diagnostics;
 using System.Threading.Tasks;
+using System.Threading;
 
 
 namespace Fishery_Simulation
@@ -67,24 +68,48 @@ namespace Fishery_Simulation
         private void button1_Click(object sender, EventArgs e)
         {
 
+            Thread oThread = new Thread(new ThreadStart(process1and2));
+
+            oThread.Start();
+
+        }
+
+        private void process1and2()
+        {
+
             //step 1:
 
             this.CopyFiles();
 
+            //step 1.1: run commands
             try
             {
-                Process.Start(textBox3.Text.ToString());
+                if (textBox3.Text.ToString().Trim().Length > 0)
+                    Process.Start(textBox3.Text.ToString());
             }
             catch (Exception e1)
-            { }
+            {
+                MessageBox.Show(e1.ToString());
+            }
+
+
+            //step 2: run commands
+            try
+            {
+                if (textBox4.Text.ToString().Trim().Length > 0)
+                    Process.Start(textBox4.Text.ToString());
+            }
+            catch (Exception e1)
+            {
+                MessageBox.Show(e1.ToString());
+            }
+
 
         }
-
-
         private void CopyFiles()
         {
 
-
+            //create empty folders
             try
             {
                 Parallel.For(1, int.Parse(textBox2.Text.Trim().ToString()) + 1, i =>
@@ -101,10 +126,13 @@ namespace Fishery_Simulation
             }
 
 
+            //copy files
             try
             {
+                Parallel.For(0, dataGridView1.RowCount-1, j =>
+                {
 
-                for (int j = 0; j < dataGridView1.RowCount-1; j++)
+                //for (int j = 0; j < dataGridView1.RowCount-1; j++)
                 {
                     string filename = dataGridView1.Rows[j].Cells[0].Value.ToString();
                     string sourceFile = Path.Combine(buttonEdit1.Text, filename);
@@ -141,10 +169,8 @@ namespace Fishery_Simulation
 
                     }
 
-
-
-
                 }
+                }); //Parallel.For
             }
             catch (Exception e3)
             {
