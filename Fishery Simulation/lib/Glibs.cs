@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using System.IO;
 
 namespace Fishery_Simulation
 {
@@ -34,6 +35,47 @@ namespace Fishery_Simulation
             }
             return controlList;
         }
+
+
+        public static int GetCPUCore()
+        {
+           return Environment.ProcessorCount;
+        }
+
+
+        public static string ReadBlockText(string filePath, int? fromLine, int? toLine)
+        {
+            StringBuilder sb = new StringBuilder();
+
+            using (StreamReader reader = new StreamReader(filePath))
+            {
+                string line;
+                int currentLine = 1;
+                while ((line = reader.ReadLine()) != null)
+                {
+                    if (currentLine >= fromLine && currentLine <= toLine)
+                    {
+                        sb.AppendLine(line);
+                    }
+                    else if (currentLine > toLine)
+                    {
+                        break;
+                    }
+                    currentLine = currentLine+1;
+                }
+            }
+            return sb.ToString();
+        }
+
+        public static void WriteBlockText(string filePath, string blocktext)
+        {
+            TextWriter tw = new StreamWriter(filePath);
+            tw.Write(blocktext);
+            tw.Close();
+        }
+
+
+
 
     }
 }
