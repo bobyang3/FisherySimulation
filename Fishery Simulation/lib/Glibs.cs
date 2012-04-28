@@ -67,6 +67,12 @@ namespace Fishery_Simulation
             return sb.ToString().Trim();
         }
 
+        public static string[] ReadText(string filePath)
+        {
+            return File.ReadAllLines(filePath);
+        }
+
+
         public static void WriteBlockText(string filePath, string blocktext)
         {
             TextWriter tw = new StreamWriter(filePath);

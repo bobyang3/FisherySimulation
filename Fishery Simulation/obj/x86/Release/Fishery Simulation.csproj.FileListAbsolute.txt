@@ -9,3 +9,9 @@ C:\__PROJECTS__\Fishery Simulation\Fishery Simulation\obj\x86\Release\GenerateRe
 C:\__PROJECTS__\Fishery Simulation\Fishery Simulation\obj\x86\Release\Fishery Simulation.exe.licenses
 C:\__PROJECTS__\Fishery Simulation\Fishery Simulation\obj\x86\Release\Fishery Simulation.exe
 C:\__PROJECTS__\Fishery Simulation\Fishery Simulation\obj\x86\Release\Fishery Simulation.pdb
+C:\__PROJECTS__\Fishery Simulation\Fishery Simulation\bin\Release\DevExpress.Data.v10.2.dll
+C:\__PROJECTS__\Fishery Simulation\Fishery Simulation\bin\Release\DevExpress.Utils.v10.2.dll
+C:\__PROJECTS__\Fishery Simulation\Fishery Simulation\bin\Release\DevExpress.XtraEditors.v10.2.dll
+C:\__PROJECTS__\Fishery Simulation\Fishery Simulation\bin\Release\DevExpress.Data.v10.2.xml
+C:\__PROJECTS__\Fishery Simulation\Fishery Simulation\bin\Release\DevExpress.Utils.v10.2.xml
+C:\__PROJECTS__\Fishery Simulation\Fishery Simulation\bin\Release\DevExpress.XtraEditors.v10.2.xml

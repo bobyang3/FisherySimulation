@@ -10,6 +10,7 @@ using System.IO;
 using System.Diagnostics;
 using System.Threading.Tasks;
 using System.Threading;
+using System.Xml;
 
 
 namespace Fishery_Simulation
@@ -49,13 +50,16 @@ namespace Fishery_Simulation
         private void Form1_Load(object sender, EventArgs e)
         {
             buttonEdit1.Text = Directory.GetCurrentDirectory();
+
+            dataGridView1.DataSource = new DataTable("t1");
         }
 
         private void saveSettingToolStripMenuItem_Click(object sender, EventArgs e)
         {
-           
-           List<Control> allcontrl = Glibs.GetControls2(this);
-           MessageBox.Show(Glibs.GetCPUCore().ToString());
+
+            List<Control> allcontrls = Glibs.GetControls2(this);
+
+            MessageBox.Show(Glibs.GetCPUCore().ToString());
 
 
         }
@@ -180,6 +184,41 @@ namespace Fishery_Simulation
 
 
 
+        }
+
+        private void dataGridView1_CellLeave(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex == 0) //fileName is netered
+            {
+                dataGridView1[5, e.RowIndex].Value = dataGridView1[0, e.RowIndex].EditedFormattedValue; //copy values from input to output
+            }
+
+
+        }
+
+        private void dataGridView1_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
+        {
+            //set default value
+
+            //dataGridView1[1, e.RowIndex]. = 0;
+
+        }
+
+        private void dataGridView1_DefaultValuesNeeded(object sender, DataGridViewRowEventArgs e)
+        {
+            //e.Row.Cells[2].ReadOnly = true;
+
+
+        }
+
+        private void dataGridView1_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (e.ColumnIndex == 1) // your combo column index
+            {
+                e.Value = "None";
+            }
+
+            
         }
     }
 }
