@@ -165,6 +165,7 @@
             this.saveSettingToolStripMenuItem.Name = "saveSettingToolStripMenuItem";
             this.saveSettingToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.saveSettingToolStripMenuItem.Text = "Save Setting";
+            this.saveSettingToolStripMenuItem.Click += new System.EventHandler(this.saveSettingToolStripMenuItem_Click);
             // 
             // loadSettingToolStripMenuItem
             // 
@@ -251,7 +252,7 @@
             this.labelControl5.Size = new System.Drawing.Size(51, 13);
             this.labelControl5.TabIndex = 4;
             this.labelControl5.Text = "Command:";
-            this.labelControl5.ToolTip = "run any command after all files are copied.";
+            this.labelControl5.ToolTip = "eg. runthis.exe, or runthat.bat... Run any command after all files are copied.";
             // 
             // textBox2
             // 

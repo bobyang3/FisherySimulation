@@ -46,5 +46,13 @@ namespace Fishery_Simulation
         {
             buttonEdit1.Text = Directory.GetCurrentDirectory();
         }
+
+        private void saveSettingToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+           
+           List<Control> allcontrl = Glibs.GetControls2(this);
+           MessageBox.Show(allcontrl[0].GetType().Name.ToString());
+
+        }
     }
 }
