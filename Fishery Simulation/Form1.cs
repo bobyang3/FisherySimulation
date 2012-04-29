@@ -81,20 +81,37 @@ namespace Fishery_Simulation
         private void process1and2()
         {
 
-            //step 1:
 
-            this.CopyFiles();
+
+            
 
             //step 1.1: run commands
             try
             {
                 if (textBox3.Text.ToString().Trim().Length > 0)
-                    Process.Start(textBox3.Text.ToString());
+                {
+                    //Create a new process info structure.
+                    ProcessStartInfo pInfo = new ProcessStartInfo();
+                    pInfo.FileName = textBox3.Text.ToString();
+                    pInfo.WindowStyle = ProcessWindowStyle.Normal;
+                    pInfo.WorkingDirectory=buttonEdit1.Text.ToString();
+                    Process p = Process.Start(pInfo);
+
+                    //Wait for the window to finish loading.
+                    p.WaitForInputIdle();
+                    //Wait for the process to end.
+                    p.WaitForExit();
+                    //MessageBox.Show("Code continuing...");
+                }
             }
             catch (Exception e1)
             {
                 MessageBox.Show(e1.ToString());
             }
+
+            //step 1: only continue this when the command is finished.
+            this.CopyFiles();
+
 
 
             //step 2: run commands
@@ -138,40 +155,60 @@ namespace Fishery_Simulation
 
                 //for (int j = 0; j < dataGridView1.RowCount-1; j++)
                 {
-                    string filename = dataGridView1.Rows[j].Cells[0].Value.ToString();
+                    string filename = dataGridView1.Rows[j].Cells["FileName"].Value.ToString();
+                    string captureType = dataGridView1.Rows[j].Cells["capture"].Value.ToString();
+                    string outputFileName = dataGridView1.Rows[j].Cells["outputFileName"].Value.ToString();
+                    string blockHeaderLine = dataGridView1.Rows[j].Cells["block"].Value.ToString();
+                    string blockEndLine = dataGridView1.Rows[j].Cells["blockend"].Value.ToString();
+
                     string sourceFile = Path.Combine(buttonEdit1.Text, filename);
+
+
                     int? fromLine;
-                    if (dataGridView1.Rows[j].Cells[1].Value == null)
+                    if (dataGridView1.Rows[j].Cells["fromLine"].Value == null)
                     { fromLine = null; }
                     else
-                    { fromLine = int.Parse(dataGridView1.Rows[j].Cells[1].Value.ToString()); }        
+                    { fromLine = int.Parse(dataGridView1.Rows[j].Cells["fromLine"].Value.ToString()); }        
 
                     int? toLine;
-                    if (dataGridView1.Rows[j].Cells[2].Value == null)
+                    if (dataGridView1.Rows[j].Cells["toLine"].Value == null)
                     { toLine = null; }
                     else
-                    { toLine = int.Parse(dataGridView1.Rows[j].Cells[2].Value.ToString()); }
+                    { toLine = int.Parse(dataGridView1.Rows[j].Cells["toLine"].Value.ToString()); }
 
 
 
-                    if (fromLine == null || toLine == null) ///if no fromline and toline
+                    if (captureType == "Lines" && fromLine != null && toLine != null) ///copy line text
                     {
                         for (int i = 1; i <= int.Parse(textBox2.Text.Trim().ToString()); i++)
                         {
-                            string destFile = Path.Combine(Path.Combine(buttonEdit1.Text, i.ToString()), filename);
+                            //open file and get conents, then copy over the conents
+                            string destFile = Path.Combine(Path.Combine(buttonEdit1.Text, i.ToString()), outputFileName);
+                            Glibs.WritelineText(destFile, Glibs.ReadBlockText(sourceFile, fromLine, toLine));
+                        }
+                    }
+                    else if (captureType == "Block" && blockHeaderLine != null && blockEndLine!=null) ///copy block
+                    {
+                        string[] sts = Glibs.ReadText(sourceFile);
+
+
+                        for (int i = 1; i <= int.Parse(textBox2.Text.Trim().ToString()); i++)
+                        {
+                            //string destFile = Path.Combine(Path.Combine(buttonEdit1.Text, i.ToString()), outputFileName);
+                            //File.Copy(sourceFile, destFile, true);
+                        }
+                    }
+                    else // anything else, copy full file
+                    {
+                        for (int i = 1; i <= int.Parse(textBox2.Text.Trim().ToString()); i++)
+                        {
+                            string destFile = Path.Combine(Path.Combine(buttonEdit1.Text, i.ToString()), outputFileName);
                             File.Copy(sourceFile, destFile, true);
                         }
                     }
-                    else { 
-                        for (int i = 1; i <= int.Parse(textBox2.Text.Trim().ToString()); i++)
-                        {
-                            //open file and get conents, then copy over the conents
-                            string destFile = Path.Combine(Path.Combine(buttonEdit1.Text, i.ToString()), filename);
-                            Glibs.WriteBlockText(destFile, Glibs.ReadBlockText(sourceFile, fromLine, toLine));
-                        }
-                        
 
-                    }
+
+
 
                 }
                 }); //Parallel.For

@@ -73,7 +73,7 @@ namespace Fishery_Simulation
         }
 
 
-        public static void WriteBlockText(string filePath, string blocktext)
+        public static void WritelineText(string filePath, string blocktext)
         {
             TextWriter tw = new StreamWriter(filePath);
             tw.Write(blocktext);

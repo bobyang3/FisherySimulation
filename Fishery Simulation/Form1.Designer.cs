@@ -64,6 +64,7 @@
             this.fromLine = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.toLine = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.block = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.blockend = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.outputFileName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.statusStrip1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
@@ -87,7 +88,7 @@
             this.toolStripStatusLabel1});
             this.statusStrip1.Location = new System.Drawing.Point(0, 407);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(693, 22);
+            this.statusStrip1.Size = new System.Drawing.Size(788, 22);
             this.statusStrip1.TabIndex = 0;
             this.statusStrip1.Text = "statusStrip1";
             // 
@@ -104,7 +105,7 @@
             this.aboutToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(693, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(788, 24);
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -145,7 +146,7 @@
             this.tabControl1.Location = new System.Drawing.Point(0, 24);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(693, 383);
+            this.tabControl1.Size = new System.Drawing.Size(788, 383);
             this.tabControl1.TabIndex = 2;
             // 
             // tabPage1
@@ -154,7 +155,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(685, 357);
+            this.tabPage1.Size = new System.Drawing.Size(780, 357);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Process Data";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -176,7 +177,7 @@
             // 
             this.splitContainer1.Panel2.AutoScroll = true;
             this.splitContainer1.Panel2.Controls.Add(this.tableLayoutPanel2);
-            this.splitContainer1.Size = new System.Drawing.Size(679, 351);
+            this.splitContainer1.Size = new System.Drawing.Size(774, 351);
             this.splitContainer1.SplitterDistance = 262;
             this.splitContainer1.TabIndex = 1;
             // 
@@ -206,7 +207,7 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 23F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(677, 260);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(772, 260);
             this.tableLayoutPanel1.TabIndex = 0;
             this.tableLayoutPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayoutPanel1_Paint);
             // 
@@ -215,7 +216,7 @@
             this.textBox3.Dock = System.Windows.Forms.DockStyle.Top;
             this.textBox3.Location = new System.Drawing.Point(143, 76);
             this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(531, 20);
+            this.textBox3.Size = new System.Drawing.Size(626, 20);
             this.textBox3.TabIndex = 8;
             // 
             // labelControl5
@@ -230,14 +231,15 @@
             // 
             // labelControl4
             // 
+            this.labelControl4.AllowHtmlTextInToolTip = DevExpress.Utils.DefaultBoolean.True;
             this.labelControl4.Dock = System.Windows.Forms.DockStyle.Left;
             this.labelControl4.Location = new System.Drawing.Point(23, 102);
             this.labelControl4.Name = "labelControl4";
             this.labelControl4.Size = new System.Drawing.Size(67, 13);
             this.labelControl4.TabIndex = 3;
             this.labelControl4.Text = "Copy File List:";
-            this.labelControl4.ToolTip = "List all the file want to be copied over and set up from line xx to line yy to be" +
-                " copied over.";
+            this.labelControl4.ToolTip = resources.GetString("labelControl4.ToolTip");
+            this.labelControl4.ToolTipIconType = DevExpress.Utils.ToolTipIconType.Information;
             // 
             // labelControl1
             // 
@@ -257,7 +259,7 @@
             this.buttonEdit1.Name = "buttonEdit1";
             this.buttonEdit1.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton()});
-            this.buttonEdit1.Size = new System.Drawing.Size(531, 20);
+            this.buttonEdit1.Size = new System.Drawing.Size(626, 20);
             this.buttonEdit1.TabIndex = 8;
             this.buttonEdit1.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.buttonEdit1_ButtonClick);
             this.buttonEdit1.EditValueChanged += new System.EventHandler(this.buttonEdit1_EditValueChanged);
@@ -302,11 +304,12 @@
             this.fromLine,
             this.toLine,
             this.block,
+            this.blockend,
             this.outputFileName});
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView1.Location = new System.Drawing.Point(143, 102);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(531, 155);
+            this.dataGridView1.Size = new System.Drawing.Size(626, 155);
             this.dataGridView1.TabIndex = 7;
             this.dataGridView1.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dataGridView1_CellFormatting);
             this.dataGridView1.CellLeave += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellLeave);
@@ -331,7 +334,7 @@
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 23F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 23F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(677, 83);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(772, 83);
             this.tableLayoutPanel2.TabIndex = 0;
             // 
             // labelControl7
@@ -359,13 +362,13 @@
             this.textBox4.Dock = System.Windows.Forms.DockStyle.Top;
             this.textBox4.Location = new System.Drawing.Point(143, 28);
             this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(531, 20);
+            this.textBox4.Size = new System.Drawing.Size(626, 20);
             this.textBox4.TabIndex = 6;
             // 
             // button1
             // 
             this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button1.Location = new System.Drawing.Point(599, 51);
+            this.button1.Location = new System.Drawing.Point(694, 51);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 25);
             this.button1.TabIndex = 7;
@@ -382,7 +385,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(526, 357);
+            this.tabPage2.Size = new System.Drawing.Size(685, 357);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Output Results";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -453,22 +456,29 @@
             // block
             // 
             this.block.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.block.HeaderText = "Block Header line";
+            this.block.HeaderText = "Block Starting Text";
             this.block.Name = "block";
-            this.block.Width = 116;
+            this.block.Width = 93;
+            // 
+            // blockend
+            // 
+            this.blockend.FillWeight = 50F;
+            this.blockend.HeaderText = "Block End Text";
+            this.blockend.Name = "blockend";
+            this.blockend.Width = 50;
             // 
             // outputFileName
             // 
             this.outputFileName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.outputFileName.HeaderText = "Output File Name";
             this.outputFileName.Name = "outputFileName";
-            this.outputFileName.Width = 79;
+            this.outputFileName.Width = 73;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(693, 429);
+            this.ClientSize = new System.Drawing.Size(788, 429);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.menuStrip1);
@@ -538,6 +548,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn fromLine;
         private System.Windows.Forms.DataGridViewTextBoxColumn toLine;
         private System.Windows.Forms.DataGridViewTextBoxColumn block;
+        private System.Windows.Forms.DataGridViewTextBoxColumn blockend;
         private System.Windows.Forms.DataGridViewTextBoxColumn outputFileName;
     }
 }
