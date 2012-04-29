@@ -235,9 +235,9 @@
             this.labelControl4.Dock = System.Windows.Forms.DockStyle.Left;
             this.labelControl4.Location = new System.Drawing.Point(23, 102);
             this.labelControl4.Name = "labelControl4";
-            this.labelControl4.Size = new System.Drawing.Size(67, 13);
+            this.labelControl4.Size = new System.Drawing.Size(117, 13);
             this.labelControl4.TabIndex = 3;
-            this.labelControl4.Text = "Copy File List:";
+            this.labelControl4.Text = "Copy Files to sub folder:";
             this.labelControl4.ToolTip = resources.GetString("labelControl4.ToolTip");
             this.labelControl4.ToolTipIconType = DevExpress.Utils.ToolTipIconType.Information;
             // 
@@ -248,9 +248,9 @@
             this.labelControl1.Dock = System.Windows.Forms.DockStyle.Left;
             this.labelControl1.Location = new System.Drawing.Point(3, 3);
             this.labelControl1.Name = "labelControl1";
-            this.labelControl1.Size = new System.Drawing.Size(256, 16);
+            this.labelControl1.Size = new System.Drawing.Size(418, 16);
             this.labelControl1.TabIndex = 0;
-            this.labelControl1.Text = "Step 1: Prepare (create sub folder set)";
+            this.labelControl1.Text = "Step 1: Prepare (process in root folder to create sub folder set)";
             // 
             // buttonEdit1
             // 
@@ -353,9 +353,9 @@
             this.labelControl6.Dock = System.Windows.Forms.DockStyle.Left;
             this.labelControl6.Location = new System.Drawing.Point(3, 3);
             this.labelControl6.Name = "labelControl6";
-            this.labelControl6.Size = new System.Drawing.Size(117, 16);
+            this.labelControl6.Size = new System.Drawing.Size(303, 16);
             this.labelControl6.TabIndex = 1;
-            this.labelControl6.Text = "Step 2: Simulation";
+            this.labelControl6.Text = "Step 2: Simulation (process in each sub folder)";
             // 
             // textBox4
             // 

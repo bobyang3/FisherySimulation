@@ -127,6 +127,29 @@ namespace Fishery_Simulation
             try
             {
                 if (textBox4.Text.ToString().Trim().Length > 0)
+                    {
+                        for (int i = 1; i <= int.Parse(textBox2.Text.Trim().ToString()); i++)
+                        {
+                            ProcessStartInfo pInfo = new ProcessStartInfo();
+                            string[] sts=textBox3.Text.ToString().Split('-');
+                            string app=sts[0];
+                            string arguments="";
+                            for (int j=1; j<sts.Length; j++)
+                            {
+                                arguments=arguments+"-" + sts[j];
+                            }
+                            pInfo.FileName = Path.Combine(Path.Combine(buttonEdit1Text, i.ToString()),app);
+                            pInfo.Arguments = arguments;
+                            pInfo.WorkingDirectory = Path.Combine(buttonEdit1Text, i.ToString());
+                            Process p = Process.Start(pInfo);
+
+                            ////Wait for the window to finish loading.
+                            //p.WaitForInputIdle();
+                            ////Wait for the process to end.
+                            //p.WaitForExit();
+                            ////MessageBox.Show("Code continuing...");
+                        }
+                }
                     Process.Start(textBox4.Text.ToString());
             }
             catch (Exception e1)
