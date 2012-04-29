@@ -4,6 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using System.IO;
+using System.Data;
+using System.Reflection;
+using System.ComponentModel;
 
 namespace Fishery_Simulation
 {
@@ -43,7 +46,7 @@ namespace Fishery_Simulation
         }
 
 
-        public static string ReadBlockText(string filePath, int? fromLine, int? toLine)
+        public static string ReadLineText(string filePath, int? fromLine, int? toLine)
         {
             StringBuilder sb = new StringBuilder();
 
@@ -67,10 +70,18 @@ namespace Fishery_Simulation
             return sb.ToString().Trim();
         }
 
-        public static string[] ReadText(string filePath)
+        public static List<string> ReadText(string filePath)
         {
+           // return File.ReadAllLines(filePath);
+            return File.ReadAllLines(filePath).ToList();
+        }
+
+        public static string[] ReadText2(string filePath)
+        {
+            // return File.ReadAllLines(filePath);
             return File.ReadAllLines(filePath);
         }
+
 
 
         public static void WritelineText(string filePath, string blocktext)
@@ -79,6 +90,18 @@ namespace Fishery_Simulation
             tw.Write(blocktext);
             tw.Close();
         }
+
+        public static string toStringNullable(object o1)
+        {
+            return o1 == null ? null : o1.ToString(); 
+        }
+
+        public static int? tointNullable(object o1)
+        {
+            return o1 == null ? (int?)null : int.Parse(o1.ToString());
+        }
+
+       
 
 
 

@@ -385,7 +385,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(685, 357);
+            this.tabPage2.Size = new System.Drawing.Size(780, 357);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Output Results";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -458,13 +458,14 @@
             this.block.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.block.HeaderText = "Block Starting Text";
             this.block.Name = "block";
-            this.block.Width = 93;
+            this.block.Width = 122;
             // 
             // blockend
             // 
             this.blockend.FillWeight = 50F;
             this.blockend.HeaderText = "Block End Text";
             this.blockend.Name = "blockend";
+            this.blockend.Visible = false;
             this.blockend.Width = 50;
             // 
             // outputFileName
