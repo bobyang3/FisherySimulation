@@ -59,8 +59,6 @@ namespace Fishery_Simulation
 
             List<Control> allcontrls = Glibs.GetControls2(this);
 
-            MessageBox.Show(Glibs.GetCPUCore().ToString());
-
 
         }
 
@@ -72,16 +70,20 @@ namespace Fishery_Simulation
         private void button1_Click(object sender, EventArgs e)
         {
 
-            //Thread oThread = new Thread(new ThreadStart(process1and2));
-            Thread oThread = new Thread(new ParameterizedThreadStart(process1and2));
-            oThread.Start(buttonEdit1.Text);
+            if (fileExistsCheck())
+            {
+                //Thread oThread = new Thread(new ThreadStart(process1and2));
+
+                //pass values to the new thread
+                Thread oThread = new Thread(new ParameterizedThreadStart(process1and2));
+                oThread.Start(this);
+            }
 
         }
 
-        private void process1and2(object str)
+        private void process1and2(object originalForm)
         {
-
-            string buttonEdit1Text = str as string;
+            string buttonEdit1Text = ((Form1)originalForm).buttonEdit1.Text as string;
 
             //step 1.1: run commands
             try
@@ -98,16 +100,14 @@ namespace Fishery_Simulation
                         arguments=arguments+"-" + sts[i];
                     }
 
-                    //buttonEdit1.Invoke((Action)delegate { buttonEdit1.Text; });
-
                     pInfo.FileName = Path.Combine(buttonEdit1Text, app);
                     pInfo.Arguments = arguments;
                    // pInfo.WindowStyle = ProcessWindowStyle.Normal;
                     pInfo.WorkingDirectory = buttonEdit1Text;
                     Process p = Process.Start(pInfo);
 
-                    //Wait for the window to finish loading.
-                    p.WaitForInputIdle();
+                    ////Wait for the window to finish loading.
+                    //p.WaitForInputIdle();
                     //Wait for the process to end.
                     p.WaitForExit();
                     //MessageBox.Show("Code continuing...");
@@ -119,38 +119,39 @@ namespace Fishery_Simulation
             }
 
             //step 1: only continue this when the command is finished.
-            this.CopyFiles();
+            this.CopyFiles(originalForm);
 
 
 
             //step 2: run commands
+
             try
             {
-                if (textBox4.Text.ToString().Trim().Length > 0)
-                    {
-                        for (int i = 1; i <= int.Parse(textBox2.Text.Trim().ToString()); i++)
-                        {
-                            ProcessStartInfo pInfo = new ProcessStartInfo();
-                            string[] sts=textBox3.Text.ToString().Split('-');
-                            string app=sts[0];
-                            string arguments="";
-                            for (int j=1; j<sts.Length; j++)
-                            {
-                                arguments=arguments+"-" + sts[j];
-                            }
-                            pInfo.FileName = Path.Combine(Path.Combine(buttonEdit1Text, i.ToString()),app);
-                            pInfo.Arguments = arguments;
-                            pInfo.WorkingDirectory = Path.Combine(buttonEdit1Text, i.ToString());
-                            Process p = Process.Start(pInfo);
 
-                            ////Wait for the window to finish loading.
-                            //p.WaitForInputIdle();
-                            ////Wait for the process to end.
-                            //p.WaitForExit();
-                            ////MessageBox.Show("Code continuing...");
-                        }
+                if (textBox4.Text.ToString().Trim().Length > 0 && textBox2.Text.Trim()!="")
+                    {
+                                          
+                     //TODO: split core job.
+
+                    double _Max_folder_num=double.Parse(textBox2.Text.Trim().ToString());
+                    int CUPsetAverage = Convert.ToInt32(Math.Ceiling(_Max_folder_num / Glibs.GetCPUCore()));
+
+                    //for (int i=1; i <= Glibs.GetCPUCore(); i++)
+                    //{
+                    //    step2Command(buttonEdit1Text, (i-1) * CUPsetAverage + 1, i * CUPsetAverage);
+                    //}
+
+                    Parallel.For (1, Glibs.GetCPUCore()+1, i =>
+                        {
+                            {
+                                step2Command(buttonEdit1Text, (i - 1) * CUPsetAverage + 1, (i * CUPsetAverage) > _Max_folder_num ? Convert.ToInt32(_Max_folder_num) : (i * CUPsetAverage));
+                            }
+                        });
+
+                     
                 }
-                    Process.Start(textBox4.Text.ToString());
+
+                MessageBox.Show(@"Step 1 and/or 2 finished.");
             }
             catch (Exception e1)
             {
@@ -159,13 +160,49 @@ namespace Fishery_Simulation
 
 
         }
-        private void CopyFiles()
+
+
+        private void step2Command(string buttonEdit1Text, int starting, int ending)
         {
+            
+            for (int i = starting; i <= ending; i++)
+            {
+                ProcessStartInfo pInfo = new ProcessStartInfo();
+                string[] sts = textBox4.Text.ToString().Split('-');
+                string app = sts[0];
+                string arguments = "";
+                for (int j = 1; j < sts.Length; j++)
+                {
+                    arguments = arguments + "-" + sts[j];
+                }
+
+                //string app = ((Form1)originalForm).textBox4.Text as string;
+
+                pInfo.FileName = Path.Combine(Path.Combine(buttonEdit1Text, i.ToString()), app);
+                pInfo.Arguments = arguments;
+                pInfo.WorkingDirectory = Path.Combine(buttonEdit1Text, i.ToString());
+                Process p = Process.Start(pInfo);
+
+                ////Wait for the process to end.
+                p.WaitForExit();
+            }
+        }
+
+        private void CopyFiles(object originalForm)
+        {
+            int _sub_folder_num = 0;
+
+            if (((Form1)originalForm).textBox2.Text != null && ((Form1)originalForm).textBox2.Text.Trim() != "")
+            {
+                _sub_folder_num = int.Parse(textBox2.Text.Trim().ToString()) + 1;
+            }
 
             //create empty folders
             try
             {
-                Parallel.For(1, int.Parse(textBox2.Text.Trim().ToString()) + 1, i =>
+                
+
+                Parallel.For(1, _sub_folder_num , i =>
                 {
                     {
                         string newPath = Path.Combine(buttonEdit1.Text, i.ToString());
@@ -193,7 +230,8 @@ namespace Fishery_Simulation
                     string blockHeaderLine = Glibs.toStringNullable(dataGridView1.Rows[j].Cells["block"].Value);
                     string blockEndLine = Glibs.toStringNullable(dataGridView1.Rows[j].Cells["blockend"].Value);
 
-                    string sourceFile = Path.Combine(buttonEdit1.Text, filename);
+                    string sourceFile = Path.Combine(Path.Combine(buttonEdit1.Text,"~~temp"), filename);
+
 
                     int? fromLine = Glibs.tointNullable(dataGridView1.Rows[j].Cells["fromLine"].Value);
                     int? toLine = Glibs.tointNullable(dataGridView1.Rows[j].Cells["toLine"].Value);
@@ -201,9 +239,10 @@ namespace Fishery_Simulation
                     
                     if (captureType == "Lines" && fromLine != null && toLine != null) ///copy line text
                     {
-                        for (int i = 1; i <= int.Parse(textBox2.Text.Trim().ToString()); i++)
+                        for (int i = 1; i <= _sub_folder_num; i++)
                         {
                             //open file and get conents, then copy over the conents
+                            sourceFile = Path.Combine(buttonEdit1.Text,filename);
                             string destFile = Path.Combine(Path.Combine(buttonEdit1.Text, i.ToString()), outputFileName);
                             Glibs.WritelineText(destFile, Glibs.ReadLineText(sourceFile, fromLine, toLine));
                         }
@@ -213,9 +252,10 @@ namespace Fishery_Simulation
                     {
 
                         DataTable dt = new DataTable();
-                        List<string> strings = Glibs.ReadText(sourceFile);
+                        //List<string> strings = Glibs.ReadText(sourceFile);
                         string[] strings2 = Glibs.ReadText2(sourceFile);
 
+                        sourceFile = Path.Combine(buttonEdit1.Text, filename);
 
                         //row number column
                         DataColumn c = new DataColumn("romNum");
@@ -247,7 +287,7 @@ namespace Fishery_Simulation
 
 
 
-                        for (int i = 1; i <= int.Parse(textBox2.Text.Trim().ToString()); i++)
+                        for (int i = 1; i <= _sub_folder_num; i++)
                         {
                             var query = from dr2 in dt.AsEnumerable()
                                         where (int)dr2["setNum"] == i
@@ -268,16 +308,16 @@ namespace Fishery_Simulation
                     }
                     else // anything else, copy full file
                     {
-                        for (int i = 1; i <= int.Parse(textBox2.Text.Trim().ToString()); i++)
+                        for (int i = 1; i < _sub_folder_num; i++)
                         {
+
+                           // sourceFile = Path.Combine(Path.Combine(buttonEdit1.Text, "~~temp"), filename);
                             string destFile = Path.Combine(Path.Combine(buttonEdit1.Text, i.ToString()), outputFileName);
                             File.Copy(sourceFile, destFile, true);
                         }
                     }
 
-
-
-
+                    
                 }
                 }); //Parallel.For
             }
@@ -286,8 +326,55 @@ namespace Fishery_Simulation
                 MessageBox.Show(e3.ToString());
             }
 
+            
+        }
 
 
+        private bool fileExistsCheck()
+        {
+            string newPath = Path.Combine(buttonEdit1.Text, "~~temp");
+            Directory.CreateDirectory(newPath);
+            string _error_fileNames = "";
+
+            try
+            {
+                for (int j = 0; j < dataGridView1.RowCount - 1; j++)
+                {
+
+                    string captureType = Glibs.toStringNullable(dataGridView1.Rows[j].Cells["capture"].Value);
+                    string sourceFile = Path.Combine(buttonEdit1.Text, dataGridView1.Rows[j].Cells["FileName"].Value.ToString());
+                    string destFile = Path.Combine(newPath, dataGridView1.Rows[j].Cells["FileName"].Value.ToString());
+
+                    if (File.Exists(sourceFile) && captureType == null)
+                    {
+                        File.Copy(sourceFile, destFile, true);
+                    }
+                    else
+                    {
+                        _error_fileNames = _error_fileNames + "," + dataGridView1.Rows[j].Cells["FileName"].Value;
+                    }
+                }
+            }
+
+            catch (Exception e1)
+            {
+                MessageBox.Show(e1.ToString());
+            }
+
+
+            if (_error_fileNames.Length > 0)
+            {
+                MessageBox.Show("Please make sure the files are exists: " + _error_fileNames);
+                Glibs.DeleteFolder(new DirectoryInfo(newPath));
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+
+
+            // Directory.Delete(newPath);
 
         }
 
@@ -313,6 +400,8 @@ namespace Fishery_Simulation
         {
             //e.Row.Cells[2].ReadOnly = true;
 
+            dataGridView1.Columns["randomGen"].DefaultCellStyle.WrapMode = DataGridViewTriState.True;
+
 
         }
 
@@ -324,6 +413,18 @@ namespace Fishery_Simulation
             }
 
             
+        }
+
+        private void dataGridView1_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
+        {
+            //try
+            //{
+            //    TextBox TB = (TextBox)e.Control;
+            //    TB.Multiline = true;
+            //}
+            //catch (Exception e1)
+            //{ 
+            //}
         }
     
     

@@ -11,8 +11,14 @@ using System.ComponentModel;
 namespace Fishery_Simulation
 {
     class Glibs
+
     {
 
+        public static void DeleteFolder(System.IO.DirectoryInfo directory)
+        {
+            foreach (System.IO.FileInfo file in directory.GetFiles()) file.Delete();
+            foreach (System.IO.DirectoryInfo subDirectory in directory.GetDirectories()) subDirectory.Delete(true);
+        }
 
         public static IEnumerable<Control> GetControls(Control form)
         {
@@ -101,7 +107,7 @@ namespace Fishery_Simulation
             return o1 == null ? (int?)null : int.Parse(o1.ToString());
         }
 
-       
+
 
 
 
