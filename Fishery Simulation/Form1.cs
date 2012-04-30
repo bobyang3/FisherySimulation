@@ -33,19 +33,19 @@ namespace Fishery_Simulation
 
         }
 
-        private void buttonEdit1_EditValueChanged(object sender, EventArgs e)
+        private void rootFolderTextBox_EditValueChanged(object sender, EventArgs e)
         {
 
         }
 
-        private void buttonEdit1_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
-        {
-            DialogResult result = this.folderBrowserDialog1.ShowDialog();
-            if (result == DialogResult.OK)
-            {
-                buttonEdit1.Text = folderBrowserDialog1.SelectedPath;
-            }
-        }
+        //private void rootFolderTextBox_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
+        //{
+        //    DialogResult result = this.folderBrowserDialog1.ShowDialog();
+        //    if (result == DialogResult.OK)
+        //    {
+        //        rootFolderTextBox.Text = folderBrowserDialog1.SelectedPath;
+        //    }
+        //}
 
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -55,7 +55,7 @@ namespace Fishery_Simulation
             dataSet1.Tables["Settings"].Rows.Add(row);
 
 
-            buttonEdit1.Text = Directory.GetCurrentDirectory();
+            rootFolderTextBox.Text = Directory.GetCurrentDirectory();
         }
 
 
@@ -80,7 +80,7 @@ namespace Fishery_Simulation
 
         private void process1and2(object originalForm)
         {
-            string buttonEdit1Text = ((Form1)originalForm).buttonEdit1.Text as string;
+            string rootFolderTextBoxText = ((Form1)originalForm).rootFolderTextBox.Text as string;
 
             //step 1.1: run commands
             try
@@ -97,10 +97,10 @@ namespace Fishery_Simulation
                         arguments=arguments+"-" + sts[i];
                     }
 
-                    pInfo.FileName = Path.Combine(buttonEdit1Text, app);
+                    pInfo.FileName = Path.Combine(rootFolderTextBoxText, app);
                     pInfo.Arguments = arguments;
                    // pInfo.WindowStyle = ProcessWindowStyle.Normal;
-                    pInfo.WorkingDirectory = buttonEdit1Text;
+                    pInfo.WorkingDirectory = rootFolderTextBoxText;
                     Process p = Process.Start(pInfo);
 
                     ////Wait for the window to finish loading.
@@ -138,13 +138,13 @@ namespace Fishery_Simulation
 
                     //for (int i=1; i <= Glibs.GetCPUCore(); i++)
                     //{
-                    //    step2Command(buttonEdit1Text, (i-1) * CUPsetAverage + 1, i * CUPsetAverage);
+                    //    step2Command(rootFolderTextBoxText, (i-1) * CUPsetAverage + 1, i * CUPsetAverage);
                     //}
 
                     Parallel.For (1, Glibs.GetCPUCore()+1, i =>
                         {
                             {
-                                step2Command(buttonEdit1Text, (i - 1) * CUPsetAverage + 1, (i * CUPsetAverage) > _Max_folder_num ? Convert.ToInt32(_Max_folder_num) : (i * CUPsetAverage));
+                                step2Command(rootFolderTextBoxText, (i - 1) * CUPsetAverage + 1, (i * CUPsetAverage) > _Max_folder_num ? Convert.ToInt32(_Max_folder_num) : (i * CUPsetAverage));
                             }
                         });
 
@@ -162,7 +162,7 @@ namespace Fishery_Simulation
         }
 
 
-        private void step2Command(string buttonEdit1Text, int starting, int ending)
+        private void step2Command(string rootFolderTextBoxText, int starting, int ending)
         {
             
             for (int i = starting; i <= ending; i++)
@@ -178,9 +178,9 @@ namespace Fishery_Simulation
 
                 //string app = ((Form1)originalForm).textBox4.Text as string;
 
-                pInfo.FileName = Path.Combine(Path.Combine(buttonEdit1Text, i.ToString()), app);
+                pInfo.FileName = Path.Combine(Path.Combine(rootFolderTextBoxText, i.ToString()), app);
                 pInfo.Arguments = arguments;
-                pInfo.WorkingDirectory = Path.Combine(buttonEdit1Text, i.ToString());
+                pInfo.WorkingDirectory = Path.Combine(rootFolderTextBoxText, i.ToString());
                 Process p = Process.Start(pInfo);
 
                 ////Wait for the process to end.
@@ -205,7 +205,7 @@ namespace Fishery_Simulation
                 Parallel.For(1, _sub_folder_num , i =>
                 {
                     {
-                        string newPath = Path.Combine(buttonEdit1.Text, i.ToString());
+                        string newPath = Path.Combine(rootFolderTextBox.Text, i.ToString());
                         Directory.CreateDirectory(newPath);
                     }
                 });
@@ -231,7 +231,7 @@ namespace Fishery_Simulation
                     string blockEndLine = Glibs.toStringNullable(dataGridView1.Rows[j].Cells["blockend"].Value);
                     string randomGen = Glibs.toStringNullable(dataGridView1.Rows[j].Cells["randomGen"].Value);
 
-                    string sourceFile = Path.Combine(Path.Combine(buttonEdit1.Text,"~~original"), filename);
+                    string sourceFile = Path.Combine(Path.Combine(rootFolderTextBox.Text,"~~original"), filename);
 
 
                     int? fromLine = Glibs.tointNullable(dataGridView1.Rows[j].Cells["fromLine"].Value);
@@ -243,8 +243,8 @@ namespace Fishery_Simulation
                         for (int i = 1; i < _sub_folder_num; i++)
                         {
                             //open file and get conents, then copy over the conents
-                            sourceFile = Path.Combine(buttonEdit1.Text,filename);
-                            string destFile = Path.Combine(Path.Combine(buttonEdit1.Text, i.ToString()), outputFileName);
+                            sourceFile = Path.Combine(rootFolderTextBox.Text,filename);
+                            string destFile = Path.Combine(Path.Combine(rootFolderTextBox.Text, i.ToString()), outputFileName);
                             Glibs.WritelineText(destFile, Glibs.ReadLineText(sourceFile, fromLine, toLine));
                         }
                     }
@@ -265,7 +265,7 @@ namespace Fishery_Simulation
                         DataTable dt = new DataTable();
                         //List<string> strings = Glibs.ReadText(sourceFile);
                         
-                        sourceFile = Path.Combine(buttonEdit1.Text, filename);
+                        sourceFile = Path.Combine(rootFolderTextBox.Text, filename);
                         string[] strings2 = Glibs.ReadText2(sourceFile); //use the file which generated in the root folder
 
                         //row number column
@@ -312,7 +312,7 @@ namespace Fishery_Simulation
                             }
 
                             final_str = final_str.Trim();
-                            string destFile = Path.Combine(Path.Combine(buttonEdit1.Text, i.ToString()), outputFileName);
+                            string destFile = Path.Combine(Path.Combine(rootFolderTextBox.Text, i.ToString()), outputFileName);
                             Glibs.WritelineText(destFile, final_str);
                         }
 
@@ -323,8 +323,8 @@ namespace Fishery_Simulation
                         for (int i = 1; i < _sub_folder_num; i++)
                         {
 
-                            // sourceFile = Path.Combine(Path.Combine(buttonEdit1.Text, "~~original"), filename);
-                            string destFile = Path.Combine(Path.Combine(buttonEdit1.Text, i.ToString()), outputFileName);
+                            // sourceFile = Path.Combine(Path.Combine(rootFolderTextBox.Text, "~~original"), filename);
+                            string destFile = Path.Combine(Path.Combine(rootFolderTextBox.Text, i.ToString()), outputFileName);
                             File.Copy(sourceFile, destFile, true);
                         }
                     }
@@ -379,7 +379,7 @@ namespace Fishery_Simulation
 
         private bool fileExistsCheck()
         {
-            string newPath = Path.Combine(buttonEdit1.Text, "~~original");
+            string newPath = Path.Combine(rootFolderTextBox.Text, "~~original");
             Directory.CreateDirectory(newPath);
             string _error_fileNames = "";
 
@@ -389,7 +389,7 @@ namespace Fishery_Simulation
                 {
 
                     string captureType = Glibs.toStringNullable(dataGridView1.Rows[j].Cells["capture"].Value);
-                    string sourceFile = Path.Combine(buttonEdit1.Text, dataGridView1.Rows[j].Cells["FileName"].Value.ToString());
+                    string sourceFile = Path.Combine(rootFolderTextBox.Text, dataGridView1.Rows[j].Cells["FileName"].Value.ToString());
                     string destFile = Path.Combine(newPath, dataGridView1.Rows[j].Cells["FileName"].Value.ToString());
 
                     //MessageBox.Show(sourceFile);
@@ -503,7 +503,7 @@ namespace Fishery_Simulation
             //{
             //    writer.WriteStartDocument();
             //    writer.WriteStartElement("setting");
-            //    writer.WriteElementString("rootFolder", buttonEdit1.Text);
+            //    writer.WriteElementString("rootFolder", rootFolderTextBox.Text);
             //    writer.WriteElementString("simulationNum", textBox2.Text);
             //    writer.WriteElementString("commandRootFolder", textBox3.Text);
             //    writer.WriteElementString("commandSubFolder", textBox4.Text);
@@ -526,7 +526,7 @@ namespace Fishery_Simulation
                 //XmlDocument doc = new XmlDocument();
                 //doc.Load("FS_setting.xml");
                 //XmlElement root = doc.DocumentElement;
-                //buttonEdit1.Text = root.GetElementsByTagName("rootFolder")[0].InnerText;
+                //rootFolderTextBox.Text = root.GetElementsByTagName("rootFolder")[0].InnerText;
                 //textBox2.Text = root.GetElementsByTagName("simulationNum")[0].InnerText;
                 //textBox3.Text = root.GetElementsByTagName("commandRootFolder")[0].InnerText;
                 //textBox4.Text = root.GetElementsByTagName("commandSubFolder")[0].InnerText;
@@ -538,6 +538,15 @@ namespace Fishery_Simulation
             catch (Exception ei)
             { }
 
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            DialogResult result = this.folderBrowserDialog1.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                rootFolderTextBox.Text = folderBrowserDialog1.SelectedPath;
+            }
         }
 
 

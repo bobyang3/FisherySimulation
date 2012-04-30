@@ -52,15 +52,6 @@
     <ApplicationIcon>school_of_fish.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="DevExpress.Data.v10.2, Version=10.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a">
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="DevExpress.Utils.v10.2, Version=10.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a">
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="DevExpress.XtraEditors.v10.2, Version=10.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
-      <Private>True</Private>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -138,9 +129,12 @@
     <None Include="res\_svn\entries" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="res\layout\Open-Folder-Full-icon.png" />
+    <Content Include="res\layout\Open-Folder-Full.ico" />
     <Content Include="res\layout\school_of_fish.ico" />
     <Content Include="res\layout\school_of_fish.png" />
     <Content Include="school_of_fish.ico" />
+    <Content Include="temp.txt" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="res\values\" />

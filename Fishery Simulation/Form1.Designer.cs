@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.Label rootFolderLabel;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
@@ -42,27 +43,10 @@
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.textBox3 = new System.Windows.Forms.TextBox();
-            this.labelControl5 = new DevExpress.XtraEditors.LabelControl();
-            this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
-            this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
-            this.buttonEdit1 = new DevExpress.XtraEditors.ButtonEdit();
-            this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
-            this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-            this.labelControl7 = new DevExpress.XtraEditors.LabelControl();
-            this.labelControl6 = new DevExpress.XtraEditors.LabelControl();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.buttonEdit2 = new DevExpress.XtraEditors.ButtonEdit();
-            this.labelControl9 = new DevExpress.XtraEditors.LabelControl();
-            this.labelControl8 = new DevExpress.XtraEditors.LabelControl();
-            this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
             this.settingsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dataSet1 = new Fishery_Simulation.DataSet1();
-            this.fileListBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.FileName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.capture = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.fromLine = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -71,6 +55,29 @@
             this.blockend = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.randomGen = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.outputFileName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.fileNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.captureDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.fromLineDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.toLineDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.blockDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.blockendDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.randomGenDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.outputFileNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.fileListBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.label1 = new System.Windows.Forms.Label();
+            this.rootFolderTextBox = new System.Windows.Forms.TextBox();
+            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.button1 = new System.Windows.Forms.Button();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.button2 = new System.Windows.Forms.Button();
+            rootFolderLabel = new System.Windows.Forms.Label();
             this.statusStrip1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -80,15 +87,23 @@
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.buttonEdit1.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            this.tableLayoutPanel2.SuspendLayout();
-            this.tabPage2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.buttonEdit2.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.settingsBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataSet1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.fileListBindingSource1)).BeginInit();
+            this.tableLayoutPanel2.SuspendLayout();
             this.SuspendLayout();
+            // 
+            // rootFolderLabel
+            // 
+            rootFolderLabel.AutoSize = true;
+            rootFolderLabel.Dock = System.Windows.Forms.DockStyle.Left;
+            rootFolderLabel.Location = new System.Drawing.Point(23, 28);
+            rootFolderLabel.Margin = new System.Windows.Forms.Padding(3);
+            rootFolderLabel.Name = "rootFolderLabel";
+            rootFolderLabel.Size = new System.Drawing.Size(65, 19);
+            rootFolderLabel.TabIndex = 9;
+            rootFolderLabel.Text = "Root Folder:";
             // 
             // statusStrip1
             // 
@@ -103,7 +118,7 @@
             // toolStripStatusLabel1
             // 
             this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
-            this.toolStripStatusLabel1.Size = new System.Drawing.Size(124, 17);
+            this.toolStripStatusLabel1.Size = new System.Drawing.Size(110, 17);
             this.toolStripStatusLabel1.Text = "--Notification Area--";
             // 
             // menuStrip1
@@ -123,27 +138,27 @@
             this.saveSettingToolStripMenuItem,
             this.loadSettingToolStripMenuItem});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
-            this.fileToolStripMenuItem.Size = new System.Drawing.Size(39, 20);
+            this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
             this.fileToolStripMenuItem.Text = "File";
             // 
             // saveSettingToolStripMenuItem
             // 
             this.saveSettingToolStripMenuItem.Name = "saveSettingToolStripMenuItem";
-            this.saveSettingToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
+            this.saveSettingToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
             this.saveSettingToolStripMenuItem.Text = "Save Setting";
             this.saveSettingToolStripMenuItem.Click += new System.EventHandler(this.saveSettingToolStripMenuItem_Click);
             // 
             // loadSettingToolStripMenuItem
             // 
             this.loadSettingToolStripMenuItem.Name = "loadSettingToolStripMenuItem";
-            this.loadSettingToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
+            this.loadSettingToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
             this.loadSettingToolStripMenuItem.Text = "Load Setting";
             this.loadSettingToolStripMenuItem.Click += new System.EventHandler(this.loadSettingToolStripMenuItem_Click);
             // 
             // aboutToolStripMenuItem
             // 
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(55, 20);
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(51, 20);
             this.aboutToolStripMenuItem.Text = "About";
             this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
             // 
@@ -198,14 +213,14 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 120F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.tableLayoutPanel1.Controls.Add(this.textBox3, 2, 3);
-            this.tableLayoutPanel1.Controls.Add(this.labelControl5, 1, 3);
-            this.tableLayoutPanel1.Controls.Add(this.labelControl4, 1, 4);
-            this.tableLayoutPanel1.Controls.Add(this.labelControl1, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.buttonEdit1, 2, 1);
-            this.tableLayoutPanel1.Controls.Add(this.labelControl2, 1, 1);
-            this.tableLayoutPanel1.Controls.Add(this.labelControl3, 1, 2);
             this.tableLayoutPanel1.Controls.Add(this.textBox2, 2, 2);
             this.tableLayoutPanel1.Controls.Add(this.dataGridView1, 2, 4);
+            this.tableLayoutPanel1.Controls.Add(this.label1, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(rootFolderLabel, 1, 1);
+            this.tableLayoutPanel1.Controls.Add(this.rootFolderTextBox, 2, 1);
+            this.tableLayoutPanel1.Controls.Add(this.label2, 1, 2);
+            this.tableLayoutPanel1.Controls.Add(this.label3, 1, 3);
+            this.tableLayoutPanel1.Controls.Add(this.label4, 1, 4);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -229,72 +244,16 @@
             this.textBox3.Size = new System.Drawing.Size(626, 20);
             this.textBox3.TabIndex = 8;
             // 
-            // labelControl5
+            // settingsBindingSource
             // 
-            this.labelControl5.Dock = System.Windows.Forms.DockStyle.Left;
-            this.labelControl5.Location = new System.Drawing.Point(23, 76);
-            this.labelControl5.Name = "labelControl5";
-            this.labelControl5.Size = new System.Drawing.Size(51, 13);
-            this.labelControl5.TabIndex = 4;
-            this.labelControl5.Text = "Command:";
-            this.labelControl5.ToolTip = "eg. runthis.exe, or runthat.bat... Run any command after all files are copied.";
+            this.settingsBindingSource.DataMember = "Settings";
+            this.settingsBindingSource.DataSource = this.dataSet1;
             // 
-            // labelControl4
+            // dataSet1
             // 
-            this.labelControl4.AllowHtmlTextInToolTip = DevExpress.Utils.DefaultBoolean.True;
-            this.labelControl4.Dock = System.Windows.Forms.DockStyle.Left;
-            this.labelControl4.Location = new System.Drawing.Point(23, 102);
-            this.labelControl4.Name = "labelControl4";
-            this.labelControl4.Size = new System.Drawing.Size(117, 13);
-            this.labelControl4.TabIndex = 3;
-            this.labelControl4.Text = "Copy Files to sub folder:";
-            this.labelControl4.ToolTip = resources.GetString("labelControl4.ToolTip");
-            this.labelControl4.ToolTipIconType = DevExpress.Utils.ToolTipIconType.Information;
-            // 
-            // labelControl1
-            // 
-            this.labelControl1.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tableLayoutPanel1.SetColumnSpan(this.labelControl1, 3);
-            this.labelControl1.Dock = System.Windows.Forms.DockStyle.Left;
-            this.labelControl1.Location = new System.Drawing.Point(3, 3);
-            this.labelControl1.Name = "labelControl1";
-            this.labelControl1.Size = new System.Drawing.Size(418, 16);
-            this.labelControl1.TabIndex = 0;
-            this.labelControl1.Text = "Step 1: Prepare (process in root folder to create sub folder set)";
-            // 
-            // buttonEdit1
-            // 
-            this.buttonEdit1.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.settingsBindingSource, "rootFolder", true));
-            this.buttonEdit1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.buttonEdit1.Location = new System.Drawing.Point(143, 28);
-            this.buttonEdit1.Name = "buttonEdit1";
-            this.buttonEdit1.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton()});
-            this.buttonEdit1.Size = new System.Drawing.Size(626, 20);
-            this.buttonEdit1.TabIndex = 8;
-            this.buttonEdit1.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.buttonEdit1_ButtonClick);
-            this.buttonEdit1.EditValueChanged += new System.EventHandler(this.buttonEdit1_EditValueChanged);
-            // 
-            // labelControl2
-            // 
-            this.labelControl2.Dock = System.Windows.Forms.DockStyle.Left;
-            this.labelControl2.Location = new System.Drawing.Point(23, 28);
-            this.labelControl2.Name = "labelControl2";
-            this.labelControl2.Size = new System.Drawing.Size(60, 13);
-            this.labelControl2.TabIndex = 1;
-            this.labelControl2.Text = "Root Folder:";
-            this.labelControl2.ToolTip = "The starting folder to copy all the nessary files over.";
-            // 
-            // labelControl3
-            // 
-            this.labelControl3.Dock = System.Windows.Forms.DockStyle.Left;
-            this.labelControl3.Location = new System.Drawing.Point(23, 53);
-            this.labelControl3.Name = "labelControl3";
-            this.labelControl3.Size = new System.Drawing.Size(103, 13);
-            this.labelControl3.TabIndex = 2;
-            this.labelControl3.Text = "Create # simulations:";
-            this.labelControl3.ToolTip = "eg, if you set 500, 500 folders will be created with all the files listed copy ov" +
-                "er";
+            this.dataSet1.DataSetName = "DataSet1";
+            this.dataSet1.Locale = new System.Globalization.CultureInfo("");
+            this.dataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // textBox2
             // 
@@ -319,7 +278,15 @@
             this.block,
             this.blockend,
             this.randomGen,
-            this.outputFileName});
+            this.outputFileName,
+            this.fileNameDataGridViewTextBoxColumn,
+            this.captureDataGridViewTextBoxColumn,
+            this.fromLineDataGridViewTextBoxColumn,
+            this.toLineDataGridViewTextBoxColumn,
+            this.blockDataGridViewTextBoxColumn,
+            this.blockendDataGridViewTextBoxColumn,
+            this.randomGenDataGridViewTextBoxColumn,
+            this.outputFileNameDataGridViewTextBoxColumn});
             this.dataGridView1.DataSource = this.fileListBindingSource1;
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView1.Location = new System.Drawing.Point(143, 102);
@@ -332,6 +299,156 @@
             this.dataGridView1.EditingControlShowing += new System.Windows.Forms.DataGridViewEditingControlShowingEventHandler(this.dataGridView1_EditingControlShowing);
             this.dataGridView1.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.dataGridView1_RowsAdded);
             // 
+            // FileName
+            // 
+            this.FileName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.FileName.DataPropertyName = "FileName";
+            this.FileName.FillWeight = 500F;
+            this.FileName.HeaderText = "File Name";
+            this.FileName.MinimumWidth = 100;
+            this.FileName.Name = "FileName";
+            // 
+            // capture
+            // 
+            this.capture.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.capture.DataPropertyName = "capture";
+            this.capture.HeaderText = "Special";
+            this.capture.Items.AddRange(new object[] {
+            "None",
+            "Lines",
+            "Block",
+            "Rand Gen"});
+            this.capture.Name = "capture";
+            this.capture.ToolTipText = "Special Feature: None=regular copy, Lines=only selected lines, Block=capture head" +
+    "er based on text you enerted";
+            this.capture.Width = 48;
+            // 
+            // fromLine
+            // 
+            this.fromLine.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.fromLine.DataPropertyName = "fromLine";
+            this.fromLine.FillWeight = 30F;
+            this.fromLine.HeaderText = "from Line #";
+            this.fromLine.Name = "fromLine";
+            this.fromLine.Width = 72;
+            // 
+            // toLine
+            // 
+            this.toLine.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.toLine.DataPropertyName = "toLine";
+            this.toLine.FillWeight = 30F;
+            this.toLine.HeaderText = "to Line #";
+            this.toLine.Name = "toLine";
+            this.toLine.Width = 62;
+            // 
+            // block
+            // 
+            this.block.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.block.DataPropertyName = "block";
+            this.block.HeaderText = "Block Starting Text";
+            this.block.Name = "block";
+            this.block.Width = 93;
+            // 
+            // blockend
+            // 
+            this.blockend.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.blockend.DataPropertyName = "blockend";
+            this.blockend.FillWeight = 50F;
+            this.blockend.HeaderText = "Block End Text";
+            this.blockend.Name = "blockend";
+            this.blockend.Visible = false;
+            // 
+            // randomGen
+            // 
+            this.randomGen.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.randomGen.DataPropertyName = "randomGen";
+            this.randomGen.FillWeight = 500F;
+            this.randomGen.HeaderText = "Random Generator";
+            this.randomGen.Name = "randomGen";
+            this.randomGen.ToolTipText = "\"shift\"+\"Enter\" for next line";
+            this.randomGen.Width = 112;
+            // 
+            // outputFileName
+            // 
+            this.outputFileName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.outputFileName.DataPropertyName = "outputFileName";
+            this.outputFileName.FillWeight = 400F;
+            this.outputFileName.HeaderText = "Output File Name";
+            this.outputFileName.MinimumWidth = 100;
+            this.outputFileName.Name = "outputFileName";
+            // 
+            // fileNameDataGridViewTextBoxColumn
+            // 
+            this.fileNameDataGridViewTextBoxColumn.DataPropertyName = "FileName";
+            this.fileNameDataGridViewTextBoxColumn.HeaderText = "FileName";
+            this.fileNameDataGridViewTextBoxColumn.Name = "fileNameDataGridViewTextBoxColumn";
+            // 
+            // captureDataGridViewTextBoxColumn
+            // 
+            this.captureDataGridViewTextBoxColumn.DataPropertyName = "capture";
+            this.captureDataGridViewTextBoxColumn.HeaderText = "capture";
+            this.captureDataGridViewTextBoxColumn.Name = "captureDataGridViewTextBoxColumn";
+            // 
+            // fromLineDataGridViewTextBoxColumn
+            // 
+            this.fromLineDataGridViewTextBoxColumn.DataPropertyName = "fromLine";
+            this.fromLineDataGridViewTextBoxColumn.HeaderText = "fromLine";
+            this.fromLineDataGridViewTextBoxColumn.Name = "fromLineDataGridViewTextBoxColumn";
+            // 
+            // toLineDataGridViewTextBoxColumn
+            // 
+            this.toLineDataGridViewTextBoxColumn.DataPropertyName = "toLine";
+            this.toLineDataGridViewTextBoxColumn.HeaderText = "toLine";
+            this.toLineDataGridViewTextBoxColumn.Name = "toLineDataGridViewTextBoxColumn";
+            // 
+            // blockDataGridViewTextBoxColumn
+            // 
+            this.blockDataGridViewTextBoxColumn.DataPropertyName = "block";
+            this.blockDataGridViewTextBoxColumn.HeaderText = "block";
+            this.blockDataGridViewTextBoxColumn.Name = "blockDataGridViewTextBoxColumn";
+            // 
+            // blockendDataGridViewTextBoxColumn
+            // 
+            this.blockendDataGridViewTextBoxColumn.DataPropertyName = "blockend";
+            this.blockendDataGridViewTextBoxColumn.HeaderText = "blockend";
+            this.blockendDataGridViewTextBoxColumn.Name = "blockendDataGridViewTextBoxColumn";
+            // 
+            // randomGenDataGridViewTextBoxColumn
+            // 
+            this.randomGenDataGridViewTextBoxColumn.DataPropertyName = "randomGen";
+            this.randomGenDataGridViewTextBoxColumn.HeaderText = "randomGen";
+            this.randomGenDataGridViewTextBoxColumn.Name = "randomGenDataGridViewTextBoxColumn";
+            // 
+            // outputFileNameDataGridViewTextBoxColumn
+            // 
+            this.outputFileNameDataGridViewTextBoxColumn.DataPropertyName = "outputFileName";
+            this.outputFileNameDataGridViewTextBoxColumn.HeaderText = "outputFileName";
+            this.outputFileNameDataGridViewTextBoxColumn.Name = "outputFileNameDataGridViewTextBoxColumn";
+            // 
+            // fileListBindingSource1
+            // 
+            this.fileListBindingSource1.DataMember = "FileList";
+            this.fileListBindingSource1.DataSource = this.dataSet1;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.tableLayoutPanel1.SetColumnSpan(this.label1, 3);
+            this.label1.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold);
+            this.label1.Location = new System.Drawing.Point(3, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(426, 16);
+            this.label1.TabIndex = 9;
+            this.label1.Text = "Step 1: Prepare (process in root folder to create sub folder set)";
+            // 
+            // rootFolderTextBox
+            // 
+            this.rootFolderTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.settingsBindingSource, "rootFolder", true));
+            this.rootFolderTextBox.Location = new System.Drawing.Point(143, 28);
+            this.rootFolderTextBox.Name = "rootFolderTextBox";
+            this.rootFolderTextBox.Size = new System.Drawing.Size(100, 20);
+            this.rootFolderTextBox.TabIndex = 10;
+            // 
             // tableLayoutPanel2
             // 
             this.tableLayoutPanel2.AutoScroll = true;
@@ -339,10 +456,11 @@
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 120F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutPanel2.Controls.Add(this.labelControl7, 1, 1);
-            this.tableLayoutPanel2.Controls.Add(this.labelControl6, 0, 0);
             this.tableLayoutPanel2.Controls.Add(this.textBox4, 2, 1);
             this.tableLayoutPanel2.Controls.Add(this.button1, 2, 2);
+            this.tableLayoutPanel2.Controls.Add(this.label5, 0, 0);
+            this.tableLayoutPanel2.Controls.Add(this.label6, 1, 1);
+            this.tableLayoutPanel2.Controls.Add(this.button2, 1, 2);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel2.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
@@ -352,26 +470,6 @@
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 23F));
             this.tableLayoutPanel2.Size = new System.Drawing.Size(772, 83);
             this.tableLayoutPanel2.TabIndex = 0;
-            // 
-            // labelControl7
-            // 
-            this.labelControl7.Dock = System.Windows.Forms.DockStyle.Left;
-            this.labelControl7.Location = new System.Drawing.Point(23, 28);
-            this.labelControl7.Name = "labelControl7";
-            this.labelControl7.Size = new System.Drawing.Size(51, 13);
-            this.labelControl7.TabIndex = 5;
-            this.labelControl7.Text = "Command:";
-            // 
-            // labelControl6
-            // 
-            this.labelControl6.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tableLayoutPanel2.SetColumnSpan(this.labelControl6, 3);
-            this.labelControl6.Dock = System.Windows.Forms.DockStyle.Left;
-            this.labelControl6.Location = new System.Drawing.Point(3, 3);
-            this.labelControl6.Name = "labelControl6";
-            this.labelControl6.Size = new System.Drawing.Size(303, 16);
-            this.labelControl6.TabIndex = 1;
-            this.labelControl6.Text = "Step 2: Simulation (process in each sub folder)";
             // 
             // textBox4
             // 
@@ -396,9 +494,6 @@
             // tabPage2
             // 
             this.tabPage2.AutoScroll = true;
-            this.tabPage2.Controls.Add(this.buttonEdit2);
-            this.tabPage2.Controls.Add(this.labelControl9);
-            this.tabPage2.Controls.Add(this.labelControl8);
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
@@ -407,128 +502,72 @@
             this.tabPage2.Text = "Output Results";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
-            // buttonEdit2
+            // label2
             // 
-            this.buttonEdit2.Location = new System.Drawing.Point(205, 22);
-            this.buttonEdit2.Name = "buttonEdit2";
-            this.buttonEdit2.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton()});
-            this.buttonEdit2.Size = new System.Drawing.Size(363, 20);
-            this.buttonEdit2.TabIndex = 9;
+            this.label2.AutoSize = true;
+            this.label2.Dock = System.Windows.Forms.DockStyle.Left;
+            this.label2.Location = new System.Drawing.Point(23, 53);
+            this.label2.Margin = new System.Windows.Forms.Padding(3);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(105, 17);
+            this.label2.TabIndex = 11;
+            this.label2.Text = "Create # simulations:";
             // 
-            // labelControl9
+            // label3
             // 
-            this.labelControl9.Location = new System.Drawing.Point(43, 25);
-            this.labelControl9.Name = "labelControl9";
-            this.labelControl9.Size = new System.Drawing.Size(156, 13);
-            this.labelControl9.TabIndex = 2;
-            this.labelControl9.Text = "Process File (in each sub folder):";
-            this.labelControl9.ToolTip = "The starting folder to copy all the nessary files over.";
+            this.label3.AutoSize = true;
+            this.label3.Dock = System.Windows.Forms.DockStyle.Left;
+            this.label3.Location = new System.Drawing.Point(23, 76);
+            this.label3.Margin = new System.Windows.Forms.Padding(3);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(57, 20);
+            this.label3.TabIndex = 12;
+            this.label3.Text = "Command:";
             // 
-            // labelControl8
+            // label4
             // 
-            this.labelControl8.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelControl8.Dock = System.Windows.Forms.DockStyle.Left;
-            this.labelControl8.Location = new System.Drawing.Point(3, 3);
-            this.labelControl8.Name = "labelControl8";
-            this.labelControl8.Size = new System.Drawing.Size(154, 16);
-            this.labelControl8.TabIndex = 1;
-            this.labelControl8.Text = "Step 3: Process Results";
+            this.label4.AutoSize = true;
+            this.label4.Dock = System.Windows.Forms.DockStyle.Left;
+            this.label4.Location = new System.Drawing.Point(23, 102);
+            this.label4.Margin = new System.Windows.Forms.Padding(3);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(90, 155);
+            this.label4.TabIndex = 13;
+            this.label4.Text = "Copy Files to sub folder:";
             // 
-            // settingsBindingSource
+            // label5
             // 
-            this.settingsBindingSource.DataMember = "Settings";
-            this.settingsBindingSource.DataSource = this.dataSet1;
+            this.label5.AutoSize = true;
+            this.tableLayoutPanel2.SetColumnSpan(this.label5, 3);
+            this.label5.Dock = System.Windows.Forms.DockStyle.Left;
+            this.label5.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold);
+            this.label5.Location = new System.Drawing.Point(3, 0);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(311, 25);
+            this.label5.TabIndex = 8;
+            this.label5.Text = "Step 2: Simulation (process in each sub folder)";
             // 
-            // dataSet1
+            // label6
             // 
-            this.dataSet1.DataSetName = "DataSet1";
-            this.dataSet1.Locale = new System.Globalization.CultureInfo("");
-            this.dataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            this.label6.AutoSize = true;
+            this.label6.Dock = System.Windows.Forms.DockStyle.Left;
+            this.label6.Location = new System.Drawing.Point(23, 28);
+            this.label6.Margin = new System.Windows.Forms.Padding(3);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(57, 17);
+            this.label6.TabIndex = 9;
+            this.label6.Text = "Command:";
             // 
-            // fileListBindingSource1
+            // button2
             // 
-            this.fileListBindingSource1.DataMember = "FileList";
-            this.fileListBindingSource1.DataSource = this.dataSet1;
-            // 
-            // FileName
-            // 
-            this.FileName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.FileName.DataPropertyName = "FileName";
-            this.FileName.FillWeight = 500F;
-            this.FileName.HeaderText = "File Name";
-            this.FileName.MinimumWidth = 100;
-            this.FileName.Name = "FileName";
-            // 
-            // capture
-            // 
-            this.capture.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.capture.DataPropertyName = "capture";
-            this.capture.HeaderText = "Special";
-            this.capture.Items.AddRange(new object[] {
-            "None",
-            "Lines",
-            "Block",
-            "Rand Gen"});
-            this.capture.Name = "capture";
-            this.capture.ToolTipText = "Special Feature: None=regular copy, Lines=only selected lines, Block=capture head" +
-                "er based on text you enerted";
-            this.capture.Width = 48;
-            // 
-            // fromLine
-            // 
-            this.fromLine.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.fromLine.DataPropertyName = "fromLine";
-            this.fromLine.FillWeight = 30F;
-            this.fromLine.HeaderText = "from Line #";
-            this.fromLine.Name = "fromLine";
-            this.fromLine.Width = 85;
-            // 
-            // toLine
-            // 
-            this.toLine.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.toLine.DataPropertyName = "toLine";
-            this.toLine.FillWeight = 30F;
-            this.toLine.HeaderText = "to Line #";
-            this.toLine.Name = "toLine";
-            this.toLine.Width = 74;
-            // 
-            // block
-            // 
-            this.block.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.block.DataPropertyName = "block";
-            this.block.HeaderText = "Block Starting Text";
-            this.block.Name = "block";
-            this.block.Width = 93;
-            // 
-            // blockend
-            // 
-            this.blockend.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.blockend.DataPropertyName = "blockend";
-            this.blockend.FillWeight = 50F;
-            this.blockend.HeaderText = "Block End Text";
-            this.blockend.Name = "blockend";
-            this.blockend.Visible = false;
-            this.blockend.Width = 78;
-            // 
-            // randomGen
-            // 
-            this.randomGen.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.randomGen.DataPropertyName = "randomGen";
-            this.randomGen.FillWeight = 500F;
-            this.randomGen.HeaderText = "Random Generator";
-            this.randomGen.Name = "randomGen";
-            this.randomGen.ToolTipText = "\"shift\"+\"Enter\" for next line";
-            this.randomGen.Width = 112;
-            // 
-            // outputFileName
-            // 
-            this.outputFileName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.outputFileName.DataPropertyName = "outputFileName";
-            this.outputFileName.FillWeight = 400F;
-            this.outputFileName.HeaderText = "Output File Name";
-            this.outputFileName.MinimumWidth = 100;
-            this.outputFileName.Name = "outputFileName";
+            this.button2.Image = ((System.Drawing.Image)(resources.GetObject("button2.Image")));
+            this.button2.Location = new System.Drawing.Point(23, 51);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(75, 23);
+            this.button2.TabIndex = 10;
+            this.button2.Text = "button2";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // Form1
             // 
@@ -555,16 +594,12 @@
             this.splitContainer1.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.buttonEdit1.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            this.tableLayoutPanel2.ResumeLayout(false);
-            this.tableLayoutPanel2.PerformLayout();
-            this.tabPage2.ResumeLayout(false);
-            this.tabPage2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.buttonEdit2.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.settingsBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataSet1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.fileListBindingSource1)).EndInit();
+            this.tableLayoutPanel2.ResumeLayout(false);
+            this.tableLayoutPanel2.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -583,25 +618,14 @@
         private System.Windows.Forms.ToolStripMenuItem saveSettingToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem loadSettingToolStripMenuItem;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-        private DevExpress.XtraEditors.LabelControl labelControl1;
-        private DevExpress.XtraEditors.LabelControl labelControl2;
-        private DevExpress.XtraEditors.LabelControl labelControl5;
-        private DevExpress.XtraEditors.LabelControl labelControl4;
-        private DevExpress.XtraEditors.LabelControl labelControl3;
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog1;
         private System.Windows.Forms.TextBox textBox3;
-        private DevExpress.XtraEditors.LabelControl labelControl7;
-        private DevExpress.XtraEditors.LabelControl labelControl6;
         private System.Windows.Forms.TextBox textBox4;
         private System.Windows.Forms.Button button1;
-        private DevExpress.XtraEditors.ButtonEdit buttonEdit1;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
-        private DevExpress.XtraEditors.ButtonEdit buttonEdit2;
-        private DevExpress.XtraEditors.LabelControl labelControl9;
-        private DevExpress.XtraEditors.LabelControl labelControl8;
         private System.Windows.Forms.BindingSource fileListBindingSource1;
         private DataSet1 dataSet1;
         private System.Windows.Forms.BindingSource settingsBindingSource;
@@ -613,6 +637,22 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn blockend;
         private System.Windows.Forms.DataGridViewTextBoxColumn randomGen;
         private System.Windows.Forms.DataGridViewTextBoxColumn outputFileName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn fileNameDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn captureDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn fromLineDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn toLineDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn blockDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn blockendDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn randomGenDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn outputFileNameDataGridViewTextBoxColumn;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox rootFolderTextBox;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Button button2;
     }
 }
 
