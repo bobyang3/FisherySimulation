@@ -30,10 +30,6 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
-            System.Windows.Forms.Label rootFolderLabel;
-            System.Windows.Forms.Label simulationNumLabel;
-            System.Windows.Forms.Label commandRootFolderLabel;
-            System.Windows.Forms.Label commandSubFolderLabel;
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
@@ -64,10 +60,6 @@
             this.labelControl9 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl8 = new DevExpress.XtraEditors.LabelControl();
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
-            this.rootFolderTextBox = new System.Windows.Forms.TextBox();
-            this.simulationNumTextBox = new System.Windows.Forms.TextBox();
-            this.commandRootFolderTextBox = new System.Windows.Forms.TextBox();
-            this.commandSubFolderTextBox = new System.Windows.Forms.TextBox();
             this.settingsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dataSet1 = new Fishery_Simulation.DataSet1();
             this.fileListBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
@@ -79,10 +71,6 @@
             this.blockend = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.randomGen = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.outputFileName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            rootFolderLabel = new System.Windows.Forms.Label();
-            simulationNumLabel = new System.Windows.Forms.Label();
-            commandRootFolderLabel = new System.Windows.Forms.Label();
-            commandSubFolderLabel = new System.Windows.Forms.Label();
             this.statusStrip1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -408,14 +396,6 @@
             // tabPage2
             // 
             this.tabPage2.AutoScroll = true;
-            this.tabPage2.Controls.Add(rootFolderLabel);
-            this.tabPage2.Controls.Add(this.rootFolderTextBox);
-            this.tabPage2.Controls.Add(simulationNumLabel);
-            this.tabPage2.Controls.Add(this.simulationNumTextBox);
-            this.tabPage2.Controls.Add(commandRootFolderLabel);
-            this.tabPage2.Controls.Add(this.commandRootFolderTextBox);
-            this.tabPage2.Controls.Add(commandSubFolderLabel);
-            this.tabPage2.Controls.Add(this.commandSubFolderTextBox);
             this.tabPage2.Controls.Add(this.buttonEdit2);
             this.tabPage2.Controls.Add(this.labelControl9);
             this.tabPage2.Controls.Add(this.labelControl8);
@@ -454,74 +434,6 @@
             this.labelControl8.Size = new System.Drawing.Size(154, 16);
             this.labelControl8.TabIndex = 1;
             this.labelControl8.Text = "Step 3: Process Results";
-            // 
-            // rootFolderLabel
-            // 
-            rootFolderLabel.AutoSize = true;
-            rootFolderLabel.Location = new System.Drawing.Point(84, 97);
-            rootFolderLabel.Name = "rootFolderLabel";
-            rootFolderLabel.Size = new System.Drawing.Size(60, 13);
-            rootFolderLabel.TabIndex = 9;
-            rootFolderLabel.Text = "root Folder:";
-            // 
-            // rootFolderTextBox
-            // 
-            this.rootFolderTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.settingsBindingSource, "rootFolder", true));
-            this.rootFolderTextBox.Location = new System.Drawing.Point(204, 94);
-            this.rootFolderTextBox.Name = "rootFolderTextBox";
-            this.rootFolderTextBox.Size = new System.Drawing.Size(100, 20);
-            this.rootFolderTextBox.TabIndex = 10;
-            // 
-            // simulationNumLabel
-            // 
-            simulationNumLabel.AutoSize = true;
-            simulationNumLabel.Location = new System.Drawing.Point(84, 123);
-            simulationNumLabel.Name = "simulationNumLabel";
-            simulationNumLabel.Size = new System.Drawing.Size(81, 13);
-            simulationNumLabel.TabIndex = 11;
-            simulationNumLabel.Text = "simulation Num:";
-            // 
-            // simulationNumTextBox
-            // 
-            this.simulationNumTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.settingsBindingSource, "simulationNum", true));
-            this.simulationNumTextBox.Location = new System.Drawing.Point(204, 120);
-            this.simulationNumTextBox.Name = "simulationNumTextBox";
-            this.simulationNumTextBox.Size = new System.Drawing.Size(100, 20);
-            this.simulationNumTextBox.TabIndex = 12;
-            // 
-            // commandRootFolderLabel
-            // 
-            commandRootFolderLabel.AutoSize = true;
-            commandRootFolderLabel.Location = new System.Drawing.Point(84, 149);
-            commandRootFolderLabel.Name = "commandRootFolderLabel";
-            commandRootFolderLabel.Size = new System.Drawing.Size(114, 13);
-            commandRootFolderLabel.TabIndex = 13;
-            commandRootFolderLabel.Text = "command Root Folder:";
-            // 
-            // commandRootFolderTextBox
-            // 
-            this.commandRootFolderTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.settingsBindingSource, "commandRootFolder", true));
-            this.commandRootFolderTextBox.Location = new System.Drawing.Point(204, 146);
-            this.commandRootFolderTextBox.Name = "commandRootFolderTextBox";
-            this.commandRootFolderTextBox.Size = new System.Drawing.Size(100, 20);
-            this.commandRootFolderTextBox.TabIndex = 14;
-            // 
-            // commandSubFolderLabel
-            // 
-            commandSubFolderLabel.AutoSize = true;
-            commandSubFolderLabel.Location = new System.Drawing.Point(84, 175);
-            commandSubFolderLabel.Name = "commandSubFolderLabel";
-            commandSubFolderLabel.Size = new System.Drawing.Size(110, 13);
-            commandSubFolderLabel.TabIndex = 15;
-            commandSubFolderLabel.Text = "command Sub Folder:";
-            // 
-            // commandSubFolderTextBox
-            // 
-            this.commandSubFolderTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.settingsBindingSource, "commandSubFolder", true));
-            this.commandSubFolderTextBox.Location = new System.Drawing.Point(204, 172);
-            this.commandSubFolderTextBox.Name = "commandSubFolderTextBox";
-            this.commandSubFolderTextBox.Size = new System.Drawing.Size(100, 20);
-            this.commandSubFolderTextBox.TabIndex = 16;
             // 
             // settingsBindingSource
             // 
@@ -693,10 +605,6 @@
         private System.Windows.Forms.BindingSource fileListBindingSource1;
         private DataSet1 dataSet1;
         private System.Windows.Forms.BindingSource settingsBindingSource;
-        private System.Windows.Forms.TextBox rootFolderTextBox;
-        private System.Windows.Forms.TextBox simulationNumTextBox;
-        private System.Windows.Forms.TextBox commandRootFolderTextBox;
-        private System.Windows.Forms.TextBox commandSubFolderTextBox;
         private System.Windows.Forms.DataGridViewTextBoxColumn FileName;
         private System.Windows.Forms.DataGridViewComboBoxColumn capture;
         private System.Windows.Forms.DataGridViewTextBoxColumn fromLine;
