@@ -54,14 +54,6 @@ namespace Fishery_Simulation
             dataGridView1.DataSource = new DataTable("t1");
         }
 
-        private void saveSettingToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-            List<Control> allcontrls = Glibs.GetControls2(this);
-
-            MessageBox.Show(Glibs.GetCPUCore().ToString());
-
-        }
 
         private void textBox2_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -483,6 +475,50 @@ namespace Fishery_Simulation
             //catch (Exception e1)
             //{ 
             //}
+        }
+
+        private void saveSettingToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+            List<Control> allcontrls = Glibs.GetControls2(this);
+
+            //MessageBox.Show(Glibs.GetCPUCore().ToString());
+
+            //// string s = "safd";
+            // string s = this.textBox2.Text ;
+            // System.Xml.Serialization.XmlSerializer x = new System.Xml.Serialization.XmlSerializer(s.GetType());
+            // x.Serialize(Console.Out, s);
+            // Console.WriteLine();
+            // Console.ReadLine();
+
+            // Set indent=true so resulting file is more 'human-readable'
+            XmlWriterSettings settings = new XmlWriterSettings() { Indent = true };
+
+            // Put writer in using scope; after end of scope, file is automatically saved.
+            using (XmlWriter writer = XmlTextWriter.Create("FS_setting.xml", settings))
+            {
+                writer.WriteStartDocument();
+                writer.WriteStartElement("setting");
+                writer.WriteElementString("rootFolder", buttonEdit1.Text);
+                writer.WriteElementString("simulationNum", textBox2.Text);
+                writer.WriteElementString("commandRootFolder", textBox3.Text);
+                writer.WriteElementString("commandSubFolder", textBox4.Text);
+                writer.WriteEndElement();
+            }
+
+            //dataGridView1.DataSource = DataSet1.f
+        }
+
+
+        private void loadSettingToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            XmlDocument  doc = new XmlDocument();
+            doc.Load("FS_setting.xml");
+            XmlElement root = doc.DocumentElement;
+            buttonEdit1.Text = root.GetElementsByTagName("rootFolder")[0].InnerText;
+            textBox2.Text = root.GetElementsByTagName("simulationNum")[0].InnerText;
+            textBox3.Text = root.GetElementsByTagName("commandRootFolder")[0].InnerText;
+            textBox4.Text = root.GetElementsByTagName("commandSubFolder")[0].InnerText;
         }
     
     

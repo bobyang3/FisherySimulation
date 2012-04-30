@@ -49,6 +49,14 @@
             this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.FileName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.capture = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.fromLine = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.toLine = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.block = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.blockend = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.randomGen = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.outputFileName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.labelControl7 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl6 = new DevExpress.XtraEditors.LabelControl();
@@ -59,14 +67,6 @@
             this.labelControl9 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl8 = new DevExpress.XtraEditors.LabelControl();
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
-            this.FileName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.capture = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.fromLine = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.toLine = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.block = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.blockend = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.randomGen = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.outputFileName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.statusStrip1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -122,7 +122,7 @@
             // saveSettingToolStripMenuItem
             // 
             this.saveSettingToolStripMenuItem.Name = "saveSettingToolStripMenuItem";
-            this.saveSettingToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.saveSettingToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
             this.saveSettingToolStripMenuItem.Text = "Save Setting";
             this.saveSettingToolStripMenuItem.Click += new System.EventHandler(this.saveSettingToolStripMenuItem_Click);
             // 
@@ -131,6 +131,7 @@
             this.loadSettingToolStripMenuItem.Name = "loadSettingToolStripMenuItem";
             this.loadSettingToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.loadSettingToolStripMenuItem.Text = "Load Setting";
+            this.loadSettingToolStripMenuItem.Click += new System.EventHandler(this.loadSettingToolStripMenuItem_Click);
             // 
             // aboutToolStripMenuItem
             // 
@@ -319,6 +320,76 @@
             this.dataGridView1.EditingControlShowing += new System.Windows.Forms.DataGridViewEditingControlShowingEventHandler(this.dataGridView1_EditingControlShowing);
             this.dataGridView1.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.dataGridView1_RowsAdded);
             // 
+            // FileName
+            // 
+            this.FileName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.FileName.FillWeight = 500F;
+            this.FileName.HeaderText = "File Name";
+            this.FileName.MinimumWidth = 100;
+            this.FileName.Name = "FileName";
+            // 
+            // capture
+            // 
+            this.capture.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.capture.HeaderText = "Special";
+            this.capture.Items.AddRange(new object[] {
+            "None",
+            "Lines",
+            "Block",
+            "Rand Gen"});
+            this.capture.Name = "capture";
+            this.capture.ToolTipText = "Special Feature: None=regular copy, Lines=only selected lines, Block=capture head" +
+                "er based on text you enerted";
+            this.capture.Width = 48;
+            // 
+            // fromLine
+            // 
+            this.fromLine.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.fromLine.FillWeight = 30F;
+            this.fromLine.HeaderText = "from Line #";
+            this.fromLine.Name = "fromLine";
+            this.fromLine.Width = 72;
+            // 
+            // toLine
+            // 
+            this.toLine.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.toLine.FillWeight = 30F;
+            this.toLine.HeaderText = "to Line #";
+            this.toLine.Name = "toLine";
+            this.toLine.Width = 62;
+            // 
+            // block
+            // 
+            this.block.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.block.HeaderText = "Block Starting Text";
+            this.block.Name = "block";
+            this.block.Width = 93;
+            // 
+            // blockend
+            // 
+            this.blockend.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.blockend.FillWeight = 50F;
+            this.blockend.HeaderText = "Block End Text";
+            this.blockend.Name = "blockend";
+            this.blockend.Visible = false;
+            // 
+            // randomGen
+            // 
+            this.randomGen.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.randomGen.FillWeight = 500F;
+            this.randomGen.HeaderText = "Random Generator";
+            this.randomGen.Name = "randomGen";
+            this.randomGen.ToolTipText = "\"shift\"+\"Enter\" for next line";
+            this.randomGen.Width = 112;
+            // 
+            // outputFileName
+            // 
+            this.outputFileName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.outputFileName.FillWeight = 400F;
+            this.outputFileName.HeaderText = "Output File Name";
+            this.outputFileName.MinimumWidth = 100;
+            this.outputFileName.Name = "outputFileName";
+            // 
             // tableLayoutPanel2
             // 
             this.tableLayoutPanel2.AutoScroll = true;
@@ -420,77 +491,6 @@
             this.labelControl8.Size = new System.Drawing.Size(154, 16);
             this.labelControl8.TabIndex = 1;
             this.labelControl8.Text = "Step 3: Process Results";
-            // 
-            // FileName
-            // 
-            this.FileName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.FileName.FillWeight = 500F;
-            this.FileName.HeaderText = "File Name";
-            this.FileName.MinimumWidth = 100;
-            this.FileName.Name = "FileName";
-            // 
-            // capture
-            // 
-            this.capture.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.capture.HeaderText = "Special";
-            this.capture.Items.AddRange(new object[] {
-            "None",
-            "Lines",
-            "Block",
-            "Rand Gen"});
-            this.capture.Name = "capture";
-            this.capture.ToolTipText = "Special Feature: None=regular copy, Lines=only selected lines, Block=capture head" +
-                "er based on text you enerted";
-            this.capture.Width = 48;
-            // 
-            // fromLine
-            // 
-            this.fromLine.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.fromLine.FillWeight = 30F;
-            this.fromLine.HeaderText = "from Line #";
-            this.fromLine.Name = "fromLine";
-            this.fromLine.Width = 85;
-            // 
-            // toLine
-            // 
-            this.toLine.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.toLine.FillWeight = 30F;
-            this.toLine.HeaderText = "to Line #";
-            this.toLine.Name = "toLine";
-            this.toLine.Width = 74;
-            // 
-            // block
-            // 
-            this.block.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.block.HeaderText = "Block Starting Text";
-            this.block.Name = "block";
-            this.block.Width = 93;
-            // 
-            // blockend
-            // 
-            this.blockend.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.blockend.FillWeight = 50F;
-            this.blockend.HeaderText = "Block End Text";
-            this.blockend.Name = "blockend";
-            this.blockend.Visible = false;
-            this.blockend.Width = 78;
-            // 
-            // randomGen
-            // 
-            this.randomGen.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.randomGen.FillWeight = 500F;
-            this.randomGen.HeaderText = "Random Generator";
-            this.randomGen.Name = "randomGen";
-            this.randomGen.ToolTipText = "\"shift\"+\"Enter\" for next line";
-            this.randomGen.Width = 112;
-            // 
-            // outputFileName
-            // 
-            this.outputFileName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.outputFileName.FillWeight = 400F;
-            this.outputFileName.HeaderText = "Output File Name";
-            this.outputFileName.MinimumWidth = 100;
-            this.outputFileName.Name = "outputFileName";
             // 
             // Form1
             // 

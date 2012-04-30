@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="DataSet1" targetNamespace="http://tempuri.org/DataSet1.xsd" xmlns:mstns="http://tempuri.org/DataSet1.xsd" xmlns="http://tempuri.org/DataSet1.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="DataSet1" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="DataSet1" msprop:Generator_UserDSName="DataSet1">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="FileList" msprop:Generator_TableClassName="FileListDataTable" msprop:Generator_TableVarName="tableFileList" msprop:Generator_TablePropName="FileList" msprop:Generator_RowDeletingName="FileListRowDeleting" msprop:Generator_UserTableName="FileList" msprop:Generator_RowChangingName="FileListRowChanging" msprop:Generator_RowEvHandlerName="FileListRowChangeEventHandler" msprop:Generator_RowDeletedName="FileListRowDeleted" msprop:Generator_RowEvArgName="FileListRowChangeEvent" msprop:Generator_RowChangedName="FileListRowChanged" msprop:Generator_RowClassName="FileListRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="FileName" msprop:Generator_ColumnVarNameInTable="columnFileName" msprop:Generator_ColumnPropNameInRow="FileName" msprop:Generator_ColumnPropNameInTable="FileNameColumn" msprop:Generator_UserColumnName="FileName" type="xs:string" minOccurs="0" />
+              <xs:element name="capture" msprop:Generator_ColumnVarNameInTable="columncapture" msprop:Generator_ColumnPropNameInRow="capture" msprop:Generator_ColumnPropNameInTable="captureColumn" msprop:Generator_UserColumnName="capture" type="xs:string" minOccurs="0" />
+              <xs:element name="fromLine" msprop:Generator_ColumnVarNameInTable="columnfromLine" msprop:Generator_ColumnPropNameInRow="fromLine" msprop:Generator_ColumnPropNameInTable="fromLineColumn" msprop:Generator_UserColumnName="fromLine" type="xs:long" minOccurs="0" />
+              <xs:element name="toLine" msprop:Generator_ColumnVarNameInTable="columntoLine" msprop:Generator_ColumnPropNameInRow="toLine" msprop:Generator_ColumnPropNameInTable="toLineColumn" msprop:Generator_UserColumnName="toLine" type="xs:long" minOccurs="0" />
+              <xs:element name="block" msprop:Generator_ColumnVarNameInTable="columnblock" msprop:Generator_ColumnPropNameInRow="block" msprop:Generator_ColumnPropNameInTable="blockColumn" msprop:Generator_UserColumnName="block" type="xs:string" minOccurs="0" />
+              <xs:element name="blockend" msprop:Generator_ColumnVarNameInTable="columnblockend" msprop:Generator_ColumnPropNameInRow="blockend" msprop:Generator_ColumnPropNameInTable="blockendColumn" msprop:Generator_UserColumnName="blockend" type="xs:string" minOccurs="0" />
+              <xs:element name="randomGen" msprop:Generator_ColumnVarNameInTable="columnrandomGen" msprop:Generator_ColumnPropNameInRow="randomGen" msprop:Generator_ColumnPropNameInTable="randomGenColumn" msprop:Generator_UserColumnName="randomGen" type="xs:string" minOccurs="0" />
+              <xs:element name="outputFileName" msprop:Generator_ColumnVarNameInTable="columnoutputFileName" msprop:Generator_ColumnPropNameInRow="outputFileName" msprop:Generator_ColumnPropNameInTable="outputFileNameColumn" msprop:Generator_UserColumnName="outputFileName" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

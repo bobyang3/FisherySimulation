@@ -16,6 +16,12 @@ namespace Fishery_Simulation
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Form1());
+
+
+
         }
+
+
+
     }
 }
