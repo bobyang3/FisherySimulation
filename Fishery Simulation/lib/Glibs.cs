@@ -99,7 +99,7 @@ namespace Fishery_Simulation
 
         public static string toStringNullable(object o1)
         {
-            return o1 == null ? null : o1.ToString(); 
+            return o1 == null ? null : o1.ToString().Trim(); 
         }
 
         public static int? tointNullable(object o1)

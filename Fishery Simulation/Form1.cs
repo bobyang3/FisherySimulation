@@ -59,6 +59,7 @@ namespace Fishery_Simulation
 
             List<Control> allcontrls = Glibs.GetControls2(this);
 
+            MessageBox.Show(Glibs.GetCPUCore().ToString());
 
         }
 
@@ -120,6 +121,9 @@ namespace Fishery_Simulation
 
             //step 1: only continue this when the command is finished.
             this.CopyFiles(originalForm);
+
+            //del files
+            //Glibs.DeleteFolder(new DirectoryInfo(newPath));
 
 
 
@@ -229,8 +233,9 @@ namespace Fishery_Simulation
                     string outputFileName = Glibs.toStringNullable(dataGridView1.Rows[j].Cells["outputFileName"].Value);
                     string blockHeaderLine = Glibs.toStringNullable(dataGridView1.Rows[j].Cells["block"].Value);
                     string blockEndLine = Glibs.toStringNullable(dataGridView1.Rows[j].Cells["blockend"].Value);
+                    string randomGen = Glibs.toStringNullable(dataGridView1.Rows[j].Cells["randomGen"].Value);
 
-                    string sourceFile = Path.Combine(Path.Combine(buttonEdit1.Text,"~~temp"), filename);
+                    string sourceFile = Path.Combine(Path.Combine(buttonEdit1.Text,"~~original"), filename);
 
 
                     int? fromLine = Glibs.tointNullable(dataGridView1.Rows[j].Cells["fromLine"].Value);
@@ -239,7 +244,7 @@ namespace Fishery_Simulation
                     
                     if (captureType == "Lines" && fromLine != null && toLine != null) ///copy line text
                     {
-                        for (int i = 1; i <= _sub_folder_num; i++)
+                        for (int i = 1; i < _sub_folder_num; i++)
                         {
                             //open file and get conents, then copy over the conents
                             sourceFile = Path.Combine(buttonEdit1.Text,filename);
@@ -247,15 +252,25 @@ namespace Fishery_Simulation
                             Glibs.WritelineText(destFile, Glibs.ReadLineText(sourceFile, fromLine, toLine));
                         }
                     }
+                    else if (captureType == "Rand Gen" && randomGen != null) ///gen rand numbers
+                    {
+                        DataTable dt= convertFileToDataTable(sourceFile);
+
+
+                        var query = from dr2 in dt.AsEnumerable()
+                                    where (string)dr2["textline"] == "dictionaryKey"
+                                    select dr2;
+                    
+                    }
                     //else if (captureType == "Block" && blockHeaderLine != null && blockEndLine!=null) ///copy block
                     else if (captureType == "Block" && blockHeaderLine != null) ///copy block
                     {
 
                         DataTable dt = new DataTable();
                         //List<string> strings = Glibs.ReadText(sourceFile);
-                        string[] strings2 = Glibs.ReadText2(sourceFile);
-
+                        
                         sourceFile = Path.Combine(buttonEdit1.Text, filename);
+                        string[] strings2 = Glibs.ReadText2(sourceFile); //use the file which generated in the root folder
 
                         //row number column
                         DataColumn c = new DataColumn("romNum");
@@ -269,7 +284,7 @@ namespace Fishery_Simulation
                         dt.Columns.Add("setNum", typeof(int));
 
                         //data column
-                        dt.Columns.Add("textline",typeof(string));
+                        dt.Columns.Add("textline", typeof(string));
 
                         int curr_set = 0;
 
@@ -287,7 +302,7 @@ namespace Fishery_Simulation
 
 
 
-                        for (int i = 1; i <= _sub_folder_num; i++)
+                        for (int i = 1; i < _sub_folder_num; i++)
                         {
                             var query = from dr2 in dt.AsEnumerable()
                                         where (int)dr2["setNum"] == i
@@ -303,15 +318,16 @@ namespace Fishery_Simulation
                             final_str = final_str.Trim();
                             string destFile = Path.Combine(Path.Combine(buttonEdit1.Text, i.ToString()), outputFileName);
                             Glibs.WritelineText(destFile, final_str);
-
                         }
+
+
                     }
                     else // anything else, copy full file
                     {
                         for (int i = 1; i < _sub_folder_num; i++)
                         {
 
-                           // sourceFile = Path.Combine(Path.Combine(buttonEdit1.Text, "~~temp"), filename);
+                            // sourceFile = Path.Combine(Path.Combine(buttonEdit1.Text, "~~original"), filename);
                             string destFile = Path.Combine(Path.Combine(buttonEdit1.Text, i.ToString()), outputFileName);
                             File.Copy(sourceFile, destFile, true);
                         }
@@ -329,10 +345,45 @@ namespace Fishery_Simulation
             
         }
 
+        private DataTable convertFileToDataTable(string sourceFile)
+        {
+            DataTable dt = new DataTable();
+            string[] strings2 = Glibs.ReadText2(sourceFile);
+            
+            //row number column
+            DataColumn c = new DataColumn("romNum");
+
+            c.AutoIncrement = true;
+            c.AutoIncrementSeed = 1;
+            c.AutoIncrementStep = 1;
+            dt.Columns.Add(c);
+
+            //setNum for block
+            dt.Columns.Add("setNum", typeof(int));
+
+            //data column
+            dt.Columns.Add("textline", typeof(string));
+
+            foreach (string str in strings2)
+            {
+                DataRow dr = dt.NewRow();
+                dr["textline"] = str;
+                dt.Rows.Add(dr);
+            }
+
+            return dt;
+        }
+
+
+        private double generateNormalDisNumber(double mean, double SD, int count)
+        {
+
+            return 0;                    
+        }
 
         private bool fileExistsCheck()
         {
-            string newPath = Path.Combine(buttonEdit1.Text, "~~temp");
+            string newPath = Path.Combine(buttonEdit1.Text, "~~original");
             Directory.CreateDirectory(newPath);
             string _error_fileNames = "";
 
@@ -345,14 +396,21 @@ namespace Fishery_Simulation
                     string sourceFile = Path.Combine(buttonEdit1.Text, dataGridView1.Rows[j].Cells["FileName"].Value.ToString());
                     string destFile = Path.Combine(newPath, dataGridView1.Rows[j].Cells["FileName"].Value.ToString());
 
-                    if (File.Exists(sourceFile) && captureType == null)
+                    //MessageBox.Show(sourceFile);
+
+                    if (captureType == "None" || captureType == null)
                     {
-                        File.Copy(sourceFile, destFile, true);
+                        if (File.Exists(sourceFile))
+                        {
+                            File.Copy(sourceFile, destFile, true);
+                        }
+                        else
+                        {
+                            _error_fileNames = _error_fileNames + "," + dataGridView1.Rows[j].Cells["FileName"].Value;
+                        }
                     }
-                    else
-                    {
-                        _error_fileNames = _error_fileNames + "," + dataGridView1.Rows[j].Cells["FileName"].Value;
-                    }
+
+
                 }
             }
 
