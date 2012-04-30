@@ -1,14 +1,17 @@
 <?xml version="1.0" standalone="yes"?>
 <DataSet1 xmlns="http://tempuri.org/DataSet1.xsd">
   <FileList>
-    <FileName>ss</FileName>
-    <capture>None</capture>
-    <outputFileName>ss</outputFileName>
+    <FileName>23</FileName>
+    <capture>Lines</capture>
+    <outputFileName>23</outputFileName>
   </FileList>
   <FileList>
-    <FileName>g5</FileName>
-    <capture>Lines</capture>
-    <outputFileName>g5</outputFileName>
+    <FileName>fyvhj</FileName>
+    <capture>None</capture>
+    <outputFileName>fyvhj</outputFileName>
   </FileList>
-  <FileList />
+  <Settings>
+    <simulationNum>12</simulationNum>
+    <commandRootFolder>fg hjk</commandRootFolder>
+  </Settings>
 </DataSet1>

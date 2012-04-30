@@ -49,8 +49,13 @@ namespace Fishery_Simulation
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            buttonEdit1.Text = Directory.GetCurrentDirectory();
 
+            //create a new 
+            DataRow row=dataSet1.Tables["Settings"].NewRow();
+            dataSet1.Tables["Settings"].Rows.Add(row);
+
+
+            buttonEdit1.Text = Directory.GetCurrentDirectory();
         }
 
 
@@ -456,10 +461,10 @@ namespace Fishery_Simulation
 
         private void dataGridView1_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
-            if (e.ColumnIndex == 1 && e.Value==null) // your combo column index
-            {
-                e.Value = "None";
-            }
+            //if (e.ColumnIndex == 1 && e.Value==null) // your combo column index
+            //{
+            //    e.Value = "None";
+            //}
 
             
         }
@@ -526,7 +531,8 @@ namespace Fishery_Simulation
                 //textBox3.Text = root.GetElementsByTagName("commandRootFolder")[0].InnerText;
                 //textBox4.Text = root.GetElementsByTagName("commandSubFolder")[0].InnerText;
 
-               // dataSet1.Tables[0].Clear();
+                dataSet1.Tables["FileList"].Clear();
+                dataSet1.Tables["Settings"].Clear();
                 dataSet1.ReadXml(@"FS_setting.xml");
             }
             catch (Exception ei)

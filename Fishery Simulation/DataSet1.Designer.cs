@@ -526,6 +526,7 @@ namespace Fishery_Simulation {
                 base.Columns.Add(this.columnrandomGen);
                 this.columnoutputFileName = new global::System.Data.DataColumn("outputFileName", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnoutputFileName);
+                this.columncapture.DefaultValue = ((string)("None"));
                 this.Locale = new global::System.Globalization.CultureInfo("");
             }
             

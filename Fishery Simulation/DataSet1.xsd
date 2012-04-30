@@ -16,7 +16,7 @@
           <xs:complexType>
             <xs:sequence>
               <xs:element name="FileName" msprop:Generator_ColumnVarNameInTable="columnFileName" msprop:Generator_ColumnPropNameInRow="FileName" msprop:Generator_ColumnPropNameInTable="FileNameColumn" msprop:Generator_UserColumnName="FileName" type="xs:string" minOccurs="0" />
-              <xs:element name="capture" msprop:Generator_ColumnVarNameInTable="columncapture" msprop:Generator_ColumnPropNameInRow="capture" msprop:Generator_ColumnPropNameInTable="captureColumn" msprop:Generator_UserColumnName="capture" type="xs:string" minOccurs="0" />
+              <xs:element name="capture" msprop:Generator_ColumnVarNameInTable="columncapture" msprop:Generator_ColumnPropNameInRow="capture" msprop:Generator_ColumnPropNameInTable="captureColumn" msprop:Generator_UserColumnName="capture" type="xs:string" default="None" minOccurs="0" />
               <xs:element name="fromLine" msprop:Generator_ColumnVarNameInTable="columnfromLine" msprop:Generator_ColumnPropNameInRow="fromLine" msprop:Generator_ColumnPropNameInTable="fromLineColumn" msprop:Generator_UserColumnName="fromLine" type="xs:long" minOccurs="0" />
               <xs:element name="toLine" msprop:Generator_ColumnVarNameInTable="columntoLine" msprop:Generator_ColumnPropNameInRow="toLine" msprop:Generator_ColumnPropNameInTable="toLineColumn" msprop:Generator_UserColumnName="toLine" type="xs:long" minOccurs="0" />
               <xs:element name="block" msprop:Generator_ColumnVarNameInTable="columnblock" msprop:Generator_ColumnPropNameInRow="block" msprop:Generator_ColumnPropNameInTable="blockColumn" msprop:Generator_UserColumnName="block" type="xs:string" minOccurs="0" />
