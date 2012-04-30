@@ -12,7 +12,7 @@
   <xs:element name="DataSet1" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="DataSet1" msprop:Generator_UserDSName="DataSet1">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="FileList" msprop:Generator_TableClassName="FileListDataTable" msprop:Generator_TableVarName="tableFileList" msprop:Generator_TablePropName="FileList" msprop:Generator_RowDeletingName="FileListRowDeleting" msprop:Generator_UserTableName="FileList" msprop:Generator_RowChangingName="FileListRowChanging" msprop:Generator_RowEvHandlerName="FileListRowChangeEventHandler" msprop:Generator_RowDeletedName="FileListRowDeleted" msprop:Generator_RowEvArgName="FileListRowChangeEvent" msprop:Generator_RowChangedName="FileListRowChanged" msprop:Generator_RowClassName="FileListRow">
+        <xs:element name="FileList" msdata:Locale="" msprop:Generator_TableClassName="FileListDataTable" msprop:Generator_TableVarName="tableFileList" msprop:Generator_TablePropName="FileList" msprop:Generator_RowDeletingName="FileListRowDeleting" msprop:Generator_UserTableName="FileList" msprop:Generator_RowChangingName="FileListRowChanging" msprop:Generator_RowEvHandlerName="FileListRowChangeEventHandler" msprop:Generator_RowDeletedName="FileListRowDeleted" msprop:Generator_RowEvArgName="FileListRowChangeEvent" msprop:Generator_RowChangedName="FileListRowChanged" msprop:Generator_RowClassName="FileListRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="FileName" msprop:Generator_ColumnVarNameInTable="columnFileName" msprop:Generator_ColumnPropNameInRow="FileName" msprop:Generator_ColumnPropNameInTable="FileNameColumn" msprop:Generator_UserColumnName="FileName" type="xs:string" minOccurs="0" />
@@ -23,6 +23,16 @@
               <xs:element name="blockend" msprop:Generator_ColumnVarNameInTable="columnblockend" msprop:Generator_ColumnPropNameInRow="blockend" msprop:Generator_ColumnPropNameInTable="blockendColumn" msprop:Generator_UserColumnName="blockend" type="xs:string" minOccurs="0" />
               <xs:element name="randomGen" msprop:Generator_ColumnVarNameInTable="columnrandomGen" msprop:Generator_ColumnPropNameInRow="randomGen" msprop:Generator_ColumnPropNameInTable="randomGenColumn" msprop:Generator_UserColumnName="randomGen" type="xs:string" minOccurs="0" />
               <xs:element name="outputFileName" msprop:Generator_ColumnVarNameInTable="columnoutputFileName" msprop:Generator_ColumnPropNameInRow="outputFileName" msprop:Generator_ColumnPropNameInTable="outputFileNameColumn" msprop:Generator_UserColumnName="outputFileName" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Settings" msdata:Locale="" msprop:Generator_TableClassName="SettingsDataTable" msprop:Generator_TableVarName="tableSettings" msprop:Generator_TablePropName="Settings" msprop:Generator_RowDeletingName="SettingsRowDeleting" msprop:Generator_UserTableName="Settings" msprop:Generator_RowChangingName="SettingsRowChanging" msprop:Generator_RowEvHandlerName="SettingsRowChangeEventHandler" msprop:Generator_RowDeletedName="SettingsRowDeleted" msprop:Generator_RowEvArgName="SettingsRowChangeEvent" msprop:Generator_RowChangedName="SettingsRowChanged" msprop:Generator_RowClassName="SettingsRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="rootFolder" msprop:Generator_ColumnVarNameInTable="columnrootFolder" msprop:Generator_ColumnPropNameInRow="rootFolder" msprop:Generator_ColumnPropNameInTable="rootFolderColumn" msprop:Generator_UserColumnName="rootFolder" type="xs:string" minOccurs="0" />
+              <xs:element name="simulationNum" msprop:Generator_ColumnVarNameInTable="columnsimulationNum" msprop:Generator_ColumnPropNameInRow="simulationNum" msprop:Generator_ColumnPropNameInTable="simulationNumColumn" msprop:Generator_UserColumnName="simulationNum" type="xs:string" minOccurs="0" />
+              <xs:element name="commandRootFolder" msprop:Generator_ColumnVarNameInTable="columncommandRootFolder" msprop:Generator_ColumnPropNameInRow="commandRootFolder" msprop:Generator_ColumnPropNameInTable="commandRootFolderColumn" msprop:Generator_UserColumnName="commandRootFolder" type="xs:string" minOccurs="0" />
+              <xs:element name="commandSubFolder" msprop:Generator_ColumnVarNameInTable="columncommandSubFolder" msprop:Generator_ColumnPropNameInRow="commandSubFolder" msprop:Generator_ColumnPropNameInTable="commandSubFolderColumn" msprop:Generator_UserColumnName="commandSubFolder" type="xs:string" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>

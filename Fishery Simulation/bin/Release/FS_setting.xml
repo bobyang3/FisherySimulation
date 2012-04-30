@@ -1,7 +1,14 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<setting>
-  <rootFolder>C:\__PROJECTS__\Fishery Simulation\Fishery Simulation\bin\Release</rootFolder>
-  <simulationNum>54</simulationNum>
-  <commandRootFolder>5fafdsa  fdas</commandRootFolder>
-  <commandSubFolder>fda f af da</commandSubFolder>
-</setting>
+<?xml version="1.0" standalone="yes"?>
+<DataSet1 xmlns="http://tempuri.org/DataSet1.xsd">
+  <FileList>
+    <FileName>ss</FileName>
+    <capture>None</capture>
+    <outputFileName>ss</outputFileName>
+  </FileList>
+  <FileList>
+    <FileName>g5</FileName>
+    <capture>Lines</capture>
+    <outputFileName>g5</outputFileName>
+  </FileList>
+  <FileList />
+</DataSet1>
