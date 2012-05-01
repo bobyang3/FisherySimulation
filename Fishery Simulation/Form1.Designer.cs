@@ -518,6 +518,7 @@
             // summayFilesDataGridView
             // 
             this.summayFilesDataGridView.AutoGenerateColumns = false;
+            this.summayFilesDataGridView.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.EnableWithoutHeaderText;
             this.summayFilesDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.summayFilesDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn1,
@@ -526,10 +527,11 @@
             this.dataGridViewTextBoxColumn4});
             this.summayFilesDataGridView.DataSource = this.summayFilesBindingSource;
             this.summayFilesDataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.summayFilesDataGridView.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
             this.summayFilesDataGridView.Location = new System.Drawing.Point(143, 72);
             this.summayFilesDataGridView.Name = "summayFilesDataGridView";
             this.summayFilesDataGridView.Size = new System.Drawing.Size(659, 249);
-            this.summayFilesDataGridView.TabIndex = 12;
+            this.summayFilesDataGridView.TabIndex = 100;
             // 
             // dataGridViewTextBoxColumn1
             // 
@@ -587,15 +589,15 @@
             this.rootFolderTextBox1.Location = new System.Drawing.Point(143, 28);
             this.rootFolderTextBox1.Name = "rootFolderTextBox1";
             this.rootFolderTextBox1.Size = new System.Drawing.Size(659, 20);
-            this.rootFolderTextBox1.TabIndex = 11;
+            this.rootFolderTextBox1.TabIndex = 80;
             // 
             // simulationNumTextBox
             // 
             this.simulationNumTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.settingsBindingSource, "simulationNum", true));
             this.simulationNumTextBox.Location = new System.Drawing.Point(143, 50);
             this.simulationNumTextBox.Name = "simulationNumTextBox";
-            this.simulationNumTextBox.Size = new System.Drawing.Size(100, 20);
-            this.simulationNumTextBox.TabIndex = 12;
+            this.simulationNumTextBox.Size = new System.Drawing.Size(56, 20);
+            this.simulationNumTextBox.TabIndex = 90;
             // 
             // button3
             // 
