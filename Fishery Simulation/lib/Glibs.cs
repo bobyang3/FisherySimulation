@@ -104,7 +104,7 @@ namespace Fishery_Simulation
 
         public static int? tointNullable(object o1)
         {
-            return o1 == null ? (int?)null : int.Parse(o1.ToString());
+            return (o1 == null || o1.ToString()== "") ? (int?)null : int.Parse(o1.ToString());
         }
 
 
