@@ -522,6 +522,8 @@ namespace Fishery_Simulation
         private void button2_Click(object sender, EventArgs e)
         {
             rootFolderTextBox.Focus(); //to make sure the text is modified in the Dataset
+            this.Focus();
+
             DialogResult result = this.folderBrowserDialog1.ShowDialog();
             if (result == DialogResult.OK)
             {

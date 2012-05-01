@@ -60,6 +60,13 @@ namespace Fishery_Simulation.Properties {
             }
         }
         
+        internal static System.Drawing.Bitmap Open_Folder_Full_icon_20x20 {
+            get {
+                object obj = ResourceManager.GetObject("Open_Folder_Full_icon_20x20", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
         internal static System.Drawing.Bitmap school_of_fish {
             get {
                 object obj = ResourceManager.GetObject("school_of_fish", resourceCulture);

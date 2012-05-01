@@ -50,7 +50,6 @@
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.fileListBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.label1 = new System.Windows.Forms.Label();
-            this.button2 = new System.Windows.Forms.Button();
             this.rootFolderTextBox = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -64,6 +63,7 @@
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
+            this.button2 = new System.Windows.Forms.Button();
             this.FileName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.capture = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.fromLine = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -315,17 +315,6 @@
             this.label1.TabIndex = 9;
             this.label1.Text = "Step 1: Prepare (process in root folder to create sub folder set)";
             // 
-            // button2
-            // 
-            this.button2.Image = ((System.Drawing.Image)(resources.GetObject("button2.Image")));
-            this.button2.Location = new System.Drawing.Point(781, 25);
-            this.button2.Margin = new System.Windows.Forms.Padding(0);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(22, 22);
-            this.button2.TabIndex = 20;
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
-            // 
             // rootFolderTextBox
             // 
             this.rootFolderTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.settingsBindingSource, "rootFolder", true));
@@ -452,6 +441,17 @@
             // saveFileDialog1
             // 
             this.saveFileDialog1.Filter = "Setting Files (*.xml)|*.xml|All Files (*.*)|*.*";
+            // 
+            // button2
+            // 
+            this.button2.Image = global::Fishery_Simulation.Properties.Resources.Open_Folder_Full_icon_20x20;
+            this.button2.Location = new System.Drawing.Point(781, 25);
+            this.button2.Margin = new System.Windows.Forms.Padding(0);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(22, 22);
+            this.button2.TabIndex = 20;
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // FileName
             // 

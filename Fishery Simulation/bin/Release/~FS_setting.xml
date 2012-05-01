@@ -1,0 +1,17 @@
+<?xml version="1.0" standalone="yes"?>
+<DataSet1 xmlns="http://tempuri.org/DataSet1.xsd">
+  <FileList>
+    <FileName>autorunsc.exe</FileName>
+    <capture>None</capture>
+    <outputFileName>autorunsc.exe</outputFileName>
+  </FileList>
+  <FileList>
+    <FileName>~FS_setting.xml</FileName>
+    <capture>None</capture>
+    <outputFileName>~FS_setting.xml</outputFileName>
+  </FileList>
+  <Settings>
+    <rootFolder>C:\_MSmesh_\(my documents)\__PROJECTS__\Fishery Simulation\Fishery Simulation\bin\Release\~~original</rootFolder>
+    <simulationNum>2</simulationNum>
+  </Settings>
+</DataSet1>
