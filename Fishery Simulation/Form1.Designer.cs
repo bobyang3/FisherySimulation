@@ -517,6 +517,7 @@
             // 
             // summayFilesDataGridView
             // 
+            this.summayFilesDataGridView.AllowUserToOrderColumns = true;
             this.summayFilesDataGridView.AutoGenerateColumns = false;
             this.summayFilesDataGridView.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.EnableWithoutHeaderText;
             this.summayFilesDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -532,6 +533,7 @@
             this.summayFilesDataGridView.Name = "summayFilesDataGridView";
             this.summayFilesDataGridView.Size = new System.Drawing.Size(659, 249);
             this.summayFilesDataGridView.TabIndex = 100;
+            this.summayFilesDataGridView.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.summayFilesDataGridView_CellEndEdit);
             // 
             // dataGridViewTextBoxColumn1
             // 
@@ -608,6 +610,7 @@
             this.button3.TabIndex = 13;
             this.button3.Text = "RUN";
             this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // label7
             // 

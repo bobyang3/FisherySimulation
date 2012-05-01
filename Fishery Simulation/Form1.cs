@@ -459,6 +459,7 @@ namespace Fishery_Simulation
         private void saveSettingToolStripMenuItem_Click(object sender, EventArgs e)
         {
             textBox2.Focus(); //TO MAKE SURE LEAVE DATAGRID AND UPDATE THE CHANGES
+            this.Focus();
             
             //path of XML file            
            // dataSet1.WriteXml(@"FS_setting.xml");
@@ -483,6 +484,7 @@ namespace Fishery_Simulation
                 {
                     dataSet1.Tables["FileList"].Clear();
                     dataSet1.Tables["Settings"].Clear();
+                    dataSet1.Tables["SummayFiles"].Clear();
                     dataSet1.ReadXml(openFileDialog1.FileName);
                     //dataSet1.ReadXml(@"FS_setting.xml");
                 }
@@ -596,6 +598,52 @@ namespace Fishery_Simulation
                 MessageBox.Show("leave control error");
             }
 
+
+        }
+
+        private void summayFilesDataGridView_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                if (e.ColumnIndex == 0) //fileName is netered
+                {
+                    summayFilesDataGridView["dataGridViewTextBoxColumn1", e.RowIndex].Value = summayFilesDataGridView[0, e.RowIndex].EditedFormattedValue; //copy values from input to output
+                }
+            }
+            catch { }
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            for (int j = 0; j < summayFilesDataGridView.RowCount - 1; j++)
+            {
+                string filename = Glibs.toStringNullable(summayFilesDataGridView.Rows[j].Cells["dataGridViewTextBoxColumn1"].Value);
+                int? fromLine = Glibs.tointNullable(summayFilesDataGridView.Rows[j].Cells["dataGridViewTextBoxColumn2"].Value);
+                int? toLine = Glibs.tointNullable(summayFilesDataGridView.Rows[j].Cells["dataGridViewTextBoxColumn3"].Value);
+                string outputFileName = Glibs.toStringNullable(summayFilesDataGridView.Rows[j].Cells["dataGridViewTextBoxColumn4"].Value);
+
+                string rootFolder = rootFolderTextBox1.Text.ToString().Trim();
+                int? _sub_folder_num = Glibs.tointNullable(simulationNumTextBox.Text);
+                string captured = "";
+
+                if (_sub_folder_num != null && (fromLine != null && toLine != null))///copy line text
+                {
+                    for (int i = 1; i <= _sub_folder_num; i++)
+                    {
+                        //open file and get conents, then copy over the conents
+                        string sourceFile = Path.Combine(Path.Combine(rootFolder, i.ToString()), filename);
+                        captured = captured + Glibs.ReadLineText(sourceFile, fromLine, toLine) + Environment.NewLine;
+
+                    }
+
+
+                    string destFile = Path.Combine(rootFolder, outputFileName);
+                    Glibs.WritelineText(destFile, captured);
+                }
+
+            }
+
+            MessageBox.Show("Step 3 is completed.");
 
         }
 

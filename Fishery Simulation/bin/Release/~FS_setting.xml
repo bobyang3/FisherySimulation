@@ -22,4 +22,10 @@
     <rootFolder>C:\_MSmesh_\(my documents)\__PROJECTS__\Fishery Simulation\Fishery Simulation\bin\Release</rootFolder>
     <simulationNum>2</simulationNum>
   </Settings>
+  <SummayFiles>
+    <sourceFile>~FS_setting2.xml</sourceFile>
+    <fromLine>2</fromLine>
+    <toLine>4</toLine>
+    <outoutFileOrTable>~~.txt</outoutFileOrTable>
+  </SummayFiles>
 </DataSet1>
