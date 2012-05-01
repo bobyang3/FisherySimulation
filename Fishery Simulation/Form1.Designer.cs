@@ -30,6 +30,8 @@
         {
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.Label rootFolderLabel;
+            System.Windows.Forms.Label rootFolderLabel1;
+            System.Windows.Forms.Label simulationNumLabel;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
@@ -50,6 +52,7 @@
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.fileListBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.label1 = new System.Windows.Forms.Label();
+            this.button2 = new System.Windows.Forms.Button();
             this.rootFolderTextBox = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -60,10 +63,21 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
+            this.summayFilesDataGridView = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.summayFilesBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.label8 = new System.Windows.Forms.Label();
+            this.rootFolderTextBox1 = new System.Windows.Forms.TextBox();
+            this.simulationNumTextBox = new System.Windows.Forms.TextBox();
+            this.button3 = new System.Windows.Forms.Button();
+            this.label7 = new System.Windows.Forms.Label();
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
-            this.button2 = new System.Windows.Forms.Button();
             this.FileName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.capture = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.fromLine = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -73,6 +87,8 @@
             this.randomGen = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.outputFileName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             rootFolderLabel = new System.Windows.Forms.Label();
+            rootFolderLabel1 = new System.Windows.Forms.Label();
+            simulationNumLabel = new System.Windows.Forms.Label();
             this.statusStrip1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -87,6 +103,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.fileListBindingSource1)).BeginInit();
             this.tableLayoutPanel2.SuspendLayout();
+            this.tabPage2.SuspendLayout();
+            this.tableLayoutPanel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.summayFilesDataGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.summayFilesBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // rootFolderLabel
@@ -99,6 +119,26 @@
             rootFolderLabel.Size = new System.Drawing.Size(65, 17);
             rootFolderLabel.TabIndex = 9;
             rootFolderLabel.Text = "Root Folder:";
+            // 
+            // rootFolderLabel1
+            // 
+            rootFolderLabel1.AutoSize = true;
+            rootFolderLabel1.Location = new System.Drawing.Point(23, 28);
+            rootFolderLabel1.Margin = new System.Windows.Forms.Padding(3);
+            rootFolderLabel1.Name = "rootFolderLabel1";
+            rootFolderLabel1.Size = new System.Drawing.Size(65, 13);
+            rootFolderLabel1.TabIndex = 10;
+            rootFolderLabel1.Text = "Root Folder:";
+            // 
+            // simulationNumLabel
+            // 
+            simulationNumLabel.AutoSize = true;
+            simulationNumLabel.Location = new System.Drawing.Point(23, 50);
+            simulationNumLabel.Margin = new System.Windows.Forms.Padding(3);
+            simulationNumLabel.Name = "simulationNumLabel";
+            simulationNumLabel.Size = new System.Drawing.Size(105, 13);
+            simulationNumLabel.TabIndex = 11;
+            simulationNumLabel.Text = "Create # simulations:";
             // 
             // statusStrip1
             // 
@@ -276,6 +316,7 @@
             // 
             this.dataGridView1.AllowUserToOrderColumns = true;
             this.dataGridView1.AutoGenerateColumns = false;
+            this.dataGridView1.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.EnableWithoutHeaderText;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.FileName,
@@ -289,15 +330,16 @@
             this.tableLayoutPanel1.SetColumnSpan(this.dataGridView1, 2);
             this.dataGridView1.DataSource = this.fileListBindingSource1;
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridView1.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
             this.dataGridView1.Location = new System.Drawing.Point(143, 100);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(657, 164);
             this.dataGridView1.TabIndex = 50;
-            this.dataGridView1.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dataGridView1_CellFormatting);
+            this.dataGridView1.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellEndEdit);
             this.dataGridView1.CellLeave += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellLeave);
+            this.dataGridView1.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.dataGridView1_DataError);
             this.dataGridView1.DefaultValuesNeeded += new System.Windows.Forms.DataGridViewRowEventHandler(this.dataGridView1_DefaultValuesNeeded);
-            this.dataGridView1.EditingControlShowing += new System.Windows.Forms.DataGridViewEditingControlShowingEventHandler(this.dataGridView1_EditingControlShowing);
-            this.dataGridView1.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.dataGridView1_RowsAdded);
+            this.dataGridView1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dataGridView1_KeyDown);
             // 
             // fileListBindingSource1
             // 
@@ -314,6 +356,17 @@
             this.label1.Size = new System.Drawing.Size(426, 16);
             this.label1.TabIndex = 9;
             this.label1.Text = "Step 1: Prepare (process in root folder to create sub folder set)";
+            // 
+            // button2
+            // 
+            this.button2.Image = global::Fishery_Simulation.Properties.Resources.Open_Folder_Full_icon_20x20;
+            this.button2.Location = new System.Drawing.Point(781, 25);
+            this.button2.Margin = new System.Windows.Forms.Padding(0);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(22, 22);
+            this.button2.TabIndex = 20;
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // rootFolderTextBox
             // 
@@ -425,6 +478,7 @@
             // tabPage2
             // 
             this.tabPage2.AutoScroll = true;
+            this.tabPage2.Controls.Add(this.tableLayoutPanel3);
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
@@ -432,6 +486,136 @@
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Output Results";
             this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // tableLayoutPanel3
+            // 
+            this.tableLayoutPanel3.AutoScroll = true;
+            this.tableLayoutPanel3.AutoSize = true;
+            this.tableLayoutPanel3.ColumnCount = 3;
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 120F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel3.Controls.Add(this.summayFilesDataGridView, 2, 3);
+            this.tableLayoutPanel3.Controls.Add(this.label8, 0, 0);
+            this.tableLayoutPanel3.Controls.Add(this.rootFolderTextBox1, 2, 1);
+            this.tableLayoutPanel3.Controls.Add(rootFolderLabel1, 1, 1);
+            this.tableLayoutPanel3.Controls.Add(simulationNumLabel, 1, 2);
+            this.tableLayoutPanel3.Controls.Add(this.simulationNumTextBox, 2, 2);
+            this.tableLayoutPanel3.Controls.Add(this.button3, 2, 4);
+            this.tableLayoutPanel3.Controls.Add(this.label7, 1, 3);
+            this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel3.Location = new System.Drawing.Point(3, 3);
+            this.tableLayoutPanel3.Name = "tableLayoutPanel3";
+            this.tableLayoutPanel3.RowCount = 5;
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 22F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 22F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(805, 349);
+            this.tableLayoutPanel3.TabIndex = 0;
+            // 
+            // summayFilesDataGridView
+            // 
+            this.summayFilesDataGridView.AutoGenerateColumns = false;
+            this.summayFilesDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.summayFilesDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn1,
+            this.dataGridViewTextBoxColumn2,
+            this.dataGridViewTextBoxColumn3,
+            this.dataGridViewTextBoxColumn4});
+            this.summayFilesDataGridView.DataSource = this.summayFilesBindingSource;
+            this.summayFilesDataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.summayFilesDataGridView.Location = new System.Drawing.Point(143, 72);
+            this.summayFilesDataGridView.Name = "summayFilesDataGridView";
+            this.summayFilesDataGridView.Size = new System.Drawing.Size(659, 249);
+            this.summayFilesDataGridView.TabIndex = 12;
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.dataGridViewTextBoxColumn1.DataPropertyName = "sourceFile";
+            this.dataGridViewTextBoxColumn1.HeaderText = "Result File Name";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.Width = 103;
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.dataGridViewTextBoxColumn2.DataPropertyName = "fromLine";
+            this.dataGridViewTextBoxColumn2.HeaderText = "From # line";
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.Width = 63;
+            // 
+            // dataGridViewTextBoxColumn3
+            // 
+            this.dataGridViewTextBoxColumn3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.dataGridViewTextBoxColumn3.DataPropertyName = "toLine";
+            this.dataGridViewTextBoxColumn3.HeaderText = "To # line";
+            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            this.dataGridViewTextBoxColumn3.Width = 69;
+            // 
+            // dataGridViewTextBoxColumn4
+            // 
+            this.dataGridViewTextBoxColumn4.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.dataGridViewTextBoxColumn4.DataPropertyName = "outoutFileOrTable";
+            this.dataGridViewTextBoxColumn4.HeaderText = "Final File Name in root folder";
+            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            this.dataGridViewTextBoxColumn4.Width = 108;
+            // 
+            // summayFilesBindingSource
+            // 
+            this.summayFilesBindingSource.DataMember = "SummayFiles";
+            this.summayFilesBindingSource.DataSource = this.dataSet1;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.tableLayoutPanel3.SetColumnSpan(this.label8, 3);
+            this.label8.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold);
+            this.label8.Location = new System.Drawing.Point(3, 0);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(630, 16);
+            this.label8.TabIndex = 10;
+            this.label8.Text = "Step 3: Output (process in results from each sub folder and merge to one file in " +
+    "the root folder)";
+            // 
+            // rootFolderTextBox1
+            // 
+            this.rootFolderTextBox1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.settingsBindingSource, "rootFolder", true));
+            this.rootFolderTextBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rootFolderTextBox1.Location = new System.Drawing.Point(143, 28);
+            this.rootFolderTextBox1.Name = "rootFolderTextBox1";
+            this.rootFolderTextBox1.Size = new System.Drawing.Size(659, 20);
+            this.rootFolderTextBox1.TabIndex = 11;
+            // 
+            // simulationNumTextBox
+            // 
+            this.simulationNumTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.settingsBindingSource, "simulationNum", true));
+            this.simulationNumTextBox.Location = new System.Drawing.Point(143, 50);
+            this.simulationNumTextBox.Name = "simulationNumTextBox";
+            this.simulationNumTextBox.Size = new System.Drawing.Size(100, 20);
+            this.simulationNumTextBox.TabIndex = 12;
+            // 
+            // button3
+            // 
+            this.button3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.button3.Location = new System.Drawing.Point(727, 327);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(75, 19);
+            this.button3.TabIndex = 13;
+            this.button3.Text = "RUN";
+            this.button3.UseVisualStyleBackColor = true;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(23, 70);
+            this.label7.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(110, 52);
+            this.label7.TabIndex = 14;
+            this.label7.Text = "Process files in each sub folder and create a summary file in the root:";
             // 
             // openFileDialog1
             // 
@@ -441,17 +625,6 @@
             // saveFileDialog1
             // 
             this.saveFileDialog1.Filter = "Setting Files (*.xml)|*.xml|All Files (*.*)|*.*";
-            // 
-            // button2
-            // 
-            this.button2.Image = global::Fishery_Simulation.Properties.Resources.Open_Folder_Full_icon_20x20;
-            this.button2.Location = new System.Drawing.Point(781, 25);
-            this.button2.Margin = new System.Windows.Forms.Padding(0);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(22, 22);
-            this.button2.TabIndex = 20;
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // FileName
             // 
@@ -563,6 +736,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.fileListBindingSource1)).EndInit();
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel2.PerformLayout();
+            this.tabPage2.ResumeLayout(false);
+            this.tabPage2.PerformLayout();
+            this.tableLayoutPanel3.ResumeLayout(false);
+            this.tableLayoutPanel3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.summayFilesDataGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.summayFilesBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -603,6 +782,18 @@
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.SaveFileDialog saveFileDialog1;
         private System.Windows.Forms.ToolStripMenuItem hellpToolStripMenuItem;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
+        private System.Windows.Forms.DataGridView summayFilesDataGridView;
+        private System.Windows.Forms.BindingSource summayFilesBindingSource;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.TextBox rootFolderTextBox1;
+        private System.Windows.Forms.TextBox simulationNumTextBox;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
         private System.Windows.Forms.DataGridViewTextBoxColumn FileName;
         private System.Windows.Forms.DataGridViewComboBoxColumn capture;
         private System.Windows.Forms.DataGridViewTextBoxColumn fromLine;

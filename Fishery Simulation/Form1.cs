@@ -434,52 +434,27 @@ namespace Fishery_Simulation
 
         private void dataGridView1_CellLeave(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.ColumnIndex == 0) //fileName is netered
-            {
-                dataGridView1["outputFileName", e.RowIndex].Value = dataGridView1[0, e.RowIndex].EditedFormattedValue; //copy values from input to output
-            }
+            //if (e.ColumnIndex == 0) //fileName is netered
+            //{
+            //    dataGridView1["outputFileName", e.RowIndex].Value = dataGridView1[0, e.RowIndex].EditedFormattedValue; //copy values from input to output
+            //}
 
 
         }
 
-        private void dataGridView1_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
-        {
-            //set default value
-
-            //dataGridView1[1, e.RowIndex]. = 0;
-
-        }
 
         private void dataGridView1_DefaultValuesNeeded(object sender, DataGridViewRowEventArgs e)
         {
             //e.Row.Cells[2].ReadOnly = true;
 
+
+            //multilines
             dataGridView1.Columns["randomGen"].DefaultCellStyle.WrapMode = DataGridViewTriState.True;
 
 
         }
 
-        private void dataGridView1_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
-        {
-            //if (e.ColumnIndex == 1 && e.Value==null) // your combo column index
-            //{
-            //    e.Value = "None";
-            //}
-
-            
-        }
-
-        private void dataGridView1_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
-        {
-            //try
-            //{
-            //    TextBox TB = (TextBox)e.Control;
-            //    TB.Multiline = true;
-            //}
-            //catch (Exception e1)
-            //{ 
-            //}
-        }
+     
 
         private void saveSettingToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -538,6 +513,90 @@ namespace Fishery_Simulation
                 System.Diagnostics.Process.Start("http://fisherysimulation.codeplex.com/documentation");
             }
             catch { }
+        }
+
+        private void dataGridView1_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                if (e.ColumnIndex == 0) //fileName is netered
+                {
+                    dataGridView1["outputFileName", e.RowIndex].Value = dataGridView1[0, e.RowIndex].EditedFormattedValue; //copy values from input to output
+                }
+            }
+            catch{}
+        }
+
+        private void dataGridView1_KeyDown(object sender, KeyEventArgs e)
+        {
+            try
+            {
+                if (e.Control && e.KeyCode == Keys.C)
+                {
+                    DataObject d = dataGridView1.GetClipboardContent();
+                    Clipboard.SetDataObject(d);
+                    e.Handled = true;
+                }
+                else if (e.Control && e.KeyCode == Keys.V)
+                {
+                    string s = Clipboard.GetText();
+                    string[] lines = s.Split('\n');
+                    int row = dataGridView1.CurrentCell.RowIndex;
+                    int col = dataGridView1.CurrentCell.ColumnIndex;
+                    foreach (string line in lines)
+                    {
+                        if (row < dataGridView1.RowCount && line.Length >
+                        0)
+                        {
+                            string[] cells = line.Split('\t');
+                            for (int i = 0; i < cells.GetLength(0); ++i)
+                            {
+                                if (col + i <
+                                this.dataGridView1.ColumnCount)
+                                {
+                                    dataGridView1[col + i, row].Value =
+                                    Convert.ChangeType(cells[i], dataGridView1[col + i, row].ValueType);
+                                }
+                                else
+                                {
+                                    break;
+                                }
+                            }
+                            row++;
+                        }
+                        else
+                        {
+                            break;
+                        }
+                    }
+                }
+            }
+            catch (Exception ei) { }
+        }
+
+        private void dataGridView1_DataError(object sender, DataGridViewDataErrorEventArgs e)
+        {
+
+
+
+            if (e.Context == DataGridViewDataErrorContexts.Commit)
+            {
+                MessageBox.Show("Commit error");
+            }
+            if (e.Context == DataGridViewDataErrorContexts.CurrentCellChange)
+            {
+                MessageBox.Show("Cell change");
+            }
+            if (e.Context == DataGridViewDataErrorContexts.Parsing)
+            {
+                MessageBox.Show("parsing error");
+            }
+            if (e.Context == DataGridViewDataErrorContexts.LeaveControl)
+            {
+                MessageBox.Show("leave control error");
+            }
+
+
         }
 
 

@@ -7,11 +7,19 @@
   </FileList>
   <FileList>
     <FileName>~FS_setting.xml</FileName>
-    <capture>None</capture>
-    <outputFileName>~FS_setting.xml</outputFileName>
+    <capture>Block</capture>
+    <block>3</block>
+    <outputFileName>~FS_setting1.xml</outputFileName>
+  </FileList>
+  <FileList>
+    <FileName>~FS_setting.xml</FileName>
+    <capture>Lines</capture>
+    <fromLine>2</fromLine>
+    <toLine>5</toLine>
+    <outputFileName>~FS_setting2.xml</outputFileName>
   </FileList>
   <Settings>
-    <rootFolder>C:\_MSmesh_\(my documents)\__PROJECTS__\Fishery Simulation\Fishery Simulation\bin\Release\~~original</rootFolder>
+    <rootFolder>C:\_MSmesh_\(my documents)\__PROJECTS__\Fishery Simulation\Fishery Simulation\bin\Release</rootFolder>
     <simulationNum>2</simulationNum>
   </Settings>
 </DataSet1>
