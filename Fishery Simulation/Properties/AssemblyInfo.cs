@@ -6,7 +6,7 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("Fishery Simulation")]
-[assembly: AssemblyDescription("https://fisherysimulation.codeplex.com/")]
+[assembly: AssemblyDescription("https://fisherysimulation.codeplex.com/ <br/> Please check https://fisherysimulation.codeplex.com/documentation for HELP")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Robert Yang")]
 [assembly: AssemblyProduct("Fishery Simulation")]

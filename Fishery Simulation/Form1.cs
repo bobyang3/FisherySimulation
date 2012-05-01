@@ -483,38 +483,17 @@ namespace Fishery_Simulation
 
         private void saveSettingToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            textBox2.Focus();
-            //List<Control> allcontrls = Glibs.GetControls2(this);
+            textBox2.Focus(); //TO MAKE SURE LEAVE DATAGRID AND UPDATE THE CHANGES
+            
+            //path of XML file            
+           // dataSet1.WriteXml(@"FS_setting.xml");
 
-            //MessageBox.Show(Glibs.GetCPUCore().ToString());
+            DialogResult result = this.saveFileDialog1.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                  dataSet1.WriteXml(saveFileDialog1.FileName);
+            }
 
-            //// string s = "safd";
-            // string s = this.textBox2.Text ;
-            // System.Xml.Serialization.XmlSerializer x = new System.Xml.Serialization.XmlSerializer(s.GetType());
-            // x.Serialize(Console.Out, s);
-            // Console.WriteLine();
-            // Console.ReadLine();
-
-            //// Set indent=true so resulting file is more 'human-readable'
-            //XmlWriterSettings settings = new XmlWriterSettings() { Indent = true };
-
-            //// Put writer in using scope; after end of scope, file is automatically saved.
-            //using (XmlWriter writer = XmlTextWriter.Create("FS_setting.xml", settings))
-            //{
-            //    writer.WriteStartDocument();
-            //    writer.WriteStartElement("setting");
-            //    writer.WriteElementString("rootFolder", rootFolderTextBox.Text);
-            //    writer.WriteElementString("simulationNum", textBox2.Text);
-            //    writer.WriteElementString("commandRootFolder", textBox3.Text);
-            //    writer.WriteElementString("commandSubFolder", textBox4.Text);
-            //    writer.WriteEndElement();
-            //}
-
-
-
-
-            //path of XML file
-            dataSet1.WriteXml(@"FS_setting.xml");
 
         }
 
@@ -523,17 +502,17 @@ namespace Fishery_Simulation
         {
             try
             {
-                //XmlDocument doc = new XmlDocument();
-                //doc.Load("FS_setting.xml");
-                //XmlElement root = doc.DocumentElement;
-                //rootFolderTextBox.Text = root.GetElementsByTagName("rootFolder")[0].InnerText;
-                //textBox2.Text = root.GetElementsByTagName("simulationNum")[0].InnerText;
-                //textBox3.Text = root.GetElementsByTagName("commandRootFolder")[0].InnerText;
-                //textBox4.Text = root.GetElementsByTagName("commandSubFolder")[0].InnerText;
 
-                dataSet1.Tables["FileList"].Clear();
-                dataSet1.Tables["Settings"].Clear();
-                dataSet1.ReadXml(@"FS_setting.xml");
+                DialogResult result = this.openFileDialog1.ShowDialog();
+                if (result == DialogResult.OK)
+                {
+                    dataSet1.Tables["FileList"].Clear();
+                    dataSet1.Tables["Settings"].Clear();
+                    dataSet1.ReadXml(openFileDialog1.FileName);
+                    //dataSet1.ReadXml(@"FS_setting.xml");
+                }
+
+                
             }
             catch (Exception ei)
             { }
@@ -542,11 +521,21 @@ namespace Fishery_Simulation
 
         private void button2_Click(object sender, EventArgs e)
         {
+            rootFolderTextBox.Focus(); //to make sure the text is modified in the Dataset
             DialogResult result = this.folderBrowserDialog1.ShowDialog();
             if (result == DialogResult.OK)
             {
                 rootFolderTextBox.Text = folderBrowserDialog1.SelectedPath;
             }
+        }
+
+        private void hellpToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                System.Diagnostics.Process.Start("http://fisherysimulation.codeplex.com/documentation");
+            }
+            catch { }
         }
 
 
