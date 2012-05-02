@@ -58,9 +58,9 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
-            this.cPUNumTextBox = new System.Windows.Forms.TextBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+            this.cPUNumTextBox = new System.Windows.Forms.TextBox();
             this.textBox4 = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
@@ -156,9 +156,9 @@
             cPUNumLabel.Location = new System.Drawing.Point(23, 51);
             cPUNumLabel.Margin = new System.Windows.Forms.Padding(3);
             cPUNumLabel.Name = "cPUNumLabel";
-            cPUNumLabel.Size = new System.Drawing.Size(82, 17);
+            cPUNumLabel.Size = new System.Drawing.Size(95, 17);
             cPUNumLabel.TabIndex = 30;
-            cPUNumLabel.Text = "Paralle Running Number:";
+            cPUNumLabel.Text = "Paralle Running #:";
             cPUNumLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // statusStrip1
@@ -386,6 +386,7 @@
             this.rootFolderTextBox.Name = "rootFolderTextBox";
             this.rootFolderTextBox.Size = new System.Drawing.Size(638, 20);
             this.rootFolderTextBox.TabIndex = 10;
+            this.rootFolderTextBox.Leave += new System.EventHandler(this.rootFolderTextBox_Leave);
             // 
             // label2
             // 
@@ -434,17 +435,9 @@
             this.tableLayoutPanel4.Name = "tableLayoutPanel4";
             this.tableLayoutPanel4.RowCount = 1;
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 27F));
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 24F));
             this.tableLayoutPanel4.Size = new System.Drawing.Size(663, 23);
             this.tableLayoutPanel4.TabIndex = 51;
-            // 
-            // cPUNumTextBox
-            // 
-            this.cPUNumTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.settingsBindingSource, "CPUNum", true));
-            this.cPUNumTextBox.Location = new System.Drawing.Point(143, 51);
-            this.cPUNumTextBox.Name = "cPUNumTextBox";
-            this.cPUNumTextBox.Size = new System.Drawing.Size(74, 20);
-            this.cPUNumTextBox.TabIndex = 31;
             // 
             // textBox2
             // 
@@ -455,6 +448,7 @@
             this.textBox2.Size = new System.Drawing.Size(56, 20);
             this.textBox2.TabIndex = 30;
             this.textBox2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox2_KeyPress);
+            this.textBox2.Leave += new System.EventHandler(this.textBox2_Leave);
             // 
             // tableLayoutPanel2
             // 
@@ -479,6 +473,14 @@
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
             this.tableLayoutPanel2.Size = new System.Drawing.Size(803, 102);
             this.tableLayoutPanel2.TabIndex = 0;
+            // 
+            // cPUNumTextBox
+            // 
+            this.cPUNumTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.settingsBindingSource, "CPUNum", true));
+            this.cPUNumTextBox.Location = new System.Drawing.Point(143, 51);
+            this.cPUNumTextBox.Name = "cPUNumTextBox";
+            this.cPUNumTextBox.Size = new System.Drawing.Size(56, 20);
+            this.cPUNumTextBox.TabIndex = 31;
             // 
             // textBox4
             // 
@@ -668,6 +670,7 @@
             this.rootFolderTextBox1.Name = "rootFolderTextBox1";
             this.rootFolderTextBox1.Size = new System.Drawing.Size(659, 20);
             this.rootFolderTextBox1.TabIndex = 80;
+            this.rootFolderTextBox1.Leave += new System.EventHandler(this.rootFolderTextBox1_Leave);
             // 
             // simulationNumTextBox
             // 
@@ -676,6 +679,7 @@
             this.simulationNumTextBox.Name = "simulationNumTextBox";
             this.simulationNumTextBox.Size = new System.Drawing.Size(56, 20);
             this.simulationNumTextBox.TabIndex = 90;
+            this.simulationNumTextBox.Leave += new System.EventHandler(this.simulationNumTextBox_Leave);
             // 
             // button3
             // 

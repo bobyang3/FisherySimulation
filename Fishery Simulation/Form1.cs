@@ -46,9 +46,15 @@ namespace Fishery_Simulation
             DataRow row=dataSet1.Tables["Settings"].NewRow();
             dataSet1.Tables["Settings"].Rows.Add(row);
 
-            cPUNumTextBox.Text = Glibs.GetCPUCore().ToString();
+            settingsBindingSource.MoveFirst();
 
-            rootFolderTextBox.Text = Directory.GetCurrentDirectory();
+            cPUNumTextBox.Text = Glibs.GetCPUCore().ToString();
+            ////rootFolderTextBox.Text = Directory.GetCurrentDirectory();
+            dataSet1.Tables["Settings"].Rows[0][0]=  Directory.GetCurrentDirectory();
+            //simulationNumTextBox.Refresh();
+
+            settingsBindingSource.EndEdit();
+            
         }
 
 
@@ -768,6 +774,27 @@ namespace Fishery_Simulation
         private void summayFilesDataGridView_DataError(object sender, DataGridViewDataErrorEventArgs e)
         {
 
+        }
+
+        private void textBox2_Leave(object sender, EventArgs e)
+        {
+            //int i = 5;
+            settingsBindingSource.EndEdit();
+        }
+
+        private void rootFolderTextBox_Leave(object sender, EventArgs e)
+        {
+            settingsBindingSource.EndEdit();
+        }
+
+        private void simulationNumTextBox_Leave(object sender, EventArgs e)
+        {
+            settingsBindingSource.EndEdit();
+        }
+
+        private void rootFolderTextBox1_Leave(object sender, EventArgs e)
+        {
+            settingsBindingSource.EndEdit();
         }
 
 
