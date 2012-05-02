@@ -32,6 +32,7 @@
             System.Windows.Forms.Label rootFolderLabel;
             System.Windows.Forms.Label rootFolderLabel1;
             System.Windows.Forms.Label simulationNumLabel;
+            System.Windows.Forms.Label cPUNumLabel;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
@@ -46,22 +47,35 @@
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.settingsBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.dataSet1 = new Fishery_Simulation.DataSet1();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.fileListBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.label1 = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
             this.rootFolderTextBox = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
+            this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
+            this.cPUNumTextBox = new System.Windows.Forms.TextBox();
+            this.textBox2 = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.textBox4 = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.summayFilesDataGridView = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.onlyOneHeader = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.addSourceFolderNumInFront = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.delimited = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.summayFilesBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.label8 = new System.Windows.Forms.Label();
             this.rootFolderTextBox1 = new System.Windows.Forms.TextBox();
             this.simulationNumTextBox = new System.Windows.Forms.TextBox();
@@ -70,17 +84,6 @@
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
-            this.settingsBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.dataSet1 = new Fishery_Simulation.DataSet1();
-            this.fileListBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.summayFilesBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.onlyOneHeader = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.addSourceFolderNumInFront = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.delimited = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.FileName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.capture = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.fromLine = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -92,6 +95,7 @@
             rootFolderLabel = new System.Windows.Forms.Label();
             rootFolderLabel1 = new System.Windows.Forms.Label();
             simulationNumLabel = new System.Windows.Forms.Label();
+            cPUNumLabel = new System.Windows.Forms.Label();
             this.statusStrip1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -101,14 +105,15 @@
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.settingsBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataSet1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.fileListBindingSource1)).BeginInit();
+            this.tableLayoutPanel4.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.summayFilesDataGridView)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.settingsBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataSet1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fileListBindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.summayFilesBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
@@ -143,11 +148,23 @@
             simulationNumLabel.TabIndex = 11;
             simulationNumLabel.Text = "Create # simulations:";
             // 
+            // cPUNumLabel
+            // 
+            cPUNumLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            cPUNumLabel.AutoSize = true;
+            cPUNumLabel.Location = new System.Drawing.Point(455, 0);
+            cPUNumLabel.Name = "cPUNumLabel";
+            cPUNumLabel.Size = new System.Drawing.Size(125, 27);
+            cPUNumLabel.TabIndex = 30;
+            cPUNumLabel.Text = "Paralle Running Number:";
+            cPUNumLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // statusStrip1
             // 
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripStatusLabel1});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 405);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 443);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Size = new System.Drawing.Size(819, 22);
             this.statusStrip1.TabIndex = 0;
@@ -216,7 +233,7 @@
             this.tabControl1.Location = new System.Drawing.Point(0, 24);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(819, 381);
+            this.tabControl1.Size = new System.Drawing.Size(819, 419);
             this.tabControl1.TabIndex = 2;
             // 
             // tabPage1
@@ -225,7 +242,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(811, 355);
+            this.tabPage1.Size = new System.Drawing.Size(811, 393);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Process Data";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -247,8 +264,8 @@
             // 
             this.splitContainer1.Panel2.AutoScroll = true;
             this.splitContainer1.Panel2.Controls.Add(this.tableLayoutPanel2);
-            this.splitContainer1.Size = new System.Drawing.Size(805, 349);
-            this.splitContainer1.SplitterDistance = 269;
+            this.splitContainer1.Size = new System.Drawing.Size(805, 387);
+            this.splitContainer1.SplitterDistance = 294;
             this.splitContainer1.TabIndex = 1;
             // 
             // tableLayoutPanel1
@@ -260,7 +277,6 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 22F));
             this.tableLayoutPanel1.Controls.Add(this.textBox3, 2, 3);
-            this.tableLayoutPanel1.Controls.Add(this.textBox2, 2, 2);
             this.tableLayoutPanel1.Controls.Add(this.dataGridView1, 2, 4);
             this.tableLayoutPanel1.Controls.Add(this.label1, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.button2, 3, 1);
@@ -269,16 +285,17 @@
             this.tableLayoutPanel1.Controls.Add(this.label2, 1, 2);
             this.tableLayoutPanel1.Controls.Add(this.label3, 1, 3);
             this.tableLayoutPanel1.Controls.Add(this.label4, 1, 4);
+            this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel4, 2, 2);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 5;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 23F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 23F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 27F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 23F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(803, 267);
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 37F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(803, 292);
             this.tableLayoutPanel1.TabIndex = 0;
             this.tableLayoutPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayoutPanel1_Paint);
             // 
@@ -287,22 +304,21 @@
             this.tableLayoutPanel1.SetColumnSpan(this.textBox3, 2);
             this.textBox3.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.settingsBindingSource, "commandRootFolder", true));
             this.textBox3.Dock = System.Windows.Forms.DockStyle.Top;
-            this.textBox3.Location = new System.Drawing.Point(143, 74);
+            this.textBox3.Location = new System.Drawing.Point(143, 78);
             this.textBox3.Name = "textBox3";
             this.textBox3.Size = new System.Drawing.Size(657, 20);
             this.textBox3.TabIndex = 40;
             // 
-            // textBox2
+            // settingsBindingSource
             // 
-            this.tableLayoutPanel1.SetColumnSpan(this.textBox2, 2);
-            this.textBox2.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.settingsBindingSource, "simulationNum", true));
-            this.textBox2.Dock = System.Windows.Forms.DockStyle.Left;
-            this.textBox2.Location = new System.Drawing.Point(143, 49);
-            this.textBox2.Margin = new System.Windows.Forms.Padding(3, 1, 3, 3);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(56, 20);
-            this.textBox2.TabIndex = 30;
-            this.textBox2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox2_KeyPress);
+            this.settingsBindingSource.DataMember = "Settings";
+            this.settingsBindingSource.DataSource = this.dataSet1;
+            // 
+            // dataSet1
+            // 
+            this.dataSet1.DataSetName = "DataSet1";
+            this.dataSet1.Locale = new System.Globalization.CultureInfo("");
+            this.dataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // dataGridView1
             // 
@@ -323,15 +339,20 @@
             this.dataGridView1.DataSource = this.fileListBindingSource1;
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView1.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
-            this.dataGridView1.Location = new System.Drawing.Point(143, 100);
+            this.dataGridView1.Location = new System.Drawing.Point(143, 104);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(657, 164);
+            this.dataGridView1.Size = new System.Drawing.Size(657, 185);
             this.dataGridView1.TabIndex = 50;
             this.dataGridView1.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellEndEdit);
             this.dataGridView1.CellLeave += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellLeave);
             this.dataGridView1.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.dataGridView1_DataError);
             this.dataGridView1.DefaultValuesNeeded += new System.Windows.Forms.DataGridViewRowEventHandler(this.dataGridView1_DefaultValuesNeeded);
             this.dataGridView1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dataGridView1_KeyDown);
+            // 
+            // fileListBindingSource1
+            // 
+            this.fileListBindingSource1.DataMember = "FileList";
+            this.fileListBindingSource1.DataSource = this.dataSet1;
             // 
             // label1
             // 
@@ -372,7 +393,7 @@
             this.label2.Location = new System.Drawing.Point(23, 51);
             this.label2.Margin = new System.Windows.Forms.Padding(3);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(105, 17);
+            this.label2.Size = new System.Drawing.Size(105, 21);
             this.label2.TabIndex = 11;
             this.label2.Text = "Create # simulations:";
             // 
@@ -380,7 +401,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Dock = System.Windows.Forms.DockStyle.Left;
-            this.label3.Location = new System.Drawing.Point(23, 74);
+            this.label3.Location = new System.Drawing.Point(23, 78);
             this.label3.Margin = new System.Windows.Forms.Padding(3);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(57, 20);
@@ -391,12 +412,50 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Dock = System.Windows.Forms.DockStyle.Left;
-            this.label4.Location = new System.Drawing.Point(23, 100);
+            this.label4.Location = new System.Drawing.Point(23, 104);
             this.label4.Margin = new System.Windows.Forms.Padding(3);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(90, 164);
+            this.label4.Size = new System.Drawing.Size(90, 185);
             this.label4.TabIndex = 13;
             this.label4.Text = "Copy Files to sub folder:";
+            // 
+            // tableLayoutPanel4
+            // 
+            this.tableLayoutPanel4.ColumnCount = 3;
+            this.tableLayoutPanel1.SetColumnSpan(this.tableLayoutPanel4, 2);
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 180F));
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 80F));
+            this.tableLayoutPanel4.Controls.Add(this.cPUNumTextBox, 2, 0);
+            this.tableLayoutPanel4.Controls.Add(this.textBox2, 0, 0);
+            this.tableLayoutPanel4.Controls.Add(cPUNumLabel, 1, 0);
+            this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel4.Location = new System.Drawing.Point(140, 48);
+            this.tableLayoutPanel4.Margin = new System.Windows.Forms.Padding(0);
+            this.tableLayoutPanel4.Name = "tableLayoutPanel4";
+            this.tableLayoutPanel4.RowCount = 1;
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(663, 27);
+            this.tableLayoutPanel4.TabIndex = 51;
+            // 
+            // cPUNumTextBox
+            // 
+            this.cPUNumTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.settingsBindingSource, "CPUNum", true));
+            this.cPUNumTextBox.Location = new System.Drawing.Point(586, 3);
+            this.cPUNumTextBox.Name = "cPUNumTextBox";
+            this.cPUNumTextBox.Size = new System.Drawing.Size(74, 20);
+            this.cPUNumTextBox.TabIndex = 31;
+            // 
+            // textBox2
+            // 
+            this.textBox2.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.settingsBindingSource, "simulationNum", true));
+            this.textBox2.Location = new System.Drawing.Point(3, 1);
+            this.textBox2.Margin = new System.Windows.Forms.Padding(3, 1, 3, 3);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(56, 20);
+            this.textBox2.TabIndex = 30;
+            this.textBox2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox2_KeyPress);
             // 
             // tableLayoutPanel2
             // 
@@ -406,17 +465,18 @@
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 120F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 663F));
             this.tableLayoutPanel2.Controls.Add(this.textBox4, 2, 1);
-            this.tableLayoutPanel2.Controls.Add(this.button1, 2, 2);
             this.tableLayoutPanel2.Controls.Add(this.label5, 0, 0);
             this.tableLayoutPanel2.Controls.Add(this.label6, 1, 1);
+            this.tableLayoutPanel2.Controls.Add(this.button1, 2, 2);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(0, -1);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(0, 7);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 3;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 23F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 23F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(803, 75);
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(803, 80);
             this.tableLayoutPanel2.TabIndex = 0;
             // 
             // textBox4
@@ -427,17 +487,6 @@
             this.textBox4.Name = "textBox4";
             this.textBox4.Size = new System.Drawing.Size(657, 20);
             this.textBox4.TabIndex = 60;
-            // 
-            // button1
-            // 
-            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button1.Location = new System.Drawing.Point(725, 51);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 21);
-            this.button1.TabIndex = 70;
-            this.button1.Text = "RUN";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // label5
             // 
@@ -462,6 +511,17 @@
             this.label6.TabIndex = 9;
             this.label6.Text = "Command:";
             // 
+            // button1
+            // 
+            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.button1.Location = new System.Drawing.Point(725, 51);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 21);
+            this.button1.TabIndex = 70;
+            this.button1.Text = "RUN";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // tabPage2
             // 
             this.tabPage2.AutoScroll = true;
@@ -469,7 +529,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(811, 355);
+            this.tabPage2.Size = new System.Drawing.Size(811, 393);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Output Results";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -499,7 +559,7 @@
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 22F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(805, 349);
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(805, 387);
             this.tableLayoutPanel3.TabIndex = 0;
             // 
             // summayFilesDataGridView
@@ -521,9 +581,70 @@
             this.summayFilesDataGridView.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
             this.summayFilesDataGridView.Location = new System.Drawing.Point(143, 72);
             this.summayFilesDataGridView.Name = "summayFilesDataGridView";
-            this.summayFilesDataGridView.Size = new System.Drawing.Size(659, 249);
+            this.summayFilesDataGridView.Size = new System.Drawing.Size(659, 287);
             this.summayFilesDataGridView.TabIndex = 100;
             this.summayFilesDataGridView.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.summayFilesDataGridView_CellEndEdit);
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.dataGridViewTextBoxColumn1.DataPropertyName = "sourceFile";
+            this.dataGridViewTextBoxColumn1.HeaderText = "Result File Name";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.Width = 78;
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.dataGridViewTextBoxColumn2.DataPropertyName = "fromLine";
+            this.dataGridViewTextBoxColumn2.HeaderText = "From # line";
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.Width = 63;
+            // 
+            // dataGridViewTextBoxColumn3
+            // 
+            this.dataGridViewTextBoxColumn3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.dataGridViewTextBoxColumn3.DataPropertyName = "toLine";
+            this.dataGridViewTextBoxColumn3.HeaderText = "To # line";
+            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            this.dataGridViewTextBoxColumn3.Width = 54;
+            // 
+            // dataGridViewTextBoxColumn4
+            // 
+            this.dataGridViewTextBoxColumn4.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.dataGridViewTextBoxColumn4.DataPropertyName = "outoutFileOrTable";
+            this.dataGridViewTextBoxColumn4.HeaderText = "Final File Name in root folder";
+            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            this.dataGridViewTextBoxColumn4.Width = 73;
+            // 
+            // onlyOneHeader
+            // 
+            this.onlyOneHeader.DataPropertyName = "onlyOneHeader";
+            this.onlyOneHeader.FillWeight = 80F;
+            this.onlyOneHeader.HeaderText = "Only 1 header row on the top of final file";
+            this.onlyOneHeader.Name = "onlyOneHeader";
+            this.onlyOneHeader.Width = 80;
+            // 
+            // addSourceFolderNumInFront
+            // 
+            this.addSourceFolderNumInFront.DataPropertyName = "addSourceFolderNumInFront";
+            this.addSourceFolderNumInFront.FillWeight = 80F;
+            this.addSourceFolderNumInFront.HeaderText = "Add sub folder name to beginning of each row";
+            this.addSourceFolderNumInFront.Name = "addSourceFolderNumInFront";
+            this.addSourceFolderNumInFront.Width = 80;
+            // 
+            // delimited
+            // 
+            this.delimited.DataPropertyName = "delimited";
+            this.delimited.FillWeight = 80F;
+            this.delimited.HeaderText = "Delimited if add sub folder name";
+            this.delimited.Name = "delimited";
+            this.delimited.Width = 80;
+            // 
+            // summayFilesBindingSource
+            // 
+            this.summayFilesBindingSource.DataMember = "SummayFiles";
+            this.summayFilesBindingSource.DataSource = this.dataSet1;
             // 
             // label8
             // 
@@ -557,7 +678,7 @@
             // button3
             // 
             this.button3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.button3.Location = new System.Drawing.Point(727, 327);
+            this.button3.Location = new System.Drawing.Point(727, 365);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(75, 19);
             this.button3.TabIndex = 13;
@@ -583,83 +704,6 @@
             // saveFileDialog1
             // 
             this.saveFileDialog1.Filter = "Setting Files (*.xml)|*.xml|All Files (*.*)|*.*";
-            // 
-            // settingsBindingSource
-            // 
-            this.settingsBindingSource.DataMember = "Settings";
-            this.settingsBindingSource.DataSource = this.dataSet1;
-            // 
-            // dataSet1
-            // 
-            this.dataSet1.DataSetName = "DataSet1";
-            this.dataSet1.Locale = new System.Globalization.CultureInfo("");
-            this.dataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // fileListBindingSource1
-            // 
-            this.fileListBindingSource1.DataMember = "FileList";
-            this.fileListBindingSource1.DataSource = this.dataSet1;
-            // 
-            // summayFilesBindingSource
-            // 
-            this.summayFilesBindingSource.DataMember = "SummayFiles";
-            this.summayFilesBindingSource.DataSource = this.dataSet1;
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.dataGridViewTextBoxColumn1.DataPropertyName = "sourceFile";
-            this.dataGridViewTextBoxColumn1.HeaderText = "Result File Name";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.Width = 103;
-            // 
-            // dataGridViewTextBoxColumn2
-            // 
-            this.dataGridViewTextBoxColumn2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.dataGridViewTextBoxColumn2.DataPropertyName = "fromLine";
-            this.dataGridViewTextBoxColumn2.HeaderText = "From # line";
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            this.dataGridViewTextBoxColumn2.Width = 63;
-            // 
-            // dataGridViewTextBoxColumn3
-            // 
-            this.dataGridViewTextBoxColumn3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.dataGridViewTextBoxColumn3.DataPropertyName = "toLine";
-            this.dataGridViewTextBoxColumn3.HeaderText = "To # line";
-            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            this.dataGridViewTextBoxColumn3.Width = 69;
-            // 
-            // dataGridViewTextBoxColumn4
-            // 
-            this.dataGridViewTextBoxColumn4.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.dataGridViewTextBoxColumn4.DataPropertyName = "outoutFileOrTable";
-            this.dataGridViewTextBoxColumn4.HeaderText = "Final File Name in root folder";
-            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
-            this.dataGridViewTextBoxColumn4.Width = 108;
-            // 
-            // onlyOneHeader
-            // 
-            this.onlyOneHeader.DataPropertyName = "onlyOneHeader";
-            this.onlyOneHeader.FillWeight = 80F;
-            this.onlyOneHeader.HeaderText = "Only 1 header row on the top of final file";
-            this.onlyOneHeader.Name = "onlyOneHeader";
-            this.onlyOneHeader.Width = 80;
-            // 
-            // addSourceFolderNumInFront
-            // 
-            this.addSourceFolderNumInFront.DataPropertyName = "addSourceFolderNumInFront";
-            this.addSourceFolderNumInFront.FillWeight = 80F;
-            this.addSourceFolderNumInFront.HeaderText = "Add sub folder name to beginning of each row";
-            this.addSourceFolderNumInFront.Name = "addSourceFolderNumInFront";
-            this.addSourceFolderNumInFront.Width = 80;
-            // 
-            // delimited
-            // 
-            this.delimited.DataPropertyName = "delimited";
-            this.delimited.FillWeight = 80F;
-            this.delimited.HeaderText = "Delimited if add sub folder name";
-            this.delimited.Name = "delimited";
-            this.delimited.Width = 80;
             // 
             // FileName
             // 
@@ -744,7 +788,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(819, 427);
+            this.ClientSize = new System.Drawing.Size(819, 465);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.menuStrip1);
@@ -765,7 +809,12 @@
             this.splitContainer1.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.settingsBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataSet1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.fileListBindingSource1)).EndInit();
+            this.tableLayoutPanel4.ResumeLayout(false);
+            this.tableLayoutPanel4.PerformLayout();
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel2.PerformLayout();
             this.tabPage2.ResumeLayout(false);
@@ -773,9 +822,6 @@
             this.tableLayoutPanel3.ResumeLayout(false);
             this.tableLayoutPanel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.summayFilesDataGridView)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.settingsBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataSet1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fileListBindingSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.summayFilesBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -832,6 +878,8 @@
         private System.Windows.Forms.DataGridViewCheckBoxColumn onlyOneHeader;
         private System.Windows.Forms.DataGridViewCheckBoxColumn addSourceFolderNumInFront;
         private System.Windows.Forms.DataGridViewTextBoxColumn delimited;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
+        private System.Windows.Forms.TextBox cPUNumTextBox;
         private System.Windows.Forms.DataGridViewTextBoxColumn FileName;
         private System.Windows.Forms.DataGridViewComboBoxColumn capture;
         private System.Windows.Forms.DataGridViewTextBoxColumn fromLine;

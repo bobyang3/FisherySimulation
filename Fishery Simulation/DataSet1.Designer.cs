@@ -704,6 +704,8 @@ namespace Fishery_Simulation {
             
             private global::System.Data.DataColumn columncommandSubFolder;
             
+            private global::System.Data.DataColumn columnCPUNum;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public SettingsDataTable() {
@@ -771,6 +773,14 @@ namespace Fishery_Simulation {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn CPUNumColumn {
+                get {
+                    return this.columnCPUNum;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -806,13 +816,14 @@ namespace Fishery_Simulation {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public SettingsRow AddSettingsRow(string rootFolder, string simulationNum, string commandRootFolder, string commandSubFolder) {
+            public SettingsRow AddSettingsRow(string rootFolder, string simulationNum, string commandRootFolder, string commandSubFolder, string CPUNum) {
                 SettingsRow rowSettingsRow = ((SettingsRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         rootFolder,
                         simulationNum,
                         commandRootFolder,
-                        commandSubFolder};
+                        commandSubFolder,
+                        CPUNum};
                 rowSettingsRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowSettingsRow);
                 return rowSettingsRow;
@@ -839,6 +850,7 @@ namespace Fishery_Simulation {
                 this.columnsimulationNum = base.Columns["simulationNum"];
                 this.columncommandRootFolder = base.Columns["commandRootFolder"];
                 this.columncommandSubFolder = base.Columns["commandSubFolder"];
+                this.columnCPUNum = base.Columns["CPUNum"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -852,6 +864,8 @@ namespace Fishery_Simulation {
                 base.Columns.Add(this.columncommandRootFolder);
                 this.columncommandSubFolder = new global::System.Data.DataColumn("commandSubFolder", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columncommandSubFolder);
+                this.columnCPUNum = new global::System.Data.DataColumn("CPUNum", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnCPUNum);
                 this.Locale = new global::System.Globalization.CultureInfo("");
             }
             
@@ -1631,6 +1645,22 @@ namespace Fishery_Simulation {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string CPUNum {
+                get {
+                    try {
+                        return ((string)(this[this.tableSettings.CPUNumColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'CPUNum\' in table \'Settings\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableSettings.CPUNumColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsrootFolderNull() {
                 return this.IsNull(this.tableSettings.rootFolderColumn);
             }
@@ -1675,6 +1705,18 @@ namespace Fishery_Simulation {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetcommandSubFolderNull() {
                 this[this.tableSettings.commandSubFolderColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsCPUNumNull() {
+                return this.IsNull(this.tableSettings.CPUNumColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetCPUNumNull() {
+                this[this.tableSettings.CPUNumColumn] = global::System.Convert.DBNull;
             }
         }
         

@@ -33,6 +33,7 @@
               <xs:element name="simulationNum" msprop:Generator_ColumnVarNameInTable="columnsimulationNum" msprop:Generator_ColumnPropNameInRow="simulationNum" msprop:Generator_ColumnPropNameInTable="simulationNumColumn" msprop:Generator_UserColumnName="simulationNum" type="xs:string" minOccurs="0" />
               <xs:element name="commandRootFolder" msprop:Generator_ColumnVarNameInTable="columncommandRootFolder" msprop:Generator_ColumnPropNameInRow="commandRootFolder" msprop:Generator_ColumnPropNameInTable="commandRootFolderColumn" msprop:Generator_UserColumnName="commandRootFolder" type="xs:string" minOccurs="0" />
               <xs:element name="commandSubFolder" msprop:Generator_ColumnVarNameInTable="columncommandSubFolder" msprop:Generator_ColumnPropNameInRow="commandSubFolder" msprop:Generator_ColumnPropNameInTable="commandSubFolderColumn" msprop:Generator_UserColumnName="commandSubFolder" type="xs:string" minOccurs="0" />
+              <xs:element name="CPUNum" msprop:Generator_ColumnVarNameInTable="columnCPUNum" msprop:Generator_ColumnPropNameInRow="CPUNum" msprop:Generator_ColumnPropNameInTable="CPUNumColumn" msprop:Generator_UserColumnName="CPUNum" type="xs:string" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>

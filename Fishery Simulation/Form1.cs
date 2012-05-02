@@ -46,6 +46,7 @@ namespace Fishery_Simulation
             DataRow row=dataSet1.Tables["Settings"].NewRow();
             dataSet1.Tables["Settings"].Rows.Add(row);
 
+            cPUNumTextBox.Text = Glibs.GetCPUCore().ToString();
 
             rootFolderTextBox.Text = Directory.GetCurrentDirectory();
         }
@@ -125,15 +126,17 @@ namespace Fishery_Simulation
                                           
                      //TODO: split core job.
 
+                        int paralleNum = Glibs.GetCPUCore();
+
                     double _Max_folder_num=double.Parse(textBox2.Text.Trim().ToString());
-                    int CUPsetAverage = Convert.ToInt32(Math.Ceiling(_Max_folder_num / Glibs.GetCPUCore()));
+                    int CUPsetAverage = Convert.ToInt32(Math.Ceiling(_Max_folder_num / paralleNum));
 
                     //for (int i=1; i <= Glibs.GetCPUCore(); i++)
                     //{
                     //    step2Command(rootFolderTextBoxText, (i-1) * CUPsetAverage + 1, i * CUPsetAverage);
                     //}
 
-                    Parallel.For (1, Glibs.GetCPUCore()+1, i =>
+                    Parallel.For(1, paralleNum + 1, i =>
                         {
                             {
                                 step2Command(rootFolderTextBoxText, (i - 1) * CUPsetAverage + 1, (i * CUPsetAverage) > _Max_folder_num ? Convert.ToInt32(_Max_folder_num) : (i * CUPsetAverage));
@@ -389,6 +392,38 @@ namespace Fishery_Simulation
             Directory.CreateDirectory(newPath);
             string _error_fileNames = "";
 
+            //for (int j = 0; j < dataSet1.Tables["FileList"].Rows.Count+1; j++)
+            //{
+            //    if (dataSet1.Tables["FileList"].Rows[j]["FileName"].ToString().Trim() == "")
+            //    {
+            //        dataSet1.Tables["FileList"].Rows[j].Delete();
+            //    }
+            //}
+
+            List<DataRow> deletedRows = new List<DataRow>();
+
+            foreach (DataRow dr in dataSet1.Tables["FileList"].Rows)
+            {
+                if (dr["FileName"].ToString().Trim().Length <= 0) deletedRows.Add(dr);
+            }
+
+            foreach (DataRow dataRow in deletedRows)
+            {
+                dataRow.Delete();
+            }
+
+
+            //try
+            //{
+            //    foreach (DataRow dr in dataSet1.Tables["FileList"].Rows)
+            //    {
+            //        dr.Delete();
+            //    }
+            //}
+            //catch { }
+
+            dataGridView1.Refresh();
+
             try
             {
                 //for (int j = 0; j < dataGridView1.RowCount - 1; j++)
@@ -405,6 +440,7 @@ namespace Fishery_Simulation
                     string sourceFile = Path.Combine(rootFolderTextBox.Text, dataSet1.Tables["FileList"].Rows[j]["FileName"].ToString());
                     string destFile = Path.Combine(newPath, dataSet1.Tables["FileList"].Rows[j]["FileName"].ToString());
 
+
                     //MessageBox.Show(sourceFile);
 
                     if (captureType == "None" || captureType == null)
@@ -420,6 +456,7 @@ namespace Fishery_Simulation
                     }
 
 
+
                 }
             }
 
@@ -431,7 +468,7 @@ namespace Fishery_Simulation
 
             if (_error_fileNames.Length > 0)
             {
-                MessageBox.Show("Please make sure the files are exists: " + _error_fileNames);
+                MessageBox.Show("Please make sure the files are exists: " + _error_fileNames.Trim(",".ToCharArray()));
                 Glibs.DeleteFolder(new DirectoryInfo(newPath));
                 return false;
             }
