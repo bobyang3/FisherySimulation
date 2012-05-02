@@ -714,9 +714,9 @@ namespace Fishery_Simulation
                         if ((onlyOneHeader == null || onlyOneHeader==true))
                         {
                             if ( i == 1)
-                                { fromLine = fromLine; }
+                            { fromLine = Glibs.tointNullable(summayFilesDataGridView.Rows[j].Cells["dataGridViewTextBoxColumn2"].Value); }
                                 else
-                                { fromLine = fromLine + 1; }
+                            { fromLine = Glibs.tointNullable(summayFilesDataGridView.Rows[j].Cells["dataGridViewTextBoxColumn2"].Value) + 1; }
                          }
 
 
