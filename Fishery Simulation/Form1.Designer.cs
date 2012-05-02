@@ -584,6 +584,7 @@
             this.summayFilesDataGridView.Size = new System.Drawing.Size(659, 287);
             this.summayFilesDataGridView.TabIndex = 100;
             this.summayFilesDataGridView.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.summayFilesDataGridView_CellEndEdit);
+            this.summayFilesDataGridView.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.summayFilesDataGridView_DataError);
             // 
             // dataGridViewTextBoxColumn1
             // 

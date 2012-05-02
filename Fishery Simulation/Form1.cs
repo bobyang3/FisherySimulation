@@ -671,14 +671,33 @@ namespace Fishery_Simulation
 
         private void button3_Click(object sender, EventArgs e)
         {
-            if (fileExistsCheck())
-            {
-                //Thread oThread = new Thread(new ThreadStart(process1and2));
+            //if (fileExistsCheck())
+            // {
+            //Thread oThread = new Thread(new ThreadStart(process1and2));
 
-                //pass values to the new thread
-                Thread oThread = new Thread(new ParameterizedThreadStart(process3));
-                oThread.Start(this);
+
+
+            ////delete empty rows
+            List<DataRow> deletedRows2 = new List<DataRow>();
+
+            foreach (DataRow dr in dataSet1.Tables["SummayFiles"].Rows)
+            {
+                if (dr["sourceFile"].ToString().Trim().Length <= 0) deletedRows2.Add(dr);
             }
+
+            foreach (DataRow dataRow in deletedRows2)
+            {
+                dataRow.Delete();
+            }
+
+
+            summayFilesDataGridView.Refresh();
+
+
+            //pass values to the new thread
+            Thread oThread = new Thread(new ParameterizedThreadStart(process3));
+            oThread.Start(this);
+            // }
 
 
         }
@@ -691,16 +710,18 @@ namespace Fishery_Simulation
             //step 3: run commands
 
 
-            for (int j = 0; j < summayFilesDataGridView.RowCount - 1; j++)
-            {
-                string filename = Glibs.toStringNullable(summayFilesDataGridView.Rows[j].Cells["dataGridViewTextBoxColumn1"].Value);
-                int? fromLine = Glibs.tointNullable(summayFilesDataGridView.Rows[j].Cells["dataGridViewTextBoxColumn2"].Value);
-                int? toLine = Glibs.tointNullable(summayFilesDataGridView.Rows[j].Cells["dataGridViewTextBoxColumn3"].Value);
-                string outputFileName = Glibs.toStringNullable(summayFilesDataGridView.Rows[j].Cells["dataGridViewTextBoxColumn4"].Value);
 
-                bool? onlyOneHeader = Glibs.toboolNullable(summayFilesDataGridView.Rows[j].Cells["onlyOneHeader"].Value);
-                bool? addSourceFolderNumInFront = Glibs.toboolNullable(summayFilesDataGridView.Rows[j].Cells["addSourceFolderNumInFront"].Value);
-                string delimited = Glibs.toStringNullable(summayFilesDataGridView.Rows[j].Cells["delimited"].Value);
+            for (int j = 0; j < dataSet1.Tables["SummayFiles"].Rows.Count - 1; j++)
+                //for (int j = 0; j < summayFilesDataGridView.RowCount - 1; j++)
+            {
+                string filename = Glibs.toStringNullable(dataSet1.Tables["SummayFiles"].Rows[j]["dataGridViewTextBoxColumn1"]);
+                int? fromLine = Glibs.tointNullable(dataSet1.Tables["SummayFiles"].Rows[j]["dataGridViewTextBoxColumn2"]);
+                int? toLine = Glibs.tointNullable(dataSet1.Tables["SummayFiles"].Rows[j]["dataGridViewTextBoxColumn3"]);
+                string outputFileName = Glibs.toStringNullable(dataSet1.Tables["SummayFiles"].Rows[j]["dataGridViewTextBoxColumn4"]);
+
+                bool? onlyOneHeader = Glibs.toboolNullable(dataSet1.Tables["SummayFiles"].Rows[j]["onlyOneHeader"]);
+                bool? addSourceFolderNumInFront = Glibs.toboolNullable(dataSet1.Tables["SummayFiles"].Rows[j]["addSourceFolderNumInFront"]);
+                string delimited = Glibs.toStringNullable(dataSet1.Tables["SummayFiles"].Rows[j]["delimited"]);
                 
                 string rootFolder = rootFolderTextBox1.Text.ToString().Trim();
                 int? _sub_folder_num = Glibs.tointNullable(simulationNumTextBox.Text);
@@ -714,9 +735,9 @@ namespace Fishery_Simulation
                         if ((onlyOneHeader == null || onlyOneHeader==true))
                         {
                             if ( i == 1)
-                            { fromLine = Glibs.tointNullable(summayFilesDataGridView.Rows[j].Cells["dataGridViewTextBoxColumn2"].Value); }
+                            { fromLine = Glibs.tointNullable(dataSet1.Tables["SummayFiles"].Rows[j]["dataGridViewTextBoxColumn2"]); }
                                 else
-                            { fromLine = Glibs.tointNullable(summayFilesDataGridView.Rows[j].Cells["dataGridViewTextBoxColumn2"].Value) + 1; }
+                            { fromLine = Glibs.tointNullable(dataSet1.Tables["SummayFiles"].Rows[j]["dataGridViewTextBoxColumn2"]) + 1; }
                          }
 
 
@@ -741,6 +762,11 @@ namespace Fishery_Simulation
             }
 
             MessageBox.Show("Step 3 is completed.");
+
+        }
+
+        private void summayFilesDataGridView_DataError(object sender, DataGridViewDataErrorEventArgs e)
+        {
 
         }
 
