@@ -126,7 +126,15 @@ namespace Fishery_Simulation
                                           
                      //TODO: split core job.
 
-                        int paralleNum = Glibs.GetCPUCore();
+                        int paralleNum = 0;
+                        if (cPUNumTextBox.Text.ToString().Trim().Length <= 0)
+                        {
+                            paralleNum = Glibs.GetCPUCore();
+                        }
+                        else
+                        {
+                            paralleNum = int.Parse(cPUNumTextBox.Text.ToString().Trim());                        
+                        }
 
                     double _Max_folder_num=double.Parse(textBox2.Text.Trim().ToString());
                     int CUPsetAverage = Convert.ToInt32(Math.Ceiling(_Max_folder_num / paralleNum));
@@ -454,9 +462,7 @@ namespace Fishery_Simulation
                             _error_fileNames = _error_fileNames + "," + dataGridView1.Rows[j].Cells["FileName"].Value;
                         }
                     }
-
-
-
+                        
                 }
             }
 
