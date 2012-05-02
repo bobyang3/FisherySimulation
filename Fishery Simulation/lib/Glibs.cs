@@ -52,28 +52,39 @@ namespace Fishery_Simulation
         }
 
 
-        public static string ReadLineText(string filePath, int? fromLine, int? toLine)
+        public static string ReadLineText(string filePath, int? fromLine, int? toLine, bool blinsertInFront, string insertInFront, string delimited )
         {
-            StringBuilder sb = new StringBuilder();
-
-            using (StreamReader reader = new StreamReader(filePath))
+            try
             {
-                string line;
-                int currentLine = 1;
-                while ((line = reader.ReadLine()) != null)
+                StringBuilder sb = new StringBuilder();
+
+                using (StreamReader reader = new StreamReader(filePath))
                 {
-                    if (currentLine >= fromLine && currentLine <= toLine)
+                    string line;
+                    int currentLine = 1;
+                    while ((line = reader.ReadLine()) != null)
                     {
-                        sb.AppendLine(line);
+                        if (currentLine >= fromLine && currentLine <= toLine)
+                        {
+                            if (blinsertInFront == true)
+                            { sb.AppendLine(insertInFront + delimited+ line); }
+                            else
+                            { sb.AppendLine(line); }
+                        }
+                        else if (currentLine > toLine)
+                        {
+                            break;
+                        }
+                        currentLine = currentLine + 1;
                     }
-                    else if (currentLine > toLine)
-                    {
-                        break;
-                    }
-                    currentLine = currentLine+1;
                 }
+                return sb.ToString().Trim();
             }
-            return sb.ToString().Trim();
+            catch (Exception e)
+            {
+                MessageBox.Show("Error on ReadLineText: \r" + e.ToString());
+                return "";
+            }
         }
 
         public static List<string> ReadText(string filePath)
@@ -99,12 +110,18 @@ namespace Fishery_Simulation
 
         public static string toStringNullable(object o1)
         {
-            return o1 == null ? null : o1.ToString().Trim(); 
+            return o1 == null ? null : o1.ToString(); 
         }
 
         public static int? tointNullable(object o1)
         {
             return (o1 == null || o1.ToString()== "") ? (int?)null : int.Parse(o1.ToString());
+        }
+
+
+        public static bool? toboolNullable(object o1)
+        {
+            return (o1 == null || o1.ToString() == "") ? (bool?)null : bool.Parse(o1.ToString());
         }
 
 

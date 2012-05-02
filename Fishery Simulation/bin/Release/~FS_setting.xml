@@ -14,7 +14,7 @@
   <FileList>
     <FileName>~FS_setting.xml</FileName>
     <capture>Lines</capture>
-    <fromLine>2</fromLine>
+    <fromLine>1</fromLine>
     <toLine>5</toLine>
     <outputFileName>~FS_setting2.xml</outputFileName>
   </FileList>
@@ -24,8 +24,11 @@
   </Settings>
   <SummayFiles>
     <sourceFile>~FS_setting2.xml</sourceFile>
-    <fromLine>2</fromLine>
+    <fromLine>1</fromLine>
     <toLine>4</toLine>
     <outoutFileOrTable>~~.txt</outoutFileOrTable>
+    <onlyOneHeader>false</onlyOneHeader>
+    <addSourceFolderNumInFront>true</addSourceFolderNumInFront>
+    <delimited>78979</delimited>
   </SummayFiles>
 </DataSet1>

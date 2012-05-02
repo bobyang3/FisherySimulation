@@ -994,6 +994,12 @@ namespace Fishery_Simulation {
             
             private global::System.Data.DataColumn columnoutoutFileOrTable;
             
+            private global::System.Data.DataColumn columnonlyOneHeader;
+            
+            private global::System.Data.DataColumn columnaddSourceFolderNumInFront;
+            
+            private global::System.Data.DataColumn columndelimited;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public SummayFilesDataTable() {
@@ -1061,6 +1067,30 @@ namespace Fishery_Simulation {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn onlyOneHeaderColumn {
+                get {
+                    return this.columnonlyOneHeader;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn addSourceFolderNumInFrontColumn {
+                get {
+                    return this.columnaddSourceFolderNumInFront;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn delimitedColumn {
+                get {
+                    return this.columndelimited;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -1096,13 +1126,16 @@ namespace Fishery_Simulation {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public SummayFilesRow AddSummayFilesRow(string sourceFile, int fromLine, int toLine, string outoutFileOrTable) {
+            public SummayFilesRow AddSummayFilesRow(string sourceFile, int fromLine, int toLine, string outoutFileOrTable, bool onlyOneHeader, bool addSourceFolderNumInFront, string delimited) {
                 SummayFilesRow rowSummayFilesRow = ((SummayFilesRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         sourceFile,
                         fromLine,
                         toLine,
-                        outoutFileOrTable};
+                        outoutFileOrTable,
+                        onlyOneHeader,
+                        addSourceFolderNumInFront,
+                        delimited};
                 rowSummayFilesRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowSummayFilesRow);
                 return rowSummayFilesRow;
@@ -1129,6 +1162,9 @@ namespace Fishery_Simulation {
                 this.columnfromLine = base.Columns["fromLine"];
                 this.columntoLine = base.Columns["toLine"];
                 this.columnoutoutFileOrTable = base.Columns["outoutFileOrTable"];
+                this.columnonlyOneHeader = base.Columns["onlyOneHeader"];
+                this.columnaddSourceFolderNumInFront = base.Columns["addSourceFolderNumInFront"];
+                this.columndelimited = base.Columns["delimited"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1142,6 +1178,14 @@ namespace Fishery_Simulation {
                 base.Columns.Add(this.columntoLine);
                 this.columnoutoutFileOrTable = new global::System.Data.DataColumn("outoutFileOrTable", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnoutoutFileOrTable);
+                this.columnonlyOneHeader = new global::System.Data.DataColumn("onlyOneHeader", typeof(bool), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnonlyOneHeader);
+                this.columnaddSourceFolderNumInFront = new global::System.Data.DataColumn("addSourceFolderNumInFront", typeof(bool), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnaddSourceFolderNumInFront);
+                this.columndelimited = new global::System.Data.DataColumn("delimited", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columndelimited);
+                this.columnonlyOneHeader.DefaultValue = ((bool)(true));
+                this.columnaddSourceFolderNumInFront.DefaultValue = ((bool)(true));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1714,6 +1758,55 @@ namespace Fishery_Simulation {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool onlyOneHeader {
+                get {
+                    try {
+                        return ((bool)(this[this.tableSummayFiles.onlyOneHeaderColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'onlyOneHeader\' in table \'SummayFiles\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableSummayFiles.onlyOneHeaderColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool addSourceFolderNumInFront {
+                get {
+                    try {
+                        return ((bool)(this[this.tableSummayFiles.addSourceFolderNumInFrontColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'addSourceFolderNumInFront\' in table \'SummayFiles\' is DBNull" +
+                                ".", e);
+                    }
+                }
+                set {
+                    this[this.tableSummayFiles.addSourceFolderNumInFrontColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string delimited {
+                get {
+                    try {
+                        return ((string)(this[this.tableSummayFiles.delimitedColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'delimited\' in table \'SummayFiles\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableSummayFiles.delimitedColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IssourceFileNull() {
                 return this.IsNull(this.tableSummayFiles.sourceFileColumn);
             }
@@ -1758,6 +1851,42 @@ namespace Fishery_Simulation {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetoutoutFileOrTableNull() {
                 this[this.tableSummayFiles.outoutFileOrTableColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsonlyOneHeaderNull() {
+                return this.IsNull(this.tableSummayFiles.onlyOneHeaderColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetonlyOneHeaderNull() {
+                this[this.tableSummayFiles.onlyOneHeaderColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsaddSourceFolderNumInFrontNull() {
+                return this.IsNull(this.tableSummayFiles.addSourceFolderNumInFrontColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetaddSourceFolderNumInFrontNull() {
+                this[this.tableSummayFiles.addSourceFolderNumInFrontColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsdelimitedNull() {
+                return this.IsNull(this.tableSummayFiles.delimitedColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetdelimitedNull() {
+                this[this.tableSummayFiles.delimitedColumn] = global::System.Convert.DBNull;
             }
         }
         

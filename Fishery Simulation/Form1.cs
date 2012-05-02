@@ -38,14 +38,6 @@ namespace Fishery_Simulation
 
         }
 
-        //private void rootFolderTextBox_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
-        //{
-        //    DialogResult result = this.folderBrowserDialog1.ShowDialog();
-        //    if (result == DialogResult.OK)
-        //    {
-        //        rootFolderTextBox.Text = folderBrowserDialog1.SelectedPath;
-        //    }
-        //}
 
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -224,18 +216,30 @@ namespace Fishery_Simulation
 
                 //for (int j = 0; j < dataGridView1.RowCount-1; j++)
                 {
-                    string filename = Glibs.toStringNullable(dataGridView1.Rows[j].Cells["FileName"].Value);
-                    string captureType = Glibs.toStringNullable(dataGridView1.Rows[j].Cells["capture"].Value);
-                    string outputFileName = Glibs.toStringNullable(dataGridView1.Rows[j].Cells["outputFileName"].Value);
-                    string blockHeaderLine = Glibs.toStringNullable(dataGridView1.Rows[j].Cells["block"].Value);
-                    string blockEndLine = Glibs.toStringNullable(dataGridView1.Rows[j].Cells["blockend"].Value);
-                    string randomGen = Glibs.toStringNullable(dataGridView1.Rows[j].Cells["randomGen"].Value);
+                    //string filename = Glibs.toStringNullable(dataGridView1.Rows[j].Cells["FileName"].Value);
+                    //string captureType = Glibs.toStringNullable(dataGridView1.Rows[j].Cells["capture"].Value);
+                    //string outputFileName = Glibs.toStringNullable(dataGridView1.Rows[j].Cells["outputFileName"].Value);
+                    //string blockHeaderLine = Glibs.toStringNullable(dataGridView1.Rows[j].Cells["block"].Value);
+                    //string blockEndLine = Glibs.toStringNullable(dataGridView1.Rows[j].Cells["blockend"].Value);
+                    //string randomGen = Glibs.toStringNullable(dataGridView1.Rows[j].Cells["randomGen"].Value);
+
+                    string filename = Glibs.toStringNullable(dataSet1.Tables["FileList"].Rows[j]["FileName"].ToString());
+                    string captureType = Glibs.toStringNullable(dataSet1.Tables["FileList"].Rows[j]["capture"].ToString());
+                    string outputFileName = Glibs.toStringNullable(dataSet1.Tables["FileList"].Rows[j]["outputFileName"].ToString());
+                    string blockHeaderLine = Glibs.toStringNullable(dataSet1.Tables["FileList"].Rows[j]["block"].ToString());
+                    string blockEndLine = Glibs.toStringNullable(dataSet1.Tables["FileList"].Rows[j]["blockend"].ToString());
+                    string randomGen = Glibs.toStringNullable(dataSet1.Tables["FileList"].Rows[j]["randomGen"].ToString());
+
+
 
                     string sourceFile = Path.Combine(Path.Combine(rootFolderTextBox.Text,"~~original"), filename);
 
 
-                    int? fromLine = Glibs.tointNullable(dataGridView1.Rows[j].Cells["fromLine"].Value);
-                    int? toLine = Glibs.tointNullable(dataGridView1.Rows[j].Cells["toLine"].Value);
+                    //int? fromLine = Glibs.tointNullable(dataGridView1.Rows[j].Cells["fromLine"].Value);
+                    //int? toLine = Glibs.tointNullable(dataGridView1.Rows[j].Cells["toLine"].Value);
+
+                    int? fromLine = Glibs.tointNullable(dataSet1.Tables["FileList"].Rows[j]["fromLine"].ToString());
+                    int? toLine = Glibs.tointNullable(dataSet1.Tables["FileList"].Rows[j]["toLine"].ToString());
 
                     
                     if (captureType == "Lines" && fromLine != null && toLine != null) ///copy line text
@@ -245,7 +249,7 @@ namespace Fishery_Simulation
                             //open file and get conents, then copy over the conents
                             sourceFile = Path.Combine(rootFolderTextBox.Text,filename);
                             string destFile = Path.Combine(Path.Combine(rootFolderTextBox.Text, i.ToString()), outputFileName);
-                            Glibs.WritelineText(destFile, Glibs.ReadLineText(sourceFile, fromLine, toLine));
+                            Glibs.WritelineText(destFile, Glibs.ReadLineText(sourceFile, fromLine, toLine, false, null, null));
                         }
                     }
                     else if (captureType == "Rand Gen" && randomGen != null) ///gen rand numbers
@@ -379,18 +383,27 @@ namespace Fishery_Simulation
 
         private bool fileExistsCheck()
         {
+
+
             string newPath = Path.Combine(rootFolderTextBox.Text, "~~original");
             Directory.CreateDirectory(newPath);
             string _error_fileNames = "";
 
             try
             {
-                for (int j = 0; j < dataGridView1.RowCount - 1; j++)
+                //for (int j = 0; j < dataGridView1.RowCount - 1; j++)
+                //{
+
+                //    string captureType = Glibs.toStringNullable(dataGridView1.Rows[j].Cells["capture"].Value);
+                //    string sourceFile = Path.Combine(rootFolderTextBox.Text, dataGridView1.Rows[j].Cells["FileName"].Value.ToString());
+                //    string destFile = Path.Combine(newPath, dataGridView1.Rows[j].Cells["FileName"].Value.ToString());
+
+                    for (int j = 0; j < dataGridView1.RowCount - 1; j++)
                 {
 
-                    string captureType = Glibs.toStringNullable(dataGridView1.Rows[j].Cells["capture"].Value);
-                    string sourceFile = Path.Combine(rootFolderTextBox.Text, dataGridView1.Rows[j].Cells["FileName"].Value.ToString());
-                    string destFile = Path.Combine(newPath, dataGridView1.Rows[j].Cells["FileName"].Value.ToString());
+                    string captureType = Glibs.toStringNullable(dataSet1.Tables["FileList"].Rows[j]["capture"].ToString());
+                    string sourceFile = Path.Combine(rootFolderTextBox.Text, dataSet1.Tables["FileList"].Rows[j]["FileName"].ToString());
+                    string destFile = Path.Combine(newPath, dataSet1.Tables["FileList"].Rows[j]["FileName"].ToString());
 
                     //MessageBox.Show(sourceFile);
 
@@ -615,6 +628,26 @@ namespace Fishery_Simulation
 
         private void button3_Click(object sender, EventArgs e)
         {
+            if (fileExistsCheck())
+            {
+                //Thread oThread = new Thread(new ThreadStart(process1and2));
+
+                //pass values to the new thread
+                Thread oThread = new Thread(new ParameterizedThreadStart(process3));
+                oThread.Start(this);
+            }
+
+
+        }
+
+
+        private void process3(object originalForm)
+        {
+            string rootFolderTextBoxText = ((Form1)originalForm).rootFolderTextBox.Text as string;
+
+            //step 3: run commands
+
+
             for (int j = 0; j < summayFilesDataGridView.RowCount - 1; j++)
             {
                 string filename = Glibs.toStringNullable(summayFilesDataGridView.Rows[j].Cells["dataGridViewTextBoxColumn1"].Value);
@@ -622,6 +655,10 @@ namespace Fishery_Simulation
                 int? toLine = Glibs.tointNullable(summayFilesDataGridView.Rows[j].Cells["dataGridViewTextBoxColumn3"].Value);
                 string outputFileName = Glibs.toStringNullable(summayFilesDataGridView.Rows[j].Cells["dataGridViewTextBoxColumn4"].Value);
 
+                bool? onlyOneHeader = Glibs.toboolNullable(summayFilesDataGridView.Rows[j].Cells["onlyOneHeader"].Value);
+                bool? addSourceFolderNumInFront = Glibs.toboolNullable(summayFilesDataGridView.Rows[j].Cells["addSourceFolderNumInFront"].Value);
+                string delimited = Glibs.toStringNullable(summayFilesDataGridView.Rows[j].Cells["delimited"].Value);
+                
                 string rootFolder = rootFolderTextBox1.Text.ToString().Trim();
                 int? _sub_folder_num = Glibs.tointNullable(simulationNumTextBox.Text);
                 string captured = "";
@@ -630,9 +667,26 @@ namespace Fishery_Simulation
                 {
                     for (int i = 1; i <= _sub_folder_num; i++)
                     {
+                        
+                        if ((onlyOneHeader == null || onlyOneHeader==true))
+                        {
+                            if ( i == 1)
+                                { fromLine = fromLine; }
+                                else
+                                { fromLine = fromLine + 1; }
+                         }
+
+
+
+
                         //open file and get conents, then copy over the conents
                         string sourceFile = Path.Combine(Path.Combine(rootFolder, i.ToString()), filename);
-                        captured = captured + Glibs.ReadLineText(sourceFile, fromLine, toLine) + Environment.NewLine;
+
+                        if ((addSourceFolderNumInFront == null || addSourceFolderNumInFront == true))
+                        { captured = captured + Glibs.ReadLineText(sourceFile, fromLine, toLine, true, i.ToString() , delimited) + Environment.NewLine; }
+                        else
+                        { captured = captured + Glibs.ReadLineText(sourceFile, fromLine, toLine, false, null, null) + Environment.NewLine; }
+                        
 
                     }
 
@@ -648,7 +702,6 @@ namespace Fishery_Simulation
         }
 
 
-    
     
     
     }
