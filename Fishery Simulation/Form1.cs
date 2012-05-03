@@ -28,15 +28,7 @@ namespace Fishery_Simulation
             ab2.ShowDialog();
         }
 
-        private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
-        {
 
-        }
-
-        private void rootFolderTextBox_EditValueChanged(object sender, EventArgs e)
-        {
-
-        }
 
 
         private void Form1_Load(object sender, EventArgs e)
@@ -51,9 +43,11 @@ namespace Fishery_Simulation
             cPUNumTextBox.Text = Glibs.GetCPUCore().ToString();
             ////rootFolderTextBox.Text = Directory.GetCurrentDirectory();
             dataSet1.Tables["Settings"].Rows[0][0]=  Directory.GetCurrentDirectory();
-            //simulationNumTextBox.Refresh();
 
-            settingsBindingSource.EndEdit();
+
+            settingsBindingSource.EndEdit();  //sync all the textboxes with current values
+
+            //dataGridView1.Rows[0].Cells[0].ReadOnly = true;
             
         }
 
@@ -406,47 +400,24 @@ namespace Fishery_Simulation
             Directory.CreateDirectory(newPath);
             string _error_fileNames = "";
 
-            //for (int j = 0; j < dataSet1.Tables["FileList"].Rows.Count+1; j++)
+            //List<DataRow> deletedRows = new List<DataRow>();
+
+            //foreach (DataRow dr in dataSet1.Tables["FileList"].Rows)
             //{
-            //    if (dataSet1.Tables["FileList"].Rows[j]["FileName"].ToString().Trim() == "")
-            //    {
-            //        dataSet1.Tables["FileList"].Rows[j].Delete();
-            //    }
+            //    if (dr["FileName"].ToString().Trim().Length <= 0) deletedRows.Add(dr);
             //}
 
-            List<DataRow> deletedRows = new List<DataRow>();
-
-            foreach (DataRow dr in dataSet1.Tables["FileList"].Rows)
-            {
-                if (dr["FileName"].ToString().Trim().Length <= 0) deletedRows.Add(dr);
-            }
-
-            foreach (DataRow dataRow in deletedRows)
-            {
-                dataRow.Delete();
-            }
-
-
-            //try
+            //foreach (DataRow dataRow in deletedRows)
             //{
-            //    foreach (DataRow dr in dataSet1.Tables["FileList"].Rows)
-            //    {
-            //        dr.Delete();
-            //    }
+            //    dataRow.Delete();
             //}
-            //catch { }
+
+            Glibs.deleteEmptyRows(dataSet1.Tables["FileList"], "FileName");
 
             dataGridView1.Refresh();
 
             try
             {
-                //for (int j = 0; j < dataGridView1.RowCount - 1; j++)
-                //{
-
-                //    string captureType = Glibs.toStringNullable(dataGridView1.Rows[j].Cells["capture"].Value);
-                //    string sourceFile = Path.Combine(rootFolderTextBox.Text, dataGridView1.Rows[j].Cells["FileName"].Value.ToString());
-                //    string destFile = Path.Combine(newPath, dataGridView1.Rows[j].Cells["FileName"].Value.ToString());
-
                     for (int j = 0; j < dataGridView1.RowCount - 1; j++)
                 {
 
@@ -667,7 +638,7 @@ namespace Fishery_Simulation
         {
             try
             {
-                if (e.ColumnIndex == 0) //fileName is netered
+                if (e.ColumnIndex == 0) //fileName is entered
                 {
                     summayFilesDataGridView["dataGridViewTextBoxColumn1", e.RowIndex].Value = summayFilesDataGridView[0, e.RowIndex].EditedFormattedValue; //copy values from input to output
                 }
@@ -679,23 +650,8 @@ namespace Fishery_Simulation
         {
             //if (fileExistsCheck())
             // {
-            //Thread oThread = new Thread(new ThreadStart(process1and2));
-
-
-
-            ////delete empty rows
-            List<DataRow> deletedRows2 = new List<DataRow>();
-
-            foreach (DataRow dr in dataSet1.Tables["SummayFiles"].Rows)
-            {
-                if (dr["sourceFile"].ToString().Trim().Length <= 0) deletedRows2.Add(dr);
-            }
-
-            foreach (DataRow dataRow in deletedRows2)
-            {
-                dataRow.Delete();
-            }
-
+ 
+            Glibs.deleteEmptyRows(dataSet1.Tables["SummayFiles"], "sourceFile");  //delete empty rows
 
             summayFilesDataGridView.Refresh();
 
@@ -703,6 +659,8 @@ namespace Fishery_Simulation
             //pass values to the new thread
             Thread oThread = new Thread(new ParameterizedThreadStart(process3));
             oThread.Start(this);
+
+            //process3(this);
             // }
 
 
@@ -717,18 +675,20 @@ namespace Fishery_Simulation
 
 
 
-            for (int j = 0; j < dataSet1.Tables["SummayFiles"].Rows.Count - 1; j++)
+            for (int j = 0; j <= dataSet1.Tables["SummayFiles"].Rows.Count - 1; j++)
                 //for (int j = 0; j < summayFilesDataGridView.RowCount - 1; j++)
             {
-                string filename = Glibs.toStringNullable(dataSet1.Tables["SummayFiles"].Rows[j]["dataGridViewTextBoxColumn1"]);
-                int? fromLine = Glibs.tointNullable(dataSet1.Tables["SummayFiles"].Rows[j]["dataGridViewTextBoxColumn2"]);
-                int? toLine = Glibs.tointNullable(dataSet1.Tables["SummayFiles"].Rows[j]["dataGridViewTextBoxColumn3"]);
-                string outputFileName = Glibs.toStringNullable(dataSet1.Tables["SummayFiles"].Rows[j]["dataGridViewTextBoxColumn4"]);
+                string filename = Glibs.toStringNullable(dataSet1.Tables["SummayFiles"].Rows[j]["sourceFile"]);
+                int? fromLine = Glibs.tointNullable(dataSet1.Tables["SummayFiles"].Rows[j]["fromLine"]);
+                int? toLine = Glibs.tointNullable(dataSet1.Tables["SummayFiles"].Rows[j]["toLine"]);
+                string outputFileName = Glibs.toStringNullable(dataSet1.Tables["SummayFiles"].Rows[j]["outoutFileOrTable"]);
 
                 bool? onlyOneHeader = Glibs.toboolNullable(dataSet1.Tables["SummayFiles"].Rows[j]["onlyOneHeader"]);
                 bool? addSourceFolderNumInFront = Glibs.toboolNullable(dataSet1.Tables["SummayFiles"].Rows[j]["addSourceFolderNumInFront"]);
                 string delimited = Glibs.toStringNullable(dataSet1.Tables["SummayFiles"].Rows[j]["delimited"]);
-                
+
+                delimited = delimited.Replace("(tab)", "\t");
+
                 string rootFolder = rootFolderTextBox1.Text.ToString().Trim();
                 int? _sub_folder_num = Glibs.tointNullable(simulationNumTextBox.Text);
                 string captured = "";
@@ -741,9 +701,9 @@ namespace Fishery_Simulation
                         if ((onlyOneHeader == null || onlyOneHeader==true))
                         {
                             if ( i == 1)
-                            { fromLine = Glibs.tointNullable(dataSet1.Tables["SummayFiles"].Rows[j]["dataGridViewTextBoxColumn2"]); }
+                            { fromLine = Glibs.tointNullable(dataSet1.Tables["SummayFiles"].Rows[j]["fromLine"]); }
                                 else
-                            { fromLine = Glibs.tointNullable(dataSet1.Tables["SummayFiles"].Rows[j]["dataGridViewTextBoxColumn2"]) + 1; }
+                            { fromLine = Glibs.tointNullable(dataSet1.Tables["SummayFiles"].Rows[j]["fromLine"]) + 1; }
                          }
 
 
@@ -767,7 +727,7 @@ namespace Fishery_Simulation
 
             }
 
-            MessageBox.Show("Step 3 is completed.");
+            MessageBox.Show("Step 3 completed.");
 
         }
 

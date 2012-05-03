@@ -126,8 +126,30 @@ namespace Fishery_Simulation
 
 
 
+        public static bool deleteEmptyRows (DataTable dt, string trigerFieldName)
+        {
+            ////delete empty rows
+            List<DataRow> deletedRows = new List<DataRow>();
 
+            foreach (DataRow dr in dt.Rows)
+            {
+                if (dr[trigerFieldName].ToString().Trim().Length <= 0) deletedRows.Add(dr);
+            }
 
+            foreach (DataRow dataRow in deletedRows)
+            {
+                dataRow.Delete();
+            }
+
+            return true;
+        }
+
+        public static List<DataRow> checkFileExist(DataTable dt, string sourceDirectory, string filenameFieldName)
+        {
+            List<DataRow> deletedRows = new List<DataRow>();
+
+            return deletedRows;
+        }
 
     }
 }

@@ -1200,6 +1200,7 @@ namespace Fishery_Simulation {
                 base.Columns.Add(this.columndelimited);
                 this.columnonlyOneHeader.DefaultValue = ((bool)(true));
                 this.columnaddSourceFolderNumInFront.DefaultValue = ((bool)(true));
+                this.columndelimited.DefaultValue = ((string)(""));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
