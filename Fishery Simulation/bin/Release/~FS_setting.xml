@@ -18,43 +18,11 @@
     <toLine>5</toLine>
     <outputFileName>~FS_setting2.xml</outputFileName>
   </FileList>
-  <FileList>
-    <FileName xml:space="preserve"> </FileName>
-    <capture>None</capture>
-    <outputFileName xml:space="preserve"> </outputFileName>
-  </FileList>
-  <FileList>
-    <FileName xml:space="preserve">   </FileName>
-    <capture>None</capture>
-    <outputFileName xml:space="preserve">   </outputFileName>
-  </FileList>
-  <FileList>
-    <FileName>aaa</FileName>
-    <capture>None</capture>
-    <outputFileName>aaa</outputFileName>
-  </FileList>
-  <FileList>
-    <FileName xml:space="preserve">   </FileName>
-    <capture>None</capture>
-    <outputFileName xml:space="preserve">   </outputFileName>
-  </FileList>
-  <FileList>
-    <FileName xml:space="preserve">      </FileName>
-    <capture>None</capture>
-    <outputFileName xml:space="preserve">      </outputFileName>
-  </FileList>
-  <FileList>
-    <FileName xml:space="preserve">    </FileName>
-    <capture>None</capture>
-    <outputFileName xml:space="preserve">    </outputFileName>
-  </FileList>
-  <FileList>
-    <capture>None</capture>
-    <outputFileName />
-  </FileList>
   <Settings>
     <rootFolder>C:\_MSmesh_\(my documents)\__PROJECTS__\Fishery Simulation\Fishery Simulation\bin\Release</rootFolder>
     <simulationNum>2</simulationNum>
+    <commandRootFolder>autorunsc</commandRootFolder>
+    <commandSubFolder>autorunsc.exe</commandSubFolder>
     <CPUNum>4</CPUNum>
   </Settings>
   <SummayFiles>

@@ -82,16 +82,35 @@ namespace Fishery_Simulation
                 {
                     //Create a new process info structure.
                     ProcessStartInfo pInfo = new ProcessStartInfo();
-                    string[] sts=textBox3.Text.ToString().Split('-');
-                    string app=sts[0];
-                    string arguments="";
-                    for (int i=1; i<sts.Length; i++)
-                    {
-                        arguments=arguments+"-" + sts[i];
-                    }
+
+                    //string[] sts=textBox3.Text.ToString().Split('-');
+                    //string app=sts[0];
+                    //string arguments="";
+                    //for (int i=1; i<sts.Length; i++)
+                    //{
+                    //    arguments=arguments+"-" + sts[i];
+                    //}
+
+
+                    string[] sts = textBox3.Text.ToString().Split(new char[] {' '}, 2);
+                    string app = sts[0];
+                    //string arguments = sts[1];
 
                     pInfo.FileName = Path.Combine(rootFolderTextBoxText, app);
-                    pInfo.Arguments = arguments;
+
+                    //if (Path.GetExtension(pInfo.FileName).Length <= 0)
+                    //{
+                    //    MessageBox.Show("Your command file: " + app.ToUpper() + " has no extension. Are you sure this is correct? The command may not run correctly without extension. eg. SS3.exe instead of SS3");
+                    //}
+
+                       
+
+                    try
+                    {
+                        pInfo.Arguments = sts[1]; 
+                    }
+                    catch { }
+
                    // pInfo.WindowStyle = ProcessWindowStyle.Normal;
                     pInfo.WorkingDirectory = rootFolderTextBoxText;
                     Process p = Process.Start(pInfo);
@@ -171,18 +190,35 @@ namespace Fishery_Simulation
             for (int i = starting; i <= ending; i++)
             {
                 ProcessStartInfo pInfo = new ProcessStartInfo();
-                string[] sts = textBox4.Text.ToString().Split('-');
-                string app = sts[0];
-                string arguments = "";
-                for (int j = 1; j < sts.Length; j++)
-                {
-                    arguments = arguments + "-" + sts[j];
-                }
+
+                //string[] sts = textBox4.Text.ToString().Split('-');
+                //string app = sts[0];
+                //string arguments = "";
+                //for (int j = 1; j < sts.Length; j++)
+                //{
+                //    arguments = arguments + "-" + sts[j];
+                //}
 
                 //string app = ((Form1)originalForm).textBox4.Text as string;
 
+                string[] sts = textBox4.Text.ToString().Split(new char[] { ' ' }, 2);
+                string app = sts[0];
+                //string arguments = sts[1];
+
                 pInfo.FileName = Path.Combine(Path.Combine(rootFolderTextBoxText, i.ToString()), app);
-                pInfo.Arguments = arguments;
+
+                //if (Path.GetExtension(pInfo.FileName).Length <= 0)
+                //{
+                //    MessageBox.Show("Your command file: " + app.ToUpper() + " has no extension. Are you sure this is correct? The command may not run correctly without extension. eg. SS3.exe instead of SS3");
+                //}
+
+
+                try
+                {
+                    pInfo.Arguments = sts[1];
+                }
+                catch { }
+
                 pInfo.WorkingDirectory = Path.Combine(rootFolderTextBoxText, i.ToString());
                 Process p = Process.Start(pInfo);
 
