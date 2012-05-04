@@ -89,6 +89,7 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Settings.cs" />
+    <Compile Include="lib\Simulator.cs" />
     <EmbeddedResource Include="AboutBox2.resx">
       <DependentUpon>AboutBox2.cs</DependentUpon>
     </EmbeddedResource>

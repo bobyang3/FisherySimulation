@@ -7,6 +7,7 @@ using System.IO;
 using System.Data;
 using System.Reflection;
 using System.ComponentModel;
+using System.Text.RegularExpressions;
 
 namespace Fishery_Simulation
 {
@@ -101,10 +102,10 @@ namespace Fishery_Simulation
 
 
 
-        public static void WritelineText(string filePath, string blocktext)
+        public static void WritelineText(string filePath, string text)
         {
             TextWriter tw = new StreamWriter(filePath);
-            tw.Write(blocktext);
+            tw.Write(text);
             tw.Close();
         }
 
@@ -149,6 +150,95 @@ namespace Fishery_Simulation
             List<DataRow> deletedRows = new List<DataRow>();
 
             return deletedRows;
+        }
+
+
+        public static double NORMSDIST(double Zscore)
+        {
+            double Z = -(Zscore * Zscore) / 2;
+            double normDist = (1 / Math.Sqrt(2 * Math.PI)) * (Math.Exp(Z));
+
+            return normDist;
+        }
+
+
+        public static int? findIndexOfKeyWord(List<string> strs, string keywords)
+        {
+            try
+            {
+                return strs.IndexOf(strs.Find(s => s.Contains(keywords)));
+            }
+            catch {
+                return null;
+            }
+        }
+
+        /// <summary>
+        /// Creates the rand norm.
+        /// </summary>
+        /// <param name="valuesLine">The values line.</param>
+        /// <param name="delimiter">The delimiter.</param>
+        /// <param name="x">if x=NULL, then using rand double value for each one</param>
+        /// <param name="mean">The mean.</param>
+        /// <param name="std">The STD.</param>
+        /// <param name="cumulative">if set to <c>true</c> [cumulative].</param>
+        /// <returns></returns>
+        public static string CreateRandNorm(string valuesLine, string delimiter, double? x, double mean, double std, bool cumulative)
+        {
+
+            string[] values = Regex.Split(valuesLine.ToString().Trim(), delimiter);
+
+            string newValues = "";
+
+
+
+            for (int i = 0; i < values.Length; i++)
+            {
+                double _x = 0.0d;
+
+                if (x == null)
+                { _x = (new Random()).NextDouble(); }
+                else
+                { _x = (double)x; }
+            
+                newValues = newValues + delimiter + Simulator.NORMDIST(_x, mean, std, cumulative).ToString();
+            }
+
+            //newValues = newValues.Trim();
+
+
+            return newValues.Trim();
+            
+        }
+
+        public static string extractStringHTML(string s, string tag)
+        {
+            // You should check for errors in real-world code, omitted for brevity
+            var startTag = "<" + tag + ">";
+            int startIndex = s.IndexOf(startTag) + startTag.Length;
+            int endIndex = s.IndexOf("</" + tag + ">", startIndex);
+            return s.Substring(startIndex, endIndex - startIndex);
+        }
+
+        public static string extractString(string s)
+        {
+            // You should check for errors in real-world code, omitted for brevity
+            var startTag = "(";
+            int startIndex = s.IndexOf(startTag) + startTag.Length;
+            int endIndex = s.IndexOf(")", startIndex);
+            return s.Substring(startIndex, endIndex - startIndex);
+        }
+
+        public static string convertStringListToString(List<string> liststring)
+        { 
+            string finalstring="";
+
+            foreach (string s in liststring)
+            {
+                finalstring = finalstring + Environment.NewLine + s;
+            }
+            
+            return finalstring.Trim(); //remove extra first empty line
         }
 
     }
