@@ -8,6 +8,7 @@ using System.Data;
 using System.Reflection;
 using System.ComponentModel;
 using System.Text.RegularExpressions;
+using System.Security.Cryptography;
 
 namespace Fishery_Simulation
 {
@@ -189,7 +190,7 @@ namespace Fishery_Simulation
             string[] values = Regex.Split(valuesLine.ToString().Trim(), delimiter);
 
             string newValues = "";
-
+            string testran = "";
 
 
             for (int i = 0; i < values.Length; i++)
@@ -197,11 +198,19 @@ namespace Fishery_Simulation
                 double _x = 0.0d;
 
                 if (x == null)
-                { _x = (new Random()).NextDouble(); }
+                {                    
+                    //_x = (new Random()).NextDouble(); // doesn't work because process too fast, the system time base is always the same.
+
+                    /////better way to generate better random number
+                    RNGCryptoServiceProvider rng = new RNGCryptoServiceProvider();
+                    byte[] result = new byte[8];
+                    rng.GetBytes(result);
+                    _x= (double)BitConverter.ToUInt64(result, 0) / ulong.MaxValue;
+                }
                 else
                 { _x = (double)x; }
-            
-                newValues = newValues + delimiter + Simulator.NORMDIST(_x, mean, std, cumulative).ToString();
+
+                newValues = newValues + delimiter + Simulator.NORMDIST((double)_x, mean, std, cumulative).ToString();
             }
 
             //newValues = newValues.Trim();
@@ -240,6 +249,17 @@ namespace Fishery_Simulation
             
             return finalstring.Trim(); //remove extra first empty line
         }
+
+        public static double getRealRandom()
+        {
+            RNGCryptoServiceProvider rng = new RNGCryptoServiceProvider();
+            byte[] result = new byte[8];
+            rng.GetBytes(result);
+            return (double)BitConverter.ToUInt64(result, 0) / ulong.MaxValue;        
+        }
+
+
+
 
     }
 }

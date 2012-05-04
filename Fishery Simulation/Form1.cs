@@ -48,7 +48,8 @@ namespace Fishery_Simulation
             settingsBindingSource.EndEdit();  //sync all the textboxes with current values
 
             //dataGridView1.Rows[0].Cells[0].ReadOnly = true;
-            
+
+            cPUNumTextBox.Text = Glibs.GetCPUCore().ToString();
         }
 
 
@@ -820,7 +821,7 @@ namespace Fishery_Simulation
                     string[] _eachPair = _eachPairLine.Split('=');
                     _key = _eachPair[0].ToString().Trim(); //eg: abc
 
-                    string _values = _eachPair[1].Trim(); //eg:randdis(1,2,4,flase)
+                    string _values = _eachPair[1].Trim(); //eg: NORMDIST(Rand,0.6,0.7,false)
                     string[] _eachValue = Glibs.extractString(_values).Split(new string[] { "," }, StringSplitOptions.None); //eg: 1
 
                     double? _x = 0.0d;
