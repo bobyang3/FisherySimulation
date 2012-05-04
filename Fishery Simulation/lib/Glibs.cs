@@ -210,7 +210,8 @@ namespace Fishery_Simulation
                 else
                 { _x = (double)x; }
 
-                newValues = newValues + delimiter + Simulator.NORMDIST((double)_x, mean, std, cumulative).ToString();
+              //  newValues = newValues + delimiter + Simulator.NORMDIST((double)_x, mean, std, cumulative).ToString();
+                newValues = newValues + delimiter + SimpleRNG.GetNormal(mean, std).ToString();
             }
 
             //newValues = newValues.Trim();

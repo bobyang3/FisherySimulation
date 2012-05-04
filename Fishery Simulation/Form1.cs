@@ -853,12 +853,18 @@ namespace Fishery_Simulation
         }
 
 
-        private void button4_Click(object sender, EventArgs e)
+
+        private void button4_Click_1(object sender, EventArgs e)
         {
+            string s = "";
 
-            generateRandDist(@"C:\_MSmesh_\(my documents)\__PROJECTS__\Fishery Simulation\Fishery Simulation\bin\Release\~~.txt"
-                , "", "");
 
+            for (int i = 0; i < 10; ++i)
+            {
+                s = s + "_" + SimpleRNG.GetNormal(1, 0.6).ToString();
+            }
+
+            MessageBox.Show(s);
         }
 
 
