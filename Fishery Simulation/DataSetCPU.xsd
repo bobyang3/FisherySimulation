@@ -16,9 +16,9 @@
           <xs:complexType>
             <xs:sequence>
               <xs:element name="FolderID" msprop:Generator_ColumnVarNameInTable="columnFolderID" msprop:Generator_ColumnPropNameInRow="FolderID" msprop:Generator_ColumnPropNameInTable="FolderIDColumn" msprop:Generator_UserColumnName="FolderID" type="xs:string" minOccurs="0" />
-              <xs:element name="Status" msprop:Generator_ColumnVarNameInTable="columnStatus" msprop:Generator_ColumnPropNameInRow="Status" msprop:Generator_ColumnPropNameInTable="StatusColumn" msprop:Generator_UserColumnName="Status" type="xs:int" minOccurs="0" />
+              <xs:element name="Status" msprop:Generator_ColumnVarNameInTable="columnStatus" msprop:Generator_ColumnPropNameInRow="Status" msprop:Generator_ColumnPropNameInTable="StatusColumn" msprop:Generator_UserColumnName="Status" type="xs:int" default="20" minOccurs="0" />
               <xs:element name="StatusDatetime" msprop:Generator_ColumnVarNameInTable="columnStatusDatetime" msprop:Generator_ColumnPropNameInRow="StatusDatetime" msprop:Generator_ColumnPropNameInTable="StatusDatetimeColumn" msprop:Generator_UserColumnName="StatusDatetime" type="xs:dateTime" minOccurs="0" />
-              <xs:element name="Notes" msprop:Generator_ColumnVarNameInTable="columnNotes" msprop:Generator_ColumnPropNameInRow="Notes" msprop:Generator_ColumnPropNameInTable="NotesColumn" msprop:Generator_UserColumnName="Notes" type="xs:string" minOccurs="0" />
+              <xs:element name="Notes" msprop:Generator_ColumnVarNameInTable="columnNotes" msprop:Generator_ColumnPropNameInRow="Notes" msprop:Generator_ColumnPropNameInTable="NotesColumn" msprop:Generator_UserColumnName="Notes" type="xs:string" default="Running_default" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>

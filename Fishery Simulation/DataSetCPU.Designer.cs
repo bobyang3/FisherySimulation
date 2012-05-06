@@ -435,6 +435,8 @@ namespace Fishery_Simulation {
                 base.Columns.Add(this.columnStatusDatetime);
                 this.columnNotes = new global::System.Data.DataColumn("Notes", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnNotes);
+                this.columnStatus.DefaultValue = ((int)(20));
+                this.columnNotes.DefaultValue = ((string)("Running_default"));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]

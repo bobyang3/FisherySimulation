@@ -60,12 +60,13 @@ namespace Fishery_Simulation
 
         private void button1_Click(object sender, EventArgs e)
         {
+            this.Enabled = false;
             string rootFolderTextBoxText = this.rootFolderTextBox.Text as string;
             string completedFile = Path.Combine(rootFolderTextBoxText, "~FSstatus.xml");
 
             bool userClick = true;
 
-            if (File.Exists(completedFile))
+            if (File.Exists(completedFile) && textBox3.Text.ToString().Trim().Length>0)
             {
                 DialogResult result1 = MessageBox.Show(@"The Step 1 was processed before! Are you sure you want to run again? This will overwrite your previous result. If you choose to continue, please make sure you delete all subfolders or delete file '~FSstatus.xml' from sub folders", "Important Question", MessageBoxButtons.YesNo);
 
@@ -73,8 +74,12 @@ namespace Fishery_Simulation
                 {
                     userClick = true;
                 }
-                else { userClick = false; }             
+                else { userClick = false;
+                EnableForm1();
+
+                }             
             }
+
             if (fileExistsCheck() == true && userClick == true)
             {
                 //Thread oThread = new Thread(new ThreadStart(process1and2));
@@ -131,14 +136,25 @@ namespace Fishery_Simulation
                     Process p = Process.Start(pInfo);
 
 
-                    p.WaitForExit();
-                    //MessageBox.Show("Code continuing...");
+                    //p.WaitForExit();
+                    ////MessageBox.Show("Code continuing...");
 
-                    DataSetCPU.ProcessStatusDataTable dt = new DataSetCPU.ProcessStatusDataTable();
-                    dt.Clear();
-                    dt.Rows.Add("", "30", DateTime.Now.ToString(), "Completed");
-                    dt.WriteXml(Path.Combine(rootFolderTextBoxText, "~FSstatus.xml"));
-                    dt.Clear();
+                    //DataSetCPU.ProcessStatusDataTable dt = new DataSetCPU.ProcessStatusDataTable();
+                    //dt.Clear();
+                    //dt.Rows.Add("", "30", DateTime.Now.ToString(), "Completed");
+                    //dt.WriteXml(Path.Combine(rootFolderTextBoxText, "~FSstatus.xml"));
+                    //dt.Clear();
+
+                    p.WaitForExit();
+                    // MessageBox.Show(p.ExitCode.ToString());
+                    if (p.ExitCode >= 0) // 0 = regular close, otherwise, user force close, by ctrl+C or click on X
+                    {
+                        DataSetCPU.ProcessStatusDataTable dt = new DataSetCPU.ProcessStatusDataTable();
+                        dt.Clear();
+                        dt.Rows.Add("", "30", DateTime.Now.ToString(), "Completed " + Glibs.getPCName());
+                        dt.WriteXml(Path.Combine(rootFolderTextBoxText, "~FSstatus.xml"));
+                        dt.Clear();
+                    }
 
 
                 }
@@ -202,20 +218,29 @@ namespace Fishery_Simulation
                 }
 
                 MessageBox.Show(@"Step 1 and/or 2 finished.");
+                
             }
             catch (Exception e1)
             {
                 MessageBox.Show(e1.ToString());
             }
 
+            ((Form1)originalForm).BeginInvoke(new EnableForm1Callback(EnableForm1));
 
         }
 
+        public delegate void EnableForm1Callback();
+
+        private void EnableForm1()
+        {
+            this.Enabled = true;
+            this.Activate(); //bring form to front
+        }
 
         private void step2Command(string subfolderPath)
         {
             ProcessStartInfo pInfo = new ProcessStartInfo();
-
+            
             string[] sts = textBox4.Text.ToString().Split(new char[] { ' ' }, 2);
             string app = sts[0];
             //string arguments = sts[1];
@@ -264,27 +289,41 @@ namespace Fishery_Simulation
                 {
                     DataSetCPU.ProcessStatusDataTable dt = new DataSetCPU.ProcessStatusDataTable();
                     dt.Clear();
-                    dt.Rows.Add("", "20", DateTime.Now.ToString(), "Running");
+                    dt.Rows.Add("", "20", DateTime.Now.ToString(), "Running " + Glibs.getPCName());
                     dt.WriteXml(Path.Combine(subfolderPath, "~FSstatus.xml"));
 
                     pInfo.WorkingDirectory = subfolderPath;
                     //Process p = new Process();
                     //p.Start(pInfo);
                     Process p = Process.Start(pInfo);
+                    
+                    //p.EnableRaisingEvents = true;
+                    //p.Exited += new EventHandler(myProcess_Exited);
 
                     ////Wait for the process to end.
+                   // MessageBox.Show(p.ExitCode.ToString());
+                    
                     p.WaitForExit();
-
-                    dt.Clear();
-                    dt.Rows.Add("", "30", DateTime.Now.ToString(), "Completed");
-                    dt.WriteXml(Path.Combine(subfolderPath, "~FSstatus.xml"));
-                    dt.Clear();
+                   // MessageBox.Show(p.ExitCode.ToString());
+                    if (p.ExitCode>=0) // 0 = regular close, otherwise, user force close, by ctrl+C or click on X
+                    {
+                        dt.Clear();
+                        dt.Rows.Add("", "30", DateTime.Now.ToString(), "Completed " + Glibs.getPCName());
+                        dt.WriteXml(Path.Combine(subfolderPath, "~FSstatus.xml"));
+                        dt.Clear();
+                    }
 
                 }
             }
             catch (Exception i) { MessageBox.Show(i.ToString()); }
 
             
+        }
+
+        private void myProcess_Exited(object sender, System.EventArgs e)
+        {
+            //MessageBox.Show("xxxxxxxxxx");
+
         }
 
         private void step2Command(string rootFolderTextBoxText, int starting, int ending)
