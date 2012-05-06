@@ -131,6 +131,9 @@ namespace Fishery_Simulation
                     Process p = Process.Start(pInfo);
 
 
+                    p.WaitForExit();
+                    //MessageBox.Show("Code continuing...");
+
                     DataSetCPU.ProcessStatusDataTable dt = new DataSetCPU.ProcessStatusDataTable();
                     dt.Clear();
                     dt.Rows.Add("", "30", DateTime.Now.ToString(), "Completed");
@@ -138,8 +141,6 @@ namespace Fishery_Simulation
                     dt.Clear();
 
 
-                    p.WaitForExit();
-                    //MessageBox.Show("Code continuing...");
                 }
             }
             catch (Exception e1)
@@ -271,13 +272,14 @@ namespace Fishery_Simulation
                     //p.Start(pInfo);
                     Process p = Process.Start(pInfo);
 
+                    ////Wait for the process to end.
+                    p.WaitForExit();
+
                     dt.Clear();
                     dt.Rows.Add("", "30", DateTime.Now.ToString(), "Completed");
                     dt.WriteXml(Path.Combine(subfolderPath, "~FSstatus.xml"));
                     dt.Clear();
 
-                    ////Wait for the process to end.
-                    p.WaitForExit();
                 }
             }
             catch (Exception i) { MessageBox.Show(i.ToString()); }
@@ -706,9 +708,12 @@ namespace Fishery_Simulation
         {
             try
             {
-                if (e.ColumnIndex == 0) //fileName is netered
+                if (e.ColumnIndex == 0) //fileName is entered
                 {
-                    dataGridView1["outputFileName", e.RowIndex].Value = dataGridView1[0, e.RowIndex].EditedFormattedValue; //copy values from input to output
+                    if (dataSet1.Tables["FileList"].Rows[e.RowIndex]["outputFileName"].ToString().Trim().Length <= 0)
+                    {
+                        dataGridView1["outputFileName", e.RowIndex].Value = dataGridView1[0, e.RowIndex].EditedFormattedValue; //copy values from input to output
+                    }
                 }
             }
             catch{}
@@ -917,7 +922,7 @@ namespace Fishery_Simulation
             List<string> strs = new List<string>();
             strs.AddRange(Glibs.ReadText(sourceFile));
 
-            //string _originalTextboxValue = "<FileList>=NORMDIST(RAND,2,34,false)";
+            //string _originalTextboxValue = "<FileList>=Anything(RAND,2,34,false)";
             string _originalTextboxValue = TextBoxValue;
             string[] _textboxValueInLines = _originalTextboxValue.Split(new string[] { Environment.NewLine }, StringSplitOptions.None);
 
@@ -930,21 +935,24 @@ namespace Fishery_Simulation
                     string[] _eachPair = _eachPairLine.Split('=');
                     _key = _eachPair[0].ToString().Trim(); //eg: abc
 
-                    string _values = _eachPair[1].Trim(); //eg: NORMDIST(Rand,0.6,0.7,false)
+                    string _values = _eachPair[1].Trim(); //eg: Anything(Rand,0.6,0.7,false)
                     string[] _eachValue = Glibs.extractString(_values).Split(new string[] { "," }, StringSplitOptions.None); //eg: 1
 
-                    double? _x = 0.0d;
+                    //double? _x = null; // get random number by default
 
-                    if (_eachValue[0].Trim().ToUpper() == "RAND".ToUpper())
-                    { _x = null; }
-                    else
-                    { _x = double.Parse(_eachValue[0].Trim()); }
+                    //if (_eachValue[0].Trim().ToUpper() == "RAND".ToUpper())
+                    //{ _x = null; }
+                    //else
+                    //{ _x = double.Parse(_eachValue[0].Trim()); }
+
 
 
                     //find the keyheader line
                     int? keywordFoundInIndexOf = Glibs.findIndexOfKeyWord(strs, _key);
                     //replace the value with the right values for the line after the keyheader line
-                    strs[(int)keywordFoundInIndexOf + 1] = (Glibs.CreateRandNorm(strs[(int)keywordFoundInIndexOf + 1], " ", _x, double.Parse(_eachValue[1].Trim()), double.Parse(_eachValue[2].Trim()), bool.Parse(_eachValue[3].Trim()))); //change value for the next time
+                    //strs[(int)keywordFoundInIndexOf + 1] = (Glibs.CreateRandNorm(strs[(int)keywordFoundInIndexOf + 1], " ", _x, double.Parse(_eachValue[1].Trim()), double.Parse(_eachValue[2].Trim()), bool.Parse(_eachValue[3].Trim()))); //change value for the next time
+                    strs[(int)keywordFoundInIndexOf + 1] = (Glibs.CreateRandNorm(strs[(int)keywordFoundInIndexOf + 1], " ", null , double.Parse(_eachValue[0].Trim()), double.Parse(_eachValue[1].Trim()), false)); //change value for the next time
+                
                 }
                 catch
                 {

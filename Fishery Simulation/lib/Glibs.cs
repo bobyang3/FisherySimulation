@@ -199,13 +199,15 @@ namespace Fishery_Simulation
 
                 if (x == null)
                 {                    
-                    //_x = (new Random()).NextDouble(); // doesn't work because process too fast, the system time base is always the same.
+                    ////_x = (new Random()).NextDouble(); // doesn't work because process too fast, the system time base is always the same.
 
-                    /////better way to generate better random number
-                    RNGCryptoServiceProvider rng = new RNGCryptoServiceProvider();
-                    byte[] result = new byte[8];
-                    rng.GetBytes(result);
-                    _x= (double)BitConverter.ToUInt64(result, 0) / ulong.MaxValue;
+                    ///////better way to generate better random number
+                    //RNGCryptoServiceProvider rng = new RNGCryptoServiceProvider();
+                    //byte[] result = new byte[8];
+                    //rng.GetBytes(result);
+                    //_x= (double)BitConverter.ToUInt64(result, 0) / ulong.MaxValue;
+
+                    _x = Glibs.getRealRandom();
                 }
                 else
                 { _x = (double)x; }
