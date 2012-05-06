@@ -34,6 +34,7 @@
               <xs:element name="commandRootFolder" msprop:Generator_ColumnVarNameInTable="columncommandRootFolder" msprop:Generator_ColumnPropNameInRow="commandRootFolder" msprop:Generator_ColumnPropNameInTable="commandRootFolderColumn" msprop:Generator_UserColumnName="commandRootFolder" type="xs:string" minOccurs="0" />
               <xs:element name="commandSubFolder" msprop:Generator_ColumnVarNameInTable="columncommandSubFolder" msprop:Generator_ColumnPropNameInRow="commandSubFolder" msprop:Generator_ColumnPropNameInTable="commandSubFolderColumn" msprop:Generator_UserColumnName="commandSubFolder" type="xs:string" minOccurs="0" />
               <xs:element name="CPUNum" msprop:Generator_ColumnVarNameInTable="columnCPUNum" msprop:Generator_ColumnPropNameInRow="CPUNum" msprop:Generator_ColumnPropNameInTable="CPUNumColumn" msprop:Generator_UserColumnName="CPUNum" type="xs:string" minOccurs="0" />
+              <xs:element name="step2TimeOutInMinutes" msprop:Generator_ColumnVarNameInTable="columnstep2TimeOutInMinutes" msprop:Generator_ColumnPropNameInRow="step2TimeOutInMinutes" msprop:Generator_ColumnPropNameInTable="step2TimeOutInMinutesColumn" msprop:Generator_UserColumnName="step2TimeOutInMinutes" type="xs:string" default="120" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>

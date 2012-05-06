@@ -251,6 +251,10 @@ namespace Fishery_Simulation
             return finalstring.Trim(); //remove extra first empty line
         }
 
+        /// <summary>
+        /// Using Random() may not work correctly if the time is too short for example generate random number inside the For loop, and you will get the same number. This method gives you the real random the random # is between 0 to 1
+        /// </summary>
+        /// <returns></returns>
         public static double getRealRandom()
         {
             RNGCryptoServiceProvider rng = new RNGCryptoServiceProvider();
@@ -259,7 +263,14 @@ namespace Fishery_Simulation
             return (double)BitConverter.ToUInt64(result, 0) / ulong.MaxValue;        
         }
 
-
+        /// <summary>
+        /// Gets the name of the PC.
+        /// </summary>
+        /// <returns></returns>
+        public static string getPCName()
+        {
+            return Environment.MachineName.ToString();
+        }
 
 
     }

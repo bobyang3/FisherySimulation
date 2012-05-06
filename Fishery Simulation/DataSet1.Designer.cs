@@ -706,6 +706,8 @@ namespace Fishery_Simulation {
             
             private global::System.Data.DataColumn columnCPUNum;
             
+            private global::System.Data.DataColumn columnstep2TimeOutInMinutes;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public SettingsDataTable() {
@@ -781,6 +783,14 @@ namespace Fishery_Simulation {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn step2TimeOutInMinutesColumn {
+                get {
+                    return this.columnstep2TimeOutInMinutes;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -816,14 +826,15 @@ namespace Fishery_Simulation {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public SettingsRow AddSettingsRow(string rootFolder, string simulationNum, string commandRootFolder, string commandSubFolder, string CPUNum) {
+            public SettingsRow AddSettingsRow(string rootFolder, string simulationNum, string commandRootFolder, string commandSubFolder, string CPUNum, string step2TimeOutInMinutes) {
                 SettingsRow rowSettingsRow = ((SettingsRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         rootFolder,
                         simulationNum,
                         commandRootFolder,
                         commandSubFolder,
-                        CPUNum};
+                        CPUNum,
+                        step2TimeOutInMinutes};
                 rowSettingsRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowSettingsRow);
                 return rowSettingsRow;
@@ -851,6 +862,7 @@ namespace Fishery_Simulation {
                 this.columncommandRootFolder = base.Columns["commandRootFolder"];
                 this.columncommandSubFolder = base.Columns["commandSubFolder"];
                 this.columnCPUNum = base.Columns["CPUNum"];
+                this.columnstep2TimeOutInMinutes = base.Columns["step2TimeOutInMinutes"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -866,6 +878,9 @@ namespace Fishery_Simulation {
                 base.Columns.Add(this.columncommandSubFolder);
                 this.columnCPUNum = new global::System.Data.DataColumn("CPUNum", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnCPUNum);
+                this.columnstep2TimeOutInMinutes = new global::System.Data.DataColumn("step2TimeOutInMinutes", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnstep2TimeOutInMinutes);
+                this.columnstep2TimeOutInMinutes.DefaultValue = ((string)("120"));
                 this.Locale = new global::System.Globalization.CultureInfo("");
             }
             
@@ -1662,6 +1677,22 @@ namespace Fishery_Simulation {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string step2TimeOutInMinutes {
+                get {
+                    try {
+                        return ((string)(this[this.tableSettings.step2TimeOutInMinutesColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'step2TimeOutInMinutes\' in table \'Settings\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableSettings.step2TimeOutInMinutesColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsrootFolderNull() {
                 return this.IsNull(this.tableSettings.rootFolderColumn);
             }
@@ -1718,6 +1749,18 @@ namespace Fishery_Simulation {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetCPUNumNull() {
                 this[this.tableSettings.CPUNumColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Isstep2TimeOutInMinutesNull() {
+                return this.IsNull(this.tableSettings.step2TimeOutInMinutesColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Setstep2TimeOutInMinutesNull() {
+                this[this.tableSettings.step2TimeOutInMinutesColumn] = global::System.Convert.DBNull;
             }
         }
         

@@ -1,3 +1,18 @@
+/******************************************************
+SimpleRNG can be used to generate random unsigned integers and double values with several statistical distributions:
+Beta
+Cauchy
+Chi square
+Exponential
+Inverse gamma
+Laplace (double exponential)
+Normal
+Student t
+Uniform
+Weibull
+http://www.codeproject.com/Articles/25172/Simple-Random-Number-Generation
+ * ***************************************************/
+
 using System;
 
 namespace Fishery_Simulation

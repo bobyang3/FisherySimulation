@@ -79,6 +79,15 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DataSet1.xsd</DependentUpon>
     </Compile>
+    <Compile Include="DataSetCPU.cs">
+      <DependentUpon>DataSetCPU.xsd</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="DataSetCPU.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataSetCPU.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -119,6 +128,17 @@
     <None Include="DataSet1.xss">
       <DependentUpon>DataSet1.xsd</DependentUpon>
     </None>
+    <None Include="DataSetCPU.xsc">
+      <DependentUpon>DataSetCPU.xsd</DependentUpon>
+    </None>
+    <None Include="DataSetCPU.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DataSetCPU.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="DataSetCPU.xss">
+      <DependentUpon>DataSetCPU.xsd</DependentUpon>
+    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -138,7 +158,6 @@
     <Content Include="res\layout\school_of_fish.ico" />
     <Content Include="res\layout\school_of_fish.png" />
     <Content Include="school_of_fish.ico" />
-    <Content Include="temp.txt" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="res\values\" />

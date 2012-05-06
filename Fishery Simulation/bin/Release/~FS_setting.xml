@@ -24,6 +24,7 @@
     <commandRootFolder>autorunsc</commandRootFolder>
     <commandSubFolder>autorunsc.exe</commandSubFolder>
     <CPUNum>4</CPUNum>
+	<step2TimeOutInMinutes>1</step2TimeOutInMinutes>
   </Settings>
   <SummayFiles>
     <sourceFile>~FS_setting2.xml</sourceFile>

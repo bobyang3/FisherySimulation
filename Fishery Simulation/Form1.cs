@@ -49,7 +49,7 @@ namespace Fishery_Simulation
 
             //dataGridView1.Rows[0].Cells[0].ReadOnly = true;
 
-            cPUNumTextBox.Text = Glibs.GetCPUCore().ToString();
+            cPUNumTextBox.Text = Math.Ceiling((double)Glibs.GetCPUCore()*1.5).ToString();
         }
 
 
@@ -60,14 +60,29 @@ namespace Fishery_Simulation
 
         private void button1_Click(object sender, EventArgs e)
         {
+            string rootFolderTextBoxText = this.rootFolderTextBox.Text as string;
+            string completedFile = Path.Combine(rootFolderTextBoxText, "~FSstatus.xml");
 
-            if (fileExistsCheck())
+            bool userClick = true;
+
+            if (File.Exists(completedFile))
+            {
+                DialogResult result1 = MessageBox.Show(@"The Step 1 was processed before! Are you sure you want to run again? This will overwrite your previous result. If you choose to continue, please make sure you delete all subfolders or delete file '~FSstatus.xml' from sub folders", "Important Question", MessageBoxButtons.YesNo);
+
+                if (result1 == DialogResult.Yes)
+                {
+                    userClick = true;
+                }
+                else { userClick = false; }             
+            }
+            if (fileExistsCheck() == true && userClick == true)
             {
                 //Thread oThread = new Thread(new ThreadStart(process1and2));
 
                 //pass values to the new thread
                 Thread oThread = new Thread(new ParameterizedThreadStart(process1and2));
                 oThread.Start(this);
+
             }
 
         }
@@ -75,7 +90,6 @@ namespace Fishery_Simulation
         private void process1and2(object originalForm)
         {
             string rootFolderTextBoxText = ((Form1)originalForm).rootFolderTextBox.Text as string;
-
             //step 1.1: run commands
             try
             {
@@ -116,9 +130,14 @@ namespace Fishery_Simulation
                     pInfo.WorkingDirectory = rootFolderTextBoxText;
                     Process p = Process.Start(pInfo);
 
-                    ////Wait for the window to finish loading.
-                    //p.WaitForInputIdle();
-                    //Wait for the process to end.
+
+                    DataSetCPU.ProcessStatusDataTable dt = new DataSetCPU.ProcessStatusDataTable();
+                    dt.Clear();
+                    dt.Rows.Add("", "30", DateTime.Now.ToString(), "Completed");
+                    dt.WriteXml(Path.Combine(rootFolderTextBoxText, "~FSstatus.xml"));
+                    dt.Clear();
+
+
                     p.WaitForExit();
                     //MessageBox.Show("Code continuing...");
                 }
@@ -149,25 +168,32 @@ namespace Fishery_Simulation
                         int paralleNum = 0;
                         if (cPUNumTextBox.Text.ToString().Trim().Length <= 0)
                         {
-                            paralleNum = Glibs.GetCPUCore();
+                            paralleNum = (int)Math.Ceiling((double)Glibs.GetCPUCore() * 1.5);
                         }
                         else
                         {
                             paralleNum = int.Parse(cPUNumTextBox.Text.ToString().Trim());                        
                         }
 
-                    double _Max_folder_num=double.Parse(textBox2.Text.Trim().ToString());
+                    double _Max_folder_num=double.Parse(textBox2.Text.Trim().ToString()) + 1;
                     int CUPsetAverage = Convert.ToInt32(Math.Ceiling(_Max_folder_num / paralleNum));
 
                     //for (int i=1; i <= Glibs.GetCPUCore(); i++)
                     //{
                     //    step2Command(rootFolderTextBoxText, (i-1) * CUPsetAverage + 1, i * CUPsetAverage);
                     //}
-
-                    Parallel.For(1, paralleNum + 1, i =>
+                    ParallelOptions po = new ParallelOptions();
+                    po.MaxDegreeOfParallelism = paralleNum;
+                    //Parallel.For(1, paralleNum + 1, po, i =>
+                    Parallel.For(1, (int)_Max_folder_num, po, i =>
                         {
                             {
-                                step2Command(rootFolderTextBoxText, (i - 1) * CUPsetAverage + 1, (i * CUPsetAverage) > _Max_folder_num ? Convert.ToInt32(_Max_folder_num) : (i * CUPsetAverage));
+                                string subFolder= Path.Combine(rootFolderTextBoxText,i.ToString());
+                                //step2Command(rootFolderTextBoxText, (i - 1) * CUPsetAverage + 1, (i * CUPsetAverage) > _Max_folder_num ? Convert.ToInt32(_Max_folder_num) : (i * CUPsetAverage));
+                                step2Command(subFolder);
+
+                               
+
                             }
                         });
 
@@ -184,6 +210,80 @@ namespace Fishery_Simulation
 
         }
 
+
+        private void step2Command(string subfolderPath)
+        {
+            ProcessStartInfo pInfo = new ProcessStartInfo();
+
+            string[] sts = textBox4.Text.ToString().Split(new char[] { ' ' }, 2);
+            string app = sts[0];
+            //string arguments = sts[1];
+
+            pInfo.FileName = Path.Combine(subfolderPath, app);
+
+            try
+            {
+                pInfo.Arguments = sts[1];
+            }
+            catch { }
+
+            try
+            {
+                bool blRun = true;
+                int step2TimeOutInMinutes = 120;
+
+                try
+                {
+                   step2TimeOutInMinutes=int.Parse( dataSet1.Tables["settings"].Rows[0]["step2TimeOutInMinutes"].ToString() );
+                }
+                catch { }
+
+                if (File.Exists(Path.Combine(subfolderPath, "~FSstatus.xml")))
+                {
+                    DataSetCPU.ProcessStatusDataTable dt = new DataSetCPU.ProcessStatusDataTable();    
+                    dt.ReadXml(Path.Combine(subfolderPath, "~FSstatus.xml"));
+                    if (int.Parse(dt.Rows[0]["Status"].ToString()) < 30) //status is less than commpleted
+                    {
+                        DateTime datetime = DateTime.Parse(dt.Rows[0]["StatusDatetime"].ToString());
+                        System.TimeSpan diff1 = DateTime.Now.Subtract(datetime);
+                        //MessageBox.Show(datetime.ToString() + " xxx " + diff1.TotalMinutes.ToString());
+                        if (diff1.TotalMinutes > step2TimeOutInMinutes)  //if time different from last run was more than 60 minutes, then could be incompleted. run again
+                            blRun = true;
+                        else blRun = false;
+                    }
+                    else
+                    {
+                        blRun = false; // don't process again if it is complted, status = 300
+                    }
+
+                    
+                }
+
+                if (blRun)
+                {
+                    DataSetCPU.ProcessStatusDataTable dt = new DataSetCPU.ProcessStatusDataTable();
+                    dt.Clear();
+                    dt.Rows.Add("", "20", DateTime.Now.ToString(), "Running");
+                    dt.WriteXml(Path.Combine(subfolderPath, "~FSstatus.xml"));
+
+                    pInfo.WorkingDirectory = subfolderPath;
+                    //Process p = new Process();
+                    //p.Start(pInfo);
+                    Process p = Process.Start(pInfo);
+
+                    dt.Clear();
+                    dt.Rows.Add("", "30", DateTime.Now.ToString(), "Completed");
+                    dt.WriteXml(Path.Combine(subfolderPath, "~FSstatus.xml"));
+                    dt.Clear();
+
+                    ////Wait for the process to end.
+                    p.WaitForExit();
+                }
+            }
+            catch (Exception i) { MessageBox.Show(i.ToString()); }
+
+            
+        }
 
         private void step2Command(string rootFolderTextBoxText, int starting, int ending)
         {
@@ -240,15 +340,24 @@ namespace Fishery_Simulation
             //create empty folders
             try
             {
-                
 
-                Parallel.For(1, _sub_folder_num , i =>
+
+                Parallel.For(1, _sub_folder_num, i =>
                 {
                     {
                         string newPath = Path.Combine(rootFolderTextBox.Text, i.ToString());
                         Directory.CreateDirectory(newPath);
                     }
                 });
+
+                //for(int i=1; i<_sub_folder_num; i++)
+                //{
+                    
+                //        string newPath = Path.Combine(rootFolderTextBox.Text, i.ToString());
+                //        Directory.CreateDirectory(newPath);                    
+                //}
+
+
             }
             catch (Exception e2)
             {
