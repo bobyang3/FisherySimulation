@@ -4,7 +4,7 @@
   <description asmv2:iconFile="school_of_fish.ico" xmlns="urn:schemas-microsoft-com:asm.v1" />
   <application />
   <entryPoint>
-    <assemblyIdentity name="Fishery Simulation" version="2.0.0.0" language="neutral" processorArchitecture="msil" />
+    <assemblyIdentity name="Fishery Simulation" version="3.0.0.0" language="neutral" processorArchitecture="msil" />
     <commandLine file="Fishery Simulation.exe" parameters="" />
   </entryPoint>
   <trustInfo>
@@ -43,14 +43,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Fishery Simulation.exe" size="819200">
-      <assemblyIdentity name="Fishery Simulation" version="2.0.0.0" language="neutral" processorArchitecture="msil" />
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Fishery Simulation.exe" size="819712">
+      <assemblyIdentity name="Fishery Simulation" version="3.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>WzKxYmTlGW4NX5S3wxiFqMBWiBo=</dsig:DigestValue>
+        <dsig:DigestValue>Wai5zzgHnc0y4GX6SkrV/aKhNRk=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -62,7 +62,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>T7dKbT+cxup0OpWt1GNhGbvsngU=</dsig:DigestValue>
+        <dsig:DigestValue>oKdFRHZQb7iCoICJHoUNVmhLp1Q=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

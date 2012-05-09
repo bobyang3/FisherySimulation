@@ -287,6 +287,10 @@ namespace Fishery_Simulation {
             
             private global::System.Data.DataColumn columnNotes;
             
+            private global::System.Data.DataColumn columnTimeTakenInSeconds;
+            
+            private global::System.Data.DataColumn columnComputerName;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public ProcessStatusDataTable() {
@@ -354,6 +358,22 @@ namespace Fishery_Simulation {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn TimeTakenInSecondsColumn {
+                get {
+                    return this.columnTimeTakenInSeconds;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn ComputerNameColumn {
+                get {
+                    return this.columnComputerName;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -389,13 +409,15 @@ namespace Fishery_Simulation {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public ProcessStatusRow AddProcessStatusRow(string FolderID, int Status, System.DateTime StatusDatetime, string Notes) {
+            public ProcessStatusRow AddProcessStatusRow(string FolderID, int Status, System.DateTime StatusDatetime, string Notes, string TimeTakenInSeconds, string ComputerName) {
                 ProcessStatusRow rowProcessStatusRow = ((ProcessStatusRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         FolderID,
                         Status,
                         StatusDatetime,
-                        Notes};
+                        Notes,
+                        TimeTakenInSeconds,
+                        ComputerName};
                 rowProcessStatusRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowProcessStatusRow);
                 return rowProcessStatusRow;
@@ -422,6 +444,8 @@ namespace Fishery_Simulation {
                 this.columnStatus = base.Columns["Status"];
                 this.columnStatusDatetime = base.Columns["StatusDatetime"];
                 this.columnNotes = base.Columns["Notes"];
+                this.columnTimeTakenInSeconds = base.Columns["TimeTakenInSeconds"];
+                this.columnComputerName = base.Columns["ComputerName"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -435,6 +459,10 @@ namespace Fishery_Simulation {
                 base.Columns.Add(this.columnStatusDatetime);
                 this.columnNotes = new global::System.Data.DataColumn("Notes", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnNotes);
+                this.columnTimeTakenInSeconds = new global::System.Data.DataColumn("TimeTakenInSeconds", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnTimeTakenInSeconds);
+                this.columnComputerName = new global::System.Data.DataColumn("ComputerName", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnComputerName);
                 this.columnStatus.DefaultValue = ((int)(20));
                 this.columnNotes.DefaultValue = ((string)("Running_default"));
             }
@@ -643,6 +671,38 @@ namespace Fishery_Simulation {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string TimeTakenInSeconds {
+                get {
+                    try {
+                        return ((string)(this[this.tableProcessStatus.TimeTakenInSecondsColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'TimeTakenInSeconds\' in table \'ProcessStatus\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableProcessStatus.TimeTakenInSecondsColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string ComputerName {
+                get {
+                    try {
+                        return ((string)(this[this.tableProcessStatus.ComputerNameColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'ComputerName\' in table \'ProcessStatus\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableProcessStatus.ComputerNameColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsFolderIDNull() {
                 return this.IsNull(this.tableProcessStatus.FolderIDColumn);
             }
@@ -687,6 +747,30 @@ namespace Fishery_Simulation {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetNotesNull() {
                 this[this.tableProcessStatus.NotesColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsTimeTakenInSecondsNull() {
+                return this.IsNull(this.tableProcessStatus.TimeTakenInSecondsColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetTimeTakenInSecondsNull() {
+                this[this.tableProcessStatus.TimeTakenInSecondsColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsComputerNameNull() {
+                return this.IsNull(this.tableProcessStatus.ComputerNameColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetComputerNameNull() {
+                this[this.tableProcessStatus.ComputerNameColumn] = global::System.Convert.DBNull;
             }
         }
         

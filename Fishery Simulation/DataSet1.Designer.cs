@@ -28,7 +28,7 @@ namespace Fishery_Simulation {
         
         private SettingsDataTable tableSettings;
         
-        private SummayFilesDataTable tableSummayFiles;
+        private SummaryFilesDataTable tableSummaryFiles;
         
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
@@ -64,8 +64,8 @@ namespace Fishery_Simulation {
                 if ((ds.Tables["Settings"] != null)) {
                     base.Tables.Add(new SettingsDataTable(ds.Tables["Settings"]));
                 }
-                if ((ds.Tables["SummayFiles"] != null)) {
-                    base.Tables.Add(new SummayFilesDataTable(ds.Tables["SummayFiles"]));
+                if ((ds.Tables["SummaryFiles"] != null)) {
+                    base.Tables.Add(new SummaryFilesDataTable(ds.Tables["SummaryFiles"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -109,9 +109,9 @@ namespace Fishery_Simulation {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Browsable(false)]
         [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
-        public SummayFilesDataTable SummayFiles {
+        public SummaryFilesDataTable SummaryFiles {
             get {
-                return this.tableSummayFiles;
+                return this.tableSummaryFiles;
             }
         }
         
@@ -188,8 +188,8 @@ namespace Fishery_Simulation {
                 if ((ds.Tables["Settings"] != null)) {
                     base.Tables.Add(new SettingsDataTable(ds.Tables["Settings"]));
                 }
-                if ((ds.Tables["SummayFiles"] != null)) {
-                    base.Tables.Add(new SummayFilesDataTable(ds.Tables["SummayFiles"]));
+                if ((ds.Tables["SummaryFiles"] != null)) {
+                    base.Tables.Add(new SummaryFilesDataTable(ds.Tables["SummaryFiles"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -236,10 +236,10 @@ namespace Fishery_Simulation {
                     this.tableSettings.InitVars();
                 }
             }
-            this.tableSummayFiles = ((SummayFilesDataTable)(base.Tables["SummayFiles"]));
+            this.tableSummaryFiles = ((SummaryFilesDataTable)(base.Tables["SummaryFiles"]));
             if ((initTable == true)) {
-                if ((this.tableSummayFiles != null)) {
-                    this.tableSummayFiles.InitVars();
+                if ((this.tableSummaryFiles != null)) {
+                    this.tableSummaryFiles.InitVars();
                 }
             }
         }
@@ -256,8 +256,8 @@ namespace Fishery_Simulation {
             base.Tables.Add(this.tableFileList);
             this.tableSettings = new SettingsDataTable();
             base.Tables.Add(this.tableSettings);
-            this.tableSummayFiles = new SummayFilesDataTable();
-            base.Tables.Add(this.tableSummayFiles);
+            this.tableSummaryFiles = new SummaryFilesDataTable();
+            base.Tables.Add(this.tableSummaryFiles);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -274,7 +274,7 @@ namespace Fishery_Simulation {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        private bool ShouldSerializeSummayFiles() {
+        private bool ShouldSerializeSummaryFiles() {
             return false;
         }
         
@@ -340,7 +340,7 @@ namespace Fishery_Simulation {
         public delegate void SettingsRowChangeEventHandler(object sender, SettingsRowChangeEvent e);
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public delegate void SummayFilesRowChangeEventHandler(object sender, SummayFilesRowChangeEvent e);
+        public delegate void SummaryFilesRowChangeEventHandler(object sender, SummaryFilesRowChangeEvent e);
         
         /// <summary>
         ///Represents the strongly named DataTable class.
@@ -1013,7 +1013,7 @@ namespace Fishery_Simulation {
         ///</summary>
         [global::System.Serializable()]
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
-        public partial class SummayFilesDataTable : global::System.Data.TypedTableBase<SummayFilesRow> {
+        public partial class SummaryFilesDataTable : global::System.Data.TypedTableBase<SummaryFilesRow> {
             
             private global::System.Data.DataColumn columnsourceFile;
             
@@ -1031,8 +1031,8 @@ namespace Fishery_Simulation {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public SummayFilesDataTable() {
-                this.TableName = "SummayFiles";
+            public SummaryFilesDataTable() {
+                this.TableName = "SummaryFiles";
                 this.BeginInit();
                 this.InitClass();
                 this.EndInit();
@@ -1040,7 +1040,7 @@ namespace Fishery_Simulation {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            internal SummayFilesDataTable(global::System.Data.DataTable table) {
+            internal SummaryFilesDataTable(global::System.Data.DataTable table) {
                 this.TableName = table.TableName;
                 if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
                     this.CaseSensitive = table.CaseSensitive;
@@ -1057,7 +1057,7 @@ namespace Fishery_Simulation {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected SummayFilesDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+            protected SummaryFilesDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                     base(info, context) {
                 this.InitVars();
             }
@@ -1129,34 +1129,34 @@ namespace Fishery_Simulation {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public SummayFilesRow this[int index] {
+            public SummaryFilesRow this[int index] {
                 get {
-                    return ((SummayFilesRow)(this.Rows[index]));
+                    return ((SummaryFilesRow)(this.Rows[index]));
                 }
             }
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event SummayFilesRowChangeEventHandler SummayFilesRowChanging;
+            public event SummaryFilesRowChangeEventHandler SummaryFilesRowChanging;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event SummayFilesRowChangeEventHandler SummayFilesRowChanged;
+            public event SummaryFilesRowChangeEventHandler SummaryFilesRowChanged;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event SummayFilesRowChangeEventHandler SummayFilesRowDeleting;
+            public event SummaryFilesRowChangeEventHandler SummaryFilesRowDeleting;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event SummayFilesRowChangeEventHandler SummayFilesRowDeleted;
+            public event SummaryFilesRowChangeEventHandler SummaryFilesRowDeleted;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void AddSummayFilesRow(SummayFilesRow row) {
+            public void AddSummaryFilesRow(SummaryFilesRow row) {
                 this.Rows.Add(row);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public SummayFilesRow AddSummayFilesRow(string sourceFile, int fromLine, int toLine, string outoutFileOrTable, bool onlyOneHeader, bool addSourceFolderNumInFront, string delimited) {
-                SummayFilesRow rowSummayFilesRow = ((SummayFilesRow)(this.NewRow()));
+            public SummaryFilesRow AddSummaryFilesRow(string sourceFile, int fromLine, int toLine, string outoutFileOrTable, bool onlyOneHeader, bool addSourceFolderNumInFront, string delimited) {
+                SummaryFilesRow rowSummaryFilesRow = ((SummaryFilesRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         sourceFile,
                         fromLine,
@@ -1165,15 +1165,15 @@ namespace Fishery_Simulation {
                         onlyOneHeader,
                         addSourceFolderNumInFront,
                         delimited};
-                rowSummayFilesRow.ItemArray = columnValuesArray;
-                this.Rows.Add(rowSummayFilesRow);
-                return rowSummayFilesRow;
+                rowSummaryFilesRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowSummaryFilesRow);
+                return rowSummaryFilesRow;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public override global::System.Data.DataTable Clone() {
-                SummayFilesDataTable cln = ((SummayFilesDataTable)(base.Clone()));
+                SummaryFilesDataTable cln = ((SummaryFilesDataTable)(base.Clone()));
                 cln.InitVars();
                 return cln;
             }
@@ -1181,7 +1181,7 @@ namespace Fishery_Simulation {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override global::System.Data.DataTable CreateInstance() {
-                return new SummayFilesDataTable();
+                return new SummaryFilesDataTable();
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1220,28 +1220,28 @@ namespace Fishery_Simulation {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public SummayFilesRow NewSummayFilesRow() {
-                return ((SummayFilesRow)(this.NewRow()));
+            public SummaryFilesRow NewSummaryFilesRow() {
+                return ((SummaryFilesRow)(this.NewRow()));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
-                return new SummayFilesRow(builder);
+                return new SummaryFilesRow(builder);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override global::System.Type GetRowType() {
-                return typeof(SummayFilesRow);
+                return typeof(SummaryFilesRow);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanged(e);
-                if ((this.SummayFilesRowChanged != null)) {
-                    this.SummayFilesRowChanged(this, new SummayFilesRowChangeEvent(((SummayFilesRow)(e.Row)), e.Action));
+                if ((this.SummaryFilesRowChanged != null)) {
+                    this.SummaryFilesRowChanged(this, new SummaryFilesRowChangeEvent(((SummaryFilesRow)(e.Row)), e.Action));
                 }
             }
             
@@ -1249,8 +1249,8 @@ namespace Fishery_Simulation {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanging(e);
-                if ((this.SummayFilesRowChanging != null)) {
-                    this.SummayFilesRowChanging(this, new SummayFilesRowChangeEvent(((SummayFilesRow)(e.Row)), e.Action));
+                if ((this.SummaryFilesRowChanging != null)) {
+                    this.SummaryFilesRowChanging(this, new SummaryFilesRowChangeEvent(((SummaryFilesRow)(e.Row)), e.Action));
                 }
             }
             
@@ -1258,8 +1258,8 @@ namespace Fishery_Simulation {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleted(e);
-                if ((this.SummayFilesRowDeleted != null)) {
-                    this.SummayFilesRowDeleted(this, new SummayFilesRowChangeEvent(((SummayFilesRow)(e.Row)), e.Action));
+                if ((this.SummaryFilesRowDeleted != null)) {
+                    this.SummaryFilesRowDeleted(this, new SummaryFilesRowChangeEvent(((SummaryFilesRow)(e.Row)), e.Action));
                 }
             }
             
@@ -1267,14 +1267,14 @@ namespace Fishery_Simulation {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleting(e);
-                if ((this.SummayFilesRowDeleting != null)) {
-                    this.SummayFilesRowDeleting(this, new SummayFilesRowChangeEvent(((SummayFilesRow)(e.Row)), e.Action));
+                if ((this.SummaryFilesRowDeleting != null)) {
+                    this.SummaryFilesRowDeleting(this, new SummaryFilesRowChangeEvent(((SummaryFilesRow)(e.Row)), e.Action));
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void RemoveSummayFilesRow(SummayFilesRow row) {
+            public void RemoveSummaryFilesRow(SummaryFilesRow row) {
                 this.Rows.Remove(row);
             }
             
@@ -1301,7 +1301,7 @@ namespace Fishery_Simulation {
                 type.Attributes.Add(attribute1);
                 global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
                 attribute2.Name = "tableTypeName";
-                attribute2.FixedValue = "SummayFilesDataTable";
+                attribute2.FixedValue = "SummaryFilesDataTable";
                 type.Attributes.Add(attribute2);
                 type.Particle = sequence;
                 global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
@@ -1767,15 +1767,15 @@ namespace Fishery_Simulation {
         /// <summary>
         ///Represents strongly named DataRow class.
         ///</summary>
-        public partial class SummayFilesRow : global::System.Data.DataRow {
+        public partial class SummaryFilesRow : global::System.Data.DataRow {
             
-            private SummayFilesDataTable tableSummayFiles;
+            private SummaryFilesDataTable tableSummaryFiles;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            internal SummayFilesRow(global::System.Data.DataRowBuilder rb) : 
+            internal SummaryFilesRow(global::System.Data.DataRowBuilder rb) : 
                     base(rb) {
-                this.tableSummayFiles = ((SummayFilesDataTable)(this.Table));
+                this.tableSummaryFiles = ((SummaryFilesDataTable)(this.Table));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1783,14 +1783,14 @@ namespace Fishery_Simulation {
             public string sourceFile {
                 get {
                     try {
-                        return ((string)(this[this.tableSummayFiles.sourceFileColumn]));
+                        return ((string)(this[this.tableSummaryFiles.sourceFileColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'sourceFile\' in table \'SummayFiles\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'sourceFile\' in table \'SummaryFiles\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableSummayFiles.sourceFileColumn] = value;
+                    this[this.tableSummaryFiles.sourceFileColumn] = value;
                 }
             }
             
@@ -1799,14 +1799,14 @@ namespace Fishery_Simulation {
             public int fromLine {
                 get {
                     try {
-                        return ((int)(this[this.tableSummayFiles.fromLineColumn]));
+                        return ((int)(this[this.tableSummaryFiles.fromLineColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'fromLine\' in table \'SummayFiles\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'fromLine\' in table \'SummaryFiles\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableSummayFiles.fromLineColumn] = value;
+                    this[this.tableSummaryFiles.fromLineColumn] = value;
                 }
             }
             
@@ -1815,14 +1815,14 @@ namespace Fishery_Simulation {
             public int toLine {
                 get {
                     try {
-                        return ((int)(this[this.tableSummayFiles.toLineColumn]));
+                        return ((int)(this[this.tableSummaryFiles.toLineColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'toLine\' in table \'SummayFiles\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'toLine\' in table \'SummaryFiles\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableSummayFiles.toLineColumn] = value;
+                    this[this.tableSummaryFiles.toLineColumn] = value;
                 }
             }
             
@@ -1831,14 +1831,14 @@ namespace Fishery_Simulation {
             public string outoutFileOrTable {
                 get {
                     try {
-                        return ((string)(this[this.tableSummayFiles.outoutFileOrTableColumn]));
+                        return ((string)(this[this.tableSummaryFiles.outoutFileOrTableColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'outoutFileOrTable\' in table \'SummayFiles\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'outoutFileOrTable\' in table \'SummaryFiles\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableSummayFiles.outoutFileOrTableColumn] = value;
+                    this[this.tableSummaryFiles.outoutFileOrTableColumn] = value;
                 }
             }
             
@@ -1847,14 +1847,14 @@ namespace Fishery_Simulation {
             public bool onlyOneHeader {
                 get {
                     try {
-                        return ((bool)(this[this.tableSummayFiles.onlyOneHeaderColumn]));
+                        return ((bool)(this[this.tableSummaryFiles.onlyOneHeaderColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'onlyOneHeader\' in table \'SummayFiles\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'onlyOneHeader\' in table \'SummaryFiles\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableSummayFiles.onlyOneHeaderColumn] = value;
+                    this[this.tableSummaryFiles.onlyOneHeaderColumn] = value;
                 }
             }
             
@@ -1863,15 +1863,15 @@ namespace Fishery_Simulation {
             public bool addSourceFolderNumInFront {
                 get {
                     try {
-                        return ((bool)(this[this.tableSummayFiles.addSourceFolderNumInFrontColumn]));
+                        return ((bool)(this[this.tableSummaryFiles.addSourceFolderNumInFrontColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'addSourceFolderNumInFront\' in table \'SummayFiles\' is DBNull" +
-                                ".", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'addSourceFolderNumInFront\' in table \'SummaryFiles\' is DBNul" +
+                                "l.", e);
                     }
                 }
                 set {
-                    this[this.tableSummayFiles.addSourceFolderNumInFrontColumn] = value;
+                    this[this.tableSummaryFiles.addSourceFolderNumInFrontColumn] = value;
                 }
             }
             
@@ -1880,99 +1880,99 @@ namespace Fishery_Simulation {
             public string delimited {
                 get {
                     try {
-                        return ((string)(this[this.tableSummayFiles.delimitedColumn]));
+                        return ((string)(this[this.tableSummaryFiles.delimitedColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'delimited\' in table \'SummayFiles\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'delimited\' in table \'SummaryFiles\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableSummayFiles.delimitedColumn] = value;
+                    this[this.tableSummaryFiles.delimitedColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IssourceFileNull() {
-                return this.IsNull(this.tableSummayFiles.sourceFileColumn);
+                return this.IsNull(this.tableSummaryFiles.sourceFileColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetsourceFileNull() {
-                this[this.tableSummayFiles.sourceFileColumn] = global::System.Convert.DBNull;
+                this[this.tableSummaryFiles.sourceFileColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsfromLineNull() {
-                return this.IsNull(this.tableSummayFiles.fromLineColumn);
+                return this.IsNull(this.tableSummaryFiles.fromLineColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetfromLineNull() {
-                this[this.tableSummayFiles.fromLineColumn] = global::System.Convert.DBNull;
+                this[this.tableSummaryFiles.fromLineColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IstoLineNull() {
-                return this.IsNull(this.tableSummayFiles.toLineColumn);
+                return this.IsNull(this.tableSummaryFiles.toLineColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SettoLineNull() {
-                this[this.tableSummayFiles.toLineColumn] = global::System.Convert.DBNull;
+                this[this.tableSummaryFiles.toLineColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsoutoutFileOrTableNull() {
-                return this.IsNull(this.tableSummayFiles.outoutFileOrTableColumn);
+                return this.IsNull(this.tableSummaryFiles.outoutFileOrTableColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetoutoutFileOrTableNull() {
-                this[this.tableSummayFiles.outoutFileOrTableColumn] = global::System.Convert.DBNull;
+                this[this.tableSummaryFiles.outoutFileOrTableColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsonlyOneHeaderNull() {
-                return this.IsNull(this.tableSummayFiles.onlyOneHeaderColumn);
+                return this.IsNull(this.tableSummaryFiles.onlyOneHeaderColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetonlyOneHeaderNull() {
-                this[this.tableSummayFiles.onlyOneHeaderColumn] = global::System.Convert.DBNull;
+                this[this.tableSummaryFiles.onlyOneHeaderColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsaddSourceFolderNumInFrontNull() {
-                return this.IsNull(this.tableSummayFiles.addSourceFolderNumInFrontColumn);
+                return this.IsNull(this.tableSummaryFiles.addSourceFolderNumInFrontColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetaddSourceFolderNumInFrontNull() {
-                this[this.tableSummayFiles.addSourceFolderNumInFrontColumn] = global::System.Convert.DBNull;
+                this[this.tableSummaryFiles.addSourceFolderNumInFrontColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsdelimitedNull() {
-                return this.IsNull(this.tableSummayFiles.delimitedColumn);
+                return this.IsNull(this.tableSummaryFiles.delimitedColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetdelimitedNull() {
-                this[this.tableSummayFiles.delimitedColumn] = global::System.Convert.DBNull;
+                this[this.tableSummaryFiles.delimitedColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -2048,22 +2048,22 @@ namespace Fishery_Simulation {
         ///Row event argument class
         ///</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public class SummayFilesRowChangeEvent : global::System.EventArgs {
+        public class SummaryFilesRowChangeEvent : global::System.EventArgs {
             
-            private SummayFilesRow eventRow;
+            private SummaryFilesRow eventRow;
             
             private global::System.Data.DataRowAction eventAction;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public SummayFilesRowChangeEvent(SummayFilesRow row, global::System.Data.DataRowAction action) {
+            public SummaryFilesRowChangeEvent(SummaryFilesRow row, global::System.Data.DataRowAction action) {
                 this.eventRow = row;
                 this.eventAction = action;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public SummayFilesRow Row {
+            public SummaryFilesRow Row {
                 get {
                     return this.eventRow;
                 }

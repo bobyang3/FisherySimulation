@@ -179,7 +179,7 @@ namespace Fishery_Simulation
                     {
                         DataSetCPU.ProcessStatusDataTable dt = new DataSetCPU.ProcessStatusDataTable();
                         dt.Clear();
-                        dt.Rows.Add("", "30", DateTime.Now.ToString(), "Completed " + Glibs.getPCName());
+                        dt.Rows.Add("", "30", DateTime.Now.ToString(), "Completed", p.UserProcessorTime.TotalSeconds.ToString() ,  Glibs.getPCName());
                         dt.WriteXml(Path.Combine(rootFolderTextBoxText, "~FSstatus.xml"));
                         dt.Clear();
                     }
@@ -317,7 +317,8 @@ namespace Fishery_Simulation
                 {
                     DataSetCPU.ProcessStatusDataTable dt = new DataSetCPU.ProcessStatusDataTable();
                     dt.Clear();
-                    dt.Rows.Add("", "20", DateTime.Now.ToString(), "Running " + Glibs.getPCName());
+                    //dt.Rows.Add("", "20", DateTime.Now.ToString(), "Running " + Glibs.getPCName());
+                    dt.Rows.Add("", "20", DateTime.Now.ToString(), "Running", "", Glibs.getPCName());
                     dt.WriteXml(Path.Combine(subfolderPath, "~FSstatus.xml"));
 
                     pInfo.WorkingDirectory = subfolderPath;
@@ -337,7 +338,8 @@ namespace Fishery_Simulation
                     if (p.ExitCode==0) // 0 = regular close, otherwise, user force close, by ctrl+C or click on X
                     {
                         dt.Clear();
-                        dt.Rows.Add("", "30", DateTime.Now.ToString(), "Completed " + Glibs.getPCName());
+                        //dt.Rows.Add("", "30", DateTime.Now.ToString(), "Completed " + Glibs.getPCName());
+                        dt.Rows.Add("", "30", DateTime.Now.ToString(), "Completed", p.UserProcessorTime.TotalSeconds.ToString(), Glibs.getPCName());
                         dt.WriteXml(Path.Combine(subfolderPath, "~FSstatus.xml"));
                         dt.Clear();
                     }

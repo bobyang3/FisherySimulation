@@ -747,7 +747,7 @@
             // 
             // summayFilesBindingSource
             // 
-            this.summayFilesBindingSource.DataMember = "SummayFiles";
+            this.summayFilesBindingSource.DataMember = "SummaryFiles";
             this.summayFilesBindingSource.DataSource = this.dataSet1;
             // 
             // label8

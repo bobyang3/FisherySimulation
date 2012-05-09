@@ -38,7 +38,7 @@
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="SummayFiles" msprop:Generator_TableClassName="SummayFilesDataTable" msprop:Generator_TableVarName="tableSummayFiles" msprop:Generator_TablePropName="SummayFiles" msprop:Generator_RowDeletingName="SummayFilesRowDeleting" msprop:Generator_UserTableName="SummayFiles" msprop:Generator_RowChangingName="SummayFilesRowChanging" msprop:Generator_RowEvHandlerName="SummayFilesRowChangeEventHandler" msprop:Generator_RowDeletedName="SummayFilesRowDeleted" msprop:Generator_RowEvArgName="SummayFilesRowChangeEvent" msprop:Generator_RowChangedName="SummayFilesRowChanged" msprop:Generator_RowClassName="SummayFilesRow">
+        <xs:element name="SummaryFiles" msprop:Generator_TableClassName="SummaryFilesDataTable" msprop:Generator_TableVarName="tableSummaryFiles" msprop:Generator_TablePropName="SummaryFiles" msprop:Generator_RowDeletingName="SummaryFilesRowDeleting" msprop:Generator_UserTableName="SummaryFiles" msprop:Generator_RowChangingName="SummaryFilesRowChanging" msprop:Generator_RowEvHandlerName="SummaryFilesRowChangeEventHandler" msprop:Generator_RowDeletedName="SummaryFilesRowDeleted" msprop:Generator_RowEvArgName="SummaryFilesRowChangeEvent" msprop:Generator_RowChangedName="SummaryFilesRowChanged" msprop:Generator_RowClassName="SummaryFilesRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="sourceFile" msprop:Generator_ColumnVarNameInTable="columnsourceFile" msprop:Generator_ColumnPropNameInRow="sourceFile" msprop:Generator_ColumnPropNameInTable="sourceFileColumn" msprop:Generator_UserColumnName="sourceFile" type="xs:string" minOccurs="0" />
