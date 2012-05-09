@@ -234,7 +234,6 @@
             this.pluginToolStripMenuItem.Name = "pluginToolStripMenuItem";
             this.pluginToolStripMenuItem.Size = new System.Drawing.Size(56, 20);
             this.pluginToolStripMenuItem.Text = "Plug-in";
-            this.pluginToolStripMenuItem.Click += new System.EventHandler(this.pluginToolStripMenuItem_Click);
             // 
             // tabControl1
             // 

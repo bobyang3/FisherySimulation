@@ -74,6 +74,11 @@ namespace Fishery_Simulation
                     plugin.refreshMainDataset = false;
                     plugin.startingPoint();
 
+                    if (plugin.refreshMainDataset == true)
+                    {
+                        dataSet1 = (DataSet1)plugin.dataset.Copy();  // write the data back to the UI main program
+                    }
+
                     break; //only run the first matching name in the list
                 }
             }
@@ -86,6 +91,7 @@ namespace Fishery_Simulation
             this.dataSet1.Clear();
             //TODO: load dataset from Plugins
         }
+
         private void Form1_Load(object sender, EventArgs e)
         {
 
@@ -104,8 +110,7 @@ namespace Fishery_Simulation
 
             loadPlugins(); // load plguins
         }
-
-
+        
         private void textBox2_KeyPress(object sender, KeyPressEventArgs e)
         {
             e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar); //number only
@@ -590,10 +595,8 @@ namespace Fishery_Simulation
             return dt;
         }
 
-
         private double generateNormalDisNumber(double mean, double SD, int count)
         {
-
             return 0;                    
         }
 
@@ -660,14 +663,11 @@ namespace Fishery_Simulation
         {
         }
 
-
         private void dataGridView1_DefaultValuesNeeded(object sender, DataGridViewRowEventArgs e)
         {
             //multilines
             dataGridView1.Columns["randomGen"].DefaultCellStyle.WrapMode = DataGridViewTriState.True;
         }
-
-     
 
         private void saveSettingToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -682,7 +682,6 @@ namespace Fishery_Simulation
 
 
         }
-
 
         private void loadSettingToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -846,7 +845,6 @@ namespace Fishery_Simulation
 
         }
 
-
         private void process3(object originalForm)
         {
             string rootFolderTextBoxText = ((Form1)originalForm).rootFolderTextBox.Text as string;
@@ -983,8 +981,6 @@ namespace Fishery_Simulation
             return true;
         }
 
-
-
         private void button4_Click(object sender, EventArgs e)
         {
             //string s = "";
@@ -1000,10 +996,6 @@ namespace Fishery_Simulation
             loadPlugins();
         }
 
-        private void pluginToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-        }
 
 
     
