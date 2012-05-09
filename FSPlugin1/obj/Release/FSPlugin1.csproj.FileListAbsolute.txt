@@ -1,0 +1,7 @@
+C:\_MSmesh_\(my documents)\__PROJECTS__\Fishery Simulation\FSPlugin1\bin\Release\FSPlugin1.dll
+C:\_MSmesh_\(my documents)\__PROJECTS__\Fishery Simulation\FSPlugin1\bin\Release\FSPlugin1.pdb
+C:\_MSmesh_\(my documents)\__PROJECTS__\Fishery Simulation\FSPlugin1\bin\Release\IPlugins.dll
+C:\_MSmesh_\(my documents)\__PROJECTS__\Fishery Simulation\FSPlugin1\bin\Release\IPlugins.pdb
+C:\_MSmesh_\(my documents)\__PROJECTS__\Fishery Simulation\FSPlugin1\obj\Release\ResolveAssemblyReference.cache
+C:\_MSmesh_\(my documents)\__PROJECTS__\Fishery Simulation\FSPlugin1\obj\Release\FSPlugin1.dll
+C:\_MSmesh_\(my documents)\__PROJECTS__\Fishery Simulation\FSPlugin1\obj\Release\FSPlugin1.pdb

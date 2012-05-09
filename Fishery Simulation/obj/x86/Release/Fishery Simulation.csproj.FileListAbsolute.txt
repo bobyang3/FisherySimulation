@@ -15,10 +15,12 @@ C:\__PROJECTS__\Fishery Simulation\Fishery Simulation\bin\Release\DevExpress.Xtr
 C:\__PROJECTS__\Fishery Simulation\Fishery Simulation\bin\Release\DevExpress.Data.v10.2.xml
 C:\__PROJECTS__\Fishery Simulation\Fishery Simulation\bin\Release\DevExpress.Utils.v10.2.xml
 C:\__PROJECTS__\Fishery Simulation\Fishery Simulation\bin\Release\DevExpress.XtraEditors.v10.2.xml
-C:\_MSmesh_\(my documents)\__PROJECTS__\Fishery Simulation\Fishery Simulation\obj\x86\Release\Fishery Simulation.exe
-C:\_MSmesh_\(my documents)\__PROJECTS__\Fishery Simulation\Fishery Simulation\obj\x86\Release\Fishery Simulation.pdb
+C:\_MSmesh_\(my documents)\__PROJECTS__\Fishery Simulation\Fishery Simulation\bin\Release\Fishery Simulation.exe.manifest
+C:\_MSmesh_\(my documents)\__PROJECTS__\Fishery Simulation\Fishery Simulation\bin\Release\Fishery Simulation.application
 C:\_MSmesh_\(my documents)\__PROJECTS__\Fishery Simulation\Fishery Simulation\bin\Release\Fishery Simulation.exe
 C:\_MSmesh_\(my documents)\__PROJECTS__\Fishery Simulation\Fishery Simulation\bin\Release\Fishery Simulation.pdb
+C:\_MSmesh_\(my documents)\__PROJECTS__\Fishery Simulation\Fishery Simulation\bin\Release\IPlugins.dll
+C:\_MSmesh_\(my documents)\__PROJECTS__\Fishery Simulation\Fishery Simulation\bin\Release\IPlugins.pdb
 C:\_MSmesh_\(my documents)\__PROJECTS__\Fishery Simulation\Fishery Simulation\obj\x86\Release\ResolveAssemblyReference.cache
 C:\_MSmesh_\(my documents)\__PROJECTS__\Fishery Simulation\Fishery Simulation\obj\x86\Release\Fishery_Simulation.AboutBox2.resources
 C:\_MSmesh_\(my documents)\__PROJECTS__\Fishery Simulation\Fishery Simulation\obj\x86\Release\Fishery_Simulation.Form1.resources
@@ -26,3 +28,8 @@ C:\_MSmesh_\(my documents)\__PROJECTS__\Fishery Simulation\Fishery Simulation\ob
 C:\_MSmesh_\(my documents)\__PROJECTS__\Fishery Simulation\Fishery Simulation\obj\x86\Release\GenerateResource.read.1.tlog
 C:\_MSmesh_\(my documents)\__PROJECTS__\Fishery Simulation\Fishery Simulation\obj\x86\Release\GenerateResource.write.1.tlog
 C:\_MSmesh_\(my documents)\__PROJECTS__\Fishery Simulation\Fishery Simulation\obj\x86\Release\Fishery Simulation.exe.licenses
+C:\_MSmesh_\(my documents)\__PROJECTS__\Fishery Simulation\Fishery Simulation\obj\x86\Release\Fishery Simulation.TrustInfo.xml
+C:\_MSmesh_\(my documents)\__PROJECTS__\Fishery Simulation\Fishery Simulation\obj\x86\Release\Fishery Simulation.exe.manifest
+C:\_MSmesh_\(my documents)\__PROJECTS__\Fishery Simulation\Fishery Simulation\obj\x86\Release\Fishery Simulation.application
+C:\_MSmesh_\(my documents)\__PROJECTS__\Fishery Simulation\Fishery Simulation\obj\x86\Release\Fishery Simulation.exe
+C:\_MSmesh_\(my documents)\__PROJECTS__\Fishery Simulation\Fishery Simulation\obj\x86\Release\Fishery Simulation.pdb

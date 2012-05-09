@@ -120,7 +120,6 @@ namespace Fishery_Simulation
             return (o1 == null || o1.ToString()== "") ? (int?)null : int.Parse(o1.ToString());
         }
 
-
         public static bool? toboolNullable(object o1)
         {
             return (o1 == null || o1.ToString() == "") ? (bool?)null : bool.Parse(o1.ToString());
@@ -190,7 +189,7 @@ namespace Fishery_Simulation
             string[] values = Regex.Split(valuesLine.ToString().Trim(), delimiter);
 
             string newValues = "";
-            string testran = "";
+            //string testran = "";
 
 
             for (int i = 0; i < values.Length; i++)
@@ -274,6 +273,10 @@ namespace Fishery_Simulation
             return Environment.MachineName.ToString();
         }
 
+        public static string parseLine() { 
+        //#(.*)=(.*)\(([+-]?[0-9]+(?:\.[0-9]*)?),([+-]?[0-9]+(?:\.[0-9]*)?)\)
+            return "" ;
+        }
 
     }
 }

@@ -11,6 +11,8 @@ using System.Diagnostics;
 using System.Threading.Tasks;
 using System.Threading;
 using System.Xml;
+using System.Reflection;
+using IPlugins;
 
 
 namespace Fishery_Simulation
@@ -28,9 +30,62 @@ namespace Fishery_Simulation
             ab2.ShowDialog();
         }
 
+        List<IPlugin> plugins = new List<IPlugin>();
+
+        private void loadPlugins()
+        {
+            string exePath = Assembly.GetExecutingAssembly().GetModules()[0].FullyQualifiedName;
+            string pluginsDir = Path.Combine(Path.GetDirectoryName(exePath), "plugin");
+
+            try
+            {
+                foreach (string s in Directory.GetFiles(pluginsDir, "*.dll"))
+                {
+                    Type[] pluingTypes = Assembly.LoadFile(s).GetTypes();
+                    foreach (Type t in pluingTypes)
+                    {
+                        try
+                        {
+                            IPlugin plugin = Activator.CreateInstance(t) as IPlugin;
+                            pluginToolStripMenuItem.DropDownItems.Add(plugin.Name + " " +plugin.Version, null, new EventHandler(item_Click));
+                            plugins.Add(plugin);
+                        }
+                        catch (Exception e1)
+                        {
+                            //this is not an plugin dll
+                        }
+
+                    }
+                }
+            }
+            catch (Exception e2)
+            {
+                //There is no dlls in the folder
+            }
+        }
+
+        private void item_Click(object sender, EventArgs e)  //handle plugins action
+        {
+            foreach (IPlugin plugin in plugins) //find the correct plugin
+            {
+                if ((plugin.Name + " " + plugin.Version) == sender.ToString())
+                {
+                    plugin.dataset = ((DataSet)dataSet1).Copy();
+                    plugin.refreshMainDataset = false;
+                    plugin.startingPoint();
+
+                    break; //only run the first matching name in the list
+                }
+            }
+        }
 
 
 
+        private void setDataSetFromPlugin()
+        {
+            this.dataSet1.Clear();
+            //TODO: load dataset from Plugins
+        }
         private void Form1_Load(object sender, EventArgs e)
         {
 
@@ -41,15 +96,13 @@ namespace Fishery_Simulation
             settingsBindingSource.MoveFirst();
 
             cPUNumTextBox.Text = Glibs.GetCPUCore().ToString();
-            ////rootFolderTextBox.Text = Directory.GetCurrentDirectory();
             dataSet1.Tables["Settings"].Rows[0][0]=  Directory.GetCurrentDirectory();
-
 
             settingsBindingSource.EndEdit();  //sync all the textboxes with current values
 
-            //dataGridView1.Rows[0].Cells[0].ReadOnly = true;
-
             cPUNumTextBox.Text = Math.Ceiling((double)Glibs.GetCPUCore()*1.5).ToString();
+
+            loadPlugins(); // load plguins
         }
 
 
@@ -74,9 +127,9 @@ namespace Fishery_Simulation
                 {
                     userClick = true;
                 }
-                else { userClick = false;
-                EnableForm1();
-
+                else { 
+                    userClick = false;
+                    EnableForm1();
                 }             
             }
 
@@ -103,27 +156,11 @@ namespace Fishery_Simulation
                     //Create a new process info structure.
                     ProcessStartInfo pInfo = new ProcessStartInfo();
 
-                    //string[] sts=textBox3.Text.ToString().Split('-');
-                    //string app=sts[0];
-                    //string arguments="";
-                    //for (int i=1; i<sts.Length; i++)
-                    //{
-                    //    arguments=arguments+"-" + sts[i];
-                    //}
-
-
                     string[] sts = textBox3.Text.ToString().Split(new char[] {' '}, 2);
                     string app = sts[0];
                     //string arguments = sts[1];
 
                     pInfo.FileName = Path.Combine(rootFolderTextBoxText, app);
-
-                    //if (Path.GetExtension(pInfo.FileName).Length <= 0)
-                    //{
-                    //    MessageBox.Show("Your command file: " + app.ToUpper() + " has no extension. Are you sure this is correct? The command may not run correctly without extension. eg. SS3.exe instead of SS3");
-                    //}
-
-                       
 
                     try
                     {
@@ -135,19 +172,10 @@ namespace Fishery_Simulation
                     pInfo.WorkingDirectory = rootFolderTextBoxText;
                     Process p = Process.Start(pInfo);
 
-
-                    //p.WaitForExit();
-                    ////MessageBox.Show("Code continuing...");
-
-                    //DataSetCPU.ProcessStatusDataTable dt = new DataSetCPU.ProcessStatusDataTable();
-                    //dt.Clear();
-                    //dt.Rows.Add("", "30", DateTime.Now.ToString(), "Completed");
-                    //dt.WriteXml(Path.Combine(rootFolderTextBoxText, "~FSstatus.xml"));
-                    //dt.Clear();
-
+                    p.EnableRaisingEvents = true; // to make sure capture the correct exitcode
                     p.WaitForExit();
-                    // MessageBox.Show(p.ExitCode.ToString());
-                    if (p.ExitCode >= 0) // 0 = regular close, otherwise, user force close, by ctrl+C or click on X
+
+                    if (p.ExitCode == 0) // 0 = regular close, otherwise, user force close, by ctrl+C or click on X
                     {
                         DataSetCPU.ProcessStatusDataTable dt = new DataSetCPU.ProcessStatusDataTable();
                         dt.Clear();
@@ -182,25 +210,25 @@ namespace Fishery_Simulation
                                           
                      //TODO: split core job.
 
-                        int paralleNum = 0;
-                        if (cPUNumTextBox.Text.ToString().Trim().Length <= 0)
-                        {
-                            paralleNum = (int)Math.Ceiling((double)Glibs.GetCPUCore() * 1.5);
-                        }
-                        else
-                        {
-                            paralleNum = int.Parse(cPUNumTextBox.Text.ToString().Trim());                        
-                        }
+                        //int paralleNum = 0;
+                        //if (cPUNumTextBox.Text.ToString().Trim().Length <= 0)
+                        //{
+                        //    paralleNum = (int)Math.Ceiling((double)Glibs.GetCPUCore() * 1.5);
+                        //}
+                        //else
+                        //{
+                        //    paralleNum = int.Parse(cPUNumTextBox.Text.ToString().Trim());                        
+                        //}
 
                     double _Max_folder_num=double.Parse(textBox2.Text.Trim().ToString()) + 1;
-                    int CUPsetAverage = Convert.ToInt32(Math.Ceiling(_Max_folder_num / paralleNum));
+                    //int CUPsetAverage = Convert.ToInt32(Math.Ceiling(_Max_folder_num / paralleNum));
 
                     //for (int i=1; i <= Glibs.GetCPUCore(); i++)
                     //{
                     //    step2Command(rootFolderTextBoxText, (i-1) * CUPsetAverage + 1, i * CUPsetAverage);
                     //}
                     ParallelOptions po = new ParallelOptions();
-                    po.MaxDegreeOfParallelism = paralleNum;
+                    //po.MaxDegreeOfParallelism = paralleNum;
                     //Parallel.For(1, paralleNum + 1, po, i =>
                     Parallel.For(1, (int)_Max_folder_num, po, i =>
                         {
@@ -217,7 +245,7 @@ namespace Fishery_Simulation
                      
                 }
 
-                MessageBox.Show(@"Step 1 and/or 2 finished.");
+                MessageBox.Show(@"Step 1 and/or 2 completed.", "FS Message:");
                 
             }
             catch (Exception e1)
@@ -297,7 +325,7 @@ namespace Fishery_Simulation
                     //p.Start(pInfo);
                     Process p = Process.Start(pInfo);
                     
-                    //p.EnableRaisingEvents = true;
+                    p.EnableRaisingEvents = true; // to make sure capture the correct exitcode
                     //p.Exited += new EventHandler(myProcess_Exited);
 
                     ////Wait for the process to end.
@@ -305,7 +333,8 @@ namespace Fishery_Simulation
                     
                     p.WaitForExit();
                    // MessageBox.Show(p.ExitCode.ToString());
-                    if (p.ExitCode>=0) // 0 = regular close, otherwise, user force close, by ctrl+C or click on X
+                    Console.WriteLine(p.ExitCode);  // for debuging output test.
+                    if (p.ExitCode==0) // 0 = regular close, otherwise, user force close, by ctrl+C or click on X
                     {
                         dt.Clear();
                         dt.Rows.Add("", "30", DateTime.Now.ToString(), "Completed " + Glibs.getPCName());
@@ -414,13 +443,6 @@ namespace Fishery_Simulation
 
                 //for (int j = 0; j < dataGridView1.RowCount-1; j++)
                 {
-                    //string filename = Glibs.toStringNullable(dataGridView1.Rows[j].Cells["FileName"].Value);
-                    //string captureType = Glibs.toStringNullable(dataGridView1.Rows[j].Cells["capture"].Value);
-                    //string outputFileName = Glibs.toStringNullable(dataGridView1.Rows[j].Cells["outputFileName"].Value);
-                    //string blockHeaderLine = Glibs.toStringNullable(dataGridView1.Rows[j].Cells["block"].Value);
-                    //string blockEndLine = Glibs.toStringNullable(dataGridView1.Rows[j].Cells["blockend"].Value);
-                    //string randomGen = Glibs.toStringNullable(dataGridView1.Rows[j].Cells["randomGen"].Value);
-
                     string filename = Glibs.toStringNullable(dataSet1.Tables["FileList"].Rows[j]["FileName"].ToString());
                     string captureType = Glibs.toStringNullable(dataSet1.Tables["FileList"].Rows[j]["capture"].ToString());
                     string outputFileName = Glibs.toStringNullable(dataSet1.Tables["FileList"].Rows[j]["outputFileName"].ToString());
@@ -428,13 +450,7 @@ namespace Fishery_Simulation
                     string blockEndLine = Glibs.toStringNullable(dataSet1.Tables["FileList"].Rows[j]["blockend"].ToString());
                     string randomGen = Glibs.toStringNullable(dataSet1.Tables["FileList"].Rows[j]["randomGen"].ToString());
 
-
-
                     string sourceFile = Path.Combine(Path.Combine(rootFolderTextBox.Text,"~~original"), filename);
-
-
-                    //int? fromLine = Glibs.tointNullable(dataGridView1.Rows[j].Cells["fromLine"].Value);
-                    //int? toLine = Glibs.tointNullable(dataGridView1.Rows[j].Cells["toLine"].Value);
 
                     int? fromLine = Glibs.tointNullable(dataSet1.Tables["FileList"].Rows[j]["fromLine"].ToString());
                     int? toLine = Glibs.tointNullable(dataSet1.Tables["FileList"].Rows[j]["toLine"].ToString());
@@ -452,12 +468,6 @@ namespace Fishery_Simulation
                     }
                     else if (captureType == "Rand Gen" && randomGen != null) ///gen rand numbers
                     {
-                        //DataTable dt = convertFileToDataTable(sourceFile);
-
-
-                        ////var query = from dr2 in dt.AsEnumerable()
-                        ////            where (string)dr2["textline"] == "dictionaryKey"
-                        ////            select dr2;
                         for (int i = 1; i < _sub_folder_num; i++)
                         {
                             //open file and get conents, then copy over the conents therefor, use the file from root folder
@@ -587,23 +597,9 @@ namespace Fishery_Simulation
 
         private bool fileExistsCheck()
         {
-
-
             string newPath = Path.Combine(rootFolderTextBox.Text, "~~original");
             Directory.CreateDirectory(newPath);
             string _error_fileNames = "";
-
-            //List<DataRow> deletedRows = new List<DataRow>();
-
-            //foreach (DataRow dr in dataSet1.Tables["FileList"].Rows)
-            //{
-            //    if (dr["FileName"].ToString().Trim().Length <= 0) deletedRows.Add(dr);
-            //}
-
-            //foreach (DataRow dataRow in deletedRows)
-            //{
-            //    dataRow.Delete();
-            //}
 
             Glibs.deleteEmptyRows(dataSet1.Tables["FileList"], "FileName");
 
@@ -660,24 +656,13 @@ namespace Fishery_Simulation
 
         private void dataGridView1_CellLeave(object sender, DataGridViewCellEventArgs e)
         {
-            //if (e.ColumnIndex == 0) //fileName is netered
-            //{
-            //    dataGridView1["outputFileName", e.RowIndex].Value = dataGridView1[0, e.RowIndex].EditedFormattedValue; //copy values from input to output
-            //}
-
-
         }
 
 
         private void dataGridView1_DefaultValuesNeeded(object sender, DataGridViewRowEventArgs e)
         {
-            //e.Row.Cells[2].ReadOnly = true;
-
-
             //multilines
             dataGridView1.Columns["randomGen"].DefaultCellStyle.WrapMode = DataGridViewTriState.True;
-
-
         }
 
      
@@ -686,9 +671,6 @@ namespace Fishery_Simulation
         {
             textBox2.Focus(); //TO MAKE SURE LEAVE DATAGRID AND UPDATE THE CHANGES
             this.Focus();
-            
-            //path of XML file            
-           // dataSet1.WriteXml(@"FS_setting.xml");
 
             DialogResult result = this.saveFileDialog1.ShowDialog();
             if (result == DialogResult.OK)
@@ -923,7 +905,7 @@ namespace Fishery_Simulation
 
             }
 
-            MessageBox.Show("Step 3 completed.");
+            MessageBox.Show("Step 3 completed.", "FS Message.");
 
         }
 
@@ -977,15 +959,6 @@ namespace Fishery_Simulation
                     string _values = _eachPair[1].Trim(); //eg: Anything(Rand,0.6,0.7,false)
                     string[] _eachValue = Glibs.extractString(_values).Split(new string[] { "," }, StringSplitOptions.None); //eg: 1
 
-                    //double? _x = null; // get random number by default
-
-                    //if (_eachValue[0].Trim().ToUpper() == "RAND".ToUpper())
-                    //{ _x = null; }
-                    //else
-                    //{ _x = double.Parse(_eachValue[0].Trim()); }
-
-
-
                     //find the keyheader line
                     int? keywordFoundInIndexOf = Glibs.findIndexOfKeyWord(strs, _key);
                     //replace the value with the right values for the line after the keyheader line
@@ -1010,17 +983,24 @@ namespace Fishery_Simulation
 
 
 
-        private void button4_Click_1(object sender, EventArgs e)
+        private void button4_Click(object sender, EventArgs e)
         {
-            string s = "";
+            //string s = "";
 
 
-            for (int i = 0; i < 10; ++i)
-            {
-                s = s + "_" + SimpleRNG.GetNormal(1, 0.6).ToString();
-            }
+            //for (int i = 0; i < 10; ++i)
+            //{
+            //    s = s + "_" + SimpleRNG.GetNormal(1, 0.6).ToString();
+            //}
 
-            MessageBox.Show(s);
+            //MessageBox.Show(s);
+
+            loadPlugins();
+        }
+
+        private void pluginToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
         }
 
 
