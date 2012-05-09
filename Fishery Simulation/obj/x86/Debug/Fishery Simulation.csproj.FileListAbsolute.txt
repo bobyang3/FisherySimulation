@@ -20,10 +20,5 @@ C:\_MSmesh_\(my documents)\__PROJECTS__\Fishery Simulation\Fishery Simulation\ob
 C:\_MSmesh_\(my documents)\__PROJECTS__\Fishery Simulation\Fishery Simulation\obj\x86\Debug\Fishery Simulation.pdb
 C:\_MSmesh_\(my documents)\__PROJECTS__\Fishery Simulation\Fishery Simulation\bin\Debug\Fishery Simulation.exe
 C:\_MSmesh_\(my documents)\__PROJECTS__\Fishery Simulation\Fishery Simulation\bin\Debug\Fishery Simulation.pdb
-C:\_MSmesh_\(my documents)\__PROJECTS__\Fishery Simulation\Fishery Simulation\bin\Debug\Fishery Simulation.exe.manifest
-C:\_MSmesh_\(my documents)\__PROJECTS__\Fishery Simulation\Fishery Simulation\bin\Debug\Fishery Simulation.application
 C:\_MSmesh_\(my documents)\__PROJECTS__\Fishery Simulation\Fishery Simulation\bin\Debug\IPlugins.dll
 C:\_MSmesh_\(my documents)\__PROJECTS__\Fishery Simulation\Fishery Simulation\bin\Debug\IPlugins.pdb
-C:\_MSmesh_\(my documents)\__PROJECTS__\Fishery Simulation\Fishery Simulation\obj\x86\Debug\Fishery Simulation.TrustInfo.xml
-C:\_MSmesh_\(my documents)\__PROJECTS__\Fishery Simulation\Fishery Simulation\obj\x86\Debug\Fishery Simulation.exe.manifest
-C:\_MSmesh_\(my documents)\__PROJECTS__\Fishery Simulation\Fishery Simulation\obj\x86\Debug\Fishery Simulation.application
