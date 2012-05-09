@@ -74,7 +74,6 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.summayFilesDataGridView = new System.Windows.Forms.DataGridView();
@@ -549,7 +548,6 @@
             this.tableLayoutPanel2.Controls.Add(cPUNumLabel, 1, 2);
             this.tableLayoutPanel2.Controls.Add(this.label6, 1, 1);
             this.tableLayoutPanel2.Controls.Add(this.button1, 2, 3);
-            this.tableLayoutPanel2.Controls.Add(this.button4, 1, 3);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.tableLayoutPanel2.Location = new System.Drawing.Point(0, 3);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
@@ -611,16 +609,6 @@
             this.button1.Text = "RUN";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // button4
-            // 
-            this.button4.Location = new System.Drawing.Point(23, 74);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(75, 23);
-            this.button4.TabIndex = 71;
-            this.button4.Text = "button4";
-            this.button4.UseVisualStyleBackColor = true;
-            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // tabPage2
             // 
@@ -913,7 +901,6 @@
         private System.Windows.Forms.DataGridViewCheckBoxColumn onlyOneHeader;
         private System.Windows.Forms.DataGridViewCheckBoxColumn addSourceFolderNumInFront;
         private System.Windows.Forms.DataGridViewTextBoxColumn delimited;
-        private System.Windows.Forms.Button button4;
         private System.Windows.Forms.ToolStripMenuItem pluginToolStripMenuItem;
     }
 }
