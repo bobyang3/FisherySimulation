@@ -996,6 +996,44 @@ namespace Fishery_Simulation
             loadPlugins();
         }
 
+        private void dataGridView1_DragEnter(object sender, DragEventArgs e)
+        {
+            e.Effect = DragDropEffects.Copy;
+        }
+
+        private void dataGridView1_DragDrop(object sender, DragEventArgs e)
+        {
+            string[] files = (e.Data.GetData("FileDrop") as string[]);
+
+            for (int i = 0; i < files.Length; i++)
+            {
+                try
+                {
+                    files[i] = Path.GetFileName(files[i]);
+
+                    DataRow row = dataSet1.Tables["FileList"].NewRow();
+                    row["FileName"] = files[i];
+                    row["outputFileName"] = files[i];
+                    dataSet1.FileList.Rows.Add(row);
+                }
+                catch
+                { }
+            }
+            dataGridView1.Refresh();
+        }
+
+        private void rootFolderTextBox_DragDrop(object sender, DragEventArgs e)
+        {
+            try
+            {
+                string[] files = (e.Data.GetData("FileDrop") as string[]);
+
+                dataSet1.Settings.Rows[0]["rootFolder"] = Path.GetDirectoryName(files[0]);
+            }
+            catch
+            {}
+        }
+
 
 
     
