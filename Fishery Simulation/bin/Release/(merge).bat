@@ -4,6 +4,8 @@ REM Insert the below code.
 REM /out:finish.exe | replace finish.exe with any filename you want.
 REM Behind the /out:finish.exe you have to give the files you want to be combined.
 
+del "C:\_MSmesh_\(my documents)\__PROJECTS__\Fishery Simulation\Fishery Simulation\bin\Release\FisherySimulation.exe"
+del "C:\_MSmesh_\(my documents)\__PROJECTS__\Fishery Simulation\Fishery Simulation\bin\debug\FisherySimulation.exe"
 
 cd "C:\_MSmesh_\(my documents)\__PROJECTS__\Fishery Simulation\Fishery Simulation\bin\DEBUG"
 c:

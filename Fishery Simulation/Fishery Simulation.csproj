@@ -178,6 +178,8 @@
   <ItemGroup>
     <None Include="res\layout\Open-Folder-Full-icon-20x20.jpg" />
     <Content Include="%28developer%29\ILMerge\ILMerge.exe" />
+    <Content Include="res\layout\document_open.ico" />
+    <Content Include="res\layout\gnome_document_save_as.ico" />
     <Content Include="res\layout\Open-Folder-Full-icon.png" />
     <Content Include="res\layout\Open-Folder-Full.ico" />
     <Content Include="res\layout\school_of_fish.png" />

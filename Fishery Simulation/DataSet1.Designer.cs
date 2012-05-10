@@ -1021,7 +1021,7 @@ namespace Fishery_Simulation {
             
             private global::System.Data.DataColumn columntoLine;
             
-            private global::System.Data.DataColumn columnoutoutFileOrTable;
+            private global::System.Data.DataColumn columnoutputFileOrTable;
             
             private global::System.Data.DataColumn columnonlyOneHeader;
             
@@ -1088,9 +1088,9 @@ namespace Fishery_Simulation {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn outoutFileOrTableColumn {
+            public global::System.Data.DataColumn outputFileOrTableColumn {
                 get {
-                    return this.columnoutoutFileOrTable;
+                    return this.columnoutputFileOrTable;
                 }
             }
             
@@ -1155,13 +1155,13 @@ namespace Fishery_Simulation {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public SummaryFilesRow AddSummaryFilesRow(string sourceFile, int fromLine, int toLine, string outoutFileOrTable, bool onlyOneHeader, bool addSourceFolderNumInFront, string delimited) {
+            public SummaryFilesRow AddSummaryFilesRow(string sourceFile, int fromLine, int toLine, string outputFileOrTable, bool onlyOneHeader, bool addSourceFolderNumInFront, string delimited) {
                 SummaryFilesRow rowSummaryFilesRow = ((SummaryFilesRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         sourceFile,
                         fromLine,
                         toLine,
-                        outoutFileOrTable,
+                        outputFileOrTable,
                         onlyOneHeader,
                         addSourceFolderNumInFront,
                         delimited};
@@ -1190,7 +1190,7 @@ namespace Fishery_Simulation {
                 this.columnsourceFile = base.Columns["sourceFile"];
                 this.columnfromLine = base.Columns["fromLine"];
                 this.columntoLine = base.Columns["toLine"];
-                this.columnoutoutFileOrTable = base.Columns["outoutFileOrTable"];
+                this.columnoutputFileOrTable = base.Columns["outputFileOrTable"];
                 this.columnonlyOneHeader = base.Columns["onlyOneHeader"];
                 this.columnaddSourceFolderNumInFront = base.Columns["addSourceFolderNumInFront"];
                 this.columndelimited = base.Columns["delimited"];
@@ -1205,8 +1205,8 @@ namespace Fishery_Simulation {
                 base.Columns.Add(this.columnfromLine);
                 this.columntoLine = new global::System.Data.DataColumn("toLine", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columntoLine);
-                this.columnoutoutFileOrTable = new global::System.Data.DataColumn("outoutFileOrTable", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnoutoutFileOrTable);
+                this.columnoutputFileOrTable = new global::System.Data.DataColumn("outputFileOrTable", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnoutputFileOrTable);
                 this.columnonlyOneHeader = new global::System.Data.DataColumn("onlyOneHeader", typeof(bool), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnonlyOneHeader);
                 this.columnaddSourceFolderNumInFront = new global::System.Data.DataColumn("addSourceFolderNumInFront", typeof(bool), null, global::System.Data.MappingType.Element);
@@ -1828,17 +1828,17 @@ namespace Fishery_Simulation {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string outoutFileOrTable {
+            public string outputFileOrTable {
                 get {
                     try {
-                        return ((string)(this[this.tableSummaryFiles.outoutFileOrTableColumn]));
+                        return ((string)(this[this.tableSummaryFiles.outputFileOrTableColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'outoutFileOrTable\' in table \'SummaryFiles\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'outputFileOrTable\' in table \'SummaryFiles\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableSummaryFiles.outoutFileOrTableColumn] = value;
+                    this[this.tableSummaryFiles.outputFileOrTableColumn] = value;
                 }
             }
             
@@ -1929,14 +1929,14 @@ namespace Fishery_Simulation {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsoutoutFileOrTableNull() {
-                return this.IsNull(this.tableSummaryFiles.outoutFileOrTableColumn);
+            public bool IsoutputFileOrTableNull() {
+                return this.IsNull(this.tableSummaryFiles.outputFileOrTableColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetoutoutFileOrTableNull() {
-                this[this.tableSummaryFiles.outoutFileOrTableColumn] = global::System.Convert.DBNull;
+            public void SetoutputFileOrTableNull() {
+                this[this.tableSummaryFiles.outputFileOrTableColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]

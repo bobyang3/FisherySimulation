@@ -147,6 +147,7 @@ namespace Fishery_Simulation
                 oThread.Start(this);
 
             }
+            else { EnableForm1(); }
 
         }
 
@@ -679,8 +680,6 @@ namespace Fishery_Simulation
             {
                   dataSet1.WriteXml(saveFileDialog1.FileName);
             }
-
-
         }
 
         private void loadSettingToolStripMenuItem_Click(object sender, EventArgs e)
@@ -693,7 +692,7 @@ namespace Fishery_Simulation
                 {
                     dataSet1.Tables["FileList"].Clear();
                     dataSet1.Tables["Settings"].Clear();
-                    dataSet1.Tables["SummayFiles"].Clear();
+                    dataSet1.Tables["SummaryFiles"].Clear();
                     dataSet1.ReadXml(openFileDialog1.FileName);
                     //dataSet1.ReadXml(@"FS_setting.xml");
                 }
@@ -830,7 +829,7 @@ namespace Fishery_Simulation
             //if (fileExistsCheck())
             // {
  
-            Glibs.deleteEmptyRows(dataSet1.Tables["SummayFiles"], "sourceFile");  //delete empty rows
+            Glibs.deleteEmptyRows(dataSet1.Tables["SummaryFiles"], "sourceFile");  //delete empty rows
 
             summayFilesDataGridView.Refresh();
 
@@ -853,17 +852,17 @@ namespace Fishery_Simulation
 
 
 
-            for (int j = 0; j <= dataSet1.Tables["SummayFiles"].Rows.Count - 1; j++)
+            for (int j = 0; j <= dataSet1.Tables["SummaryFiles"].Rows.Count - 1; j++)
                 //for (int j = 0; j < summayFilesDataGridView.RowCount - 1; j++)
             {
-                string filename = Glibs.toStringNullable(dataSet1.Tables["SummayFiles"].Rows[j]["sourceFile"]);
-                int? fromLine = Glibs.tointNullable(dataSet1.Tables["SummayFiles"].Rows[j]["fromLine"]);
-                int? toLine = Glibs.tointNullable(dataSet1.Tables["SummayFiles"].Rows[j]["toLine"]);
-                string outputFileName = Glibs.toStringNullable(dataSet1.Tables["SummayFiles"].Rows[j]["outoutFileOrTable"]);
+                string filename = Glibs.toStringNullable(dataSet1.Tables["SummaryFiles"].Rows[j]["sourceFile"]);
+                int? fromLine = Glibs.tointNullable(dataSet1.Tables["SummaryFiles"].Rows[j]["fromLine"]);
+                int? toLine = Glibs.tointNullable(dataSet1.Tables["SummaryFiles"].Rows[j]["toLine"]);
+                string outputFileName = Glibs.toStringNullable(dataSet1.Tables["SummaryFiles"].Rows[j]["outputFileOrTable"]);
 
-                bool? onlyOneHeader = Glibs.toboolNullable(dataSet1.Tables["SummayFiles"].Rows[j]["onlyOneHeader"]);
-                bool? addSourceFolderNumInFront = Glibs.toboolNullable(dataSet1.Tables["SummayFiles"].Rows[j]["addSourceFolderNumInFront"]);
-                string delimited = Glibs.toStringNullable(dataSet1.Tables["SummayFiles"].Rows[j]["delimited"]);
+                bool? onlyOneHeader = Glibs.toboolNullable(dataSet1.Tables["SummaryFiles"].Rows[j]["onlyOneHeader"]);
+                bool? addSourceFolderNumInFront = Glibs.toboolNullable(dataSet1.Tables["SummaryFiles"].Rows[j]["addSourceFolderNumInFront"]);
+                string delimited = Glibs.toStringNullable(dataSet1.Tables["SummaryFiles"].Rows[j]["delimited"]);
 
                 delimited = delimited.Replace("(tab)", "\t");
 
@@ -879,9 +878,9 @@ namespace Fishery_Simulation
                         if ((onlyOneHeader == null || onlyOneHeader==true))
                         {
                             if ( i == 1)
-                            { fromLine = Glibs.tointNullable(dataSet1.Tables["SummayFiles"].Rows[j]["fromLine"]); }
+                            { fromLine = Glibs.tointNullable(dataSet1.Tables["SummaryFiles"].Rows[j]["fromLine"]); }
                                 else
-                            { fromLine = Glibs.tointNullable(dataSet1.Tables["SummayFiles"].Rows[j]["fromLine"]) + 1; }
+                            { fromLine = Glibs.tointNullable(dataSet1.Tables["SummaryFiles"].Rows[j]["fromLine"]) + 1; }
                          }
 
 
@@ -1032,6 +1031,32 @@ namespace Fishery_Simulation
             }
             catch
             {}
+        }
+
+        private void summayFilesDataGridView_DragEnter(object sender, DragEventArgs e)
+        {
+            e.Effect = DragDropEffects.Copy;
+        }
+
+        private void summayFilesDataGridView_DragDrop(object sender, DragEventArgs e)
+        {
+            string[] files = (e.Data.GetData("FileDrop") as string[]);
+
+            for (int i = 0; i < files.Length; i++)
+            {
+                try
+                {
+                    files[i] = Path.GetFileName(files[i]);
+
+                    DataRow row = dataSet1.Tables["SummaryFiles"].NewRow();
+                    row["sourceFile"] = files[i];
+                    row["outputFileOrTable"] = files[i];
+                    dataSet1.SummaryFiles.Rows.Add(row);
+                }
+                catch
+                { }
+            }
+            summayFilesDataGridView.Refresh();
         }
 
 

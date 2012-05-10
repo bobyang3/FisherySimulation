@@ -73,9 +73,6 @@
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.summayFilesDataGridView = new System.Windows.Forms.DataGridView();
-            this.onlyOneHeader = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.addSourceFolderNumInFront = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.delimited = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label8 = new System.Windows.Forms.Label();
             this.rootFolderTextBox1 = new System.Windows.Forms.TextBox();
             this.simulationNumTextBox = new System.Windows.Forms.TextBox();
@@ -88,11 +85,14 @@
             this.dataSet1 = new Fishery_Simulation.DataSet1();
             this.FileName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.fileListBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.summayFilesBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.summayFilesBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.outputFileOrTable = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.onlyOneHeader = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.addSourceFolderNumInFront = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.delimited = new System.Windows.Forms.DataGridViewTextBoxColumn();
             rootFolderLabel = new System.Windows.Forms.Label();
             rootFolderLabel1 = new System.Windows.Forms.Label();
             simulationNumLabel = new System.Windows.Forms.Label();
@@ -202,6 +202,7 @@
             // 
             // saveSettingToolStripMenuItem
             // 
+            this.saveSettingToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("saveSettingToolStripMenuItem.Image")));
             this.saveSettingToolStripMenuItem.Name = "saveSettingToolStripMenuItem";
             this.saveSettingToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
             this.saveSettingToolStripMenuItem.Text = "Save Setting";
@@ -209,6 +210,7 @@
             // 
             // loadSettingToolStripMenuItem
             // 
+            this.loadSettingToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("loadSettingToolStripMenuItem.Image")));
             this.loadSettingToolStripMenuItem.Name = "loadSettingToolStripMenuItem";
             this.loadSettingToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
             this.loadSettingToolStripMenuItem.Text = "Load Setting";
@@ -633,6 +635,7 @@
             // 
             // summayFilesDataGridView
             // 
+            this.summayFilesDataGridView.AllowDrop = true;
             this.summayFilesDataGridView.AllowUserToOrderColumns = true;
             this.summayFilesDataGridView.AutoGenerateColumns = false;
             this.summayFilesDataGridView.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.EnableWithoutHeaderText;
@@ -641,7 +644,7 @@
             this.dataGridViewTextBoxColumn1,
             this.dataGridViewTextBoxColumn2,
             this.dataGridViewTextBoxColumn3,
-            this.dataGridViewTextBoxColumn4,
+            this.outputFileOrTable,
             this.onlyOneHeader,
             this.addSourceFolderNumInFront,
             this.delimited});
@@ -654,32 +657,8 @@
             this.summayFilesDataGridView.TabIndex = 100;
             this.summayFilesDataGridView.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.summayFilesDataGridView_CellEndEdit);
             this.summayFilesDataGridView.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.summayFilesDataGridView_DataError);
-            // 
-            // onlyOneHeader
-            // 
-            this.onlyOneHeader.DataPropertyName = "onlyOneHeader";
-            this.onlyOneHeader.FillWeight = 80F;
-            this.onlyOneHeader.HeaderText = "Only 1 header row on the top of final file";
-            this.onlyOneHeader.Name = "onlyOneHeader";
-            this.onlyOneHeader.Width = 80;
-            // 
-            // addSourceFolderNumInFront
-            // 
-            this.addSourceFolderNumInFront.DataPropertyName = "addSourceFolderNumInFront";
-            this.addSourceFolderNumInFront.FillWeight = 80F;
-            this.addSourceFolderNumInFront.HeaderText = "Add sub folder name to beginning of each row";
-            this.addSourceFolderNumInFront.Name = "addSourceFolderNumInFront";
-            this.addSourceFolderNumInFront.Width = 80;
-            // 
-            // delimited
-            // 
-            this.delimited.DataPropertyName = "delimited";
-            this.delimited.FillWeight = 80F;
-            this.delimited.HeaderText = "Delimiter if add sub folder name";
-            this.delimited.Name = "delimited";
-            this.delimited.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.delimited.ToolTipText = "Type (tab) if you want to use TAB key. Anything else just type regularly.";
-            this.delimited.Width = 80;
+            this.summayFilesDataGridView.DragDrop += new System.Windows.Forms.DragEventHandler(this.summayFilesDataGridView_DragDrop);
+            this.summayFilesDataGridView.DragEnter += new System.Windows.Forms.DragEventHandler(this.summayFilesDataGridView_DragEnter);
             // 
             // label8
             // 
@@ -766,18 +745,24 @@
             this.fileListBindingSource1.DataMember = "FileList";
             this.fileListBindingSource1.DataSource = this.dataSet1;
             // 
+            // summayFilesBindingSource
+            // 
+            this.summayFilesBindingSource.DataMember = "SummaryFiles";
+            this.summayFilesBindingSource.DataSource = this.dataSet1;
+            // 
             // dataGridViewTextBoxColumn1
             // 
             this.dataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.dataGridViewTextBoxColumn1.DataPropertyName = "sourceFile";
             this.dataGridViewTextBoxColumn1.HeaderText = "Result File Name";
             this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.Width = 78;
+            this.dataGridViewTextBoxColumn1.Width = 103;
             // 
             // dataGridViewTextBoxColumn2
             // 
             this.dataGridViewTextBoxColumn2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.dataGridViewTextBoxColumn2.DataPropertyName = "fromLine";
+            this.dataGridViewTextBoxColumn2.FillWeight = 69F;
             this.dataGridViewTextBoxColumn2.HeaderText = "From # line";
             this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
             this.dataGridViewTextBoxColumn2.Width = 63;
@@ -786,22 +771,44 @@
             // 
             this.dataGridViewTextBoxColumn3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.dataGridViewTextBoxColumn3.DataPropertyName = "toLine";
+            this.dataGridViewTextBoxColumn3.FillWeight = 69F;
             this.dataGridViewTextBoxColumn3.HeaderText = "To # line";
             this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            this.dataGridViewTextBoxColumn3.Width = 54;
+            this.dataGridViewTextBoxColumn3.Width = 69;
             // 
-            // dataGridViewTextBoxColumn4
+            // outputFileOrTable
             // 
-            this.dataGridViewTextBoxColumn4.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.dataGridViewTextBoxColumn4.DataPropertyName = "outoutFileOrTable";
-            this.dataGridViewTextBoxColumn4.HeaderText = "Final File Name in root folder";
-            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
-            this.dataGridViewTextBoxColumn4.Width = 73;
+            this.outputFileOrTable.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.outputFileOrTable.DataPropertyName = "outputFileOrTable";
+            this.outputFileOrTable.HeaderText = "Output File Name";
+            this.outputFileOrTable.Name = "outputFileOrTable";
+            this.outputFileOrTable.Width = 79;
             // 
-            // summayFilesBindingSource
+            // onlyOneHeader
             // 
-            this.summayFilesBindingSource.DataMember = "SummaryFiles";
-            this.summayFilesBindingSource.DataSource = this.dataSet1;
+            this.onlyOneHeader.DataPropertyName = "onlyOneHeader";
+            this.onlyOneHeader.FillWeight = 80F;
+            this.onlyOneHeader.HeaderText = "Remove extra headers";
+            this.onlyOneHeader.Name = "onlyOneHeader";
+            this.onlyOneHeader.Width = 80;
+            // 
+            // addSourceFolderNumInFront
+            // 
+            this.addSourceFolderNumInFront.DataPropertyName = "addSourceFolderNumInFront";
+            this.addSourceFolderNumInFront.FillWeight = 80F;
+            this.addSourceFolderNumInFront.HeaderText = "Add source folder in the final result";
+            this.addSourceFolderNumInFront.Name = "addSourceFolderNumInFront";
+            this.addSourceFolderNumInFront.Width = 80;
+            // 
+            // delimited
+            // 
+            this.delimited.DataPropertyName = "delimited";
+            this.delimited.FillWeight = 80F;
+            this.delimited.HeaderText = "Delimiter used";
+            this.delimited.Name = "delimited";
+            this.delimited.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.delimited.ToolTipText = "Type (tab) if you want to use TAB key. Anything else just type regularly.";
+            this.delimited.Width = 80;
             // 
             // Form1
             // 
@@ -900,14 +907,15 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn blockend;
         private System.Windows.Forms.DataGridViewTextBoxColumn randomGen;
         private System.Windows.Forms.DataGridViewTextBoxColumn outputFileName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
+        private System.Windows.Forms.ToolStripMenuItem pluginToolStripMenuItem;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn outputFileOrTable;
         private System.Windows.Forms.DataGridViewCheckBoxColumn onlyOneHeader;
         private System.Windows.Forms.DataGridViewCheckBoxColumn addSourceFolderNumInFront;
         private System.Windows.Forms.DataGridViewTextBoxColumn delimited;
-        private System.Windows.Forms.ToolStripMenuItem pluginToolStripMenuItem;
     }
 }
 
