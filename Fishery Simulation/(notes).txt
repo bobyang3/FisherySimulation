@@ -1,0 +1,3 @@
+﻿for developers:
+- after built the project, use "(merge).bat" or "ILMerge" to combine *.exe and *.dll into one file
+

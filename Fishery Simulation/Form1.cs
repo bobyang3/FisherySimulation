@@ -76,6 +76,7 @@ namespace Fishery_Simulation
 
                     if (plugin.refreshMainDataset == true)
                     {
+                        dataSet1.Clear();
                         dataSet1 = (DataSet1)plugin.dataset.Copy();  // write the data back to the UI main program
                     }
 
@@ -101,7 +102,7 @@ namespace Fishery_Simulation
 
             settingsBindingSource.MoveFirst();
 
-            cPUNumTextBox.Text = Glibs.GetCPUCore().ToString();
+            //cPUNumTextBox.Text = Glibs.GetCPUCore().ToString();
             dataSet1.Tables["Settings"].Rows[0][0]=  Directory.GetCurrentDirectory();
 
             settingsBindingSource.EndEdit();  //sync all the textboxes with current values
@@ -235,6 +236,7 @@ namespace Fishery_Simulation
                     //}
                     ParallelOptions po = new ParallelOptions();
                     //po.MaxDegreeOfParallelism = paralleNum;
+                    po.MaxDegreeOfParallelism = int.Parse(cPUNumTextBox.Text.ToString().Trim());
                     //Parallel.For(1, paralleNum + 1, po, i =>
                     Parallel.For(1, (int)_Max_folder_num, po, i =>
                         {
@@ -744,7 +746,11 @@ namespace Fishery_Simulation
         {
             try
             {
-                if (e.Control && e.KeyCode == Keys.C)
+                if (e.Control && e.KeyCode == Keys.Delete)
+                {
+                    fileListBindingSource1.RemoveCurrent();
+                }
+                else if (e.Control && e.KeyCode == Keys.C)
                 {
                     DataObject d = dataGridView1.GetClipboardContent();
                     Clipboard.SetDataObject(d);
@@ -1057,6 +1063,26 @@ namespace Fishery_Simulation
                 { }
             }
             summayFilesDataGridView.Refresh();
+        }
+
+        private void dataGridView1_CellEnter(object sender, DataGridViewCellEventArgs e)
+        {
+            //convert back from EditOnKeystrokOrF2 mode to enter mode
+            DataGridView dgv = (DataGridView)sender;
+            dgv.EditMode = DataGridViewEditMode.EditOnEnter;
+        }
+
+        private void dataGridView1_MouseClick(object sender, MouseEventArgs e)
+        {
+            //convert to EditOnKeystrokOrF2 mode so people can delete records
+            DataGridView dgv = (DataGridView)sender;
+            DataGridView.HitTestInfo hti = dgv.HitTest(e.X, e.Y);
+            if (hti.Type == DataGridViewHitTestType.RowHeader)
+            {
+                dgv.EditMode = DataGridViewEditMode.EditOnKeystrokeOrF2;
+                dgv.EndEdit();
+            }
+
         }
 
 

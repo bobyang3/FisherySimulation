@@ -178,6 +178,7 @@
   <ItemGroup>
     <None Include="res\layout\Open-Folder-Full-icon-20x20.jpg" />
     <Content Include="%28developer%29\ILMerge\ILMerge.exe" />
+    <Content Include="%28notes%29.txt" />
     <Content Include="res\layout\document_open.ico" />
     <Content Include="res\layout\gnome_document_save_as.ico" />
     <Content Include="res\layout\Open-Folder-Full-icon.png" />
@@ -217,6 +218,15 @@
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>REM 
+REM remove "Post-build" command if you get ERRORS.
+REM go to "Fishery Simulation" project, right click "properties", "Build Events" "Post-build event command line"
+
+cd $(TargetDir)
+
+"$(ProjectDir)(developer)\ILMerge\ILMerge.exe"  /target:winexe /targetplatform:"v4,C:\Program Files\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0" /out:FisherySimulation.exe "Fishery Simulation.exe" "IPlugins.dll"</PostBuildEvent>
+  </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
