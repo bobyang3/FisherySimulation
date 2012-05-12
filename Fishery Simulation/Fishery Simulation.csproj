@@ -179,6 +179,7 @@
     <None Include="res\layout\Open-Folder-Full-icon-20x20.jpg" />
     <Content Include="%28developer%29\ILMerge\ILMerge.exe" />
     <Content Include="%28notes%29.txt" />
+    <None Include="Resources\IPlugins.dll" />
     <Content Include="res\layout\document_open.ico" />
     <Content Include="res\layout\gnome_document_save_as.ico" />
     <Content Include="res\layout\Open-Folder-Full-icon.png" />
@@ -187,7 +188,7 @@
     <Content Include="res\layout\school_of_fish.ico" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="bin\" />
+    <Folder Include="bin\Release\" />
     <Folder Include="plugin\" />
     <Folder Include="res\values\" />
   </ItemGroup>

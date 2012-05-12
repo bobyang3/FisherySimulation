@@ -6,11 +6,11 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("FSPlugin1")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("FS plugin sample")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Kamehameha Schools")]
+[assembly: AssemblyCompany("Robert Yang")]
 [assembly: AssemblyProduct("FSPlugin1")]
-[assembly: AssemblyCopyright("Copyright © Kamehameha Schools 2012")]
+[assembly: AssemblyCopyright("Copyright © Robert Yang 2012")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

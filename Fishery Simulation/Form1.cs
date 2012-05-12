@@ -34,25 +34,50 @@ namespace Fishery_Simulation
 
         private void loadPlugins()
         {
+            AppDomain domain = AppDomain.CreateDomain("exedomain");
+            //Do other things to the domain like set the security policy
+
+
             string exePath = Assembly.GetExecutingAssembly().GetModules()[0].FullyQualifiedName;
             string pluginsDir = Path.Combine(Path.GetDirectoryName(exePath), "plugin");
+
 
             try
             {
                 foreach (string s in Directory.GetFiles(pluginsDir, "*.dll"))
                 {
-                    Type[] pluingTypes = Assembly.LoadFile(s).GetTypes();
+                    //MessageBox.Show(Directory.GetFiles(pluginsDir, "*.dll").Length.ToString());
+                    //Type[] pluingTypes = Assembly.LoadFile(s).GetTypes();
+
+                    Type[] pluingTypes;
+                    try
+                    {
+                        pluingTypes = Assembly.LoadFrom(s).GetTypes();
+                    }
+                    catch (ReflectionTypeLoadException r1) //will get to this if ILMerge is used and missing Iplugins.dll in the root folder
+                    {
+                        pluingTypes = r1.Types;
+                    }
+
                     foreach (Type t in pluingTypes)
                     {
                         try
                         {
-                            IPlugin plugin = Activator.CreateInstance(t) as IPlugin;
-                            pluginToolStripMenuItem.DropDownItems.Add(plugin.Name + " " +plugin.Version, null, new EventHandler(item_Click));
+
+                           // Type t = typeof(TypeIWantToLoad);
+                            //IPlugins.IPlugin myObject = (IPlugins.IPlugin)domain.CreateInstanceFromAndUnwrap(s, t.FullName);
+
+                            //IPlugin plugin = Activator.CreateInstance(t) as IPlugin;
+                            //object ob = Activator.CreateInstance(t);
+                            IPlugins.IPlugin plugin = Activator.CreateInstance(t) as IPlugins.IPlugin;
+                            //MessageBox.Show(myObject.ToString());
+                            pluginToolStripMenuItem.DropDownItems.Add(plugin.Name + " " + plugin.Version, null, new EventHandler(item_Click));
                             plugins.Add(plugin);
                         }
                         catch (Exception e1)
                         {
                             //this is not an plugin dll
+                            //MessageBox.Show("e1: " + e1.ToString());
                         }
 
                     }
@@ -61,7 +86,9 @@ namespace Fishery_Simulation
             catch (Exception e2)
             {
                 //There is no dlls in the folder
+                //MessageBox.Show("e2: " + e2.ToString());
             }
+
         }
 
         private void item_Click(object sender, EventArgs e)  //handle plugins action
@@ -148,7 +175,12 @@ namespace Fishery_Simulation
                 oThread.Start(this);
 
             }
-            else { EnableForm1(); }
+            else { 
+                EnableForm1();
+            }
+
+
+
 
         }
 
@@ -217,35 +249,50 @@ namespace Fishery_Simulation
                                           
                      //TODO: split core job.
 
-                        //int paralleNum = 0;
-                        //if (cPUNumTextBox.Text.ToString().Trim().Length <= 0)
-                        //{
-                        //    paralleNum = (int)Math.Ceiling((double)Glibs.GetCPUCore() * 1.5);
-                        //}
-                        //else
-                        //{
-                        //    paralleNum = int.Parse(cPUNumTextBox.Text.ToString().Trim());                        
-                        //}
+                        int paralleNum = 0;
+                        if (cPUNumTextBox.Text.ToString().Trim().Length <= 0)
+                        {
+                            paralleNum = (int)Math.Ceiling((double)Glibs.GetCPUCore() * 1.5);
+                        }
+                        else
+                        {
+                            paralleNum = int.Parse(cPUNumTextBox.Text.ToString().Trim());
+                        }
 
                     double _Max_folder_num=double.Parse(textBox2.Text.Trim().ToString()) + 1;
+
+
                     //int CUPsetAverage = Convert.ToInt32(Math.Ceiling(_Max_folder_num / paralleNum));
 
                     //for (int i=1; i <= Glibs.GetCPUCore(); i++)
                     //{
                     //    step2Command(rootFolderTextBoxText, (i-1) * CUPsetAverage + 1, i * CUPsetAverage);
                     //}
+
+
                     ParallelOptions po = new ParallelOptions();
-                    //po.MaxDegreeOfParallelism = paralleNum;
-                    po.MaxDegreeOfParallelism = int.Parse(cPUNumTextBox.Text.ToString().Trim());
+                    po.MaxDegreeOfParallelism = paralleNum;
+                    //po.MaxDegreeOfParallelism = int.Parse(cPUNumTextBox.Text.ToString().Trim());
                     //Parallel.For(1, paralleNum + 1, po, i =>
-                    Parallel.For(1, (int)_Max_folder_num, po, i =>
+                    Parallel.For(1
+                                ,(int)_Max_folder_num
+                                , po
+                                , (i, loopState) =>
                         {
                             {
                                 string subFolder= Path.Combine(rootFolderTextBoxText,i.ToString());
                                 //step2Command(rootFolderTextBoxText, (i - 1) * CUPsetAverage + 1, (i * CUPsetAverage) > _Max_folder_num ? Convert.ToInt32(_Max_folder_num) : (i * CUPsetAverage));
                                 step2Command(subFolder);
+                                //ParallelLoopState pl = new ParallelLoopState();
+                                //pl.Break();
 
-                               
+                                if (_stopAllStep2Command == true)
+                                {
+                                    //ParallelLoopState pl = new ParallelLoopState();
+                                    loopState.Break();
+                                    //_stopAllStep2Command = false;
+                                    //MessageBox.Show(_stopAllStep2Command.ToString());
+                                }
 
                             }
                         });
@@ -271,8 +318,11 @@ namespace Fishery_Simulation
         {
             this.Enabled = true;
             this.Activate(); //bring form to front
+            _stopAllStep2Command = false; //set back to default, so it will keep on running commmand in the step2
         }
 
+
+        bool _stopAllStep2Command = false;
         private void step2Command(string subfolderPath)
         {
             ProcessStartInfo pInfo = new ProcessStartInfo();
@@ -309,13 +359,13 @@ namespace Fishery_Simulation
                         DateTime datetime = DateTime.Parse(dt.Rows[0]["StatusDatetime"].ToString());
                         System.TimeSpan diff1 = DateTime.Now.Subtract(datetime);
                         //MessageBox.Show(datetime.ToString() + " xxx " + diff1.TotalMinutes.ToString());
-                        if (diff1.TotalMinutes > step2TimeOutInMinutes)  //if time different from last run was more than 60 minutes, then could be incompleted. run again
+                        if (diff1.TotalMinutes > step2TimeOutInMinutes)  //if time different from last run was more than 120 minutes, then could be incompleted. run again
                             blRun = true;
                         else blRun = false;
                     }
                     else
                     {
-                        blRun = false; // don't process again if it is complted, status = 300
+                        blRun = false; // don't process again if it is complted, status = 30
                     }
 
                     
@@ -343,13 +393,23 @@ namespace Fishery_Simulation
                     p.WaitForExit();
                    // MessageBox.Show(p.ExitCode.ToString());
                     Console.WriteLine(p.ExitCode);  // for debuging output test.
-                    if (p.ExitCode==0) // 0 = regular close, otherwise, user force close, by ctrl+C or click on X
+                    if (p.ExitCode == 0) // 0 = regular close, otherwise, user force close, by ctrl+C or click on X
                     {
                         dt.Clear();
                         //dt.Rows.Add("", "30", DateTime.Now.ToString(), "Completed " + Glibs.getPCName());
                         dt.Rows.Add("", "30", DateTime.Now.ToString(), "Completed", p.UserProcessorTime.TotalSeconds.ToString(), Glibs.getPCName());
                         dt.WriteXml(Path.Combine(subfolderPath, "~FSstatus.xml"));
                         dt.Clear();
+                    }
+                    else {
+
+                        DialogResult result1 = MessageBox.Show("Do you want to stop starting all other process? If yes, new process will not start up.", "Are you sure?", MessageBoxButtons.YesNo);
+
+                        if (result1 == DialogResult.Yes)
+                        { 
+                            _stopAllStep2Command = true;
+                        }
+
                     }
 
                 }
@@ -1083,6 +1143,11 @@ namespace Fishery_Simulation
                 dgv.EndEdit();
             }
 
+        }
+
+        private void pluginToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+           // loadPlugins();
         }
 
 

@@ -15,13 +15,7 @@ namespace Fishery_Simulation
         static void Main()
         {
 
-            //try
-            //{
-            Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
-            //}
-            //catch { }
+
 
             //AppDomain.CurrentDomain.AssemblyResolve += (sender, args) =>
             //{
@@ -32,17 +26,20 @@ namespace Fishery_Simulation
 
             //    using (var stream = Assembly.GetExecutingAssembly().GetManifestResourceStream(resourceName))
             //    {
-
             //        Byte[] assemblyData = new Byte[stream.Length];
-
             //        stream.Read(assemblyData, 0, assemblyData.Length);
-
             //        return Assembly.Load(assemblyData);
-
             //    }
-
             //};
 
+
+            try
+            {
+                Application.EnableVisualStyles();
+                Application.SetCompatibleTextRenderingDefault(false);
+                Application.Run(new Form1());
+            }
+            catch { }
 
      
 
