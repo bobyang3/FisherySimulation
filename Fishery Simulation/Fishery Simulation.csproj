@@ -11,9 +11,14 @@
     <RootNamespace>Fishery_Simulation</RootNamespace>
     <AssemblyName>Fishery Simulation</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
-    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
     <FileAlignment>512</FileAlignment>
     <IsWebBootstrapper>false</IsWebBootstrapper>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -34,11 +39,13 @@
     <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
+    <Optimize>true</Optimize>
     <OutputPath>bin\Debug\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+    <GenerateSerializationAssemblies>Auto</GenerateSerializationAssemblies>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -79,11 +86,13 @@
     <AssemblyOriginatorKeyFile>FS.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <PropertyGroup />
-  <PropertyGroup>
-    <ApplicationManifest>Properties\app.manifest</ApplicationManifest>
-  </PropertyGroup>
+  <PropertyGroup />
   <PropertyGroup>
     <DelaySign>false</DelaySign>
+  </PropertyGroup>
+  <PropertyGroup />
+  <PropertyGroup>
+    <ApplicationManifest>Properties\app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -154,6 +163,7 @@
     <None Include="%28developer%29\ILMerge\%28merge%29.bat" />
     <None Include="%28developer%29\ILMerge\ILMerge License.rtf" />
     <None Include="%28developer%29\ILMerge\ILMerge.doc" />
+    <None Include="app.config" />
     <None Include="DataSet1.xsc">
       <DependentUpon>DataSet1.xsd</DependentUpon>
     </None>
@@ -176,7 +186,6 @@
     <None Include="DataSetCPU.xss">
       <DependentUpon>DataSetCPU.xsd</DependentUpon>
     </None>
-    <None Include="FishS.snk" />
     <None Include="FS.snk" />
     <None Include="Properties\app.manifest" />
     <None Include="Properties\Settings.settings">
@@ -190,6 +199,15 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\FS.snk" />
+    <None Include="Resources\school_of_fish.bmp" />
+    <None Include="Resources\Open_Folder_Full_icon_20x20.bmp" />
+    <None Include="Resources\school_of_fish.ico" />
+    <None Include="Resources\Open_Folder_Full_icon_20x20.ico" />
+    <None Include="Resources\Open_Folder_Full_icon_20x20.jpg" />
+    <None Include="Resources\Open-Folder-Full-icon.png" />
+    <None Include="Resources\school_of_fish.png" />
+    <Content Include="school_of_fish.ico" />
     <None Include="res\layout\Open-Folder-Full-icon-20x20.jpg" />
     <Content Include="%28developer%29\ILMerge\ILMerge.exe" />
     <Content Include="%28notes%29.txt" />

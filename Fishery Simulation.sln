@@ -1,6 +1,6 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual Studio 2010
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fishery Simulation", "Fishery Simulation\Fishery Simulation.csproj", "{0A5F9536-9A4D-46D6-89D8-E2F9B3B2823F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IPlugins", "IPlugins\IPlugins.csproj", "{D0A46145-A693-4D45-93CB-6852C6DAF46F}"
@@ -8,6 +8,21 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FSPlugin1", "FSPlugin1\FSPlugin1.csproj", "{69C85179-B387-4833-81FB-16128A146E3B}"
 EndProject
 Global
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 4
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = https://bobyang.tfspreview.com/defaultcollection
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = Fishery\u0020Simulation\\Fishery\u0020Simulation.csproj
+		SccProjectName1 = Fishery\u0020Simulation
+		SccLocalPath1 = Fishery\u0020Simulation
+		SccProjectUniqueName2 = FSPlugin1\\FSPlugin1.csproj
+		SccProjectName2 = FSPlugin1
+		SccLocalPath2 = FSPlugin1
+		SccProjectUniqueName3 = IPlugins\\IPlugins.csproj
+		SccProjectName3 = IPlugins
+		SccLocalPath3 = IPlugins
+	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Debug|Mixed Platforms = Debug|Mixed Platforms
