@@ -1,0 +1,6 @@
+<?xml version="1.0" standalone="yes"?>
+<DataSet1 xmlns="http://tempuri.org/DataSet1.xsd">
+  <FileList>
+    <FileName>autorunsc.exe</FileName>
+    <capture>None</capture>
+0.330012936027511 0.330012936027511 0.330012936027511 0.330012936027511 0.330012936027511 0.330012936027511    0.330012936027511

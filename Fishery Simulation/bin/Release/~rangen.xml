@@ -1,0 +1,36 @@
+<?xml version="1.0" standalone="yes"?>
+<DataSet1 xmlns="http://tempuri.org/DataSet1.xsd">
+  <FileList>
+    <FileName>test2.txt</FileName>
+    <capture>Rand Gen</capture>
+    <randomGen>&lt;capture&gt;=NORMDIST(Rand,0.6,0.7,false)</randomGen>
+    <outputFileName>test2.txt</outputFileName>
+  </FileList>
+  <FileList>
+    <capture>Block</capture>
+    <block>3</block>
+    <outputFileName />
+  </FileList>
+  <FileList>
+    <capture>Lines</capture>
+    <fromLine>1</fromLine>
+    <toLine>5</toLine>
+    <outputFileName />
+  </FileList>
+  <Settings>
+    <rootFolder>C:\_MSmesh_\(my documents)\__PROJECTS__\Fishery Simulation\Fishery Simulation\bin\Release</rootFolder>
+    <simulationNum>2</simulationNum>
+    <commandRootFolder />
+    <commandSubFolder />
+    <CPUNum>4</CPUNum>
+  </Settings>
+  <SummayFiles>
+    <sourceFile>~FS_setting2.xml</sourceFile>
+    <fromLine>1</fromLine>
+    <toLine>4</toLine>
+    <outoutFileOrTable>~~.txt</outoutFileOrTable>
+    <onlyOneHeader>false</onlyOneHeader>
+    <addSourceFolderNumInFront>true</addSourceFolderNumInFront>
+    <delimited>78979</delimited>
+  </SummayFiles>
+</DataSet1>

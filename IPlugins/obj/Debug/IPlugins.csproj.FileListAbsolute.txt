@@ -1,0 +1,5 @@
+C:\_MSmesh_\(my documents)\__PROJECTS__\Fishery Simulation\IPlugins\bin\Debug\IPlugins.dll
+C:\_MSmesh_\(my documents)\__PROJECTS__\Fishery Simulation\IPlugins\bin\Debug\IPlugins.pdb
+C:\_MSmesh_\(my documents)\__PROJECTS__\Fishery Simulation\IPlugins\obj\Debug\ResolveAssemblyReference.cache
+C:\_MSmesh_\(my documents)\__PROJECTS__\Fishery Simulation\IPlugins\obj\Debug\IPlugins.dll
+C:\_MSmesh_\(my documents)\__PROJECTS__\Fishery Simulation\IPlugins\obj\Debug\IPlugins.pdb

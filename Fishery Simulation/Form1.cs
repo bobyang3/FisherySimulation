@@ -34,7 +34,7 @@ namespace Fishery_Simulation
 
         private void loadPlugins()
         {
-            AppDomain domain = AppDomain.CreateDomain("exedomain");
+            //AppDomain domain = AppDomain.CreateDomain("exedomain");
             //Do other things to the domain like set the security policy
 
 
@@ -69,7 +69,8 @@ namespace Fishery_Simulation
 
                             //IPlugin plugin = Activator.CreateInstance(t) as IPlugin;
                             //object ob = Activator.CreateInstance(t);
-                            IPlugins.IPlugin plugin = Activator.CreateInstance(t) as IPlugins.IPlugin;
+                            //MessageBox.Show(Assembly.LoadFrom(s).ToString());
+                            IPlugins.IPlugin plugin = Activator.CreateInstance(t.AssemblyQualifiedName, t.Name) as IPlugins.IPlugin;
                             //MessageBox.Show(myObject.ToString());
                             pluginToolStripMenuItem.DropDownItems.Add(plugin.Name + " " + plugin.Version, null, new EventHandler(item_Click));
                             plugins.Add(plugin);
@@ -77,7 +78,7 @@ namespace Fishery_Simulation
                         catch (Exception e1)
                         {
                             //this is not an plugin dll
-                            //MessageBox.Show("e1: " + e1.ToString());
+                            MessageBox.Show("e1: " + e1.ToString());
                         }
 
                     }
@@ -86,7 +87,7 @@ namespace Fishery_Simulation
             catch (Exception e2)
             {
                 //There is no dlls in the folder
-                //MessageBox.Show("e2: " + e2.ToString());
+                MessageBox.Show("e2: " + e2.ToString());
             }
 
         }
@@ -120,8 +121,15 @@ namespace Fishery_Simulation
             //TODO: load dataset from Plugins
         }
 
+
+
         private void Form1_Load(object sender, EventArgs e)
         {
+
+
+
+
+
 
             //create a new 
             DataRow row=dataSet1.Tables["Settings"].NewRow();
@@ -1147,7 +1155,7 @@ namespace Fishery_Simulation
 
         private void pluginToolStripMenuItem_Click(object sender, EventArgs e)
         {
-           // loadPlugins();
+            loadPlugins();
         }
 
 
