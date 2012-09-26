@@ -186,7 +186,6 @@
       <DependentUpon>DataSetCPU.xsd</DependentUpon>
     </None>
     <None Include="FS.snk" />
-    <None Include="FS2.pfx" />
     <None Include="Properties\app.manifest" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
