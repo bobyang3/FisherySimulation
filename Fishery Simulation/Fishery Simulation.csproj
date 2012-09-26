@@ -11,8 +11,7 @@
     <RootNamespace>Fishery_Simulation</RootNamespace>
     <AssemblyName>Fishery Simulation</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
-    <TargetFrameworkProfile>
-    </TargetFrameworkProfile>
+    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
     <FileAlignment>512</FileAlignment>
     <IsWebBootstrapper>false</IsWebBootstrapper>
     <SccProjectName>SAK</SccProjectName>
@@ -64,10 +63,10 @@
     <StartupObject>Fishery_Simulation.Program</StartupObject>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestCertificateThumbprint>B4151DFE3387763E596A1513226A3EA11983AEA9</ManifestCertificateThumbprint>
+    <ManifestCertificateThumbprint>F953DEE1A6E7113138F89153BED7FA131ACDE46A</ManifestCertificateThumbprint>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestKeyFile>Fishery Simulation_TemporaryKey.pfx</ManifestKeyFile>
+    <ManifestKeyFile>FS2.pfx</ManifestKeyFile>
   </PropertyGroup>
   <PropertyGroup>
     <GenerateManifests>false</GenerateManifests>
@@ -80,7 +79,7 @@
     <TargetZone>LocalIntranet</TargetZone>
   </PropertyGroup>
   <PropertyGroup>
-    <SignAssembly>false</SignAssembly>
+    <SignAssembly>true</SignAssembly>
   </PropertyGroup>
   <PropertyGroup>
     <AssemblyOriginatorKeyFile>FS.snk</AssemblyOriginatorKeyFile>
@@ -187,6 +186,7 @@
       <DependentUpon>DataSetCPU.xsd</DependentUpon>
     </None>
     <None Include="FS.snk" />
+    <None Include="FS2.pfx" />
     <None Include="Properties\app.manifest" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -243,13 +243,10 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\IPlugins\IPlugins.csproj">
-      <Project>{D0A46145-A693-4D45-93CB-6852C6DAF46F}</Project>
+      <Project>{d0a46145-a693-4d45-93cb-6852c6daf46f}</Project>
       <Name>IPlugins</Name>
-      <EmbedInteropTypes>False</EmbedInteropTypes>
-      <Private>True</Private>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>REM 
