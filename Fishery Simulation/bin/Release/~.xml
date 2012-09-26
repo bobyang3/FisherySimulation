@@ -1,7 +1,0 @@
-<?xml version="1.0" standalone="yes"?>
-<DataSet1 xmlns="http://tempuri.org/DataSet1.xsd">
-  <Settings>
-    <rootFolder>C:\_MSmesh_\(my documents)\__PROJECTS__\Fishery Simulation\Fishery Simulation\bin\Release</rootFolder>
-    <step2TimeOutInMinutes>120</step2TimeOutInMinutes>
-  </Settings>
-</DataSet1>

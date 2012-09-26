@@ -13,7 +13,7 @@ REM C:\__STANDALONE__\_PROGRAMMING_\MS_ILMerge\ILMerge.exe /target:winexe /targe
 
 REM cd "C:\_MSmesh_\(my documents)\__PROJECTS__\Fishery Simulation\Fishery Simulation\bin\Release"
 REM c:
-REM C:\__STANDALONE__\_PROGRAMMING_\MS_ILMerge\ILMerge.exe /target:winexe /targetplatform:"v4,C:\Program Files\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0" /out:FisherySimulation.exe "Fishery Simulation.exe" "IPlugins.dll"
+REM C:\__STANDALONE__\_PROGRAMMING_\MS_ILMerge\ILMerge.exe /target:winexe /targetplatform:"v4,C:\Program Files\Reference Assemblies\Microsoft\VSTO40\v4.0.Framework" /out:FisherySimulation.exe "Fishery Simulation.exe" "IPlugins.dll"
 cd %CD%
 %drive%
 echo %CD%
