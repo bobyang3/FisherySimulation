@@ -1,2 +1,12 @@
 https://fisherysimulation.codeplex.com
 https://bobyang.tfspreview.com
+
+
+/*********************************************************************
+IMPORTANT: Starting from a different machine
+**********************************************************************/
+1. right click on "Fishery Simulation" Project, "Properties", "Signing"
+2. The "certificate" is gray out but you may receive error while compiling it
+3. to fix it: check "sign the clickonce manifests", "create test certificate..."
+4. uncheck "sign the clickonce manifests"
+5. recompile again, and should work
