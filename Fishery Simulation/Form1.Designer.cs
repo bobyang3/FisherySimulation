@@ -79,17 +79,18 @@
             this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.fileList2BindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.label10 = new System.Windows.Forms.Label();
             this.textBox5 = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
-            this.label5 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.cPUNumTextBox = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
             this.textBox4 = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.summayFilesDataGridView = new System.Windows.Forms.DataGridView();
@@ -133,6 +134,7 @@
             this.splitContainer2.SuspendLayout();
             this.tableLayoutPanel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.fileList2BindingSource)).BeginInit();
             this.tableLayoutPanel6.SuspendLayout();
             this.panel1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -630,13 +632,20 @@
             this.dataGridViewTextBoxColumn8,
             this.dataGridViewTextBoxColumn9,
             this.dataGridViewTextBoxColumn10});
-            this.dataGridView2.DataSource = this.fileListBindingSource1;
+            this.dataGridView2.DataSource = this.fileList2BindingSource;
             this.dataGridView2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView2.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
             this.dataGridView2.Location = new System.Drawing.Point(143, 47);
             this.dataGridView2.Name = "dataGridView2";
             this.dataGridView2.Size = new System.Drawing.Size(576, 87);
             this.dataGridView2.TabIndex = 66;
+            this.dataGridView2.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellEndEdit);
+            this.dataGridView2.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.dataGridView1_DataError);
+            this.dataGridView2.DefaultValuesNeeded += new System.Windows.Forms.DataGridViewRowEventHandler(this.dataGridView2_DefaultValuesNeeded);
+            this.dataGridView2.DragDrop += new System.Windows.Forms.DragEventHandler(this.dataGridView2_DragDrop);
+            this.dataGridView2.DragEnter += new System.Windows.Forms.DragEventHandler(this.dataGridView2_DragEnter);
+            this.dataGridView2.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dataGridView1_KeyDown);
+            this.dataGridView2.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dataGridView2_MouseClick);
             // 
             // dataGridViewTextBoxColumn4
             // 
@@ -716,6 +725,11 @@
             this.dataGridViewTextBoxColumn10.MinimumWidth = 100;
             this.dataGridViewTextBoxColumn10.Name = "dataGridViewTextBoxColumn10";
             // 
+            // fileList2BindingSource
+            // 
+            this.fileList2BindingSource.DataMember = "FileList2";
+            this.fileList2BindingSource.DataSource = this.dataSet1;
+            // 
             // label10
             // 
             this.label10.AutoSize = true;
@@ -782,17 +796,6 @@
             this.tableLayoutPanel6.Size = new System.Drawing.Size(722, 69);
             this.tableLayoutPanel6.TabIndex = 1;
             // 
-            // label5
-            // 
-            this.tableLayoutPanel6.SetColumnSpan(this.label5, 3);
-            this.label5.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold);
-            this.label5.Location = new System.Drawing.Point(3, 0);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(357, 19);
-            this.label5.TabIndex = 8;
-            this.label5.Text = "Step 3: Simulation (process in each sub folder)";
-            this.label5.Click += new System.EventHandler(this.label5_Click);
-            // 
             // panel1
             // 
             this.panel1.Controls.Add(this.cPUNumTextBox);
@@ -845,6 +848,17 @@
             this.label6.Size = new System.Drawing.Size(57, 13);
             this.label6.TabIndex = 9;
             this.label6.Text = "Command:";
+            // 
+            // label5
+            // 
+            this.tableLayoutPanel6.SetColumnSpan(this.label5, 3);
+            this.label5.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold);
+            this.label5.Location = new System.Drawing.Point(3, 0);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(357, 19);
+            this.label5.TabIndex = 8;
+            this.label5.Text = "Step 3: Simulation (process in each sub folder)";
+            this.label5.Click += new System.EventHandler(this.label5_Click);
             // 
             // tabPage2
             // 
@@ -1078,6 +1092,7 @@
             this.tableLayoutPanel5.ResumeLayout(false);
             this.tableLayoutPanel5.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.fileList2BindingSource)).EndInit();
             this.tableLayoutPanel6.ResumeLayout(false);
             this.tableLayoutPanel6.PerformLayout();
             this.panel1.ResumeLayout(false);
@@ -1171,6 +1186,7 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel6;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.SplitContainer splitContainer2;
+        private System.Windows.Forms.BindingSource fileList2BindingSource;
     }
 }
 

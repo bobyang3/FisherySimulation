@@ -138,6 +138,7 @@
     </Compile>
     <Compile Include="lib\Glibs.cs" />
     <Compile Include="lib\SimpleRNG.cs" />
+    <Compile Include="ProcessFiles.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Settings.cs" />

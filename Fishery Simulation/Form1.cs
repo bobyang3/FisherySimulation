@@ -242,6 +242,8 @@ namespace Fishery_Simulation
             //step 1: only continue this when the command is finished.
             this.CopyFiles(originalForm);
 
+
+
             //del files
             //Glibs.DeleteFolder(new DirectoryInfo(newPath));
 
@@ -485,154 +487,162 @@ namespace Fishery_Simulation
                 _sub_folder_num = int.Parse(textBox2.Text.Trim().ToString()) + 1;
             }
 
-            //create empty folders
-            try
-            {
+            ProcessFiles pf = new ProcessFiles();
+            pf._processMode = ProcessFiles._processModeDefine.rootToSub;
+            pf._ds = dataSet1;
+            //pf._rootFolderPath = rootFolderTextBox.Text;
+            pf.createSubFolders(_sub_folder_num, rootFolderTextBox.Text);
+            pf.paralleProcessFiles("FileList", _sub_folder_num, rootFolderTextBox.Text);
 
 
-                Parallel.For(1, _sub_folder_num, i =>
-                {
-                    {
-                        string newPath = Path.Combine(rootFolderTextBox.Text, i.ToString());
-                        Directory.CreateDirectory(newPath);
-                    }
-                });
+            ////create empty folders
+            //try
+            //{
 
-                //for(int i=1; i<_sub_folder_num; i++)
-                //{
+
+            //    Parallel.For(1, _sub_folder_num, i =>
+            //    {
+            //        {
+            //            string newPath = Path.Combine(rootFolderTextBox.Text, i.ToString());
+            //            Directory.CreateDirectory(newPath);
+            //        }
+            //    });
+
+            //    //for(int i=1; i<_sub_folder_num; i++)
+            //    //{
+
+            //    //        string newPath = Path.Combine(rootFolderTextBox.Text, i.ToString());
+            //    //        Directory.CreateDirectory(newPath);                    
+            //    //}
+
+
+            //}
+            //catch (Exception e2)
+            //{
+            //    MessageBox.Show(e2.ToString());
+            //}
+
+
+            ////copy files
+            //try
+            //{
+            //    Parallel.For(0, dataGridView1.RowCount-1, j =>
+            //    {
+
+            //    //for (int j = 0; j < dataGridView1.RowCount-1; j++)
+            //    {
+            //        string filename = Glibs.toStringNullable(dataSet1.Tables["FileList"].Rows[j]["FileName"].ToString());
+            //        string captureType = Glibs.toStringNullable(dataSet1.Tables["FileList"].Rows[j]["capture"].ToString());
+            //        string outputFileName = Glibs.toStringNullable(dataSet1.Tables["FileList"].Rows[j]["outputFileName"].ToString());
+            //        string blockHeaderLine = Glibs.toStringNullable(dataSet1.Tables["FileList"].Rows[j]["block"].ToString());
+            //        string blockEndLine = Glibs.toStringNullable(dataSet1.Tables["FileList"].Rows[j]["blockend"].ToString());
+            //        string randomGen = Glibs.toStringNullable(dataSet1.Tables["FileList"].Rows[j]["randomGen"].ToString());
+
+            //        string sourceFile = Path.Combine(Path.Combine(rootFolderTextBox.Text,"~~original"), filename);
+
+            //        int? fromLine = Glibs.tointNullable(dataSet1.Tables["FileList"].Rows[j]["fromLine"].ToString());
+            //        int? toLine = Glibs.tointNullable(dataSet1.Tables["FileList"].Rows[j]["toLine"].ToString());
+
                     
-                //        string newPath = Path.Combine(rootFolderTextBox.Text, i.ToString());
-                //        Directory.CreateDirectory(newPath);                    
-                //}
+            //        if (captureType == "Lines" && fromLine != null && toLine != null) ///copy line text
+            //        {
+            //            for (int i = 1; i < _sub_folder_num; i++)
+            //            {
+            //                //open file and get conents, then copy over the conents therefor, use the file from root folder
+            //                sourceFile = Path.Combine(rootFolderTextBox.Text,filename);
+            //                string destFile = Path.Combine(Path.Combine(rootFolderTextBox.Text, i.ToString()), outputFileName);
+            //                Glibs.WritelineText(destFile, Glibs.ReadLineText(sourceFile, fromLine, toLine, false, null, null));
+            //            }
+            //        }
+            //        else if (captureType == "Rand Gen" && randomGen != null) ///gen rand numbers
+            //        {
+            //            for (int i = 1; i < _sub_folder_num; i++)
+            //            {
+            //                //open file and get conents, then copy over the conents therefor, use the file from root folder
+            //                sourceFile = Path.Combine(rootFolderTextBox.Text, filename);
+            //                string destFile = Path.Combine(Path.Combine(rootFolderTextBox.Text, i.ToString()), outputFileName);
+            //                generateRandDist(sourceFile, destFile, randomGen);
+            //            }
+            //        }
+            //        //else if (captureType == "Block" && blockHeaderLine != null && blockEndLine!=null) ///copy block
+            //        else if (captureType == "Block" && blockHeaderLine != null) ///copy block
+            //        {
 
-
-            }
-            catch (Exception e2)
-            {
-                MessageBox.Show(e2.ToString());
-            }
-
-
-            //copy files
-            try
-            {
-                Parallel.For(0, dataGridView1.RowCount-1, j =>
-                {
-
-                //for (int j = 0; j < dataGridView1.RowCount-1; j++)
-                {
-                    string filename = Glibs.toStringNullable(dataSet1.Tables["FileList"].Rows[j]["FileName"].ToString());
-                    string captureType = Glibs.toStringNullable(dataSet1.Tables["FileList"].Rows[j]["capture"].ToString());
-                    string outputFileName = Glibs.toStringNullable(dataSet1.Tables["FileList"].Rows[j]["outputFileName"].ToString());
-                    string blockHeaderLine = Glibs.toStringNullable(dataSet1.Tables["FileList"].Rows[j]["block"].ToString());
-                    string blockEndLine = Glibs.toStringNullable(dataSet1.Tables["FileList"].Rows[j]["blockend"].ToString());
-                    string randomGen = Glibs.toStringNullable(dataSet1.Tables["FileList"].Rows[j]["randomGen"].ToString());
-
-                    string sourceFile = Path.Combine(Path.Combine(rootFolderTextBox.Text,"~~original"), filename);
-
-                    int? fromLine = Glibs.tointNullable(dataSet1.Tables["FileList"].Rows[j]["fromLine"].ToString());
-                    int? toLine = Glibs.tointNullable(dataSet1.Tables["FileList"].Rows[j]["toLine"].ToString());
-
-                    
-                    if (captureType == "Lines" && fromLine != null && toLine != null) ///copy line text
-                    {
-                        for (int i = 1; i < _sub_folder_num; i++)
-                        {
-                            //open file and get conents, then copy over the conents therefor, use the file from root folder
-                            sourceFile = Path.Combine(rootFolderTextBox.Text,filename);
-                            string destFile = Path.Combine(Path.Combine(rootFolderTextBox.Text, i.ToString()), outputFileName);
-                            Glibs.WritelineText(destFile, Glibs.ReadLineText(sourceFile, fromLine, toLine, false, null, null));
-                        }
-                    }
-                    else if (captureType == "Rand Gen" && randomGen != null) ///gen rand numbers
-                    {
-                        for (int i = 1; i < _sub_folder_num; i++)
-                        {
-                            //open file and get conents, then copy over the conents therefor, use the file from root folder
-                            sourceFile = Path.Combine(rootFolderTextBox.Text, filename);
-                            string destFile = Path.Combine(Path.Combine(rootFolderTextBox.Text, i.ToString()), outputFileName);
-                            generateRandDist(sourceFile, destFile, randomGen);
-                        }
-                    }
-                    //else if (captureType == "Block" && blockHeaderLine != null && blockEndLine!=null) ///copy block
-                    else if (captureType == "Block" && blockHeaderLine != null) ///copy block
-                    {
-
-                        DataTable dt = new DataTable();
-                        //List<string> strings = Glibs.ReadText(sourceFile);
+            //            DataTable dt = new DataTable();
+            //            //List<string> strings = Glibs.ReadText(sourceFile);
                         
-                        sourceFile = Path.Combine(rootFolderTextBox.Text, filename);
-                        string[] strings2 = Glibs.ReadText2(sourceFile); //use the file which generated in the root folder
+            //            sourceFile = Path.Combine(rootFolderTextBox.Text, filename);
+            //            string[] strings2 = Glibs.ReadText2(sourceFile); //use the file which generated in the root folder
 
-                        //row number column
-                        DataColumn c = new DataColumn("romNum");
+            //            //row number column
+            //            DataColumn c = new DataColumn("romNum");
 
-                        c.AutoIncrement = true;
-                        c.AutoIncrementSeed = 1;
-                        c.AutoIncrementStep = 1;
-                        dt.Columns.Add(c);
+            //            c.AutoIncrement = true;
+            //            c.AutoIncrementSeed = 1;
+            //            c.AutoIncrementStep = 1;
+            //            dt.Columns.Add(c);
 
-                        //setNum for block
-                        dt.Columns.Add("setNum", typeof(int));
+            //            //setNum for block
+            //            dt.Columns.Add("setNum", typeof(int));
 
-                        //data column
-                        dt.Columns.Add("textline", typeof(string));
+            //            //data column
+            //            dt.Columns.Add("textline", typeof(string));
 
-                        int curr_set = 0;
+            //            int curr_set = 0;
 
-                        foreach (string str in strings2)
-                        {
-                            if (str.StartsWith(blockHeaderLine))
-                            { curr_set = curr_set + 1; }
+            //            foreach (string str in strings2)
+            //            {
+            //                if (str.StartsWith(blockHeaderLine))
+            //                { curr_set = curr_set + 1; }
 
-                            DataRow dr = dt.NewRow();
-                            dr["textline"] = str;
-                            dr["setNum"] = curr_set;
-                            dt.Rows.Add(dr);
-                        }
-
-
+            //                DataRow dr = dt.NewRow();
+            //                dr["textline"] = str;
+            //                dr["setNum"] = curr_set;
+            //                dt.Rows.Add(dr);
+            //            }
 
 
-                        for (int i = 1; i < _sub_folder_num; i++)
-                        {
-                            var query = from dr2 in dt.AsEnumerable()
-                                        where (int)dr2["setNum"] == i
-                                        select (string)dr2["textline"];
-
-                            string final_str = "";
-
-                            foreach (string str in query)
-                            {
-                                final_str = final_str + Environment.NewLine + str;
-                            }
-
-                            final_str = final_str.Trim();
-                            string destFile = Path.Combine(Path.Combine(rootFolderTextBox.Text, i.ToString()), outputFileName);
-                            Glibs.WritelineText(destFile, final_str);
-                        }
 
 
-                    }
-                    else // anything else, copy full file
-                    {
-                        for (int i = 1; i < _sub_folder_num; i++)
-                        {
+            //            for (int i = 1; i < _sub_folder_num; i++)
+            //            {
+            //                var query = from dr2 in dt.AsEnumerable()
+            //                            where (int)dr2["setNum"] == i
+            //                            select (string)dr2["textline"];
 
-                            // sourceFile = Path.Combine(Path.Combine(rootFolderTextBox.Text, "~~original"), filename);
-                            string destFile = Path.Combine(Path.Combine(rootFolderTextBox.Text, i.ToString()), outputFileName);
-                            File.Copy(sourceFile, destFile, true);
-                        }
-                    }
+            //                string final_str = "";
+
+            //                foreach (string str in query)
+            //                {
+            //                    final_str = final_str + Environment.NewLine + str;
+            //                }
+
+            //                final_str = final_str.Trim();
+            //                string destFile = Path.Combine(Path.Combine(rootFolderTextBox.Text, i.ToString()), outputFileName);
+            //                Glibs.WritelineText(destFile, final_str);
+            //            }
+
+
+            //        }
+            //        else // anything else, copy full file
+            //        {
+            //            for (int i = 1; i < _sub_folder_num; i++)
+            //            {
+
+            //                // sourceFile = Path.Combine(Path.Combine(rootFolderTextBox.Text, "~~original"), filename);
+            //                string destFile = Path.Combine(Path.Combine(rootFolderTextBox.Text, i.ToString()), outputFileName);
+            //                File.Copy(sourceFile, destFile, true);
+            //            }
+            //        }
 
                     
-                }
-                }); //Parallel.For
-            }
-            catch (Exception e3)
-            {
-                MessageBox.Show(e3.ToString());
-            }
+            //    }
+            //    }); //Parallel.For
+            //}
+            //catch (Exception e3)
+            //{
+            //    MessageBox.Show(e3.ToString());
+            //}
 
             
         }
@@ -680,6 +690,8 @@ namespace Fishery_Simulation
             Glibs.deleteEmptyRows(dataSet1.Tables["FileList"], "FileName");
 
             dataGridView1.Refresh();
+
+
 
             try
             {
@@ -1166,6 +1178,65 @@ namespace Fishery_Simulation
         private void tableLayoutPanel5_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+
+        private void dataGridView2_DragDrop(object sender, DragEventArgs e)
+        {
+            string[] files = (e.Data.GetData("FileDrop") as string[]);
+
+            for (int i = 0; i < files.Length; i++)
+            {
+                try
+                {
+                    files[i] = Path.GetFileName(files[i]);
+
+                    DataRow row = dataSet1.Tables["FileList2"].NewRow();
+                    row["FileName"] = files[i];
+                    row["outputFileName"] = files[i];
+                    dataSet1.FileList2.Rows.Add(row);
+                }
+                catch
+                { }
+            }
+            dataGridView2.Refresh();
+        }
+
+        private void dataGridView2_DragEnter(object sender, DragEventArgs e)
+        {
+            e.Effect = DragDropEffects.Copy;
+        }
+
+        private void dataGridView2_MouseClick(object sender, MouseEventArgs e)
+        {
+            //convert to EditOnKeystrokOrF2 mode so people can delete records
+            DataGridView dgv = (DataGridView)sender;
+            DataGridView.HitTestInfo hti = dgv.HitTest(e.X, e.Y);
+            if (hti.Type == DataGridViewHitTestType.RowHeader)
+            {
+                dgv.EditMode = DataGridViewEditMode.EditOnKeystrokeOrF2;
+                dgv.EndEdit();
+            }
+        }
+
+        private void dataGridView2_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                if (e.ColumnIndex == 0) //fileName is entered
+                {
+                    if (dataSet1.Tables["FileList2"].Rows[e.RowIndex]["outputFileName"].ToString().Trim().Length <= 0)
+                    {
+                        dataGridView2["outputFileName", e.RowIndex].Value = dataGridView2[0, e.RowIndex].EditedFormattedValue; //copy values from input to output
+                    }
+                }
+            }
+            catch { }
+        }
+
+        private void dataGridView2_DefaultValuesNeeded(object sender, DataGridViewRowEventArgs e)
+        {
+            //multilines
+            dataGridView2.Columns["randomGen"].DefaultCellStyle.WrapMode = DataGridViewTriState.True;
         }
 
 
