@@ -35,10 +35,7 @@ namespace Fishery_Simulation
         private void rootFolderTextBox_DragDrop(object sender, DragEventArgs e)
         {
 
-            if (e.Data.GetDataPresent(DataFormats.FileDrop))
-                e.Effect = DragDropEffects.Copy;
-            else
-                e.Effect = DragDropEffects.None; 
+            dragDrop(e);
 
         }
 
@@ -151,7 +148,13 @@ namespace Fishery_Simulation
                     __fileConect[__lineNumber-1] = __newLine;
                     //}
 
-                    Glibs.WritelineText(__rootfile.DirectoryName + i.ToString() + @"\" + __rootfile.Name, String.Join("\n",__fileConect));
+                    string __text = "";
+                    foreach (string l in __fileConect)
+                    {
+                        __text = __text+l + Environment.NewLine;
+                    }
+
+                    Glibs.WritelineText(__rootfile.DirectoryName + i.ToString() + @"\" + __rootfile.Name, __text);
                 }
 
 
@@ -179,5 +182,59 @@ namespace Fishery_Simulation
             // end method
             return true;
         }
+
+        private void profileGenerator_DragDrop(object sender, DragEventArgs e)
+        {
+            dragDrop(e);
+        }
+
+        private void profileGenerator_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void profileGenerator_DragEnter(object sender, DragEventArgs e)
+        {
+            dragEnter(e);
+        }
+
+
+        private void dragEnter(DragEventArgs e) {
+            if (e.Data.GetDataPresent(DataFormats.FileDrop))
+            {
+                e.Effect = DragDropEffects.Copy;
+            }
+            else
+            {
+                e.Effect = DragDropEffects.None;
+            }
+        }
+
+        private void dragDrop(DragEventArgs e) {
+            if (e.Data.GetDataPresent(DataFormats.FileDrop))
+            {
+                string[] filePaths = (string[])(e.Data.GetData(DataFormats.FileDrop));
+                rootFileTextBox.Text = filePaths[0].ToString();
+                //foreach (string fileLoc in filePaths)
+                //{
+                //    // Code to read the contents of the text file
+                //    if (File.Exists(fileLoc))
+                //    {
+                //        using (TextReader tr = new StreamReader(fileLoc))
+                //        {
+                //            MessageBox.Show(tr.ReadToEnd());
+                //        }
+                //    }
+
+                //}
+            }
+        }
+
+        private void rootFileTextBox_DragEnter(object sender, DragEventArgs e)
+        {
+            dragEnter(e);
+        }
+
+
     }
 }

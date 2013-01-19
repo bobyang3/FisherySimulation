@@ -277,6 +277,7 @@ REM "$(ProjectDir)(developer)\ILMerge\ILMerge.exe"  /target:winexe /targetplatfo
 REM VS2012
 "$(ProjectDir)(developer)\ILMerge\ILMerge.exe"  /target:winexe /targetplatform:"v4,C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0" /out:FisherySimulation.exe "Fishery Simulation.exe" "IPlugins.dll"
 
+del /F /Q "$(ProjectDir)..\..\tags\_current_\FisherySimulation.exe"
 xcopy "$(TargetDir)FisherySimulation.exe" "$(ProjectDir)..\..\tags\_current_\"</PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -98,14 +98,14 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 23F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 23F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 23F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(655, 303);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(614, 147);
             this.tableLayoutPanel1.TabIndex = 1;
             // 
             // button1
             // 
             this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.button1.AutoSize = true;
-            this.button1.Location = new System.Drawing.Point(558, 117);
+            this.button1.Location = new System.Drawing.Point(517, 117);
             this.button1.Margin = new System.Windows.Forms.Padding(0);
             this.button1.MinimumSize = new System.Drawing.Size(75, 20);
             this.button1.Name = "button1";
@@ -142,7 +142,7 @@
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 24F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 24F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 24F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(655, 23);
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(614, 23);
             this.tableLayoutPanel3.TabIndex = 54;
             // 
             // label7
@@ -196,7 +196,7 @@
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 24F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 24F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 24F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(655, 23);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(614, 23);
             this.tableLayoutPanel2.TabIndex = 53;
             // 
             // textBox5
@@ -276,7 +276,7 @@
             this.tableLayoutPanel4.RowCount = 1;
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 24F));
-            this.tableLayoutPanel4.Size = new System.Drawing.Size(655, 23);
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(614, 23);
             this.tableLayoutPanel4.TabIndex = 52;
             // 
             // lLineNum
@@ -324,14 +324,14 @@
             this.label1.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold);
             this.label1.Location = new System.Drawing.Point(3, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(337, 16);
+            this.label1.Size = new System.Drawing.Size(432, 16);
             this.label1.TabIndex = 9;
-            this.label1.Text = "Create folders based on Line settings and changes";
+            this.label1.Text = "Create folders based on Line settings and generates new values:";
             // 
             // button2
             // 
             this.button2.Image = global::Fishery_Simulation.Properties.Resources.blue_file_icon_25;
-            this.button2.Location = new System.Drawing.Point(633, 25);
+            this.button2.Location = new System.Drawing.Point(592, 25);
             this.button2.Margin = new System.Windows.Forms.Padding(0);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(22, 22);
@@ -346,23 +346,28 @@
             this.rootFileTextBox.Location = new System.Drawing.Point(143, 26);
             this.rootFileTextBox.Margin = new System.Windows.Forms.Padding(3, 1, 0, 3);
             this.rootFileTextBox.Name = "rootFileTextBox";
-            this.rootFileTextBox.Size = new System.Drawing.Size(490, 20);
+            this.rootFileTextBox.Size = new System.Drawing.Size(449, 20);
             this.rootFileTextBox.TabIndex = 10;
             this.rootFileTextBox.DragDrop += new System.Windows.Forms.DragEventHandler(this.rootFolderTextBox_DragDrop);
+            this.rootFileTextBox.DragEnter += new System.Windows.Forms.DragEventHandler(this.rootFileTextBox_DragEnter);
             // 
             // openFileDialog1
             // 
-            this.openFileDialog1.FileName = "openFileDialog1";
+            this.openFileDialog1.Filter = "SS control Files (*.ss)|*.ss|All Files (*.*)|*.*";
             // 
             // profileGenerator
             // 
+            this.AllowDrop = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(655, 303);
+            this.ClientSize = new System.Drawing.Size(614, 147);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "profileGenerator";
             this.Text = "Profile Generator";
+            this.Load += new System.EventHandler(this.profileGenerator_Load);
+            this.DragDrop += new System.Windows.Forms.DragEventHandler(this.profileGenerator_DragDrop);
+            this.DragEnter += new System.Windows.Forms.DragEventHandler(this.profileGenerator_DragEnter);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             this.tableLayoutPanel3.ResumeLayout(false);

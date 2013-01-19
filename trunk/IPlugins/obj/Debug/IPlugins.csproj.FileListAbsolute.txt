@@ -2,3 +2,8 @@ C:\_MSmesh_\(my documents)\__PROJECTS__\Fishery Simulation\IPlugins\bin\Debug\IP
 C:\_MSmesh_\(my documents)\__PROJECTS__\Fishery Simulation\IPlugins\bin\Debug\IPlugins.pdb
 C:\_MSmesh_\(my documents)\__PROJECTS__\Fishery Simulation\IPlugins\obj\Debug\IPlugins.dll
 C:\_MSmesh_\(my documents)\__PROJECTS__\Fishery Simulation\IPlugins\obj\Debug\IPlugins.pdb
+C:\__PROJECTS__\Fishery Simulation\trunk\IPlugins\bin\Debug\IPlugins.dll
+C:\__PROJECTS__\Fishery Simulation\trunk\IPlugins\bin\Debug\IPlugins.pdb
+C:\__PROJECTS__\Fishery Simulation\trunk\IPlugins\obj\Debug\IPlugins.csprojResolveAssemblyReference.cache
+C:\__PROJECTS__\Fishery Simulation\trunk\IPlugins\obj\Debug\IPlugins.dll
+C:\__PROJECTS__\Fishery Simulation\trunk\IPlugins\obj\Debug\IPlugins.pdb
