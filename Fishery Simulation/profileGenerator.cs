@@ -54,23 +54,28 @@ namespace Fishery_Simulation
 
         private void button1_Click(object sender, EventArgs e)
         {
-           _createNewFolder= 1+(int)Math.Ceiling((double.Parse(textBox4.Text.Trim()) - double.Parse(textBox3.Text.Trim())) / double.Parse(textBox5.Text.Trim()));
+            try
+            {
+                _createNewFolder = 1 + (int)Math.Ceiling((double.Parse(textBox4.Text.Trim()) - double.Parse(textBox3.Text.Trim())) / double.Parse(textBox5.Text.Trim()));
 
-           if (_createNewFolder < 0)
-           {
-               MessageBox.Show("Please check 'start' 'end' and 'interval' values. This program cannot create NEGATIVE folder numbers");
-           }
-           else
-           {
-               if (rootFileTextBox.Text.Trim().Length > 0)
-               {
-                   generateProfileFileAndFolders();
-               }
-               else
-               {
-                   MessageBox.Show("You forget enter the filename you want to modify with full path");
-               }
-           }
+                if (_createNewFolder < 0)
+                {
+                    MessageBox.Show("Please check 'start' 'end' and 'interval' values. This program cannot create NEGATIVE folder numbers");
+                }
+                else
+                {
+                    if (rootFileTextBox.Text.Trim().Length > 0)
+                    {
+                        generateProfileFileAndFolders();
+                    }
+                    else
+                    {
+                        MessageBox.Show("You forget enter the filename you want to modify with full path");
+                    }
+                }
+            }
+            catch (Exception ei)
+            { MessageBox.Show(ei.ToString()); }
         }
 
         private bool generateProfileFileAndFolders()

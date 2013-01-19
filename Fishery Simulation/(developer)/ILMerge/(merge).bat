@@ -13,10 +13,24 @@ REM C:\__STANDALONE__\_PROGRAMMING_\MS_ILMerge\ILMerge.exe /target:winexe /targe
 
 REM cd "C:\_MSmesh_\(my documents)\__PROJECTS__\Fishery Simulation\Fishery Simulation\bin\Release"
 REM c:
-REM C:\__STANDALONE__\_PROGRAMMING_\MS_ILMerge\ILMerge.exe /target:winexe /targetplatform:"v4,C:\Program Files\Reference Assemblies\Microsoft\VSTO40\v4.0.Framework" /out:FisherySimulation.exe "Fishery Simulation.exe" "IPlugins.dll"
+REM C:\__STANDALONE__\_PROGRAMMING_\MS_ILMerge\ILMerge.exe /target:winexe /targetplatform:"v4,C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0" /out:FisherySimulation.exe "Fishery Simulation.exe" "IPlugins.dll"
+
+REM VS2010
+REM "$(ProjectDir)(developer)\ILMerge\ILMerge.exe"  /target:winexe /targetplatform:"v4,C:\Program Files\Reference Assemblies\Microsoft\Framework\.NETFramework\v3.5" /out:FisherySimulation.exe "Fishery Simulation.exe" "IPlugins.dll"
+
+REM VS2012
+C:\__STANDALONE__\_PROGRAMMING_\MS_ILMerge\ILMerge.exe  /target:winexe /targetplatform:"v4,C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0" /out:FisherySimulation.exe "Fishery Simulation.exe" "IPlugins.dll"
+
 cd %CD%
 %drive%
 echo %CD%
 echo %drive%
 pause
+
+
+REM 
+REM remove "Post-build" command if you get ERRORS.
+REM go to "Fishery Simulation" project, right click "properties", "Build Events" "Post-build event command line"
+
+cd $(TargetDir)
 
