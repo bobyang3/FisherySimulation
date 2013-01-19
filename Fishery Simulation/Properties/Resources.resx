@@ -118,13 +118,22 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="FS_snk" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\FS.snk;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="blue-file-icon-256-x-2561" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\blue-file-icon-256-x-2561.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="school_of_fish" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\school_of_fish.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Open_Folder_Full_icon_20x20" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Open-Folder-Full-icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="school_of_fish" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\school_of_fish.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="FS_snk" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\FS.snk;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="blue-file-icon-256-x-256" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\blue-file-icon-256-x-256.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="blue-file-icon-25" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\blue-file-icon-25.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

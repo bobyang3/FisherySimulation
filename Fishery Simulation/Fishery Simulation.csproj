@@ -63,10 +63,10 @@
     <StartupObject>Fishery_Simulation.Program</StartupObject>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestCertificateThumbprint>F953DEE1A6E7113138F89153BED7FA131ACDE46A</ManifestCertificateThumbprint>
+    <ManifestCertificateThumbprint>BB0AD75445EBE64495E875BFB85FDC16248A4720</ManifestCertificateThumbprint>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestKeyFile>FS2.pfx</ManifestKeyFile>
+    <ManifestKeyFile>Fishery Simulation_TemporaryKey.pfx</ManifestKeyFile>
   </PropertyGroup>
   <PropertyGroup>
     <GenerateManifests>false</GenerateManifests>
@@ -139,6 +139,12 @@
     <Compile Include="lib\Glibs.cs" />
     <Compile Include="lib\SimpleRNG.cs" />
     <Compile Include="ProcessFiles.cs" />
+    <Compile Include="profileGenerator.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="profileGenerator.Designer.cs">
+      <DependentUpon>profileGenerator.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Settings.cs" />
@@ -148,6 +154,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="profileGenerator.resx">
+      <DependentUpon>profileGenerator.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -186,6 +195,7 @@
     <None Include="DataSetCPU.xss">
       <DependentUpon>DataSetCPU.xsd</DependentUpon>
     </None>
+    <None Include="Fishery Simulation_TemporaryKey.pfx" />
     <None Include="FS.snk" />
     <None Include="Properties\app.manifest" />
     <None Include="Properties\Settings.settings">
@@ -207,6 +217,12 @@
     <None Include="Resources\Open_Folder_Full_icon_20x20.jpg" />
     <None Include="Resources\Open-Folder-Full-icon.png" />
     <None Include="Resources\school_of_fish.png" />
+    <None Include="Resources\blue-file-icon-256-x-256.gif" />
+    <None Include="Resources\blue-file-icon-25.png" />
+    <Content Include="Resources\blue-file-icon-256-x-256.ico" />
+    <None Include="Resources\blue-file-icon-256-x-2561.gif" />
+    <Content Include="Resources\Text-Edit-icon.ico" />
+    <Content Include="Resources\Text-Edit-icon.png" />
     <Content Include="school_of_fish.ico" />
     <None Include="res\layout\Open-Folder-Full-icon-20x20.jpg" />
     <Content Include="%28developer%29\ILMerge\ILMerge.exe" />

@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
 using System.Reflection;
-using System;
 using System.IO;
 namespace Fishery_Simulation
 {

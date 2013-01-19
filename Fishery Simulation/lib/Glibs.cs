@@ -22,6 +22,26 @@ namespace Fishery_Simulation
             foreach (System.IO.DirectoryInfo subDirectory in directory.GetDirectories()) subDirectory.Delete(true);
         }
 
+        public static bool createSubFolders(int numberOfSubFolder, string rootFolderPath)
+        {
+            try
+            {
+                System.Threading.Tasks.Parallel.For(1, numberOfSubFolder, i =>
+                {
+                    {
+                        string newPath = Path.Combine(rootFolderPath, i.ToString());
+                        Directory.CreateDirectory(newPath);
+                    }
+                });
+            }
+            catch (Exception e2)
+            {
+                MessageBox.Show(e2.ToString());
+            }
+            return true;
+        }
+
+
         public static IEnumerable<Control> GetControls(Control form)
         {
             foreach (Control childControl in form.Controls)
@@ -101,6 +121,7 @@ namespace Fishery_Simulation
             return File.ReadAllLines(filePath);
         }
 
+        
 
 
         public static void WritelineText(string filePath, string text)
@@ -276,6 +297,52 @@ namespace Fishery_Simulation
         public static string parseLine() { 
         //#(.*)=(.*)\(([+-]?[0-9]+(?:\.[0-9]*)?),([+-]?[0-9]+(?:\.[0-9]*)?)\)
             return "" ;
+        }
+
+
+        public static List<FileInfo> FullDirList(DirectoryInfo dir, string searchPattern)
+        {
+            // Console.WriteLine("Directory {0}", dir.FullName);
+            // list the files
+            List<FileInfo> files = new List<FileInfo>();  // List that will hold the files and subfiles in path
+            List<DirectoryInfo> folders = new List<DirectoryInfo>(); // List that hold direcotries that cannot be accessed
+
+            try
+            {
+                foreach (FileInfo f in dir.GetFiles(searchPattern))
+                {
+                    //Console.WriteLine("File {0}", f.FullName);
+                    files.Add(f);
+                }
+            }
+            catch
+            {
+                Console.WriteLine("Directory {0}  \n could not be accessed!!!!", dir.FullName);
+                return null;  // We alredy got an error trying to access dir so dont try to access it again
+            }
+
+            // process each directory
+            // If I have been able to see the files in the directory I should also be able 
+            // to look at its directories so I dont think I should place this in a try catch block
+            foreach (DirectoryInfo d in dir.GetDirectories())
+            {
+                folders.Add(d);
+                FullDirList(d, searchPattern);
+            }
+
+            return files;
+
+        }
+
+        public static List<FileInfo> getAllFilesWithinDir(DirectoryInfo dir)
+        {
+            List<FileInfo> files = new List<FileInfo>();  // List that will hold the files and subfiles in path
+            foreach (FileInfo f in dir.GetFiles())
+            {
+                files.Add(f);
+            }
+            return files;
+        
         }
 
     }

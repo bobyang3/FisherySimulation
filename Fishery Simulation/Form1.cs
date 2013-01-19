@@ -1239,6 +1239,12 @@ namespace Fishery_Simulation
             dataGridView2.Columns["randomGen"].DefaultCellStyle.WrapMode = DataGridViewTriState.True;
         }
 
+        private void sSexeProfileGeneratorToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            profileGenerator pg = new profileGenerator();
+            pg.ShowDialog();
+        }
+
 
 
     
