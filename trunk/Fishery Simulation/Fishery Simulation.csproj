@@ -275,7 +275,9 @@ REM VS2010
 REM "$(ProjectDir)(developer)\ILMerge\ILMerge.exe"  /target:winexe /targetplatform:"v4,C:\Program Files\Reference Assemblies\Microsoft\Framework\.NETFramework\v3.5" /out:FisherySimulation.exe "Fishery Simulation.exe" "IPlugins.dll"
 
 REM VS2012
-"$(ProjectDir)(developer)\ILMerge\ILMerge.exe"  /target:winexe /targetplatform:"v4,C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0" /out:FisherySimulation.exe "Fishery Simulation.exe" "IPlugins.dll"</PostBuildEvent>
+"$(ProjectDir)(developer)\ILMerge\ILMerge.exe"  /target:winexe /targetplatform:"v4,C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0" /out:FisherySimulation.exe "Fishery Simulation.exe" "IPlugins.dll"
+
+xcopy "$(TargetDir)FisherySimulation.exe" "$(ProjectDir)..\..\tags\_current_\"</PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

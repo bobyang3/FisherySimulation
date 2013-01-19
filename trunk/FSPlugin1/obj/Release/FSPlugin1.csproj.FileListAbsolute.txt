@@ -12,3 +12,10 @@ C:\__PROJECTS__\Fishery Simulation\FSPlugin1\bin\Release\IPlugins.pdb
 C:\__PROJECTS__\Fishery Simulation\FSPlugin1\obj\Release\FSPlugin1.csprojResolveAssemblyReference.cache
 C:\__PROJECTS__\Fishery Simulation\FSPlugin1\obj\Release\FSPlugin1.dll
 C:\__PROJECTS__\Fishery Simulation\FSPlugin1\obj\Release\FSPlugin1.pdb
+C:\__PROJECTS__\Fishery Simulation\trunk\FSPlugin1\bin\Release\FSPlugin1.dll
+C:\__PROJECTS__\Fishery Simulation\trunk\FSPlugin1\bin\Release\FSPlugin1.pdb
+C:\__PROJECTS__\Fishery Simulation\trunk\FSPlugin1\bin\Release\IPlugins.dll
+C:\__PROJECTS__\Fishery Simulation\trunk\FSPlugin1\bin\Release\IPlugins.pdb
+C:\__PROJECTS__\Fishery Simulation\trunk\FSPlugin1\obj\Release\FSPlugin1.csprojResolveAssemblyReference.cache
+C:\__PROJECTS__\Fishery Simulation\trunk\FSPlugin1\obj\Release\FSPlugin1.dll
+C:\__PROJECTS__\Fishery Simulation\trunk\FSPlugin1\obj\Release\FSPlugin1.pdb

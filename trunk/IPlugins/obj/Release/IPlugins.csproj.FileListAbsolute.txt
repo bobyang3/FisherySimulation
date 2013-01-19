@@ -8,6 +8,5 @@ C:\__PROJECTS__\Fishery Simulation\IPlugins\obj\Release\IPlugins.dll
 C:\__PROJECTS__\Fishery Simulation\IPlugins\obj\Release\IPlugins.pdb
 C:\__PROJECTS__\Fishery Simulation\trunk\IPlugins\bin\Release\IPlugins.dll
 C:\__PROJECTS__\Fishery Simulation\trunk\IPlugins\bin\Release\IPlugins.pdb
-C:\__PROJECTS__\Fishery Simulation\trunk\IPlugins\obj\Release\IPlugins.csprojResolveAssemblyReference.cache
 C:\__PROJECTS__\Fishery Simulation\trunk\IPlugins\obj\Release\IPlugins.dll
 C:\__PROJECTS__\Fishery Simulation\trunk\IPlugins\obj\Release\IPlugins.pdb
