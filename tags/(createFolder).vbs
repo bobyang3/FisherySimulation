@@ -10,7 +10,7 @@ dtmValue = Now()
 
 'use date /time part functions to create the folder names as required
 'Assuming that you are creating these folders in C:\
-strDate = Year(dtmValue)  & "_" & Right(String(2, "0") & Month(dtmValue), 2)& "_" & Right(String(2, "0") & Day(dtmValue), 2)
+strDate = Year(dtmValue)  & "-" & Right(String(2, "0") & Month(dtmValue), 2)& "-" & Right(String(2, "0") & Day(dtmValue), 2)
 strTime = "_" & Right(String(2, "0") & Hour(dtmValue), 2)& "-" & Right(String(2, "0") & Minute(dtmValue), 2)& "-" & Right(String(2, "0") & Second(dtmValue), 2)
 
 
