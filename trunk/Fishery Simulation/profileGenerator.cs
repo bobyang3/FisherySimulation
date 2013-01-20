@@ -130,13 +130,15 @@ namespace Fishery_Simulation
                                 __thisValue[j] = __currentValue.ToString();
                             }
 
-                            if (textBox8.Text.Trim() != "")
+                            try
                             {
                                 if (j == int.Parse(textBox8.Text.Trim()) - 1)
                                 {
                                     __thisValue[j] = (Math.Abs(double.Parse(__thisValue[j])) * -1).ToString();
                                 }
                             }
+                            catch (Exception ei4) { }
+
 
                         }
                     }
@@ -154,9 +156,9 @@ namespace Fishery_Simulation
                         __text = __text+l + Environment.NewLine;
                     }
 
-                    Glibs.WritelineText(__rootfile.DirectoryName + i.ToString() + @"\" + __rootfile.Name, __text);
+                    Glibs.WritelineText((__rootfile.DirectoryName+@"\").Replace(@"\\",@"\")+ i.ToString() + @"\" + __rootfile.Name, __text);
                 }
-
+                
 
  
 
@@ -168,7 +170,7 @@ namespace Fishery_Simulation
                     {
                         if (f.Name != __rootfile.Name)
                         {
-                            f.CopyTo(f.DirectoryName + i.ToString() + @"\" + f.Name);
+                            f.CopyTo((__rootfile.DirectoryName + @"\").Replace(@"\\", @"\") + i.ToString() + @"\" + f.Name);
                         }
                     }
                 }
@@ -180,6 +182,8 @@ namespace Fishery_Simulation
             }
 
             // end method
+
+            MessageBox.Show("Process Completed.");
             return true;
         }
 
