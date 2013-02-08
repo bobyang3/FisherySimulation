@@ -51,10 +51,9 @@ namespace Fishery_Simulation
                 _numberOfSubFolder = numberOfSubFolder.Value;
             }
 
-            //if (rootFolderPath.HasValue == true)
-            //{
-            //    _rootFolderPath = rootFolderPath.Value;
-            //}
+
+                _rootFolderPath = rootFolderPath;
+
 
             //create empty folders
             try
@@ -95,7 +94,8 @@ namespace Fishery_Simulation
             //copy files
             try
             {
-                Parallel.For(0, _ds.Tables[dataSet1TableName].Rows.Count - 1, j =>
+                //Parallel.For(0, _ds.Tables[dataSet1TableName].Rows.Count-1 , j =>
+                Parallel.For(0, _ds.Tables[dataSet1TableName].Rows.Count , j =>
                 {
 
                     //for (int j = 0; j < dataGridView1.RowCount-1; j++)
@@ -217,7 +217,7 @@ namespace Fishery_Simulation
             }
             catch (Exception e3)
             {
-                MessageBox.Show(e3.ToString());
+                MessageBox.Show("FILE COPY PROBLEM. "+e3.ToString());
             }
             return true;
         }

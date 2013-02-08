@@ -608,7 +608,7 @@
             this.splitContainer2.Panel2.Controls.Add(this.tableLayoutPanel6);
             this.splitContainer2.Panel2MinSize = 100;
             this.splitContainer2.Size = new System.Drawing.Size(781, 128);
-            this.splitContainer2.SplitterDistance = 24;
+            this.splitContainer2.SplitterDistance = 25;
             this.splitContainer2.TabIndex = 2;
             // 
             // tableLayoutPanel5
@@ -798,14 +798,14 @@
             this.tableLayoutPanel6.ColumnCount = 3;
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 120F));
-            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 582F));
+            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 639F));
             this.tableLayoutPanel6.Controls.Add(this.panel1, 2, 2);
             this.tableLayoutPanel6.Controls.Add(this.textBox4, 2, 1);
             this.tableLayoutPanel6.Controls.Add(this.label6, 1, 1);
             this.tableLayoutPanel6.Controls.Add(cPUNumLabel, 1, 2);
             this.tableLayoutPanel6.Controls.Add(this.label5, 0, 0);
             this.tableLayoutPanel6.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.tableLayoutPanel6.Location = new System.Drawing.Point(0, 29);
+            this.tableLayoutPanel6.Location = new System.Drawing.Point(0, 28);
             this.tableLayoutPanel6.Name = "tableLayoutPanel6";
             this.tableLayoutPanel6.RowCount = 3;
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 19F));
@@ -886,7 +886,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(735, 360);
+            this.tabPage2.Size = new System.Drawing.Size(787, 359);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Output Results";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -916,7 +916,7 @@
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 22F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(729, 354);
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(781, 353);
             this.tableLayoutPanel3.TabIndex = 0;
             // 
             // summayFilesDataGridView
@@ -939,7 +939,7 @@
             this.summayFilesDataGridView.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
             this.summayFilesDataGridView.Location = new System.Drawing.Point(143, 72);
             this.summayFilesDataGridView.Name = "summayFilesDataGridView";
-            this.summayFilesDataGridView.Size = new System.Drawing.Size(583, 254);
+            this.summayFilesDataGridView.Size = new System.Drawing.Size(635, 253);
             this.summayFilesDataGridView.TabIndex = 100;
             this.summayFilesDataGridView.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.summayFilesDataGridView_CellEndEdit);
             this.summayFilesDataGridView.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.summayFilesDataGridView_DataError);
@@ -1029,7 +1029,7 @@
             this.rootFolderTextBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.rootFolderTextBox1.Location = new System.Drawing.Point(143, 28);
             this.rootFolderTextBox1.Name = "rootFolderTextBox1";
-            this.rootFolderTextBox1.Size = new System.Drawing.Size(583, 20);
+            this.rootFolderTextBox1.Size = new System.Drawing.Size(635, 20);
             this.rootFolderTextBox1.TabIndex = 80;
             this.rootFolderTextBox1.Leave += new System.EventHandler(this.rootFolderTextBox1_Leave);
             // 
@@ -1045,7 +1045,7 @@
             // button3
             // 
             this.button3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.button3.Location = new System.Drawing.Point(651, 332);
+            this.button3.Location = new System.Drawing.Point(703, 331);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(75, 19);
             this.button3.TabIndex = 13;

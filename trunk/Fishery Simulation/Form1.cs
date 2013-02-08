@@ -254,7 +254,7 @@ namespace Fishery_Simulation
             try
             {
 
-                if (textBox4.Text.ToString().Trim().Length > 0 && textBox2.Text.Trim()!="")
+                if (textBox4.Text.ToString().Trim().Length > 0 && textBox2.Text.Trim() != "")
                     {
                                           
                      //TODO: split core job.
@@ -491,8 +491,9 @@ namespace Fishery_Simulation
             pf._processMode = ProcessFiles._processModeDefine.rootToSub;
             pf._ds = dataSet1;
             //pf._rootFolderPath = rootFolderTextBox.Text;
-            pf.createSubFolders(_sub_folder_num, rootFolderTextBox.Text);
-            pf.paralleProcessFiles("FileList", _sub_folder_num, rootFolderTextBox.Text);
+            string rootFolderPath = rootFolderTextBox.Text.ToString();
+            pf.createSubFolders(_sub_folder_num, rootFolderPath);
+            pf.paralleProcessFiles("FileList", _sub_folder_num, rootFolderPath);
 
 
             ////create empty folders
