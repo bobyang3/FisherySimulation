@@ -392,18 +392,30 @@ namespace Fishery_Simulation
                     pInfo.WorkingDirectory = subfolderPath;
                     //Process p = new Process();
                     //p.Start(pInfo);
-                    Process p = Process.Start(pInfo);
                     
-                    p.EnableRaisingEvents = true; // to make sure capture the correct exitcode
-                    //p.Exited += new EventHandler(myProcess_Exited);
 
-                    ////Wait for the process to end.
-                   // MessageBox.Show(p.ExitCode.ToString());
+                    Process p = new Process();
+                    //compiler.StartInfo.FileName = "csc.exe";
+                    //compiler.StartInfo.Arguments = "/r:System.dll /out:sample.exe stdstr.cs";
+                    p.StartInfo = pInfo;
+                    //p.StartInfo.UseShellExecute = true;
+                    //p.StartInfo.RedirectStandardOutput = true;
+
+
+                    p.EnableRaisingEvents = true; // to make sure capture the correct exitcode
+
+                   // SetConsoleCtrlHandler(new HandlerRoutine(ConsoleCtrlCheck), true);
+                    //p.Exited += new EventHandler(myProcess_Exited);
+                    p.Start();    
+
+
                     
                     p.WaitForExit();
-                   // MessageBox.Show(p.ExitCode.ToString());
                     Console.WriteLine(p.ExitCode);  // for debuging output test.
-                    if (p.ExitCode == 0) // 0 = regular close, otherwise, user force close, by ctrl+C or click on X
+
+
+
+                    if (p.ExitCode == 0 || p.ExitCode == 1) // 0 = regular close, 1= regular close too, otherwise, user force close, by ctrl+C or click on X
                     {
                         dt.Clear();
                         //dt.Rows.Add("", "30", DateTime.Now.ToString(), "Completed " + Glibs.getPCName());
@@ -411,12 +423,13 @@ namespace Fishery_Simulation
                         dt.WriteXml(Path.Combine(subfolderPath, "~FSstatus.xml"));
                         dt.Clear();
                     }
-                    else {
+                    else
+                    {
 
                         DialogResult result1 = MessageBox.Show("Do you want to stop starting all other process? If yes, new process will not start up.", "Are you sure?", MessageBoxButtons.YesNo);
 
                         if (result1 == DialogResult.Yes)
-                        { 
+                        {
                             _stopAllStep2Command = true;
                         }
 
@@ -426,14 +439,105 @@ namespace Fishery_Simulation
             }
             catch (Exception i) { MessageBox.Show(i.ToString()); }
 
+            //// Wait for Exited event, but not more than 30 seconds. 
+            //const int SLEEP_AMOUNT = 100;
+            //while (!eventHandled)
+            //{
+            //    elapsedTime += SLEEP_AMOUNT;
+            //    if (elapsedTime > 30000)
+            //    {
+            //        break;
+            //    }
+            //    Thread.Sleep(SLEEP_AMOUNT);
+            //}
+
             
         }
 
-        private void myProcess_Exited(object sender, System.EventArgs e)
+        //private bool eventHandled;
+        //private Process p = new Process();
+        //private int elapsedTime;
+
+        //private void myProcess_Exited(object sender, System.EventArgs e)
+        //{
+
+        //    eventHandled = true;
+        //    //MessageBox.Show(string.Format("Exit time:    {0}\r\n" +
+        //    //    "Exit code:    {1}\r\nElapsed time: {2}", p.ExitTime, p.ExitCode, elapsedTime));
+        //    DialogResult result1 = MessageBox.Show("aaa Do you want to stop starting all other process? If yes, new process will not start up.", "Are you sure?", MessageBoxButtons.YesNo);
+
+        //    if (result1 == DialogResult.Yes)
+        //    {
+        //        _stopAllStep2Command = true;
+        //    }
+
+        //}
+
+       // [System.Runtime.InteropServices.DllImport("Kernel32")]
+        public static bool myProcess_Exited(object sender, System.EventArgs e)
         {
-            //MessageBox.Show("xxxxxxxxxx");
+            MessageBox.Show("xxxx myProcess_Exited xxxxxx");
+            return true;
 
         }
+
+        //private static bool isclosing = false;
+
+        //private static bool ConsoleCtrlCheck(CtrlTypes ctrlType)
+        //{
+        //    // Put your own handler here
+        //    switch (ctrlType)
+        //    {
+        //        case CtrlTypes.CTRL_C_EVENT:
+        //            isclosing = true;
+        //            MessageBox.Show("CTRL+C received!");
+        //            break;
+
+        //        case CtrlTypes.CTRL_BREAK_EVENT:
+        //            isclosing = true;
+        //            MessageBox.Show("CTRL+BREAK received!");
+        //            break;
+
+        //        case CtrlTypes.CTRL_CLOSE_EVENT:
+        //            isclosing = true;
+        //            MessageBox.Show("Program being closed!");
+        //            break;
+
+        //        case CtrlTypes.CTRL_LOGOFF_EVENT:
+        //        case CtrlTypes.CTRL_SHUTDOWN_EVENT:
+        //            isclosing = true;
+        //            MessageBox.Show("User is logging off!");
+        //            break;
+
+        //    }
+        //    return true;
+        //}
+
+
+
+        //#region unmanaged
+        //// Declare the SetConsoleCtrlHandler function
+        //// as external and receiving a delegate.
+
+        //[System.Runtime.InteropServices.DllImport("Kernel32")]
+        //public static extern bool SetConsoleCtrlHandler(HandlerRoutine Handler, bool Add);
+
+        //// A delegate type to be used as the handler routine
+        //// for SetConsoleCtrlHandler.
+        //public delegate bool HandlerRoutine(CtrlTypes CtrlType);
+
+        //// An enumerated type for the control messages
+        //// sent to the handler routine.
+        //public enum CtrlTypes
+        //{
+        //    CTRL_C_EVENT = 0,
+        //    CTRL_BREAK_EVENT,
+        //    CTRL_CLOSE_EVENT,
+        //    CTRL_LOGOFF_EVENT = 5,
+        //    CTRL_SHUTDOWN_EVENT
+        //}
+
+        //#endregion 
 
         private void step2Command(string rootFolderTextBoxText, int starting, int ending)
         {
