@@ -215,6 +215,7 @@ namespace Fishery_Simulation
                     }
                     catch { }
 
+					/*
                    // pInfo.WindowStyle = ProcessWindowStyle.Normal;
                     pInfo.WorkingDirectory = rootFolderTextBoxText;
                     Process p = Process.Start(pInfo);
@@ -230,6 +231,40 @@ namespace Fishery_Simulation
                         dt.WriteXml(Path.Combine(rootFolderTextBoxText, "~FSstatus.xml"));
                         dt.Clear();
                     }
+					
+					*/
+					
+					
+					pInfo.WorkingDirectory = subfolderPath;
+
+                    Process p = new Process();
+                    p.StartInfo = pInfo;
+                    p.EnableRaisingEvents = true; // to make sure capture the correct exitcode
+                    p.Start();    
+                    
+                    p.WaitForExit();
+                    Console.WriteLine(p.ExitCode);  // for debuging output test.
+
+                    if (p.ExitCode == 0 || p.ExitCode == 1) // 0 = regular close, 1= regular close too, otherwise, user force close, by ctrl+C or click on X
+                    {
+                        dt.Clear();
+                        //dt.Rows.Add("", "30", DateTime.Now.ToString(), "Completed " + Glibs.getPCName());
+                        dt.Rows.Add("", "30", DateTime.Now.ToString(), "Completed", p.UserProcessorTime.TotalSeconds.ToString(), Glibs.getPCName());
+                        dt.WriteXml(Path.Combine(subfolderPath, "~FSstatus.xml"));
+                        dt.Clear();
+                    }
+                    else
+                    {
+
+                        DialogResult result1 = MessageBox.Show("Do you want to stop starting all other process? If yes, new process will not start up.", "Are you sure?", MessageBoxButtons.YesNo);
+
+                        if (result1 == DialogResult.Yes)
+                        {
+                            _stopAllStep2Command = true;
+                        }
+
+                    }
+					
 
 
                 }
