@@ -425,14 +425,13 @@ namespace Fishery_Simulation
                     //dt.Rows.Add("", "20", DateTime.Now.ToString(), "Running " + Glibs.getPCName());
                     dt.Rows.Add("", "20", DateTime.Now.ToString(), "Step 2 Running", "", Glibs.getPCName());
                     dt.WriteXml(Path.Combine(subfolderPath, "~FSstatus.xml"));
-
                    
                     //Process p = new Process();
                     //p.Start(pInfo);
 
                     string _tempPath = Path.GetTempPath();
                     DirectoryInfo dir = new DirectoryInfo(subfolderPath);
-                    String dirName = dir.Name;
+                    String dirName = dir.Name; 
                     _tempPath = Path.Combine(_tempPath, dirName);
                     Console.WriteLine("Temporary Path := " + _tempPath);  //debug only
 
@@ -447,7 +446,7 @@ namespace Fishery_Simulation
                         {
                             pInfo.Arguments = sts[1];
                         }
-                        catch {                      }
+                        catch { }
 
                         pInfo.WorkingDirectory = _tempPath;
 
@@ -455,9 +454,7 @@ namespace Fishery_Simulation
                     else {
                         pInfo.WorkingDirectory = subfolderPath;
                     }
-
-
-                   
+                                      
                     Process p = new Process();
                     //compiler.StartInfo.FileName = "csc.exe";
                     //compiler.StartInfo.Arguments = "/r:System.dll /out:sample.exe stdstr.cs";
@@ -471,8 +468,6 @@ namespace Fishery_Simulation
                    // SetConsoleCtrlHandler(new HandlerRoutine(ConsoleCtrlCheck), true);
                     //p.Exited += new EventHandler(myProcess_Exited);
                     p.Start();    
-
-
                     
                     p.WaitForExit();
                     Console.WriteLine(p.ExitCode);  // for debuging output test.
@@ -481,7 +476,6 @@ namespace Fishery_Simulation
 
                     if (p.ExitCode == 0 || p.ExitCode == 1) // 0 = regular close, 1= regular close too, otherwise, user force close, by ctrl+C or click on X
                     {
-
                         dt.Clear();
                         //dt.Rows.Add("", "30", DateTime.Now.ToString(), "Completed " + Glibs.getPCName());
                         dt.Rows.Add("", "30", DateTime.Now.ToString(), "Step 2 Completed", p.UserProcessorTime.TotalSeconds.ToString(), Glibs.getPCName());
@@ -489,15 +483,19 @@ namespace Fishery_Simulation
                         if (checkBoxNetwork.Checked == true)
                         {
                             dt.WriteXml(Path.Combine(_tempPath, "~FSstatus.xml"));
-                            dt.Clear();
                             // copy files back from temp to the network folder.
                             ProcessFiles.CopyFolder(_tempPath, subfolderPath);  //eg. c:\%temp%\210
+
+                            try {
+                                 (new DirectoryInfo(_tempPath)).Delete();
+                            }
+                            catch {}
                         }
                         else {
-                            dt.WriteXml(Path.Combine(subfolderPath, "~FSstatus.xml"));
-                            dt.Clear();
-                        
+                            dt.WriteXml(Path.Combine(subfolderPath, "~FSstatus.xml"));                     
                         }
+                        dt.Clear();
+
                     }
                     else
                     {
