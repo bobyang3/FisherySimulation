@@ -233,9 +233,9 @@ namespace Fishery_Simulation
                     }
 					
 					*/
-					
-					
-					pInfo.WorkingDirectory = subfolderPath;
+
+
+                    pInfo.WorkingDirectory = rootFolderTextBoxText;
 
                     Process p = new Process();
                     p.StartInfo = pInfo;
@@ -247,21 +247,22 @@ namespace Fishery_Simulation
 
                     if (p.ExitCode == 0 || p.ExitCode == 1) // 0 = regular close, 1= regular close too, otherwise, user force close, by ctrl+C or click on X
                     {
+                        DataSetCPU.ProcessStatusDataTable dt = new DataSetCPU.ProcessStatusDataTable();
                         dt.Clear();
                         //dt.Rows.Add("", "30", DateTime.Now.ToString(), "Completed " + Glibs.getPCName());
-                        dt.Rows.Add("", "30", DateTime.Now.ToString(), "Completed", p.UserProcessorTime.TotalSeconds.ToString(), Glibs.getPCName());
-                        dt.WriteXml(Path.Combine(subfolderPath, "~FSstatus.xml"));
+                        dt.Rows.Add("", "30", DateTime.Now.ToString(), "Step 1 Completed", p.UserProcessorTime.TotalSeconds.ToString(), Glibs.getPCName());
+                        dt.WriteXml(Path.Combine(rootFolderTextBoxText, "~FSstatus.xml"));
                         dt.Clear();
                     }
                     else
                     {
 
-                        DialogResult result1 = MessageBox.Show("Do you want to stop starting all other process? If yes, new process will not start up.", "Are you sure?", MessageBoxButtons.YesNo);
+                        //DialogResult result1 = MessageBox.Show("Do you want to stop starting all other process? If yes, new process will not start up.", "Are you sure?", MessageBoxButtons.YesNo);
 
-                        if (result1 == DialogResult.Yes)
-                        {
-                            _stopAllStep2Command = true;
-                        }
+                        //if (result1 == DialogResult.Yes)
+                        //{
+                        //    _stopAllStep2Command = true;
+                        //}
 
                     }
 					
@@ -271,7 +272,7 @@ namespace Fishery_Simulation
             }
             catch (Exception e1)
             {
-                MessageBox.Show(e1.ToString());
+                MessageBox.Show("Step 1 Error:\r" + e1.ToString());
             }
 
             //step 1: only continue this when the command is finished.
@@ -368,6 +369,7 @@ namespace Fishery_Simulation
 
 
         bool _stopAllStep2Command = false;
+
         private void step2Command(string subfolderPath)
         {
             ProcessStartInfo pInfo = new ProcessStartInfo();
@@ -421,14 +423,41 @@ namespace Fishery_Simulation
                     DataSetCPU.ProcessStatusDataTable dt = new DataSetCPU.ProcessStatusDataTable();
                     dt.Clear();
                     //dt.Rows.Add("", "20", DateTime.Now.ToString(), "Running " + Glibs.getPCName());
-                    dt.Rows.Add("", "20", DateTime.Now.ToString(), "Running", "", Glibs.getPCName());
+                    dt.Rows.Add("", "20", DateTime.Now.ToString(), "Step 2 Running", "", Glibs.getPCName());
                     dt.WriteXml(Path.Combine(subfolderPath, "~FSstatus.xml"));
 
-                    pInfo.WorkingDirectory = subfolderPath;
+                   
                     //Process p = new Process();
                     //p.Start(pInfo);
-                    
 
+                    string _tempPath = Path.GetTempPath();
+                    DirectoryInfo dir = new DirectoryInfo(subfolderPath);
+                    String dirName = dir.Name;
+                    _tempPath = Path.Combine(_tempPath, dirName);
+                    Console.WriteLine("Temporary Path := " + _tempPath);  //debug only
+
+
+                    if (checkBoxNetwork.Checked == true)
+                    {
+                        //copy files over to temp
+                        ProcessFiles.CopyFolder(subfolderPath, _tempPath);  //eg. c:\%temp%\210
+                        pInfo.FileName = Path.Combine(_tempPath, app);
+
+                        try
+                        {
+                            pInfo.Arguments = sts[1];
+                        }
+                        catch {                      }
+
+                        pInfo.WorkingDirectory = _tempPath;
+
+                    }
+                    else {
+                        pInfo.WorkingDirectory = subfolderPath;
+                    }
+
+
+                   
                     Process p = new Process();
                     //compiler.StartInfo.FileName = "csc.exe";
                     //compiler.StartInfo.Arguments = "/r:System.dll /out:sample.exe stdstr.cs";
@@ -452,22 +481,32 @@ namespace Fishery_Simulation
 
                     if (p.ExitCode == 0 || p.ExitCode == 1) // 0 = regular close, 1= regular close too, otherwise, user force close, by ctrl+C or click on X
                     {
+
                         dt.Clear();
                         //dt.Rows.Add("", "30", DateTime.Now.ToString(), "Completed " + Glibs.getPCName());
-                        dt.Rows.Add("", "30", DateTime.Now.ToString(), "Completed", p.UserProcessorTime.TotalSeconds.ToString(), Glibs.getPCName());
-                        dt.WriteXml(Path.Combine(subfolderPath, "~FSstatus.xml"));
-                        dt.Clear();
+                        dt.Rows.Add("", "30", DateTime.Now.ToString(), "Step 2 Completed", p.UserProcessorTime.TotalSeconds.ToString(), Glibs.getPCName());
+
+                        if (checkBoxNetwork.Checked == true)
+                        {
+                            dt.WriteXml(Path.Combine(_tempPath, "~FSstatus.xml"));
+                            dt.Clear();
+                            // copy files back from temp to the network folder.
+                            ProcessFiles.CopyFolder(_tempPath, subfolderPath);  //eg. c:\%temp%\210
+                        }
+                        else {
+                            dt.WriteXml(Path.Combine(subfolderPath, "~FSstatus.xml"));
+                            dt.Clear();
+                        
+                        }
                     }
                     else
                     {
-
-                        DialogResult result1 = MessageBox.Show("Do you want to stop starting all other process? If yes, new process will not start up.", "Are you sure?", MessageBoxButtons.YesNo);
+                        DialogResult result1 = MessageBox.Show("Do you want to stop starting all other process in Step 2? If yes, new process will not start up.", "Are you sure?", MessageBoxButtons.YesNo);
 
                         if (result1 == DialogResult.Yes)
                         {
                             _stopAllStep2Command = true;
                         }
-
                     }
 
                 }
