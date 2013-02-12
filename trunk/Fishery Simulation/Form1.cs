@@ -487,7 +487,8 @@ namespace Fishery_Simulation
                             ProcessFiles.CopyFolder(_tempPath, subfolderPath);  //eg. c:\%temp%\210
 
                             try {
-                                 (new DirectoryInfo(_tempPath)).Delete();
+                                 //(new DirectoryInfo(_tempPath)).Delete();
+                                 System.IO.Directory.Delete(_tempPath, true);
                             }
                             catch {}
                         }
