@@ -315,6 +315,8 @@ namespace Fishery_Simulation
                     //    step2Command(rootFolderTextBoxText, (i-1) * CUPsetAverage + 1, i * CUPsetAverage);
                     //}
 
+                    //Glibs.lastProcessDateTime=DateTime.Now;
+                    Glibs.ProcessStartDatetime.Add(DateTime.Now);
 
                     ParallelOptions po = new ParallelOptions();
                     po.MaxDegreeOfParallelism = paralleNum;
@@ -328,7 +330,78 @@ namespace Fishery_Simulation
                             {
                                 string subFolder= Path.Combine(rootFolderTextBoxText,i.ToString());
                                 //step2Command(rootFolderTextBoxText, (i - 1) * CUPsetAverage + 1, (i * CUPsetAverage) > _Max_folder_num ? Convert.ToInt32(_Max_folder_num) : (i * CUPsetAverage));
+
+
+                                /***************make process delay so it won't generate the same random number in SS.exe***************/
+                                //DateTime dt2=DateTime.Now;
+                                //double timediff=dt2.Subtract(Glibs.lastProcessDateTime).TotalSeconds;
+
+                                double _CPU = double.Parse(cPUNumTextBox.Text.ToString().Trim());
+
+                                //if (timediff <= _CPU*1.8)
+                                //{
+                                //    Thread.Sleep(
+                                //       // (int)(((i % (_CPU + Glibs.getRealRandom()*7)) + Glibs.getRealRandom() * 1.7) * 1234)
+                                //       //(int)((i % (_CPU*1.8)) * 1800)
+                                //       (int)(i  * 1200)
+                                //        );
+
+                                //}
+
+
+                                //if (DateTime.Now.Subtract(Glibs.ProcessStartDatetime[Glibs.ProcessStartDatetime.Count - 1]).TotalSeconds <= 5) //if time diff is less than 5 seconds
+                                //{
+                                    if (Glibs.waitTimeinSecond > _CPU*3)
+                                    {
+                                        Glibs.waitTimeinSecond = 3;
+                                    }
+                                    else {
+                                        Glibs.waitTimeinSecond = Glibs.waitTimeinSecond + 3;
+                                    }
+                                
+                                    Glibs.ProcessStartDatetime.Add(DateTime.Now);
+
+                                    try
+                                    {
+                                        //if (Glibs.ProcessStartDatetime[Glibs.ProcessStartDatetime.Count - 1] == Glibs.ProcessStartDatetime[Glibs.ProcessStartDatetime.Count - 2])
+
+                                        if (DateTime.Now.AddSeconds(Glibs.waitTimeinSecond) == Glibs.ProcessStartDatetime[Glibs.ProcessStartDatetime.Count - 1])
+                                        {
+                                            Glibs.waitTimeinSecond = Glibs.waitTimeinSecond + 2;
+                                        }
+                                    }
+                                    catch { }
+
+                                        Thread.Sleep(Glibs.waitTimeinSecond * 1000); 
+                                    
+
+
+
+                                    
+                                    //Thread.Sleep((int)( (i % (_CPU*1.5)) * 1200));
+                                //}
+
+
+                                //Glibs.lastProcessDateTime = DateTime.Now;
+
+                                //Glibs.ProcessStartDatetime.Add(DateTime.Now);
+
+                                //double _folderNum = 0;
+
+                                //try { _folderNum = double.Parse(textBox2.Text.Trim().ToString()); }
+                                //catch { _folderNum = 100 + 1; }
+                                
+                                //int _CPU = int.Parse(cPUNumTextBox.Text.ToString().Trim());
+
+                                //double _delaysecond = i % (_CPU+1); // need to wait in case SS generate the same random number
+                                //Thread.Sleep((int)(Glibs.getRealRandom() * 1386 + _delaysecond * 1278));
+
+                                /******END*********make process delay so it won't generate the same random number in SS.exe***************/
+
+                                    Glibs.debugProcessStartDatetime.Add(DateTime.Now);
                                 step2Command(subFolder);
+
+
                                 //ParallelLoopState pl = new ParallelLoopState();
                                 //pl.Break();
 
@@ -343,7 +416,7 @@ namespace Fishery_Simulation
                             }
                         });
 
-                     
+                    //Glibs.debugProcessStartDatetime.ToString();
                 }
 
                 MessageBox.Show(@"Step 1 and/or 2 completed.", "FS Message:");
@@ -423,7 +496,7 @@ namespace Fishery_Simulation
                     DataSetCPU.ProcessStatusDataTable dt = new DataSetCPU.ProcessStatusDataTable();
                     dt.Clear();
                     //dt.Rows.Add("", "20", DateTime.Now.ToString(), "Running " + Glibs.getPCName());
-                    dt.Rows.Add("", "20", DateTime.Now.ToString(), "Step 2 Running", "", Glibs.getPCName());
+                    dt.Rows.Add(subfolderPath, "20", DateTime.Now.ToString(), "Step 2 Running", "", Glibs.getPCName());
                     dt.WriteXml(Path.Combine(subfolderPath, "~FSstatus.xml"));
                    
                     //Process p = new Process();
@@ -478,7 +551,7 @@ namespace Fishery_Simulation
                     {
                         dt.Clear();
                         //dt.Rows.Add("", "30", DateTime.Now.ToString(), "Completed " + Glibs.getPCName());
-                        dt.Rows.Add("", "30", DateTime.Now.ToString(), "Step 2 Completed", p.UserProcessorTime.TotalSeconds.ToString(), Glibs.getPCName());
+                        dt.Rows.Add(subfolderPath, "30", DateTime.Now.ToString(), "Step 2 Completed", p.UserProcessorTime.TotalSeconds.ToString(), Glibs.getPCName());
 
                         if (checkBoxNetwork.Checked == true)
                         {

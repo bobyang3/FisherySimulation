@@ -88,6 +88,7 @@
             this.label9 = new System.Windows.Forms.Label();
             this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.checkBoxNetwork = new System.Windows.Forms.CheckBox();
             this.cPUNumTextBox = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
             this.textBox4 = new System.Windows.Forms.TextBox();
@@ -112,7 +113,6 @@
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
-            this.checkBoxNetwork = new System.Windows.Forms.CheckBox();
             rootFolderLabel = new System.Windows.Forms.Label();
             rootFolderLabel1 = new System.Windows.Forms.Label();
             simulationNumLabel = new System.Windows.Forms.Label();
@@ -192,16 +192,16 @@
             // 
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripStatusLabel1});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 396);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 398);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(816, 24);
+            this.statusStrip1.Size = new System.Drawing.Size(816, 22);
             this.statusStrip1.TabIndex = 0;
             this.statusStrip1.Text = "statusStrip1";
             // 
             // toolStripStatusLabel1
             // 
             this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
-            this.toolStripStatusLabel1.Size = new System.Drawing.Size(135, 19);
+            this.toolStripStatusLabel1.Size = new System.Drawing.Size(117, 17);
             this.toolStripStatusLabel1.Text = "--Notification Area--";
             // 
             // menuStrip1
@@ -214,7 +214,7 @@
             this.hellpToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(816, 27);
+            this.menuStrip1.Size = new System.Drawing.Size(816, 24);
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -224,14 +224,14 @@
             this.saveSettingToolStripMenuItem,
             this.loadSettingToolStripMenuItem});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
-            this.fileToolStripMenuItem.Size = new System.Drawing.Size(41, 23);
+            this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
             this.fileToolStripMenuItem.Text = "File";
             // 
             // saveSettingToolStripMenuItem
             // 
             this.saveSettingToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("saveSettingToolStripMenuItem.Image")));
             this.saveSettingToolStripMenuItem.Name = "saveSettingToolStripMenuItem";
-            this.saveSettingToolStripMenuItem.Size = new System.Drawing.Size(155, 24);
+            this.saveSettingToolStripMenuItem.Size = new System.Drawing.Size(140, 22);
             this.saveSettingToolStripMenuItem.Text = "Save Setting";
             this.saveSettingToolStripMenuItem.Click += new System.EventHandler(this.saveSettingToolStripMenuItem_Click);
             // 
@@ -239,7 +239,7 @@
             // 
             this.loadSettingToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("loadSettingToolStripMenuItem.Image")));
             this.loadSettingToolStripMenuItem.Name = "loadSettingToolStripMenuItem";
-            this.loadSettingToolStripMenuItem.Size = new System.Drawing.Size(155, 24);
+            this.loadSettingToolStripMenuItem.Size = new System.Drawing.Size(140, 22);
             this.loadSettingToolStripMenuItem.Text = "Load Setting";
             this.loadSettingToolStripMenuItem.Click += new System.EventHandler(this.loadSettingToolStripMenuItem_Click);
             // 
@@ -248,34 +248,34 @@
             this.toolsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.sSexeProfileGeneratorToolStripMenuItem});
             this.toolsToolStripMenuItem.Name = "toolsToolStripMenuItem";
-            this.toolsToolStripMenuItem.Size = new System.Drawing.Size(53, 23);
+            this.toolsToolStripMenuItem.Size = new System.Drawing.Size(48, 20);
             this.toolsToolStripMenuItem.Text = "Tools";
             // 
             // sSexeProfileGeneratorToolStripMenuItem
             // 
             this.sSexeProfileGeneratorToolStripMenuItem.Name = "sSexeProfileGeneratorToolStripMenuItem";
-            this.sSexeProfileGeneratorToolStripMenuItem.Size = new System.Drawing.Size(223, 24);
+            this.sSexeProfileGeneratorToolStripMenuItem.Size = new System.Drawing.Size(198, 22);
             this.sSexeProfileGeneratorToolStripMenuItem.Text = "SS.exe Profile Generator";
             this.sSexeProfileGeneratorToolStripMenuItem.Click += new System.EventHandler(this.sSexeProfileGeneratorToolStripMenuItem_Click);
             // 
             // pluginToolStripMenuItem
             // 
             this.pluginToolStripMenuItem.Name = "pluginToolStripMenuItem";
-            this.pluginToolStripMenuItem.Size = new System.Drawing.Size(65, 23);
+            this.pluginToolStripMenuItem.Size = new System.Drawing.Size(58, 20);
             this.pluginToolStripMenuItem.Text = "Plug-in";
             this.pluginToolStripMenuItem.Click += new System.EventHandler(this.pluginToolStripMenuItem_Click);
             // 
             // aboutToolStripMenuItem
             // 
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(59, 23);
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(52, 20);
             this.aboutToolStripMenuItem.Text = "About";
             this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
             // 
             // hellpToolStripMenuItem
             // 
             this.hellpToolStripMenuItem.Name = "hellpToolStripMenuItem";
-            this.hellpToolStripMenuItem.Size = new System.Drawing.Size(49, 23);
+            this.hellpToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
             this.hellpToolStripMenuItem.Text = "Help";
             this.hellpToolStripMenuItem.Click += new System.EventHandler(this.hellpToolStripMenuItem_Click);
             // 
@@ -284,10 +284,10 @@
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tabControl1.Location = new System.Drawing.Point(0, 27);
+            this.tabControl1.Location = new System.Drawing.Point(0, 24);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(816, 369);
+            this.tabControl1.Size = new System.Drawing.Size(816, 374);
             this.tabControl1.TabIndex = 2;
             // 
             // tabPage1
@@ -296,7 +296,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(808, 343);
+            this.tabPage1.Size = new System.Drawing.Size(808, 348);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Process Data";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -318,8 +318,8 @@
             // 
             this.splitContainer1.Panel2.AutoScroll = true;
             this.splitContainer1.Panel2.Controls.Add(this.splitContainer2);
-            this.splitContainer1.Size = new System.Drawing.Size(802, 337);
-            this.splitContainer1.SplitterDistance = 198;
+            this.splitContainer1.Size = new System.Drawing.Size(802, 342);
+            this.splitContainer1.SplitterDistance = 200;
             this.splitContainer1.TabIndex = 1;
             // 
             // tableLayoutPanel1
@@ -349,7 +349,7 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 23F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 37F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(800, 196);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(800, 198);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // textBox3
@@ -395,7 +395,7 @@
             this.dataGridView1.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
             this.dataGridView1.Location = new System.Drawing.Point(143, 100);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(654, 93);
+            this.dataGridView1.Size = new System.Drawing.Size(654, 95);
             this.dataGridView1.TabIndex = 50;
             this.dataGridView1.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellEndEdit);
             this.dataGridView1.CellEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellEnter);
@@ -497,7 +497,7 @@
             this.label1.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold);
             this.label1.Location = new System.Drawing.Point(3, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(480, 18);
+            this.label1.Size = new System.Drawing.Size(426, 16);
             this.label1.TabIndex = 9;
             this.label1.Text = "Step 1: Prepare (process in root folder to create sub folder set)";
             // 
@@ -554,7 +554,7 @@
             this.label4.Location = new System.Drawing.Point(23, 100);
             this.label4.Margin = new System.Windows.Forms.Padding(3);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(87, 93);
+            this.label4.Size = new System.Drawing.Size(87, 95);
             this.label4.TabIndex = 13;
             this.label4.Text = "Copy files to sub folder:";
             // 
@@ -608,8 +608,8 @@
             this.splitContainer2.Panel2.AutoScroll = true;
             this.splitContainer2.Panel2.Controls.Add(this.tableLayoutPanel6);
             this.splitContainer2.Panel2MinSize = 100;
-            this.splitContainer2.Size = new System.Drawing.Size(802, 135);
-            this.splitContainer2.SplitterDistance = 25;
+            this.splitContainer2.Size = new System.Drawing.Size(802, 138);
+            this.splitContainer2.SplitterDistance = 28;
             this.splitContainer2.TabIndex = 2;
             // 
             // tableLayoutPanel5
@@ -828,6 +828,16 @@
             this.panel1.Size = new System.Drawing.Size(657, 23);
             this.panel1.TabIndex = 2;
             // 
+            // checkBoxNetwork
+            // 
+            this.checkBoxNetwork.AutoSize = true;
+            this.checkBoxNetwork.Location = new System.Drawing.Point(152, 4);
+            this.checkBoxNetwork.Name = "checkBoxNetwork";
+            this.checkBoxNetwork.Size = new System.Drawing.Size(321, 17);
+            this.checkBoxNetwork.TabIndex = 71;
+            this.checkBoxNetwork.Text = "Copy network files to local machine and push back afterwards.";
+            this.checkBoxNetwork.UseVisualStyleBackColor = true;
+            // 
             // cPUNumTextBox
             // 
             this.cPUNumTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.settingsBindingSource, "CPUNum", true));
@@ -1020,7 +1030,7 @@
             this.label8.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold);
             this.label8.Location = new System.Drawing.Point(3, 0);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(714, 18);
+            this.label8.Size = new System.Drawing.Size(630, 16);
             this.label8.TabIndex = 10;
             this.label8.Text = "Step 3: Output (process in results from each sub folder and merge to one file in " +
     "the root folder)";
@@ -1072,16 +1082,6 @@
             // saveFileDialog1
             // 
             this.saveFileDialog1.Filter = "Setting Files (*.xml)|*.xml|All Files (*.*)|*.*";
-            // 
-            // checkBoxNetwork
-            // 
-            this.checkBoxNetwork.AutoSize = true;
-            this.checkBoxNetwork.Location = new System.Drawing.Point(152, 4);
-            this.checkBoxNetwork.Name = "checkBoxNetwork";
-            this.checkBoxNetwork.Size = new System.Drawing.Size(321, 17);
-            this.checkBoxNetwork.TabIndex = 71;
-            this.checkBoxNetwork.Text = "Copy network files to local machine and push back afterwards.";
-            this.checkBoxNetwork.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 

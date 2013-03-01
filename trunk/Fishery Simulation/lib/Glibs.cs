@@ -15,6 +15,10 @@ namespace Fishery_Simulation
     class Glibs
 
     {
+        public static List<DateTime> debugProcessStartDatetime = new List<DateTime>();
+        public static List<DateTime> ProcessStartDatetime = new List<DateTime>();
+        public static int waitTimeinSecond = 0;
+        //public static DateTime lastProcessDateTime;
 
         public static void DeleteFolder(System.IO.DirectoryInfo directory)
         {
