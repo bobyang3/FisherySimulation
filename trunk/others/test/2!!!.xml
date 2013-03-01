@@ -1,0 +1,55 @@
+<?xml version="1.0" standalone="yes"?>
+<DataSet1 xmlns="http://tempuri.org/DataSet1.xsd">
+  <FileList>
+    <FileName>forecast.SS</FileName>
+    <capture>None</capture>
+    <outputFileName>forecast.SS</outputFileName>
+  </FileList>
+  <FileList>
+    <FileName>ss3orig.par</FileName>
+    <capture>None</capture>
+    <outputFileName>ss3.par</outputFileName>
+  </FileList>
+  <FileList>
+    <FileName>ss3.exe</FileName>
+    <capture>None</capture>
+    <outputFileName>ss3.exe</outputFileName>
+  </FileList>
+  <FileList>
+    <FileName>PS12_X6e1.ctl</FileName>
+    <capture>None</capture>
+    <outputFileName>PS12_X6e1.ctl</outputFileName>
+  </FileList>
+  <FileList>
+    <FileName>PS12_X6e1.dat</FileName>
+    <capture>None</capture>
+    <outputFileName>PS12_X6e1.dat</outputFileName>
+  </FileList>
+  <FileList>
+    <FileName>starter.SS</FileName>
+    <capture>None</capture>
+    <outputFileName>starter.SS</outputFileName>
+  </FileList>
+  <FileList>
+    <FileName>ss3orig.par</FileName>
+    <capture>None</capture>
+    <outputFileName>ss3orig.par</outputFileName>
+  </FileList>
+  <Settings>
+    <rootFolder>R:\test</rootFolder>
+    <simulationNum>20</simulationNum>
+    <commandRootFolder />
+    <commandSubFolder>ss3.exe -nox -nohess -maxfn 10000 </commandSubFolder>
+    <CPUNum>5</CPUNum>
+    <step2TimeOutInMinutes>120</step2TimeOutInMinutes>
+  </Settings>
+  <SummaryFiles>
+    <sourceFile>data.ss_new</sourceFile>
+    <fromLine>2548</fromLine>
+    <toLine>2548</toLine>
+    <outputFileOrTable>bootCPUE.txt</outputFileOrTable>
+    <onlyOneHeader>false</onlyOneHeader>
+    <addSourceFolderNumInFront>true</addSourceFolderNumInFront>
+    <delimited xml:space="preserve"> </delimited>
+  </SummaryFiles>
+</DataSet1>
