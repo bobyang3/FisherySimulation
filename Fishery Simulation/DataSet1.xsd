@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="DataSet1" targetNamespace="http://tempuri.org/DataSet1.xsd" xmlns:mstns="http://tempuri.org/DataSet1.xsd" xmlns="http://tempuri.org/DataSet1.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="DataSet1" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="DataSet1" msprop:Generator_UserDSName="DataSet1">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="FileList" msdata:Locale="" msprop:Generator_TableClassName="FileListDataTable" msprop:Generator_TableVarName="tableFileList" msprop:Generator_RowChangedName="FileListRowChanged" msprop:Generator_TablePropName="FileList" msprop:Generator_RowDeletingName="FileListRowDeleting" msprop:Generator_RowChangingName="FileListRowChanging" msprop:Generator_RowEvHandlerName="FileListRowChangeEventHandler" msprop:Generator_RowDeletedName="FileListRowDeleted" msprop:Generator_RowClassName="FileListRow" msprop:Generator_UserTableName="FileList" msprop:Generator_RowEvArgName="FileListRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="FileName" msprop:Generator_ColumnVarNameInTable="columnFileName" msprop:Generator_ColumnPropNameInRow="FileName" msprop:Generator_ColumnPropNameInTable="FileNameColumn" msprop:Generator_UserColumnName="FileName" type="xs:string" minOccurs="0" />
+              <xs:element name="capture" msprop:Generator_ColumnVarNameInTable="columncapture" msprop:Generator_ColumnPropNameInRow="capture" msprop:Generator_ColumnPropNameInTable="captureColumn" msprop:Generator_UserColumnName="capture" type="xs:string" default="None" minOccurs="0" />
+              <xs:element name="fromLine" msprop:Generator_ColumnVarNameInTable="columnfromLine" msprop:Generator_ColumnPropNameInRow="fromLine" msprop:Generator_ColumnPropNameInTable="fromLineColumn" msprop:Generator_UserColumnName="fromLine" type="xs:long" minOccurs="0" />
+              <xs:element name="toLine" msprop:Generator_ColumnVarNameInTable="columntoLine" msprop:Generator_ColumnPropNameInRow="toLine" msprop:Generator_ColumnPropNameInTable="toLineColumn" msprop:Generator_UserColumnName="toLine" type="xs:long" minOccurs="0" />
+              <xs:element name="block" msprop:Generator_ColumnVarNameInTable="columnblock" msprop:Generator_ColumnPropNameInRow="block" msprop:Generator_ColumnPropNameInTable="blockColumn" msprop:Generator_UserColumnName="block" type="xs:string" minOccurs="0" />
+              <xs:element name="blockend" msprop:Generator_ColumnVarNameInTable="columnblockend" msprop:Generator_ColumnPropNameInRow="blockend" msprop:Generator_ColumnPropNameInTable="blockendColumn" msprop:Generator_UserColumnName="blockend" type="xs:string" minOccurs="0" />
+              <xs:element name="randomGen" msprop:Generator_ColumnVarNameInTable="columnrandomGen" msprop:Generator_ColumnPropNameInRow="randomGen" msprop:Generator_ColumnPropNameInTable="randomGenColumn" msprop:Generator_UserColumnName="randomGen" type="xs:string" minOccurs="0" />
+              <xs:element name="outputFileName" msprop:Generator_ColumnVarNameInTable="columnoutputFileName" msprop:Generator_ColumnPropNameInRow="outputFileName" msprop:Generator_ColumnPropNameInTable="outputFileNameColumn" msprop:Generator_UserColumnName="outputFileName" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Settings" msdata:Locale="" msprop:Generator_TableClassName="SettingsDataTable" msprop:Generator_TableVarName="tableSettings" msprop:Generator_RowChangedName="SettingsRowChanged" msprop:Generator_TablePropName="Settings" msprop:Generator_RowDeletingName="SettingsRowDeleting" msprop:Generator_RowChangingName="SettingsRowChanging" msprop:Generator_RowEvHandlerName="SettingsRowChangeEventHandler" msprop:Generator_RowDeletedName="SettingsRowDeleted" msprop:Generator_RowClassName="SettingsRow" msprop:Generator_UserTableName="Settings" msprop:Generator_RowEvArgName="SettingsRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="rootFolder" msprop:Generator_ColumnVarNameInTable="columnrootFolder" msprop:Generator_ColumnPropNameInRow="rootFolder" msprop:Generator_ColumnPropNameInTable="rootFolderColumn" msprop:Generator_UserColumnName="rootFolder" type="xs:string" minOccurs="0" />
+              <xs:element name="simulationNum" msprop:Generator_ColumnVarNameInTable="columnsimulationNum" msprop:Generator_ColumnPropNameInRow="simulationNum" msprop:Generator_ColumnPropNameInTable="simulationNumColumn" msprop:Generator_UserColumnName="simulationNum" type="xs:string" minOccurs="0" />
+              <xs:element name="commandRootFolder" msprop:Generator_ColumnVarNameInTable="columncommandRootFolder" msprop:Generator_ColumnPropNameInRow="commandRootFolder" msprop:Generator_ColumnPropNameInTable="commandRootFolderColumn" msprop:Generator_UserColumnName="commandRootFolder" type="xs:string" minOccurs="0" />
+              <xs:element name="commandSubFolder" msprop:Generator_ColumnVarNameInTable="columncommandSubFolder" msprop:Generator_ColumnPropNameInRow="commandSubFolder" msprop:Generator_ColumnPropNameInTable="commandSubFolderColumn" msprop:Generator_UserColumnName="commandSubFolder" type="xs:string" minOccurs="0" />
+              <xs:element name="CPUNum" msprop:Generator_ColumnVarNameInTable="columnCPUNum" msprop:Generator_ColumnPropNameInRow="CPUNum" msprop:Generator_ColumnPropNameInTable="CPUNumColumn" msprop:Generator_UserColumnName="CPUNum" type="xs:string" minOccurs="0" />
+              <xs:element name="step2TimeOutInMinutes" msprop:Generator_ColumnVarNameInTable="columnstep2TimeOutInMinutes" msprop:Generator_ColumnPropNameInRow="step2TimeOutInMinutes" msprop:Generator_ColumnPropNameInTable="step2TimeOutInMinutesColumn" msprop:Generator_UserColumnName="step2TimeOutInMinutes" type="xs:string" default="120" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="SummaryFiles" msprop:Generator_TableClassName="SummaryFilesDataTable" msprop:Generator_TableVarName="tableSummaryFiles" msprop:Generator_RowChangedName="SummaryFilesRowChanged" msprop:Generator_TablePropName="SummaryFiles" msprop:Generator_RowDeletingName="SummaryFilesRowDeleting" msprop:Generator_RowChangingName="SummaryFilesRowChanging" msprop:Generator_RowEvHandlerName="SummaryFilesRowChangeEventHandler" msprop:Generator_RowDeletedName="SummaryFilesRowDeleted" msprop:Generator_RowClassName="SummaryFilesRow" msprop:Generator_UserTableName="SummaryFiles" msprop:Generator_RowEvArgName="SummaryFilesRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="sourceFile" msprop:Generator_ColumnVarNameInTable="columnsourceFile" msprop:Generator_ColumnPropNameInRow="sourceFile" msprop:Generator_ColumnPropNameInTable="sourceFileColumn" msprop:Generator_UserColumnName="sourceFile" type="xs:string" minOccurs="0" />
+              <xs:element name="fromLine" msprop:Generator_ColumnVarNameInTable="columnfromLine" msprop:Generator_ColumnPropNameInRow="fromLine" msprop:Generator_ColumnPropNameInTable="fromLineColumn" msprop:Generator_UserColumnName="fromLine" type="xs:int" minOccurs="0" />
+              <xs:element name="toLine" msprop:Generator_ColumnVarNameInTable="columntoLine" msprop:Generator_ColumnPropNameInRow="toLine" msprop:Generator_ColumnPropNameInTable="toLineColumn" msprop:Generator_UserColumnName="toLine" type="xs:int" minOccurs="0" />
+              <xs:element name="outputFileOrTable" msprop:Generator_ColumnVarNameInTable="columnoutputFileOrTable" msprop:Generator_ColumnPropNameInRow="outputFileOrTable" msprop:Generator_ColumnPropNameInTable="outputFileOrTableColumn" msprop:Generator_UserColumnName="outputFileOrTable" type="xs:string" minOccurs="0" />
+              <xs:element name="onlyOneHeader" msprop:Generator_ColumnVarNameInTable="columnonlyOneHeader" msprop:Generator_ColumnPropNameInRow="onlyOneHeader" msprop:Generator_ColumnPropNameInTable="onlyOneHeaderColumn" msprop:Generator_UserColumnName="onlyOneHeader" type="xs:boolean" default="true" minOccurs="0" />
+              <xs:element name="addSourceFolderNumInFront" msprop:Generator_ColumnVarNameInTable="columnaddSourceFolderNumInFront" msprop:Generator_ColumnPropNameInRow="addSourceFolderNumInFront" msprop:Generator_ColumnPropNameInTable="addSourceFolderNumInFrontColumn" msprop:Generator_UserColumnName="addSourceFolderNumInFront" type="xs:boolean" default="true" minOccurs="0" />
+              <xs:element name="delimited" msprop:Generator_ColumnVarNameInTable="columndelimited" msprop:Generator_ColumnPropNameInRow="delimited" msprop:Generator_ColumnPropNameInTable="delimitedColumn" msprop:Generator_UserColumnName="delimited" type="xs:string" default="" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="FileList2" msdata:Locale="" msprop:Generator_TableClassName="FileList2DataTable" msprop:Generator_TableVarName="tableFileList2" msprop:Generator_TablePropName="FileList2" msprop:Generator_RowDeletingName="FileList2RowDeleting" msprop:Generator_RowChangingName="FileList2RowChanging" msprop:Generator_RowEvHandlerName="FileList2RowChangeEventHandler" msprop:Generator_RowDeletedName="FileList2RowDeleted" msprop:Generator_UserTableName="FileList2" msprop:Generator_RowChangedName="FileList2RowChanged" msprop:Generator_RowEvArgName="FileList2RowChangeEvent" msprop:Generator_RowClassName="FileList2Row">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="FileName" msprop:Generator_ColumnVarNameInTable="columnFileName" msprop:Generator_ColumnPropNameInRow="FileName" msprop:Generator_ColumnPropNameInTable="FileNameColumn" msprop:Generator_UserColumnName="FileName" type="xs:string" minOccurs="0" />
+              <xs:element name="capture" msprop:Generator_ColumnVarNameInTable="columncapture" msprop:Generator_ColumnPropNameInRow="capture" msprop:Generator_ColumnPropNameInTable="captureColumn" msprop:Generator_UserColumnName="capture" type="xs:string" default="None" minOccurs="0" />
+              <xs:element name="fromLine" msprop:Generator_ColumnVarNameInTable="columnfromLine" msprop:Generator_ColumnPropNameInRow="fromLine" msprop:Generator_ColumnPropNameInTable="fromLineColumn" msprop:Generator_UserColumnName="fromLine" type="xs:long" minOccurs="0" />
+              <xs:element name="toLine" msprop:Generator_ColumnVarNameInTable="columntoLine" msprop:Generator_ColumnPropNameInRow="toLine" msprop:Generator_ColumnPropNameInTable="toLineColumn" msprop:Generator_UserColumnName="toLine" type="xs:long" minOccurs="0" />
+              <xs:element name="block" msprop:Generator_ColumnVarNameInTable="columnblock" msprop:Generator_ColumnPropNameInRow="block" msprop:Generator_ColumnPropNameInTable="blockColumn" msprop:Generator_UserColumnName="block" type="xs:string" minOccurs="0" />
+              <xs:element name="blockend" msprop:Generator_ColumnVarNameInTable="columnblockend" msprop:Generator_ColumnPropNameInRow="blockend" msprop:Generator_ColumnPropNameInTable="blockendColumn" msprop:Generator_UserColumnName="blockend" type="xs:string" minOccurs="0" />
+              <xs:element name="randomGen" msprop:Generator_ColumnVarNameInTable="columnrandomGen" msprop:Generator_ColumnPropNameInRow="randomGen" msprop:Generator_ColumnPropNameInTable="randomGenColumn" msprop:Generator_UserColumnName="randomGen" type="xs:string" minOccurs="0" />
+              <xs:element name="outputFileName" msprop:Generator_ColumnVarNameInTable="columnoutputFileName" msprop:Generator_ColumnPropNameInRow="outputFileName" msprop:Generator_ColumnPropNameInTable="outputFileNameColumn" msprop:Generator_UserColumnName="outputFileName" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
