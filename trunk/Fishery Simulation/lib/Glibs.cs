@@ -20,6 +20,9 @@ namespace Fishery_Simulation
         //public static int waitTimeinSecond = 0;
         //public static DateTime lastProcessDateTime;
 
+        public static List<Int32> tickCount = new List<Int32>();
+
+
         public static void DeleteFolder(System.IO.DirectoryInfo directory)
         {
             foreach (System.IO.FileInfo file in directory.GetFiles()) file.Delete();

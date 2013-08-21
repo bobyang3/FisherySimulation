@@ -159,7 +159,11 @@ namespace Fishery_Simulation
 
         private void button1_Click(object sender, EventArgs e)
         {
+
             this.Enabled = false;
+            Glibs.tickCount.Clear(); //reset for random number in SS
+
+
             string rootFolderTextBoxText = this.rootFolderTextBox.Text as string;
             string completedFile = Path.Combine(rootFolderTextBoxText, "~FSstatus.xml");
 
@@ -185,8 +189,8 @@ namespace Fishery_Simulation
 
                 //pass values to the new thread
                 Thread oThread = new Thread(new ParameterizedThreadStart(process1and2));
-                System.Threading.Thread.Sleep(18);  // because every Environment.Tickcount is 15.6ms
-                Thread.SpinWait(16);
+                //System.Threading.Thread.Sleep(18);  // because every Environment.Tickcount is 15.6ms
+                //Thread.SpinWait(16);
                 oThread.Start(this);
 
             }
@@ -246,8 +250,8 @@ namespace Fishery_Simulation
 
                     Process p = new Process();
                     p.StartInfo = pInfo;
-                    p.EnableRaisingEvents = true; // to make sure capture the correct exitcode
-                    System.Threading.Thread.Sleep(18);  // because every Environment.Tickcount is 15.6ms
+                    //p.EnableRaisingEvents = true; // to make sure capture the correct exitcode
+                    //System.Threading.Thread.Sleep(18);  // because every Environment.Tickcount is 15.6ms
                     Thread.SpinWait(16);
                     p.Start();    
                     
@@ -455,6 +459,11 @@ namespace Fishery_Simulation
 
         private void step2Command(string subfolderPath)
         {
+
+    
+
+       
+
             ProcessStartInfo pInfo = new ProcessStartInfo();
             
             string[] sts = textBox4.Text.ToString().Split(new char[] { ' ' }, 2);
@@ -550,8 +559,33 @@ namespace Fishery_Simulation
 
                    // SetConsoleCtrlHandler(new HandlerRoutine(ConsoleCtrlCheck), true);
                     //p.Exited += new EventHandler(myProcess_Exited);
-                    System.Threading.Thread.Sleep(18);  // because every Environment.Tickcount is 15.6ms
-                    Thread.SpinWait(16);
+                    //System.Threading.Thread.Sleep(18);  // because every Environment.Tickcount is 15.6ms
+                    //Thread.SpinWait(16);
+
+
+
+                    //wait to get different random number for SS
+                    int _result = 0;
+                    Int32 _t = Environment.TickCount;
+
+                    if (Glibs.tickCount.Count <= 0) {
+                        Glibs.tickCount.Add(_t);
+                    }
+
+                    do
+                    {
+                        System.Threading.Thread.Sleep(15);  // because every Environment.Tickcount is 15.6ms
+                        Thread.SpinWait(16);
+                        _t = Environment.TickCount;
+                        //_result = Glibs.tickCount.Distinct().ToList().FindIndex(item => item == _t);
+                        _result = Glibs.tickCount.FindIndex(item => item == _t);
+                        Glibs.tickCount.Add(_t);
+                    } while (_result > 0);
+
+                    
+
+
+
                     p.Start();    
                     
                     p.WaitForExit();
@@ -734,8 +768,8 @@ namespace Fishery_Simulation
 
                 pInfo.WorkingDirectory = Path.Combine(rootFolderTextBoxText, i.ToString());
 
-                System.Threading.Thread.Sleep(18);  // because every Environment.Tickcount is 15.6ms
-                Thread.SpinWait(16);
+                //System.Threading.Thread.Sleep(18);  // because every Environment.Tickcount is 15.6ms
+                //Thread.SpinWait(16);
                 Process p = Process.Start(pInfo);
 
                 ////Wait for the process to end.
