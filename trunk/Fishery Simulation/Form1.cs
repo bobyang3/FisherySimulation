@@ -22,6 +22,11 @@ namespace Fishery_Simulation
         public Form1()
         {
             InitializeComponent();
+
+
+            //hide step 2 top part
+            splitContainer2.Panel1Collapsed = true;
+            splitContainer2.Panel1.Hide();
         }
 
         private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
@@ -180,6 +185,8 @@ namespace Fishery_Simulation
 
                 //pass values to the new thread
                 Thread oThread = new Thread(new ParameterizedThreadStart(process1and2));
+                System.Threading.Thread.Sleep(18);  // because every Environment.Tickcount is 15.6ms
+                Thread.SpinWait(16);
                 oThread.Start(this);
 
             }
@@ -240,6 +247,8 @@ namespace Fishery_Simulation
                     Process p = new Process();
                     p.StartInfo = pInfo;
                     p.EnableRaisingEvents = true; // to make sure capture the correct exitcode
+                    System.Threading.Thread.Sleep(18);  // because every Environment.Tickcount is 15.6ms
+                    Thread.SpinWait(16);
                     p.Start();    
                     
                     p.WaitForExit();
@@ -541,6 +550,8 @@ namespace Fishery_Simulation
 
                    // SetConsoleCtrlHandler(new HandlerRoutine(ConsoleCtrlCheck), true);
                     //p.Exited += new EventHandler(myProcess_Exited);
+                    System.Threading.Thread.Sleep(18);  // because every Environment.Tickcount is 15.6ms
+                    Thread.SpinWait(16);
                     p.Start();    
                     
                     p.WaitForExit();
@@ -722,6 +733,9 @@ namespace Fishery_Simulation
                 catch { }
 
                 pInfo.WorkingDirectory = Path.Combine(rootFolderTextBoxText, i.ToString());
+
+                System.Threading.Thread.Sleep(18);  // because every Environment.Tickcount is 15.6ms
+                Thread.SpinWait(16);
                 Process p = Process.Start(pInfo);
 
                 ////Wait for the process to end.
@@ -1174,6 +1188,8 @@ namespace Fishery_Simulation
 
             //pass values to the new thread
             Thread oThread = new Thread(new ParameterizedThreadStart(process3));
+            System.Threading.Thread.Sleep(18);  // because every Environment.Tickcount is 15.6ms
+            Thread.SpinWait(16);
             oThread.Start(this);
 
             //process3(this);
