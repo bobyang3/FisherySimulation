@@ -1,0 +1,55 @@
+<?xml version="1.0" standalone="yes"?>
+<DataSet1 xmlns="http://tempuri.org/DataSet1.xsd">
+  <FileList>
+    <FileName>forecast.SS</FileName>
+    <capture>None</capture>
+    <outputFileName>forecast.SS</outputFileName>
+  </FileList>
+  <FileList>
+    <FileName>ss3.exe</FileName>
+    <capture>None</capture>
+    <outputFileName>ss3.exe</outputFileName>
+  </FileList>
+  <FileList>
+    <FileName>ss3.par</FileName>
+    <capture>None</capture>
+    <outputFileName>ss3.par</outputFileName>
+  </FileList>
+  <FileList>
+    <FileName>ss3orig.par</FileName>
+    <capture>None</capture>
+    <outputFileName>ss3orig.par</outputFileName>
+  </FileList>
+  <FileList>
+    <FileName>Starter.ss</FileName>
+    <capture>None</capture>
+    <outputFileName>Starter.ss</outputFileName>
+  </FileList>
+  <FileList>
+    <FileName>selex_length_ctl.ss</FileName>
+    <capture>None</capture>
+    <outputFileName>selex_length_ctl.ss</outputFileName>
+  </FileList>
+  <FileList>
+    <FileName>selex_length_dat.ss</FileName>
+    <capture>None</capture>
+    <outputFileName>selex_length_dat.ss</outputFileName>
+  </FileList>
+  <Settings>
+    <rootFolder>C:\__PROJECTS__\Fishery Simulation\test - Copy</rootFolder>
+    <simulationNum>40</simulationNum>
+    <commandRootFolder />
+    <commandSubFolder>ss3.exe -nox -nohess</commandSubFolder>
+    <CPUNum>6</CPUNum>
+    <step2TimeOutInMinutes>120</step2TimeOutInMinutes>
+  </Settings>
+  <SummaryFiles>
+    <sourceFile>data.ss_new</sourceFile>
+    <fromLine>301</fromLine>
+    <toLine>301</toLine>
+    <outputFileOrTable>t.txt</outputFileOrTable>
+    <onlyOneHeader>false</onlyOneHeader>
+    <addSourceFolderNumInFront>true</addSourceFolderNumInFront>
+    <delimited xml:space="preserve"> </delimited>
+  </SummaryFiles>
+</DataSet1>
